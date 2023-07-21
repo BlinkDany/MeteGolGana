@@ -8,6 +8,8 @@ package Controlador;
 import Conexion.ConexionMySql;
 import Modelo.Clase_Campeonato;
 import Modelo.Modelo_Campeonato;
+import Modelo.Clase_Temporada;
+import Modelo.Modelo_Temporada;
 import Vista.VistaCampeonato;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -38,6 +40,8 @@ import javax.swing.table.TableRowSorter;
 public class Controlador_Campeonato {
 
     Modelo_Campeonato modelo;
+    
+    Modelo_Temporada modeloTemporada;
 
     VistaCampeonato vista;
 
@@ -126,7 +130,7 @@ public class Controlador_Campeonato {
                 modelo.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
-                modelo.setEstado_elim(1);
+                modelo.setEstado_elim(false);
 
 //transformar de objeto a int
                 int stock = ((Number) vista.getSpnMaxEqipo().getValue()).intValue();
@@ -159,7 +163,7 @@ public class Controlador_Campeonato {
 
                 int stock = ((Number) vista.getSpnMaxEqipo().getValue()).intValue();
 
-                if (modelo.ActualizarCampeonato()) {
+                if (modelo.ModificarCampeonato()) {
                     JOptionPane.showMessageDialog(vista, "Datos modificados ",
                             "Advertencia", JOptionPane.INFORMATION_MESSAGE);
 
@@ -172,7 +176,7 @@ public class Controlador_Campeonato {
             Modelo_Campeonato model = new Modelo_Campeonato();
             model.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
 
-            if (model.EliminarCampeonato()) {
+            if (model.OcultarCampeonato()) {
 
                 limpiar();
                 JOptionPane.showMessageDialog(vista, "Datos eliminados");
@@ -189,8 +193,8 @@ public class Controlador_Campeonato {
     
 //------------------------------------------------ Verifica si hay campos vacíos en el formulario----------------------------------------\\
     private boolean camposVacios() {
-        return vista.getTxtCodigo().getText().isEmpty()
-                || vista.getTxtNombre().getText().isEmpty()
+        return //vista.getTxtCodigo().getText().isEmpty()
+                vista.getTxtNombre().getText().isEmpty()
                 || vista.getCbxTipoCampeonato().getSelectedItem().equals("Selecciona:")
                 || vista.getSpnMaxEqipo().getValue().equals(0);
 
@@ -239,6 +243,8 @@ public class Controlador_Campeonato {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
         vista.getTblCampeonato().setRowSorter(sorter);
     }
+    
+    
 
 //--------------------------------------------------------BUSCAR---------------------------------------------------\\
     public void buscar() {

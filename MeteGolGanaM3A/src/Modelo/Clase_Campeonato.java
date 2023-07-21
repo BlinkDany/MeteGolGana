@@ -15,12 +15,12 @@ public class Clase_Campeonato {
     private String nombre;
     private String tipo_campeonato;
     private int max_equipos;
-    private int estado_elim;
+    private boolean estado_elim;
 
     public Clase_Campeonato() {
     }
 
-    public Clase_Campeonato(int cod_campeonato, String nombre, String tipo_campeonato, int max_equipos, int estado_elim) {
+    public Clase_Campeonato(int cod_campeonato, String nombre, String tipo_campeonato, int max_equipos, boolean estado_elim) {
         this.cod_campeonato = cod_campeonato;
         this.nombre = nombre;
         this.tipo_campeonato = tipo_campeonato;
@@ -67,11 +67,11 @@ public class Clase_Campeonato {
         this.max_equipos = max_equipos;
     }
 
-    public int getEstado_elim() {
+    public boolean isEstado_elim() {
         return estado_elim;
     }
 
-    public void setEstado_elim(int estado_elim) {
+    public void setEstado_elim(boolean estado_elim) {
         this.estado_elim = estado_elim;
     }
     

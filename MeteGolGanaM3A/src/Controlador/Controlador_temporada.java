@@ -6,8 +6,11 @@
 package Controlador;
 
 import Conexion.ConexionMySql;
+import Modelo.Clase_Campeonato;
 import Modelo.Clase_Temporada;
 import Modelo.Modelo_Temporada;
+import Modelo.Modelo_Campeonato;
+import Modelo.Clase_Temporada;      
 import Vista.VistaTemporada;
 import java.sql.Date;
 import java.util.List;
@@ -23,6 +26,8 @@ public class Controlador_temporada {
     
     
     Modelo_Temporada  modelo;
+    
+   Modelo_Campeonato modeloCamp;
 
     VistaTemporada vista;
 
@@ -79,67 +84,7 @@ public class Controlador_temporada {
 
         vista.getDlgaTemporada().setLocationRelativeTo(vista);
         vista.getDlgaTemporada().setSize(900, 900
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         );
         vista.getDlgaTemporada().setTitle(ce);
 
@@ -233,8 +178,8 @@ public class Controlador_temporada {
     
 //------------------------------------------------ Verifica si hay campos vacíos en el formulario----------------------------------------\\
     private boolean camposVacios() {
-        return vista.getTxtCodigo().getText().isEmpty()
-                || vista.getTxtFechaFin().getDate()== null
+        return// vista.getTxtCodigo().getText().isEmpty()
+                vista.getTxtFechaFin().getDate()== null
                 || vista.getTxtFechaIni().getDate().equals(null)
                 || vista.getTxtCodigoCampeonatoFK().getText().equals(null);
 
@@ -283,6 +228,50 @@ public class Controlador_temporada {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
         vista.getTblTemporada().setRowSorter(sorter);
     }
+    
+    //---------------------------------------------------MOSTRAR DATOS TABLA CAMPEONATO----------------------------------\\
+    
+        public void llenarCamposDeTextoCampeonato() {
+        // Obtener la lista de productos
+        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listCamp.stream().forEach(p -> {
+            // Verificar si el codigo del producto coincide con el codigo seleccionado en la tabla
+            if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
+
+                // Llenar los campos de la vista con los datos de producto seleccionado
+                vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCod_campeonato()));
+
+            }
+        });
+    }
+
+    //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
+    public void mostrarDatosTablaCampeonato() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
+        tabla.setRowCount(0);
+
+        // Obtener la lista de productos
+        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listCamp.forEach(p -> {
+
+            // Crear un objeto datos con los valores de los campos correspondientes del producto
+            Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+
+            // Agregar el objeto como una nueva fila a la tabla
+            tabla.addRow(datos);
+        });
+
+        // Agregar ordenamiento y filtrado a la tabla
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
+        vista.getTblCampeonatoFK().setRowSorter(sorter);
+    }
+    
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
 //--------------------------------------------------------BUSCAR---------------------------------------------------\\
     public void buscar() {
@@ -379,5 +368,41 @@ public class Controlador_temporada {
                         Logger.getLogger(ControladorPersonas.class.getName()).log(Level.SEVERE, null, ex);
  }
     }*/
+    
+    
+    public void EliminarTemmporada() {
+
+        if (vista.getTblTemporada().getSelectedRow() == -1) {
+
+            JOptionPane.showMessageDialog(null, "Seleccione temporada que desea eliminar ",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            int x = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar la factura?", "Advertecia!", JOptionPane.YES_NO_OPTION);
+            if (x == 0) {
+
+               modelo.setIdFactura(vista.getTblFactura().getValueAt(vista.getTblFactura().getSelectedRow(), 0).hashCode());
+                modeloDetalle.setFacturaDetalle(vista.getTblFactura().getValueAt(vista.getTblFactura().getSelectedRow(), 0).hashCode());
+
+                if (modeloFactura.ocultar()) {
+
+                    if (modeloDetalle.ocultar()) {
+
+                        JOptionPane.showMessageDialog(null, "Factura eliminada con exito ",
+                                "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+
+                        mostrarDatosTablaFactura();
+
+                        mostrarDatosTablaDetalle();
+                    }
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "No se ha podido eliminar la factura ",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
     
 }
