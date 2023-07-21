@@ -20,7 +20,7 @@ public class ModeloEquipos extends Clase_Equipo{
 
     }
 
-    public List<Clase_Partido> listarEquipos() {
+    public List<Clase_Equipo> listarEquipos() {
         List<Clase_Equipo> listaEquipos = new ArrayList<Clase_Equipo>();
 
         try {

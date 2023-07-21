@@ -22,6 +22,14 @@ public class VistaEquipos extends javax.swing.JFrame {
         initComponents();
     }
 
+    public static FSButtonMD getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public static FSButtonMD getBtnRegistrarModificar() {
+        return btnRegistrarModificar;
+    }
+
     public static JTable getTblEquipos() {
         return tblEquipos;
     }
@@ -95,6 +103,8 @@ public class VistaEquipos extends javax.swing.JFrame {
         jdcaniofundacion = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         btnEquipo = new LIB.FSButtonMD();
+        btnCancelar = new LIB.FSButtonMD();
+        btnRegistrarModificar = new LIB.FSButtonMD();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new LIB.FSButtonMD();
@@ -129,6 +139,26 @@ public class VistaEquipos extends javax.swing.JFrame {
         btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
         btnEquipo.setText("Buscar Equipo");
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
+        btnCancelar.setColorNormal(new java.awt.Color(255, 0, 0));
+        btnCancelar.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarModificar.setText("Registrar");
+        btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
+        btnRegistrarModificar.setColorPressed(new java.awt.Color(0, 204, 51));
+        btnRegistrarModificar.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnRegistrarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jdlgEquiposLayout = new javax.swing.GroupLayout(jdlgEquipos.getContentPane());
         jdlgEquipos.getContentPane().setLayout(jdlgEquiposLayout);
         jdlgEquiposLayout.setHorizontalGroup(
@@ -152,6 +182,12 @@ public class VistaEquipos extends javax.swing.JFrame {
                 .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
             .addComponent(lblReMoEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdlgEquiposLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
         );
         jdlgEquiposLayout.setVerticalGroup(
             jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +206,11 @@ public class VistaEquipos extends javax.swing.JFrame {
                     .addComponent(jdcaniofundacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(txtCiudadequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
+                .addGap(42, 42, 42)
+                .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -315,6 +355,14 @@ public class VistaEquipos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnRegistrarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,10 +400,12 @@ public class VistaEquipos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
+    public static LIB.FSButtonMD btnCancelar;
     public static javax.swing.JButton btnEliminar;
     private LIB.FSButtonMD btnEquipo;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
+    public static LIB.FSButtonMD btnRegistrarModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
