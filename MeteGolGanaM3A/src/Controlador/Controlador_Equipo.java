@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Clase_Equipo;
 import Modelo.ModeloEquipos;
 import Vista.VistaEquipos;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -57,66 +58,62 @@ public class Controlador_Equipo {
         }
     }
     private void crearEditarPartido() {
-        if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
+        if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Crear")) {
 
-            Modelo_Partido model = new Modelo_Partido();
+            ModeloEquipos model = new ModeloEquipos();
 
-            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("")) {
+            if (vistaequi.getTxtcodequipo().equals("") || vistaequi.getTxtNombreequipo().equals("") || vistaequi.getJdcaniofundacion().equals("") || vistaequi.getTxtCiudadequipo().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
-                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                int codcampeonato = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
+                int codigopartido = Integer.valueOf(vistaequi.getTxtcodequipo().getText());
+                String nombreequi = vistaequi.getTxtNombreequipo().getText();
+                String equipo1 = vistaequi.getJdcaniofundacion().getDateFormatString();
+                String ciudadequi = vistaequi.getTxtCiudadequipo().getText();
                 int estado = 0;
 
-                model.setCod_partido(codigopartido);
-                model.setCod_campeonato(codcampeonato);
-                model.setCod_equipo1(equipo1);
-                model.setCod_equipo2(equipo2);
-                model.setCod_estadio(estadio);
-                model.setEstado(estado);
-                if (model.InsertarPartido()) {
+                model.setCod_equipo(codigopartido);
+                model.setNombre_equi(nombreequi);
+                //model.setAnio_fundacion(equipo1.hashCode());
+                model.setCiudad(ciudadequi);
+                model.setEstado_elim(estado);
+                if (model.InsertarEquipo()) {
                     limpiar();
-                    JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
-                    vistapar.getDialogRegistrarModificar().setVisible(false);
-                    cargaPartidos();
+                    JOptionPane.showMessageDialog(vistaequi, "DATOS CREADOS");
+                    vistaequi.getJdlgEquipos().setVisible(false);
+                    cargarEquipos();
                 } else {
-                    JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                    JOptionPane.showMessageDialog(vistaequi, "ERROR AL GRABAR DATOS");
                 }
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
 
-        } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
+        } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Editar")) {
 
-            Modelo_Partido model = new Modelo_Partido();
+            ModeloEquipos model = new ModeloEquipos();
 
-            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("")) {
+            if (vistaequi.getTxtcodequipo().equals("") || vistaequi.getTxtNombreequipo().equals("") || vistaequi.getJdcaniofundacion().equals("") || vistaequi.getTxtCiudadequipo().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
-                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                int codcampeonato = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
+                int codigoequi = Integer.valueOf(vistaequi.getTxtcodequipo().getText());
+                String nombreequi = vistaequi.getTxtNombreequipo().getText();
+                int fechaequi = Integer.valueOf(vistaequi.getJdcaniofundacion().getDateFormatString());
+                String ciudadequi = vistaequi.getTxtCiudadequipo().getText();
 
-                model.setCod_partido(codigopartido);
-                model.setCod_campeonato(codcampeonato);
-                model.setCod_equipo1(equipo1);
-                model.setCod_equipo2(equipo2);
-                model.setCod_estadio(estadio);
-                if (model.ModificarPartido()) {
+                model.setCod_equipo(codigoequi);
+                model.setNombre_equi(nombreequi);
+                //model.setAnio_fundacion(fechaequi);
+                model.setCiudad(ciudadequi);
+                if (model.ModificarEquipo()) {
                     limpiar();
-                    JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
-                    vistaequi.getDialogRegistrarModificar().setVisible(false);
-                    cargaPartidos();
+                    JOptionPane.showMessageDialog(vistaequi, "DATOS CREADOS");
+                    vistaequi.getJdlgEquipos().setVisible(false);
+                    cargarEquipos();
                 } else {
-                    JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                    JOptionPane.showMessageDialog(vistaequi, "ERROR AL GRABAR DATOS");
                 }
 
             }

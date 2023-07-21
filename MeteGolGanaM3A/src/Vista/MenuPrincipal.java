@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import LIB.FSButtonMD;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -37,6 +38,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.btnCampeonato = btnCampeonato;
     }
 
+    public JButton getBtnEquipos() {
+        return BtnEquipos;
+    }
+
+    public JButton getBtnGoles() {
+        return BtnGoles;
+    }
+
     public JButton getBtnTemporada() {
         return btnTemporada;
     }
@@ -53,8 +62,166 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.desctopPrincipal = desctopPrincipal;
     }
 
-    
+    public FSButtonMD getBtnJugadores() {
+        return btnJugadores;
+    }
 
+    public void setBtnJugadores(FSButtonMD btnJugadores) {
+        this.btnJugadores = btnJugadores;
+    }
+
+    public JMenu getBtnReporteFac() {
+        return btnReporteFac;
+    }
+
+    public void setBtnReporteFac(JMenu btnReporteFac) {
+        this.btnReporteFac = btnReporteFac;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JMenuItem getjMenuItem1() {
+        return jMenuItem1;
+    }
+
+    public void setjMenuItem1(JMenuItem jMenuItem1) {
+        this.jMenuItem1 = jMenuItem1;
+    }
+
+    public JMenuItem getjMenuItem2() {
+        return jMenuItem2;
+    }
+
+    public void setjMenuItem2(JMenuItem jMenuItem2) {
+        this.jMenuItem2 = jMenuItem2;
+    }
+
+    public JMenuItem getjMenuItem3() {
+        return jMenuItem3;
+    }
+
+    public void setjMenuItem3(JMenuItem jMenuItem3) {
+        this.jMenuItem3 = jMenuItem3;
+    }
+
+    public JMenuItem getjMenuItem4() {
+        return jMenuItem4;
+    }
+
+    public void setjMenuItem4(JMenuItem jMenuItem4) {
+        this.jMenuItem4 = jMenuItem4;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JToolBar.Separator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public void setjSeparator1(JToolBar.Separator jSeparator1) {
+        this.jSeparator1 = jSeparator1;
+    }
+
+    public JToolBar.Separator getjSeparator2() {
+        return jSeparator2;
+    }
+
+    public void setjSeparator2(JToolBar.Separator jSeparator2) {
+        this.jSeparator2 = jSeparator2;
+    }
+
+    public JToolBar.Separator getjSeparator3() {
+        return jSeparator3;
+    }
+
+    public void setjSeparator3(JToolBar.Separator jSeparator3) {
+        this.jSeparator3 = jSeparator3;
+    }
+
+    public JMenu getMnClientes() {
+        return mnClientes;
+    }
+
+    public void setMnClientes(JMenu mnClientes) {
+        this.mnClientes = mnClientes;
+    }
+
+    public JMenu getMniAyudaMP() {
+        return mniAyudaMP;
+    }
+
+    public void setMniAyudaMP(JMenu mniAyudaMP) {
+        this.mniAyudaMP = mniAyudaMP;
+    }
+
+    public JMenu getMniProductosMP() {
+        return mniProductosMP;
+    }
+
+    public void setMniProductosMP(JMenu mniProductosMP) {
+        this.mniProductosMP = mniProductosMP;
+    }
+
+    public JMenu getMniReportesMP() {
+        return mniReportesMP;
+    }
+
+    public void setMniReportesMP(JMenu mniReportesMP) {
+        this.mniReportesMP = mniReportesMP;
+    }
+
+    public JMenu getMniReportesMP1() {
+        return mniReportesMP1;
+    }
+
+    public void setMniReportesMP1(JMenu mniReportesMP1) {
+        this.mniReportesMP1 = mniReportesMP1;
+    }
+
+    public JToolBar getToolBar() {
+        return toolBar;
+    }
+
+    public void setToolBar(JToolBar toolBar) {
+        this.toolBar = toolBar;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,7 +233,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnCampeonato = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
+        btnJugadores = new LIB.FSButtonMD();
         jSeparator3 = new javax.swing.JToolBar.Separator();
+        BtnEquipos = new javax.swing.JButton();
+        BtnGoles = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
@@ -105,13 +275,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnCampeonato.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnCampeonato);
         toolBar.add(jSeparator1);
+
+        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/jugador-de-futbol.png"))); // NOI18N
+        btnJugadores.setText("Jugadores");
+        btnJugadores.setFocusable(false);
+        btnJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJugadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnJugadores);
         toolBar.add(jSeparator3);
+
+        BtnEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/partners (1).png"))); // NOI18N
+        BtnEquipos.setFocusable(false);
+        BtnEquipos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnEquipos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnEquipos);
+
+        BtnGoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnGoles.setFocusable(false);
+        BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnGoles);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +319,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         desctopPrincipalLayout.setVerticalGroup(
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -233,7 +422,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnEquipos;
+    private javax.swing.JButton BtnGoles;
     private javax.swing.JButton btnCampeonato;
+    private LIB.FSButtonMD btnJugadores;
     private javax.swing.JMenu btnReporteFac;
     private javax.swing.JButton btnTemporada;
     private javax.swing.JDesktopPane desctopPrincipal;

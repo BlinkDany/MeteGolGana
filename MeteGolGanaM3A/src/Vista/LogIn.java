@@ -59,9 +59,6 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         fSButtonMD1 = new LIB.FSButtonMD();
         fSButtonMD2 = new LIB.FSButtonMD();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        fSButtonMD4 = new LIB.FSButtonMD();
 
         dlgPersona.setResizable(false);
 
@@ -260,19 +257,16 @@ public class LogIn extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Inicio de Sesión");
 
-        fSTexFieldMD1.setBackground(new java.awt.Color(255, 255, 255));
         fSTexFieldMD1.setForeground(new java.awt.Color(0, 0, 0));
         fSTexFieldMD1.setToolTipText("Ingresa tu cédula");
         fSTexFieldMD1.setBordeColorFocus(new java.awt.Color(51, 102, 255));
         fSTexFieldMD1.setPlaceholder("Usuario");
 
-        fSPasswordFieldMD1.setBackground(new java.awt.Color(255, 255, 255));
         fSPasswordFieldMD1.setForeground(new java.awt.Color(0, 0, 0));
         fSPasswordFieldMD1.setToolTipText("Ingresa tu contraseña");
         fSPasswordFieldMD1.setBordeColorFocus(new java.awt.Color(51, 102, 255));
         fSPasswordFieldMD1.setPlaceholder("Contraseña ");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 102, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Item 2", "Item 3", "Item 4" }));
@@ -346,38 +340,6 @@ public class LogIn extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
-
-        jPanel4.setBackground(new java.awt.Color(0, 102, 204));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/IMAGE_FONDO_LOGIN_2.png"))); // NOI18N
-
-        fSButtonMD4.setText("SALIR");
-        fSButtonMD4.setColorNormal(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel4)
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fSButtonMD4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(fSButtonMD4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 330, 480));
 
         pack();
         setLocationRelativeTo(null);
@@ -461,20 +423,17 @@ public class LogIn extends javax.swing.JFrame {
     public static javax.swing.JDialog dlgPersona;
     private LIB.FSButtonMD fSButtonMD1;
     private LIB.FSButtonMD fSButtonMD2;
-    private LIB.FSButtonMD fSButtonMD4;
     private LIB.FSPasswordFieldMD fSPasswordFieldMD1;
     private LIB.FSTexFieldMD fSTexFieldMD1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     public static javax.swing.JLabel lblFoto;
     public static javax.swing.JRadioButton rdbFemeninoDlg;

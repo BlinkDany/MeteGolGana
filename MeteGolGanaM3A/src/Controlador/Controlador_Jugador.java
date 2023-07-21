@@ -56,7 +56,6 @@ public class Controlador_Jugador {
 
     public void InicarControlador() {
 
-        visJugador.setLocationRelativeTo(null);
         visJugador.setTitle("Jugadores");
         MostrarDatos();
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
@@ -310,6 +309,7 @@ public class Controlador_Jugador {
 
                     MensajeSucces("Se ha registrado con exito ");
                     MostrarDatos();
+                    visJugador.dialogRegistrarModificar.dispose();
                 } else {
 
                     MensajeError("No se ha podido registrar debido a un error en la base de datos");
