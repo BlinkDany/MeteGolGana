@@ -38,6 +38,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.btnCampeonato = btnCampeonato;
     }
 
+    public JButton getBtnEquipos() {
+        return BtnEquipos;
+    }
+
+    public JButton getBtnGoles() {
+        return BtnGoles;
+    }
+
     public JButton getBtnTemporada() {
         return btnTemporada;
     }
@@ -227,6 +235,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnJugadores = new LIB.FSButtonMD();
         jSeparator3 = new javax.swing.JToolBar.Separator();
+        BtnEquipos = new javax.swing.JButton();
+        BtnGoles = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
@@ -273,6 +283,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnJugadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnJugadores);
         toolBar.add(jSeparator3);
+
+        BtnEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/partners (1).png"))); // NOI18N
+        BtnEquipos.setFocusable(false);
+        BtnEquipos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnEquipos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnEquipos);
+
+        BtnGoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnGoles.setFocusable(false);
+        BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnGoles);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -400,6 +422,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnEquipos;
+    private javax.swing.JButton BtnGoles;
     private javax.swing.JButton btnCampeonato;
     private LIB.FSButtonMD btnJugadores;
     private javax.swing.JMenu btnReporteFac;
