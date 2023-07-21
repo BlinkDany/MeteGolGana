@@ -172,12 +172,12 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnRegistrarModificarDlg = new LIB.FSButtonMD();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtFechaFin = new com.toedter.calendar.JDateChooser();
-        txtFechaIni = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCampeonatoFK = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         txtCodigo = new LIB.FSTexFieldMD();
+        txtFechaFin = new com.toedter.calendar.JDateChooser();
+        txtFechaIni = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -246,13 +246,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel3.setText("Fecha de Inicio");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-
-        txtFechaFin.setToolTipText("Fecha límite de finalización de la temporada");
-        jPanel3.add(txtFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 40));
-
-        txtFechaIni.setToolTipText("Fecha de inicio de la temporada");
-        jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 40));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         tblCampeonatoFK.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -277,7 +271,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel5.setText("Fecha de finalización");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         txtCodigo.setEditable(false);
         txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
@@ -285,6 +279,12 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigo.setPlaceholder("Código");
         jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 200, -1));
+
+        txtFechaFin.setToolTipText("Fecha de finalizacion de temporada");
+        jPanel3.add(txtFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 40));
+
+        txtFechaIni.setToolTipText("Fecha de inicio de temporada");
+        jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 40));
 
         javax.swing.GroupLayout dlgaTemporadaLayout = new javax.swing.GroupLayout(dlgaTemporada.getContentPane());
         dlgaTemporada.getContentPane().setLayout(dlgaTemporadaLayout);
@@ -297,7 +297,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
