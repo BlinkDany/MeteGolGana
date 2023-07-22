@@ -66,10 +66,13 @@ public class Controlador_Campeonato {
         vista.setTitle("Campeonatos");
         
         vista.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
-        vista.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
-        vista.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
+        vista.getBtnModificar().addActionListener(l -> abrirEditarDialogo());
+        vista.getBtnLimpiarDlg().addActionListener(l -> limpiar());
+        vista.getBtnEliminar().addActionListener(l -> EliminarCampeonato());
         vista.getBtnCancelarDlg().addActionListener(l -> cerrarDialogo());
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarCampeonato());
+        vista.getBtnBuscar().addActionListener(l -> buscar());
+        vista.getBtnLimpiarBuscar().addActionListener(l -> limpiaBusca());
         
         mostrarDatosTabla();
         
@@ -103,13 +106,14 @@ public class Controlador_Campeonato {
         if (vista.getDlgCampeonatos().getTitle().equals("Crear")) {
 
             vista.getBtnRegistrarModificarDlg().setText("Registrar");
+            
             limpiar();
-            vista.getTxtCodigo().setEnabled(false);
+            
         } else {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
             llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(false);
+            vista.getTxtCodigo().setEnabled(true);
 
         }
         vista.getDlgCampeonatos().setVisible(true);
@@ -130,6 +134,7 @@ public class Controlador_Campeonato {
                 modelo.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
+                modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
                 modelo.setEstado_elim(false);
 
 //transformar de objeto a int
@@ -139,7 +144,7 @@ public class Controlador_Campeonato {
                     JOptionPane.showMessageDialog(null, "Datos guardados exitosamente",
                             "Advertencia", JOptionPane.INFORMATION_MESSAGE);
 
-                    vista.getDlgCampeonatos().dispose();
+                   cerrarDialogo();
                     mostrarDatosTabla();
 
                 } else {
@@ -160,34 +165,17 @@ public class Controlador_Campeonato {
                 modelo.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
-
-                int stock = ((Number) vista.getSpnMaxEqipo().getValue()).intValue();
+                modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
 
                 if (modelo.ModificarCampeonato()) {
                     JOptionPane.showMessageDialog(vista, "Datos modificados ",
                             "Advertencia", JOptionPane.INFORMATION_MESSAGE);
 
                     mostrarDatosTabla();
+                    cerrarDialogo();
                 }
             }
-
-        } else if (vista.getDlgCampeonatos().getTitle().contentEquals("Eliminar")) {
-
-            Modelo_Campeonato model = new Modelo_Campeonato();
-            model.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
-
-            if (model.OcultarCampeonato()) {
-
-                limpiar();
-                JOptionPane.showMessageDialog(vista, "Datos eliminados");
-
-                vista.getDlgCampeonatos().setVisible(false);
-                mostrarDatosTabla();
-
-            } else {
-                JOptionPane.showMessageDialog(vista, "Error al eliminar los datos");
-            }
-        }
+        } 
     }
 
     
@@ -212,7 +200,7 @@ public class Controlador_Campeonato {
 
                 // Llenar los campos de la vista con los datos de producto seleccionado
                 vista.getTxtCodigo().setText(String.valueOf(p.getCod_campeonato()));
-                vista.getTxtCodigo().setText(p.getNombre());
+                vista.getTxtNombre().setText(p.getNombre());
                 vista.getCbxTipoCampeonato().setSelectedItem(p.getTipo_campeonato());
                 vista.getSpnMaxEqipo().setValue(p.getMax_equipos());
 
@@ -221,72 +209,92 @@ public class Controlador_Campeonato {
     }
 
     //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
-    public void mostrarDatosTabla() {
+    
+    
+    
+        public void mostrarDatosTabla() {
 
         DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonato().getModel();
         tabla.setRowCount(0);
 
         // Obtener la lista de productos
-        List<Clase_Campeonato> listCamp = modelo.ListaCampeonato();
+        List<Clase_Campeonato> listCampeon = modelo.ListaCampeonato();
 
         // Recorrer la lista de productos
-        listCamp.forEach(p -> {
+        listCampeon.stream().forEach(p -> {
 
-            // Crear un objeto datos con los valores de los campos correspondientes del producto
-            Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+            if (!p.isEstado_elim()) {
 
-            // Agregar el objeto como una nueva fila a la tabla
-            tabla.addRow(datos);
+                Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+
+                // Agregar el objeto como una nueva fila a la tabla
+                tabla.addRow(datos);
+
+            }
+
         });
 
-        // Agregar ordenamiento y filtrado a la tabla
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
-        vista.getTblCampeonato().setRowSorter(sorter);
     }
     
     
 
 //--------------------------------------------------------BUSCAR---------------------------------------------------\\
-    public void buscar() {
+ public void buscar() {
+    try {
         // Obtener el código ingresado en el campo de búsqueda
-        int codigo = Integer.parseInt(vista.getTxtBuscar().getText());
+        String codigoTexto = vista.getTxtBuscar().getText();
 
-        if (codigo == 0) {
-            // Mostrar mensaje de error si no se ingresa el código
+        if (codigoTexto.isEmpty()) {
+            // Mostrar mensaje de error si el campo está vacío
             JOptionPane.showMessageDialog(null, "Ingrese el código del campeonato que desea buscar",
                     "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            // Obtener el modelo de la tabla
-            DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonato().getModel();
-            // Limpiar el modelo de datos de la tabla
-            tabla.setNumRows(0);
+            int codigo = Integer.parseInt(codigoTexto);
 
-            // Obtener la lista de productos
-            List<Clase_Campeonato> listaProductos = modelo.ListaCampeonato();
+            if (codigo == 0) {
+                // Mostrar mensaje de error si el código es igual a cero
+                JOptionPane.showMessageDialog(null, "Ingrese otro código diferente",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Obtener el modelo de la tabla
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonato().getModel();
+                // Limpiar el modelo de datos de la tabla
+                tabla.setNumRows(0);
 
-            // Utilizar un stream para procesar la lista de productos
-            listaProductos.stream()
-                    // Filtrar los productos por el código
-                    .filter(p -> codigo == p.getCod_campeonato())
-                    // Mapear cada producto filtrado a un objeto "datos" que contiene los valores deseados
-                    .map(p -> {
-                        // Crear un objeto "datos"
-                        Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
-                        return datos;
-                    })
-                    // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
-                    .forEach(tabla::addRow);
+                // Obtener la lista de campeonatos
+                List<Clase_Campeonato> listaCampeonatos = modelo.ListaCampeonato();
+
+                // Utilizar un stream para procesar la lista de campeonatos
+                listaCampeonatos.stream()
+                        // Filtrar los campeonatos por el código
+                        .filter(p -> codigo == p.getCod_campeonato())
+                        // Mapear cada campeonato filtrado a un objeto "datos" que contiene los valores deseados
+                        .map(p -> {
+                            // Crear un objeto "datos"
+                            Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+                            return datos;
+                        })
+                        // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
+                        .forEach(tabla::addRow);
+            }
         }
+    } catch (NumberFormatException e) {
+        // Mostrar mensaje de error si el texto ingresado no es un número válido
+        JOptionPane.showMessageDialog(null, "Ingrese un código de campeonato válido (número entero)",
+                "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+    
+    
+    
 
 //--------------------------------------------------------------LIMPIAR------------------------------------------------------------//
     public void limpiar() {
 
         vista.getTxtNombre().setText("");
-        vista.getTxtCodigo().setText("");
         vista.getTxtBuscar().setText("");
         vista.getCbxTipoCampeonato().setSelectedIndex(0);
-        vista.getSpnMaxEqipo().setValue(2);
+        vista.getSpnMaxEqipo().setValue(0);
 
     }
 
@@ -341,4 +349,34 @@ public class Controlador_Campeonato {
                         Logger.getLogger(ControladorPersonas.class.getName()).log(Level.SEVERE, null, ex);
  }
     }*/
+    
+      public void EliminarCampeonato() {
+
+        if (vista.getTblCampeonato().getSelectedRow() == -1) {
+
+            JOptionPane.showMessageDialog(null, "Seleccione el campeonato que desea eliminar ",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            int x = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar este campeonato?", "Advertecia!", JOptionPane.YES_NO_OPTION);
+            if (x == 0) {
+
+                modelo.setCod_campeonato(vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0).hashCode());               
+
+                if (modelo.OcultarCampeonato()) {
+
+                        JOptionPane.showMessageDialog(null, "Campeonato eliminada exitosamente ",
+                                "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+
+                        mostrarDatosTabla();
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "No se ha podido eliminar el campeonato ",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
+    
 }

@@ -53,9 +53,10 @@ public class Controlador_temporada {
         
         vista.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vista.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
-        vista.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
+        vista.getBtnEliminar().addActionListener(l -> EliminarTemmporada());
         vista.getBtnCancelarDlg().addActionListener(l -> cerrarDialogo());
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarTemporada());
+        vista.getBtnBuscar().addActionListener(l -> buscar());
         
         mostrarDatosTabla();
         
@@ -156,23 +157,7 @@ public class Controlador_temporada {
                 }
             }
 
-        } /*else if (vista.getDlgaTemporada().getTitle().contentEquals("Eliminar")) {
-
-            Modelo_Temporada model = new Modelo_Temporada();
-            model.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
-
-            if (model.EliminarCampeonato()) {
-
-                limpiar();
-                JOptionPane.showMessageDialog(vista, "Datos eliminados");
-
-                vista.getDlgCampeonatos().setVisible(false);
-                mostrarDatosTabla();
-
-            } else {
-                JOptionPane.showMessageDialog(vista, "Error al eliminar los datos");
-            }
-        }*/
+        } 
     }
 
     
@@ -381,24 +366,21 @@ public class Controlador_temporada {
             int x = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar la factura?", "Advertecia!", JOptionPane.YES_NO_OPTION);
             if (x == 0) {
 
-               modelo.setIdFactura(vista.getTblFactura().getValueAt(vista.getTblFactura().getSelectedRow(), 0).hashCode());
-                modeloDetalle.setFacturaDetalle(vista.getTblFactura().getValueAt(vista.getTblFactura().getSelectedRow(), 0).hashCode());
+               modelo.setCodigoPk(vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).hashCode());
+                
 
-                if (modeloFactura.ocultar()) {
+                if (modelo.OcultarTemporada()) {
 
-                    if (modeloDetalle.ocultar()) {
+                   
 
-                        JOptionPane.showMessageDialog(null, "Factura eliminada con exito ",
+                        JOptionPane.showMessageDialog(null, "Temporada eliminada con exito ",
                                 "Eliminado", JOptionPane.INFORMATION_MESSAGE);
 
-                        mostrarDatosTablaFactura();
-
-                        mostrarDatosTablaDetalle();
-                    }
+                        mostrarDatosTabla();
 
                 } else {
 
-                    JOptionPane.showMessageDialog(null, "No se ha podido eliminar la factura ",
+                    JOptionPane.showMessageDialog(null, "No se ha podido eliminar la temporada ",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }

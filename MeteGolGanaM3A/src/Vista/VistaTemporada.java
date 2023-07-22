@@ -77,6 +77,16 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         VistaTemporada.btnRegistrarModificarDlg = btnRegistrarModificarDlg;
     }
 
+    public static FSButtonMD getBtnLimpiarDlg() {
+        return btnLimpiarDlg;
+    }
+
+    public static void setBtnLimpiarDlg(FSButtonMD btnLimpiarDlg) {
+        VistaTemporada.btnLimpiarDlg = btnLimpiarDlg;
+    }
+    
+    
+
     public static JDialog getDlgaTemporada() {
         return dlgaTemporada;
     }
@@ -85,13 +95,14 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         VistaTemporada.dlgaTemporada = dlgaTemporada;
     }
 
-    public JLabel getLblBuscar() {
-        return lblBuscar;
+    public FSButtonMD getBtnBuscar() {
+        return btnBuscar;
     }
 
-    public void setLblBuscar(JLabel lblBuscar) {
-        this.lblBuscar = lblBuscar;
+    public void setBtnBuscar(FSButtonMD btnBuscar) {
+        this.btnBuscar = btnBuscar;
     }
+
 
     public JLabel getLblReMoJugadores() {
         return lblReMoJugadores;
@@ -175,9 +186,10 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCampeonatoFK = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        txtCodigo = new LIB.FSTexFieldMD();
         txtFechaFin = new com.toedter.calendar.JDateChooser();
         txtFechaIni = new com.toedter.calendar.JDateChooser();
+        txtCodigo = new LIB.FSTexFieldMD();
+        btnLimpiarDlg = new LIB.FSButtonMD();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -188,7 +200,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         tblTemporada = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        lblBuscar = new javax.swing.JLabel();
+        btnBuscar = new LIB.FSButtonMD();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -226,7 +238,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         txtCodigoCampeonatoFK.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoCampeonatoFK.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigoCampeonatoFK.setPlaceholder("Código del campeonato");
-        jPanel3.add(txtCodigoCampeonatoFK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 200, -1));
+        jPanel3.add(txtCodigoCampeonatoFK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 200, -1));
 
         btnCancelarDlg.setText("Cancelar");
         btnCancelarDlg.setColorHover(new java.awt.Color(0, 0, 0));
@@ -238,7 +250,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnRegistrarModificarDlg.setColorHover(new java.awt.Color(0, 102, 204));
         btnRegistrarModificarDlg.setColorPressed(new java.awt.Color(0, 204, 51));
         btnRegistrarModificarDlg.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnRegistrarModificarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 180, -1));
+        jPanel3.add(btnRegistrarModificarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 200, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel2.setText("Lista de campeonatos");
@@ -273,18 +285,25 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         jLabel5.setText("Fecha de finalización");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
-        txtCodigo.setEditable(false);
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setToolTipText("Código de la temporada");
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodigo.setPlaceholder("Código");
-        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 200, -1));
-
         txtFechaFin.setToolTipText("Fecha de finalizacion de temporada");
         jPanel3.add(txtFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 40));
 
+        txtFechaIni.setBackground(new java.awt.Color(0, 51, 255));
         txtFechaIni.setToolTipText("Fecha de inicio de temporada");
         jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 40));
+
+        txtCodigo.setEditable(false);
+        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodigo.setPlaceholder("Código del campeonato");
+        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, -1));
+
+        btnLimpiarDlg.setBackground(new java.awt.Color(0, 102, 255));
+        btnLimpiarDlg.setText("Limpiar");
+        btnLimpiarDlg.setToolTipText("Limpiar los campos de texto");
+        btnLimpiarDlg.setColorNormal(new java.awt.Color(0, 102, 255));
+        btnLimpiarDlg.setColorPressed(new java.awt.Color(0, 204, 51));
+        jPanel3.add(btnLimpiarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
 
         javax.swing.GroupLayout dlgaTemporadaLayout = new javax.swing.GroupLayout(dlgaTemporada.getContentPane());
         dlgaTemporada.getContentPane().setLayout(dlgaTemporadaLayout);
@@ -306,7 +325,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Temporada");
+        jLabel1.setText("Temporadas");
 
         btnInicio.setBackground(new java.awt.Color(0, 102, 204));
         btnInicio.setText("Pagina Principal");
@@ -367,17 +386,23 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modificar.png"))); // NOI18N
         btnModificar.setText("Modificar");
-        btnModificar.setToolTipText("Modificar datos de una temporada");
+        btnModificar.setToolTipText("Primero elija la temporada ha modificar de la tabla");
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("Eliminar una temporada");
+        btnEliminar.setToolTipText("Primero elija la temporada ha eliminar de la tabla");
 
-        lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/buscar40x40.png"))); // NOI18N
-        lblBuscar.setToolTipText("Buscar una temporada por su código");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/buscar40x40.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setToolTipText("Ingrese el código de la temporada");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -388,30 +413,32 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnAgregar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(23, 23, 23))))
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblBuscar))
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
@@ -419,7 +446,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 207, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -445,12 +472,18 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
+    private LIB.FSButtonMD btnBuscar;
     public static LIB.FSButtonMD btnCancelarDlg;
     public static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
+    public static LIB.FSButtonMD btnLimpiarDlg;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificarDlg;
     public static javax.swing.JDialog dlgaTemporada;
@@ -467,7 +500,6 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JTable tblCampeonatoFK;
     public static javax.swing.JTable tblTemporada;

@@ -27,28 +27,39 @@ public class Modelo_Campeonato extends Clase_Campeonato {
     
        Conexion.ConexionMySql con = new ConexionMySql();
 
-    public boolean InsertarCampeonato() {
-
-        String sql = "INSERT INTO campeonato(codigo, nombre, tipo_campeonato, max_equipos, estado_elim) "
-                + "VALUES ('" + getCod_campeonato()+ "','" + getNombre()+ "'," + getTipo_campeonato()+ ",'" + getMax_equipos() + ");";
+    
+    
+     public boolean InsertarCampeonato() {
+//construir consulta para insertar el producto 
+        String sql = "INSERT INTO public.campeonato(\n"
+                + "	codigo, nombre, tipo_campeonato, max_equipos, estado_elim)\n"
+                + "	VALUES ('" + getCod_campeonato()+ "','" + getNombre()+ "','" + getTipo_campeonato()+ "', '" + getMax_equipos()+ "', '" + isEstado_elim() + "');";
 
         return con.CRUD(sql);
+
     }
 
+    
     public boolean ModificarCampeonato() {
 
-        String sql = "UPDATE campeonato SET nombre='" + getNombre()+ "',tipo_campeonato=" + getTipo_campeonato()+ ",max_equipos=" + getMax_equipos()+ " "
-                + "WHERE codigo=" + getCod_campeonato()+ ";";
+        // Construir la consulta SQL para actualizar los datos del producto
+        String sql = "UPDATE public.campeonato SET nombre = '" + getNombre()+ "', tipo_campeonato = '" + getTipo_campeonato()+ "', max_equipos = '"
+                + getMax_equipos() + "' "
+                + "WHERE codigo ='" + getCod_campeonato()+ "';";
 
         return con.CRUD(sql);
     }
 
-    public boolean OcultarCampeonato() {
-
-        String sql = "UPDATE campeonato SET estado_elim = true "
-                + "WHERE codigo=" + getCod_campeonato()+ ";";
-
+ 
+    
+      public boolean OcultarCampeonato () {
+        
+        String sql = "UPDATE public.campeonato\n" +
+"	SET  estado_elim= true\n" +
+"	WHERE codigo = "+getCod_campeonato()+" ;";
+        
         return con.CRUD(sql);
+        
     }
 
     public List<Clase_Campeonato> ListaCampeonato() {
