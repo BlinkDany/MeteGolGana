@@ -5,9 +5,11 @@
  */
 package Controlador;
 
+import Modelo.Clase_Arbitro;
 import Modelo.Clase_Campeonato;
 import Modelo.Clase_Temporada;
 import Modelo.ModeloEquipos;
+import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Campeonato;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
@@ -19,6 +21,7 @@ import Vista.VistaJugadores;
 import Vista.VistaTemporada;
 import Vista.VistaEquipos;
 import Vista.VistaGol;
+import Vista.Vista_Arbitro;
 
 /**
  *
@@ -35,13 +38,14 @@ public class Controlador_MP {
     }
 
     public void iniciaControl() {
-        
+
         vistaPrincipal.setLocationRelativeTo(null);
         vistaPrincipal.getBtnCampeonato().addActionListener(l -> menuCampeonato());
         vistaPrincipal.getBtnTemporada().addActionListener(l -> menuTemporada());
         vistaPrincipal.getBtnJugadores().addActionListener(l -> MenuJugadores());
         vistaPrincipal.getBtnEquipos().addActionListener(l -> MenuEquipos());
         vistaPrincipal.getBtnGoles().addActionListener(l -> MenuJugadores());
+        vistaPrincipal.getBtnArbitros().addActionListener(l -> MenuArbitros());
 
     }
 
@@ -67,8 +71,8 @@ public class Controlador_MP {
 
     }
 
-    private void MenuJugadores(){
-        
+    private void MenuJugadores() {
+
         Modelo.Modelo_Jugador moJu = new Modelo_Jugador();
         Vista.VistaJugadores visju = new VistaJugadores();
         Modelo.Modelo_Persona modper = new Modelo_Persona();
@@ -76,15 +80,29 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visju);
         Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, vislo);
         controlJuga.InicarControlador();
-        
+
     }
-    private void MenuEquipos(){     
+
+    private void MenuEquipos() {
         Modelo.ModeloEquipos moEqui = new ModeloEquipos();
         Vista.VistaEquipos visequi = new VistaEquipos();
         vistaPrincipal.getDesctopPrincipal().add(visequi);
         Controlador_Equipo controlEqui = new Controlador_Equipo(moEqui, visequi);
-        controlEqui.iniciaControl(); 
+        controlEqui.iniciaControl();
     }
+    
+    private void MenuArbitros() {
+
+        Modelo.Modelo_Arbitro moJu = new Modelo_Arbitro();
+        Vista.Vista_Arbitro visju = new Vista_Arbitro();
+        Modelo.Modelo_Persona modper = new Modelo_Persona();
+        Vista.LogIn vislo = new LogIn();
+        vistaPrincipal.getDesctopPrincipal().add(visju);
+        Controlador_Arbitro controlJuga = new Controlador_Arbitro(moJu, visju, modper, vislo);
+        controlJuga.InicarControlador();
+
+    }
+    
     /*private void MenuGoles(){     
         Modelo.Modelo moEqui = new ModeloEquipos();
         Vista.VistaEquipos visequi = new VistaEquipos();
@@ -92,8 +110,8 @@ public class Controlador_MP {
         Controlador_Equipo controlEqui = new Controlador_Equipo(moEqui, visequi);
         controlEqui.iniciaControl(); 
     }*/
-    
-    /* private void menuFactura () { 
+
+ /* private void menuFactura () { 
         
         modelo.ModeloDetalleFactura mod = new ModeloDetalleFactura();
         modelo.ModeloFactura mf = new ModeloFactura();
