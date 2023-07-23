@@ -47,10 +47,10 @@ public class VistaPartido extends javax.swing.JFrame {
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        lblReMoJugadores1 = new javax.swing.JLabel();
+        lblbusqueda = new javax.swing.JLabel();
         txtbuscarcod = new LIB.FSTexFieldMD();
         btnCancelar1 = new LIB.FSButtonMD();
-        btnRegistrarModificar1 = new LIB.FSButtonMD();
+        btnmandardatos = new LIB.FSButtonMD();
         btnBuscar = new LIB.FSButtonMD();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblbuscar = new javax.swing.JTable();
@@ -187,23 +187,23 @@ public class VistaPartido extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 204));
 
-        lblReMoJugadores1.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        lblReMoJugadores1.setForeground(new java.awt.Color(255, 255, 255));
-        lblReMoJugadores1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReMoJugadores1.setText("tabla");
+        lblbusqueda.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        lblbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        lblbusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblbusqueda.setText("tabla");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lblReMoJugadores1, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
+                .addComponent(lblbusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lblReMoJugadores1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -225,11 +225,11 @@ public class VistaPartido extends javax.swing.JFrame {
         btnCancelar1.setColorTextHover(new java.awt.Color(255, 255, 255));
         jPanel5.add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, -1, -1));
 
-        btnRegistrarModificar1.setText("Guardar");
-        btnRegistrarModificar1.setColorHover(new java.awt.Color(0, 102, 204));
-        btnRegistrarModificar1.setColorPressed(new java.awt.Color(0, 204, 51));
-        btnRegistrarModificar1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel5.add(btnRegistrarModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
+        btnmandardatos.setText("Guardar");
+        btnmandardatos.setColorHover(new java.awt.Color(0, 102, 204));
+        btnmandardatos.setColorPressed(new java.awt.Color(0, 204, 51));
+        btnmandardatos.setColorTextHover(new java.awt.Color(255, 255, 255));
+        jPanel5.add(btnmandardatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
 
         btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
         btnBuscar.setText("Buscar");
@@ -243,17 +243,17 @@ public class VistaPartido extends javax.swing.JFrame {
         tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
         tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "CodigoPartido", "Equipo1", "Equipo2", "Campeonato", "Estadio"
+                "Codigo", "Nombre"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -465,6 +465,14 @@ public class VistaPartido extends javax.swing.JFrame {
         this.btnBuscar = btnBuscar;
     }
 
+    public JLabel getLblbusqueda() {
+        return lblbusqueda;
+    }
+
+    public void setLblbusqueda(JLabel lblbusqueda) {
+        this.lblbusqueda = lblbusqueda;
+    }
+
     public FSButtonMD getBtnCampeonato() {
         return btnCampeonato;
     }
@@ -546,11 +554,11 @@ public class VistaPartido extends javax.swing.JFrame {
     }
 
     public static FSButtonMD getBtnRegistrarModificar1() {
-        return btnRegistrarModificar1;
+        return btnmandardatos;
     }
 
     public static void setBtnRegistrarModificar1(FSButtonMD btnRegistrarModificar1) {
-        VistaPartido.btnRegistrarModificar1 = btnRegistrarModificar1;
+        VistaPartido.btnmandardatos = btnRegistrarModificar1;
     }
 
     public static JDialog getDialogRegistrarModificar() {
@@ -649,6 +657,14 @@ public class VistaPartido extends javax.swing.JFrame {
         VistaPartido.txtbuscarcod = txtbuscarcod;
     }
 
+    public static FSButtonMD getBtnmandardatos() {
+        return btnmandardatos;
+    }
+
+    public static void setBtnmandardatos(FSButtonMD btnmandardatos) {
+        VistaPartido.btnmandardatos = btnmandardatos;
+    }
+
     
    
 
@@ -665,7 +681,7 @@ public class VistaPartido extends javax.swing.JFrame {
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
-    public static LIB.FSButtonMD btnRegistrarModificar1;
+    public static LIB.FSButtonMD btnmandardatos;
     public static javax.swing.JDialog dialogRegistrarModificar;
     public static javax.swing.JDialog dialogtablas;
     private javax.swing.JLabel jLabel1;
@@ -680,7 +696,7 @@ public class VistaPartido extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblReMoJugadores;
-    private javax.swing.JLabel lblReMoJugadores1;
+    private javax.swing.JLabel lblbusqueda;
     public static javax.swing.JTable tblPartidos;
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
