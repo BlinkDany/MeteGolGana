@@ -57,7 +57,7 @@ public class Modelo_Temporada extends Clase_Temporada {
             String sql = "SELECT * "
                     + "FROM temporada "
                     
-                    + "ORDER BY j.codigo";
+                    + "ORDER BY codigo";
             ResultSet res = con.Consultas(sql);
             List<Clase_Temporada> listTemporada = new ArrayList<>();
             byte[] bytea;
