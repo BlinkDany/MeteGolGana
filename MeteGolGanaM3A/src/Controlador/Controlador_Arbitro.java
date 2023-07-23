@@ -88,6 +88,7 @@ public class Controlador_Arbitro {
         visPer.dlgPersona.setVisible(true);
         visPer.dlgPersona.setTitle(titulo);
         visPer.dlgPersona.setSize(1020, 568);
+
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
             Vista_Arbitro.btnRegistrarModificar.setText("Registrar");
@@ -105,7 +106,8 @@ public class Controlador_Arbitro {
         visPer.dlgPersona.dispose();
         Vista_Arbitro.dialogRegistrarModificar.setVisible(true);
         Vista_Arbitro.dialogRegistrarModificar.setTitle(titulo);
-        Vista_Arbitro.dialogRegistrarModificar.setSize(814, 522);
+        Vista_Arbitro.dialogRegistrarModificar.setSize(500, 500);
+        
         if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
 
             Vista_Arbitro.txtCedula.setText(visPer.txtCedulaDLG.getText());
@@ -124,7 +126,6 @@ public class Controlador_Arbitro {
                 }
             });
         } else {
-
             LlenarDatosArbitro();
         }
     }
@@ -314,7 +315,7 @@ public class Controlador_Arbitro {
                     MostrarDatos();
                 }
             }
-        } else if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Modificar Arbitro")) {
+        } else if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
             if (Vista_Arbitro.tblArbitros.getSelectedRow() == -1) {
 
