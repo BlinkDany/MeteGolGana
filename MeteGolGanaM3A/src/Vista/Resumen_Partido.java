@@ -506,7 +506,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Selecionar Equipo");
+        jLabel16.setText("Selecionar Equipo 1");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -565,7 +565,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Selecionar Equipo");
+        jLabel17.setText("Selecionar Equipo 2");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
