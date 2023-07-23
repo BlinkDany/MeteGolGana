@@ -7,6 +7,7 @@ package Vista;
 import LIB.FSButtonMD;
 import LIB.FSLabel;
 import LIB.FSTexFieldMD;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,94 @@ public class Resumen_Partido extends javax.swing.JFrame {
      */
     public Resumen_Partido() {
         initComponents();
+    }
+
+    public static JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public static void setBtnAgregar(JButton btnAgregar) {
+        Resumen_Partido.btnAgregar = btnAgregar;
+    }
+
+    public static JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public static void setBtnEliminar(JButton btnEliminar) {
+        Resumen_Partido.btnEliminar = btnEliminar;
+    }
+
+    public static JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public static void setBtnModificar(JButton btnModificar) {
+        Resumen_Partido.btnModificar = btnModificar;
+    }
+
+    public JDialog getDlgRegistrarConsultar() {
+        return dlgRegistrarConsultar;
+    }
+
+    public void setDlgRegistrarConsultar(JDialog dlgRegistrarConsultar) {
+        this.dlgRegistrarConsultar = dlgRegistrarConsultar;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JPanel getjPanel11() {
+        return jPanel11;
+    }
+
+    public void setjPanel11(JPanel jPanel11) {
+        this.jPanel11 = jPanel11;
+    }
+
+    public JPanel getjPanel12() {
+        return jPanel12;
+    }
+
+    public void setjPanel12(JPanel jPanel12) {
+        this.jPanel12 = jPanel12;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JLabel getLblClaseGol() {
+        return lblClaseGol;
+    }
+
+    public void setLblClaseGol(JLabel lblClaseGol) {
+        this.lblClaseGol = lblClaseGol;
+    }
+
+    public JTable getTblResuemn() {
+        return tblResuemn;
+    }
+
+    public void setTblResuemn(JTable tblResuemn) {
+        this.tblResuemn = tblResuemn;
+    }
+
+    public static FSTexFieldMD getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public static void setTxtBuscar(FSTexFieldMD txtBuscar) {
+        Resumen_Partido.txtBuscar = txtBuscar;
     }
 
     public FSButtonMD getBtnCancelar() {
@@ -457,6 +546,9 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPartidos1 = new javax.swing.JTable();
+        dlgRegistrarConsultar = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -497,16 +589,23 @@ public class Resumen_Partido extends javax.swing.JFrame {
         btnCancelar = new LIB.FSButtonMD();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         btnInicio = new LIB.FSButtonMD();
+        btnAgregar = new javax.swing.JButton();
+        txtBuscar = new LIB.FSTexFieldMD();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblResuemn = new javax.swing.JTable();
 
         jPanel9.setBackground(new java.awt.Color(0, 102, 204));
 
         jLabel16.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Selecionar Equipo 1");
+        jLabel16.setText("Selecionar Equipo");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -565,7 +664,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Selecionar Equipo 2");
+        jLabel17.setText("Selecionar Equipo");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -619,8 +718,27 @@ public class Resumen_Partido extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dlgRegistrarConsultar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel8.setBackground(new java.awt.Color(0, 102, 204));
+
+        jLabel14.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Resumen de partido");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+        );
+
+        dlgRegistrarConsultar.getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -894,14 +1012,18 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/wallhaven-nm1oek.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 880));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, -1, 820));
+        dlgRegistrarConsultar.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, -1, 820));
 
-        jPanel8.setBackground(new java.awt.Color(0, 102, 204));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel14.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Resumen de partido");
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel12.setBackground(new java.awt.Color(0, 102, 204));
+
+        jLabel3.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Resumen de partido");
 
         btnInicio.setBackground(new java.awt.Color(0, 102, 204));
         btnInicio.setText("Pagina Principal");
@@ -911,23 +1033,110 @@ public class Resumen_Partido extends javax.swing.JFrame {
         btnInicio.setColorTextHover(new java.awt.Color(204, 204, 204));
         btnInicio.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 463, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, -1));
+        btnAgregar.setBackground(new java.awt.Color(0, 153, 0));
+        btnAgregar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/boton.png"))); // NOI18N
+        btnAgregar.setText("Crear nuevo");
+        btnAgregar.setToolTipText("Registrar un nuevo jugador");
+
+        txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscar.setToolTipText("Ingrese una cedula o nombre");
+        txtBuscar.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtBuscar.setPlaceholder("Buscar resumen");
+
+        btnModificar.setBackground(new java.awt.Color(0, 102, 204));
+        btnModificar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modificar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setToolTipText("Registrar un nuevo jugador");
+
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Registrar un nuevo jugador");
+
+        tblResuemn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblResuemn);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 140, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAgregar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -966,11 +1175,15 @@ public class Resumen_Partido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnCancelar;
+    public static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
+    public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnRegistrar;
     private javax.swing.JDialog dlgEquipo1;
     private javax.swing.JDialog dlgEquipo2;
+    private javax.swing.JDialog dlgRegistrarConsultar;
     private LIB.FSLabel fSLabel1;
     private LIB.FSLabel fSLabel2;
     private javax.swing.JLabel jLabel1;
@@ -980,6 +1193,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -987,6 +1201,8 @@ public class Resumen_Partido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -997,6 +1213,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblClaseGol;
     private javax.swing.JLabel lblEquipo1;
     private javax.swing.JLabel lblEquipo2;
@@ -1005,6 +1222,8 @@ public class Resumen_Partido extends javax.swing.JFrame {
     private javax.swing.JLabel lblPartido;
     public static javax.swing.JTable tblPartidos;
     public static javax.swing.JTable tblPartidos1;
+    private javax.swing.JTable tblResuemn;
+    public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtFaltas;
     public static LIB.FSTexFieldMD txtFaltas1;
     public static LIB.FSTexFieldMD txtPenales;
