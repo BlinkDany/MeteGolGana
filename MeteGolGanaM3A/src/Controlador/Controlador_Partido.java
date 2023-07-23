@@ -6,8 +6,7 @@
 package Controlador;
 
 import Conexion.ConexionMySql;
-import Modelo.Clase_Partido;
-import Modelo.Modelo_Partido;
+import Modelo.*;
 import Vista.VistaPartido;
 import java.sql.SQLException;
 import java.util.List;
@@ -24,28 +23,36 @@ import javax.swing.table.DefaultTableModel;
 public class Controlador_Partido {
 
     private Modelo_Partido modeloPar;
+    private Modelo_Campeonato modeloCam;
+    private ModeloEquipos modeloEqu;
     private VistaPartido vistapar;
 
-    public Controlador_Partido(Modelo_Partido modeloPar, VistaPartido vistapar) {
+    public Controlador_Partido(Modelo_Partido modeloPar, Modelo_Campeonato modeloCam, ModeloEquipos modeloEqu, VistaPartido vistapar) {
         this.modeloPar = modeloPar;
+        this.modeloCam = modeloCam;
+        this.modeloEqu = modeloEqu;
         this.vistapar = vistapar;
         vistapar.setVisible(true);
         cargaPartidos();
     }
-//-------------------------------------------------------CONTROL--------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------CONTROL--------------------------------------------------------------------------------------------
     public void iniciaControl() {
         vistapar.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vistapar.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistapar.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistapar.getBtnCancelar().addActionListener(l -> salirdialogo());
+        vistapar.getBtnCancelar1().addActionListener(l -> salirdialogo1());
         vistapar.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
+        vistapar.getBtnEquipo1().addActionListener(l -> abrirDialogobusqueda("EQUIPOS"));
+        vistapar.getBtnEquipo2().addActionListener(l -> abrirDialogobusqueda("EQUIPOS"));
+        vistapar.getBtnEstadio().addActionListener(l -> abrirDialogobusqueda("ESTADIO"));
+        vistapar.getBtnCampeonato().addActionListener(l -> abrirDialogobusqueda("CAMPEONATO"));
 
         //vista.getBtnSalir1().addActionListener(l -> salirdialogo());
         //vista.getBtnImprimir().addActionListener(l -> generarreporte());
         //vista.getBtnSalir().addActionListener(l -> salir());
         //vista.getBtnCrear().addActionListener(l -> {
-
     }
 //-------------------------------------------------------DIALOGO--------------------------------------------------------------------------------------------
 
@@ -55,20 +62,36 @@ public class Controlador_Partido {
         vistapar.getDialogRegistrarModificar().setSize(900, 900);
         vistapar.getDialogRegistrarModificar().setTitle(ce);
         vistapar.getDialogRegistrarModificar().setVisible(true);
-        
+
         if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
             vistapar.getLblReMoJugadores().setText("REGISTRO DE PARTIDOS");
-            
-        } else 
-            
-            if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
+
+        } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
             vistapar.getLblReMoJugadores().setText("MODIFICAR PARTIDOS");
             LlenarDatos();
 
-        } else
-                
-                if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
+        } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
+        }
+    }
+    //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------
+
+    private void abrirDialogobusqueda(String ce) {
+
+        vistapar.getDialogtablas().setLocationRelativeTo(null);
+        vistapar.getDialogtablas().setSize(900, 900);
+        vistapar.getDialogtablas().setTitle(ce);
+        vistapar.getDialogtablas().setVisible(true);
+
+        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS")) {
+            vistapar.getLblbusqueda().setText("EQUIPOS");
+            cargaequipos();
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
+            vistapar.getLblbusqueda().setText("ESTADIOS");
+
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("CAMPEONATO")) {
+            vistapar.getLblbusqueda().setText("CAMPEONATOS");
+            cargacampeonatos();
         }
     }
 //--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
@@ -170,8 +193,47 @@ public class Controlador_Partido {
         }
         );
     }
-//-------------------------------------------------------LLENAR DATOS--------------------------------------------------------------------------------------------
+//-------------------------------------------------------CARGAR EQUIPOS EN LA TABLA--------------------------------------------------------------------------------------------
 
+    private void cargaequipos() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
+        listaE.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+//-------------------------------------------------------CARGAR CAMPEONATOS EN LA TABLA--------------------------------------------------------------------------------------------
+
+    private void cargacampeonatos() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Campeonato> listaC = modeloCam.ListaCampeonato();
+        listaC.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_campeonato()), p.getNombre()};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+//-------------------------------------------------------CARGAR ESTADIOS EN LA TABLA--------------------------------------------------------------------------------------------
+
+    private void cargaestadios() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistapar.getTblPartidos().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Partido> listaP = modeloPar.listarPartidos();
+        listaP.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_campeonato()), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2()), String.valueOf(p.getCod_estadio())};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+
+//-------------------------------------------------------LLENAR DATOS--------------------------------------------------------------------------------------------
     public void LlenarDatos() {
 
         List<Clase_Partido> Listpar = modeloPar.listarPartidos();
@@ -204,6 +266,12 @@ public class Controlador_Partido {
         limpiar();
         vistapar.getDialogRegistrarModificar().setVisible(false);
     }
+//------------------------------------------------------- SALIR DEL DIALOGO DE TABLAS--------------------------------------------------------------------------------------------
+
+    public void salirdialogo1() {
+        limpiartablas();
+        vistapar.getDialogtablas().setVisible(false);
+    }
 
 //------------------------------------------------------- LIMPIAR--------------------------------------------------------------------------------------------
     private void limpiar() {
@@ -214,6 +282,15 @@ public class Controlador_Partido {
         vistapar.getTxtEquipo2().setText("");
         vistapar.getTxtEstadio().setText("");
         vistapar.getTxtCodPartido().setEnabled(true);
+        
+
+    }
+//------------------------------------------------------- LIMPIAR--------------------------------------------------------------------------------------------
+    private void limpiartablas() {
+
+        vistapar.getTxtbuscarcod().setText("");
+       
+        
 
     }
 }
