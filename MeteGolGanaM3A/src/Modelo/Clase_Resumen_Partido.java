@@ -21,6 +21,7 @@ public class Clase_Resumen_Partido {
     private int codigo_equipofk;
     private int codigo_partidofk;
     private boolean estado_elim;
+    private int goles;
 
     public Clase_Resumen_Partido() {
     }
@@ -37,6 +38,21 @@ public class Clase_Resumen_Partido {
         this.codigo_equipofk = codigo_equipofk;
         this.codigo_partidofk = codigo_partidofk;
         this.estado_elim = estado_elim;
+    }
+
+    public Clase_Resumen_Partido(int codigo, int faltas, int tarjetas_amarillas, int tarjetas_rojas, int tiros_esquina, int saques_mano, int tiros_libres, int penales, int codigo_equipofk, int codigo_partidofk, boolean estado_elim, int goles) {
+        this.codigo = codigo;
+        this.faltas = faltas;
+        this.tarjetas_amarillas = tarjetas_amarillas;
+        this.tarjetas_rojas = tarjetas_rojas;
+        this.tiros_esquina = tiros_esquina;
+        this.saques_mano = saques_mano;
+        this.tiros_libres = tiros_libres;
+        this.penales = penales;
+        this.codigo_equipofk = codigo_equipofk;
+        this.codigo_partidofk = codigo_partidofk;
+        this.estado_elim = estado_elim;
+        this.goles = goles;
     }
 
     public int getCodigo() {
@@ -125,6 +141,14 @@ public class Clase_Resumen_Partido {
 
     public void setEstado_elim(boolean estado_elim) {
         this.estado_elim = estado_elim;
+    }
+
+    public int getGoles() {
+        return goles;
+    }
+
+    public void setGoles(int goles) {
+        this.goles = goles;
     }
     
 }
