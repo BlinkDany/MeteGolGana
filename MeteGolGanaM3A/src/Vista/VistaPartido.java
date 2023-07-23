@@ -7,7 +7,9 @@ package Vista;
 
 import LIB.FSButtonMD;
 import LIB.FSTexFieldMD;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -25,7 +27,7 @@ public class VistaPartido extends javax.swing.JFrame {
         initComponents();
     }
 
-  
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -33,7 +35,6 @@ public class VistaPartido extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         lblReMoJugadores = new javax.swing.JLabel();
-        txtCodPartido = new LIB.FSTexFieldMD();
         txtEquipo1 = new LIB.FSTexFieldMD();
         txtEstadio = new LIB.FSTexFieldMD();
         txtEquipo2 = new LIB.FSTexFieldMD();
@@ -42,8 +43,13 @@ public class VistaPartido extends javax.swing.JFrame {
         txtCampeonato = new LIB.FSTexFieldMD();
         btnEstadio = new LIB.FSButtonMD();
         btnEquipo1 = new LIB.FSButtonMD();
-        btnCampeonato = new LIB.FSButtonMD();
+        btnTemporada = new LIB.FSButtonMD();
         btnEquipo2 = new LIB.FSButtonMD();
+        txtCodPartido = new LIB.FSTexFieldMD();
+        txtgrupo = new LIB.FSTexFieldMD();
+        dtfecha = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        cmestado = new javax.swing.JComboBox<>();
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -84,8 +90,8 @@ public class VistaPartido extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(lblReMoJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, 808, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblReMoJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,25 +102,20 @@ public class VistaPartido extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        txtCodPartido.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodPartido.setPlaceholder("CodigoPartido");
-        jPanel3.add(txtCodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 440, -1));
-
         txtEquipo1.setForeground(new java.awt.Color(0, 0, 0));
         txtEquipo1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtEquipo1.setPlaceholder("Equipo1");
-        jPanel3.add(txtEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 440, -1));
+        jPanel3.add(txtEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 300, -1));
 
         txtEstadio.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadio.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtEstadio.setPlaceholder("Estadio");
-        jPanel3.add(txtEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 440, -1));
+        jPanel3.add(txtEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 300, -1));
 
         txtEquipo2.setForeground(new java.awt.Color(0, 0, 0));
         txtEquipo2.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtEquipo2.setPlaceholder("Equipo2");
-        jPanel3.add(txtEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 440, -1));
+        jPanel3.add(txtEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 300, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -125,7 +126,7 @@ public class VistaPartido extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, -1, -1));
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
 
         btnRegistrarModificar.setText("Registrar");
         btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
@@ -136,48 +137,79 @@ public class VistaPartido extends javax.swing.JFrame {
                 btnRegistrarModificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
+        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 590, -1, -1));
 
         txtCampeonato.setForeground(new java.awt.Color(0, 0, 0));
         txtCampeonato.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCampeonato.setPlaceholder("Campeonato");
+        txtCampeonato.setPlaceholder("Temporada");
         txtCampeonato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCampeonatoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 440, -1));
+        jPanel3.add(txtCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 300, -1));
 
         btnEstadio.setBackground(new java.awt.Color(204, 204, 204));
         btnEstadio.setText("Buscar Estadio");
-        jPanel3.add(btnEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, -1, -1));
+        jPanel3.add(btnEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
 
         btnEquipo1.setBackground(new java.awt.Color(204, 204, 204));
         btnEquipo1.setText("Buscar Equipo");
-        jPanel3.add(btnEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
+        jPanel3.add(btnEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
-        btnCampeonato.setBackground(new java.awt.Color(204, 204, 204));
-        btnCampeonato.setText("Buscar Campeonato");
-        btnCampeonato.addActionListener(new java.awt.event.ActionListener() {
+        btnTemporada.setBackground(new java.awt.Color(204, 204, 204));
+        btnTemporada.setText("Buscar Temporada");
+        btnTemporada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCampeonatoActionPerformed(evt);
+                btnTemporadaActionPerformed(evt);
             }
         });
-        jPanel3.add(btnCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
+        jPanel3.add(btnTemporada, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
         btnEquipo2.setBackground(new java.awt.Color(204, 204, 204));
         btnEquipo2.setText("Buscar Equipo");
-        jPanel3.add(btnEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+        jPanel3.add(btnEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
+
+        txtCodPartido.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodPartido.setPlaceholder("CodigoPartido");
+        txtCodPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodPartidoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtCodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, -1));
+
+        txtgrupo.setForeground(new java.awt.Color(0, 0, 0));
+        txtgrupo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtgrupo.setPlaceholder("Grupo");
+        jPanel3.add(txtgrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 300, -1));
+
+        dtfecha.setDateFormatString("yyyy-MM-dd");
+        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 310, 40));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
+        jLabel5.setText("Fecha Partido");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+
+        cmestado.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
+        cmestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Activo", "Finalizado", "Suspendido", "En Espera" }));
+        cmestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmestadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 300, 40));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
         );
 
         dialogtablas.setResizable(false);
@@ -425,9 +457,9 @@ public class VistaPartido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampeonatoActionPerformed
 
-    private void btnCampeonatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCampeonatoActionPerformed
+    private void btnTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemporadaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCampeonatoActionPerformed
+    }//GEN-LAST:event_btnTemporadaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
@@ -449,6 +481,14 @@ public class VistaPartido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarModificarActionPerformed
 
+    private void txtCodPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPartidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodPartidoActionPerformed
+
+    private void cmestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmestadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmestadoActionPerformed
+
     public static JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -463,22 +503,6 @@ public class VistaPartido extends javax.swing.JFrame {
 
     public void setBtnBuscar(FSButtonMD btnBuscar) {
         this.btnBuscar = btnBuscar;
-    }
-
-    public JLabel getLblbusqueda() {
-        return lblbusqueda;
-    }
-
-    public void setLblbusqueda(JLabel lblbusqueda) {
-        this.lblbusqueda = lblbusqueda;
-    }
-
-    public FSButtonMD getBtnCampeonato() {
-        return btnCampeonato;
-    }
-
-    public void setBtnCampeonato(FSButtonMD btnCampeonato) {
-        this.btnCampeonato = btnCampeonato;
     }
 
     public static FSButtonMD getBtnCancelar() {
@@ -553,12 +577,20 @@ public class VistaPartido extends javax.swing.JFrame {
         VistaPartido.btnRegistrarModificar = btnRegistrarModificar;
     }
 
-    public static FSButtonMD getBtnRegistrarModificar1() {
+    public FSButtonMD getBtnTemporada() {
+        return btnTemporada;
+    }
+
+    public void setBtnTemporada(FSButtonMD btnTemporada) {
+        this.btnTemporada = btnTemporada;
+    }
+
+    public static FSButtonMD getBtnmandardatos() {
         return btnmandardatos;
     }
 
-    public static void setBtnRegistrarModificar1(FSButtonMD btnRegistrarModificar1) {
-        VistaPartido.btnmandardatos = btnRegistrarModificar1;
+    public static void setBtnmandardatos(FSButtonMD btnmandardatos) {
+        VistaPartido.btnmandardatos = btnmandardatos;
     }
 
     public static JDialog getDialogRegistrarModificar() {
@@ -575,6 +607,38 @@ public class VistaPartido extends javax.swing.JFrame {
 
     public static void setDialogtablas(JDialog dialogtablas) {
         VistaPartido.dialogtablas = dialogtablas;
+    }
+
+    public JDateChooser getDtfecha() {
+        return dtfecha;
+    }
+
+    public void setDtfecha(JDateChooser dtfecha) {
+        this.dtfecha = dtfecha;
+    }
+
+    public JComboBox<String> getCmestado() {
+        return cmestado;
+    }
+
+    public void setCmestado(JComboBox<String> cmestado) {
+        this.cmestado = cmestado;
+    }
+
+    public JLabel getLblReMoJugadores() {
+        return lblReMoJugadores;
+    }
+
+    public void setLblReMoJugadores(JLabel lblReMoJugadores) {
+        this.lblReMoJugadores = lblReMoJugadores;
+    }
+
+    public JLabel getLblbusqueda() {
+        return lblbusqueda;
+    }
+
+    public void setLblbusqueda(JLabel lblbusqueda) {
+        this.lblbusqueda = lblbusqueda;
     }
 
     public static JTable getTblPartidos() {
@@ -629,14 +693,6 @@ public class VistaPartido extends javax.swing.JFrame {
         return txtEquipo2;
     }
 
-    public JLabel getLblReMoJugadores() {
-        return lblReMoJugadores;
-    }
-
-    public void setLblReMoJugadores(JLabel lblReMoJugadores) {
-        this.lblReMoJugadores = lblReMoJugadores;
-    }
-
     public static void setTxtEquipo2(FSTexFieldMD txtEquipo2) {
         VistaPartido.txtEquipo2 = txtEquipo2;
     }
@@ -657,21 +713,18 @@ public class VistaPartido extends javax.swing.JFrame {
         VistaPartido.txtbuscarcod = txtbuscarcod;
     }
 
-    public static FSButtonMD getBtnmandardatos() {
-        return btnmandardatos;
+    public static FSTexFieldMD getTxtgrupo() {
+        return txtgrupo;
     }
 
-    public static void setBtnmandardatos(FSButtonMD btnmandardatos) {
-        VistaPartido.btnmandardatos = btnmandardatos;
+    public static void setTxtgrupo(FSTexFieldMD txtgrupo) {
+        VistaPartido.txtgrupo = txtgrupo;
     }
 
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnBuscar;
-    private LIB.FSButtonMD btnCampeonato;
     public static LIB.FSButtonMD btnCancelar;
     public static LIB.FSButtonMD btnCancelar1;
     public static javax.swing.JButton btnEliminar;
@@ -681,10 +734,14 @@ public class VistaPartido extends javax.swing.JFrame {
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
+    private LIB.FSButtonMD btnTemporada;
     public static LIB.FSButtonMD btnmandardatos;
+    private javax.swing.JComboBox<String> cmestado;
     public static javax.swing.JDialog dialogRegistrarModificar;
     public static javax.swing.JDialog dialogtablas;
+    private com.toedter.calendar.JDateChooser dtfecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -706,5 +763,6 @@ public class VistaPartido extends javax.swing.JFrame {
     public static LIB.FSTexFieldMD txtEquipo2;
     public static LIB.FSTexFieldMD txtEstadio;
     public static LIB.FSTexFieldMD txtbuscarcod;
+    public static LIB.FSTexFieldMD txtgrupo;
     // End of variables declaration//GEN-END:variables
 }

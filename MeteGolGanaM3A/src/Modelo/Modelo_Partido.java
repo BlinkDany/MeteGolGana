@@ -33,11 +33,14 @@ public class Modelo_Partido extends Clase_Partido {
             ResultSet rs = CPG.Consultas(sql);
             while (rs.next()) {
                 Clase_Partido partido = new Clase_Partido();
-                partido.setCod_partido(rs.getInt("cod_partido"));
-                partido.setCod_campeonato(rs.getInt("cod_campeonato"));
-                partido.setCod_equipo1(rs.getInt("cod_equipo1"));
-                partido.setCod_equipo2(rs.getInt("cod_equipo2"));
-                partido.setCod_estadio(rs.getInt("cod_estadio"));
+                partido.setCod_partido(rs.getInt("codigo"));
+                partido.setCod_estadio(rs.getInt("cod_estadiofk"));
+                partido.setCod_temporadafk(rs.getInt("cod_temporadafk"));
+                partido.setFecha(rs.getDate("fecha"));
+                partido.setGrupo(rs.getString("grupo"));
+                partido.setEstado(rs.getString("estado"));
+                partido.setCod_equipo1(rs.getInt("cod_equipo1fk"));
+                partido.setCod_equipo2(rs.getInt("cod_equipo2fk"));
 
                 listaPartidos.add(partido);
 
@@ -52,22 +55,22 @@ public class Modelo_Partido extends Clase_Partido {
 
     public boolean InsertarPartido() {
         String sql;
-        sql = "INSERT INTO partido(cod_partido,cod_campeonato,cod_equipo1,cod_equipo2,cod_estadio,estado_elim)";
-        sql += "VALUES('" + getCod_partido() + "','" + getCod_campeonato() + "','" + getCod_equipo1() + "','" + getCod_equipo2() + "','" + getCod_estadio() + "','" + getEstado() + "')";
+        sql = "INSERT INTO partido(codigo,cod_estadiofk,cod_temporadafk,fecha,grupo,estado,cod_equipo1fk,cod_equipo2fk,estado_elim)";
+        sql += "VALUES('" + getCod_partido() + "','" + getCod_estadio() + "','" + getCod_temporadafk() + "','" + getFecha() + "','" + getGrupo() + "','" + getEstado() + "','" + getCod_equipo1() + "','" + getCod_equipo2() + "','" + false + "')";
         return CPG.CRUD(sql);
 
     }
 
     public boolean ModificarPartido() {
         String sql;
-        sql = "update partido set cod_partido='" + getCod_partido() + "' ,cod_campeonato='" + getCod_campeonato() + "',cod_equipo1='" + getCod_equipo1() + "',cod_equipo2='" + getCod_equipo2() + "',cod_estadio='" + getCod_estadio() + "'where cod_partido='" + getCod_partido() + "';";
+        sql = "update partido set codigo='" + getCod_partido() + "' ,cod_estadiofk='" + getCod_estadio() + "' ,cod_temporadafk='" + getCod_temporadafk() + "' ,fecha='" + getFecha() + "' ,grupo='" + getGrupo() + "' ,estado='" + getEstado() + "',cod_equipo1='" + getCod_equipo1() + "',cod_equipo2='" + getCod_equipo2() + "',cod_estadio='" + getCod_estadio() + "'where codigo='" + getCod_partido() + "';";
         return CPG.CRUD(sql);
 
     }
 
     public boolean EliminarPartido() {
         String sql;
-        sql = "delete from partido where cod_partido='" + getCod_partido() + "';";
+        sql = "delete from partido where codigo='" + getCod_partido() + "';";
         return CPG.CRUD(sql);
 
     }
