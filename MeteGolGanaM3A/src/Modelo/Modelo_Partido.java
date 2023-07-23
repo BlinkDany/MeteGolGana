@@ -6,12 +6,14 @@
 package Modelo;
 
 import Conexion.ConexionMySql;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,6 +51,45 @@ public class Modelo_Partido extends Clase_Partido {
             return listaPartidos;
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Partido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<Clase_Partido> BuscarPartidos(int aux) {
+
+        try {
+
+            String sql = "SELECT * "
+                    + "from partido "
+                    + "WHERE codigo = '" + aux + "'";
+
+            ResultSet rs = CPG.Consultas(sql);
+            List<Clase_Partido> par = new ArrayList<>();
+            byte[] bytea;
+
+            while (rs.next()) {
+
+                Clase_Partido partido = new Clase_Partido();
+
+                partido.setCod_partido(rs.getInt("codigo"));
+                partido.setCod_estadio(rs.getInt("cod_estadiofk"));
+                partido.setCod_temporadafk(rs.getInt("cod_temporadafk"));
+                partido.setFecha(rs.getDate("fecha"));
+                partido.setGrupo(rs.getString("grupo"));
+                partido.setEstado(rs.getString("estado"));
+                partido.setCod_equipo1(rs.getInt("cod_equipo1fk"));
+                partido.setCod_equipo2(rs.getInt("cod_equipo2fk"));
+
+                par.add(partido);
+            }
+
+            rs.close();
+            return par;
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
             return null;
         }
     }

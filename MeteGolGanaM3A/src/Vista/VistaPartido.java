@@ -60,6 +60,7 @@ public class VistaPartido extends javax.swing.JFrame {
         btnBuscar = new LIB.FSButtonMD();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblbuscar = new javax.swing.JTable();
+        modelo_Campeonato1 = new Modelo.Modelo_Campeonato();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPartidos = new javax.swing.JTable();
@@ -261,6 +262,11 @@ public class VistaPartido extends javax.swing.JFrame {
         btnmandardatos.setColorHover(new java.awt.Color(0, 102, 204));
         btnmandardatos.setColorPressed(new java.awt.Color(0, 204, 51));
         btnmandardatos.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnmandardatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmandardatosActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnmandardatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
 
         btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
@@ -488,6 +494,10 @@ public class VistaPartido extends javax.swing.JFrame {
     private void cmestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmestadoActionPerformed
+
+    private void btnmandardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmandardatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmandardatosActionPerformed
 
     public static JButton getBtnAgregar() {
         return btnAgregar;
@@ -754,6 +764,7 @@ public class VistaPartido extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JLabel lblbusqueda;
+    private Modelo.Modelo_Campeonato modelo_Campeonato1;
     public static javax.swing.JTable tblPartidos;
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;

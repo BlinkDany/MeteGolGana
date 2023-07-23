@@ -8,6 +8,8 @@ package Controlador;
 import Conexion.ConexionMySql;
 import Modelo.*;
 import Vista.VistaPartido;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -45,10 +47,17 @@ public class Controlador_Partido {
         vistapar.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistapar.getBtnCancelar1().addActionListener(l -> salirdialogo1());
         vistapar.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
-        vistapar.getBtnEquipo1().addActionListener(l -> abrirDialogobusqueda("EQUIPOS"));
-        vistapar.getBtnEquipo2().addActionListener(l -> abrirDialogobusqueda("EQUIPOS"));
+        vistapar.getBtnEquipo1().addActionListener(l -> abrirDialogobusqueda("EQUIPOS 1"));
+        vistapar.getBtnEquipo2().addActionListener(l -> abrirDialogobusqueda("EQUIPOS 2"));
         vistapar.getBtnEstadio().addActionListener(l -> abrirDialogobusqueda("ESTADIO"));
         vistapar.getBtnTemporada().addActionListener(l -> abrirDialogobusqueda("TEMPORADA"));
+        vistapar.getBtnmandardatos().addActionListener(l -> mandardatos());
+        vistapar.txtBuscar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+             
+            }
+        });
         vistapar.getBtnCancelar1().addActionListener(e -> {
             vistapar.getTblbuscar().clearSelection();
         });
@@ -60,10 +69,6 @@ public class Controlador_Partido {
         });
         vistapar.getBtnBuscar().addActionListener(l -> buscarFK());
 
-        //vista.getBtnSalir1().addActionListener(l -> salirdialogo());
-        //vista.getBtnImprimir().addActionListener(l -> generarreporte());
-        //vista.getBtnSalir().addActionListener(l -> salir());
-        //vista.getBtnCrear().addActionListener(l -> {
     }
 //-------------------------------------------------------DIALOGO--------------------------------------------------------------------------------------------
 
@@ -98,7 +103,10 @@ public class Controlador_Partido {
         vistapar.getDialogtablas().setTitle(ce);
         vistapar.getDialogtablas().setVisible(true);
 
-        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS")) {
+        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 1")) {
+            vistapar.getLblbusqueda().setText("EQUIPOS");
+            cargaequipos();
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 2")) {
             vistapar.getLblbusqueda().setText("EQUIPOS");
             cargaequipos();
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
@@ -108,9 +116,58 @@ public class Controlador_Partido {
             vistapar.getLblbusqueda().setText("TEMPORADA");
             cargacampeonatos();
         }
+
     }
-//--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
-//-------------------------------------------------------AGREGAR--------------------------------------------------------------------------------------------
+//-------------------------------------------------------SETEAR DATOS--------------------------------------------------------------------------------------------
+
+    private void mandardatos() {
+
+        String set = vistapar.getTxtbuscarcod().getText();
+
+        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 1")) {
+            int selectedRow = vistapar.getTblbuscar().getSelectedRow();
+
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistapar.getTxtEquipo1().setText(selectedId);
+                salirdialogo1();
+            }
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 2")) {
+            int selectedRow = vistapar.getTblbuscar().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistapar.getTxtEquipo2().setText(selectedId);
+                salirdialogo1();
+            }
+
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
+            int selectedRow = vistapar.getTblbuscar().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistapar.getTxtEstadio().setText(selectedId);
+                salirdialogo1();
+            }
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("TEMPORADA")) {
+            int selectedRow = vistapar.getTblbuscar().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistapar.getTxtCampeonato().setText(selectedId);
+                salirdialogo1();
+            }
+
+        }
+
+    }
+    //--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
+    //-------------------------------------------------------AGREGAR--------------------------------------------------------------------------------------------
 
     private void crearEditarPartido() {
         if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
@@ -308,7 +365,28 @@ public class Controlador_Partido {
 //-------------------------------------------------------BUSCAR EQUIPOS--------------------------------------------------------------------------------------------
 
     private void buscarFK() {
-        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS")) {
+        if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 1")) {
+            List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
+            String idBuscado = vistapar.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo");
+            modeloTabla.addColumn("Nombre");
+
+            for (Clase_Equipo e : listaequipos) {
+
+                if (String.valueOf(e.getCod_equipo()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCod_equipo(),
+                        e.getNombre_equi()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
+            vistapar.getTblbuscar().setModel(modeloTabla);
+        } else if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 2")) {
             List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
@@ -375,7 +453,25 @@ public class Controlador_Partido {
             vistapar.getTblbuscar().setModel(modeloTabla);
         }
     }
-//------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
+    //------------------------------------------------------- BUSCADOR PRINCIPAL--------------------------------------------------------------------------------------------
+
+    public void buscar() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vistapar.getTblPartidos().getModel();
+        tabla.setNumRows(0);
+        if (vistapar.getTxtBuscar().equals(null)) {
+            System.out.println("pene");
+        } else {
+
+            List<Clase_Partido> par = modeloPar.BuscarPartidos(Integer.parseInt(vistapar.txtBuscar.getText()));
+            par.stream().forEach(p -> {
+
+                Object datos[] = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(), p.getCod_equipo1(), p.getCod_equipo2()};
+                tabla.addRow(datos);
+            });
+        }
+    }
+    //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
 
     public void salirdialogo() {
         limpiar();
