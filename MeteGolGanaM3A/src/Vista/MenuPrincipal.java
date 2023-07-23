@@ -221,6 +221,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setToolBar(JToolBar toolBar) {
         this.toolBar = toolBar;
     }
+
+    public JButton getBtnArbitros() {
+        return BtnArbitros;
+    }
+
+    public void setBtnArbitros(JButton BtnArbitros) {
+        this.BtnArbitros = BtnArbitros;
+    }
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -237,6 +247,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JToolBar.Separator();
         BtnEquipos = new javax.swing.JButton();
         BtnGoles = new javax.swing.JButton();
+        BtnArbitros = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
@@ -295,6 +306,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnGoles);
+
+        BtnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnArbitros.setFocusable(false);
+        BtnArbitros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnArbitros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnArbitros);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -422,6 +439,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnArbitros;
     private javax.swing.JButton BtnEquipos;
     private javax.swing.JButton BtnGoles;
     private javax.swing.JButton btnCampeonato;

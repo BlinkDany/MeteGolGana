@@ -34,7 +34,7 @@ public class Modelo_Arbitro extends Clase_Arbitro {
 
         String sql = "INSERT INTO arbitro(codigo, posicion, anios_exp, salario, estado_elim, cedula_personafk) "
                 + "VALUES ('" + getCodigo_arbitro() + "','" + getPosicion_arbitro() + "'," + getAnios_esperiencia_arbitro() + ",'" + getSalario_arbitro()
-                + "','" + getEmail() + "','" + getCedula_persona_arbitro() + ");";
+                + "','" + isEstado_eliminado_arbitro() + "','" + getCedula_persona_arbitro() + ");";
 
         return con.CRUD(sql);
     }
