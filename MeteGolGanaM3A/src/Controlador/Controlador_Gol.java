@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,11 +38,10 @@ public class Controlador_Gol {
         vistagol.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
-        vistagol.getBtnCancelar().addActionListener(l -> salirdialogo1());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
-        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPOS 1"));
-        vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("EQUIPOS 2"));
-        vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("ESTADIO"));
+        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
+        vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
+        vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -107,5 +107,45 @@ public class Controlador_Gol {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");
             }
         }
+    }
+     public void buscar() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
+        tabla.setNumRows(0);
+        if (vistagol.getTxtBuscar().equals(null)) {
+            System.out.println("pene");
+        } else {
+
+            List<Clase_Gol> par = modeloGol.BuscarGoles(Integer.parseInt(vistagol.txtBuscar.getText()));
+            par.stream().forEach(p -> {
+
+                Object datos[] = {p.getCod_gol(), p.getDescripcion(),p.getMinuto(),p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
+                tabla.addRow(datos);
+            });
+        }
+    }
+    //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
+
+    public void salirdialogo() {
+        limpiar();
+        vistagol.getJdgGoles().setVisible(false);
+    }
+    private void limpiar() {
+
+        vistagol.getTxtCodPartido().setText("");
+        vistagol.getTxtcodGol().setText("");
+        vistagol.getTxtMinuto().setText("");
+        vistagol.getTxtdescripcion().setText("");
+        vistagol.getTxtCodJugador().setText("");
+        vistagol.getTxtCodEquipo().setText("");
+        vistagol.getTxtcodGol().setEnabled(true);
+
+    }
+//------------------------------------------------------- LIMPIAR--------------------------------------------------------------------------------------------
+
+    private void limpiartablas() {
+
+        vistagol.getTxtBuscar().setText("");
+
     }
 }
