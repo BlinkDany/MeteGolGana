@@ -10,10 +10,15 @@ import Modelo.Clase_Campeonato;
 import Modelo.Clase_Temporada;
 import Modelo.Modelo_Temporada;
 import Modelo.Modelo_Campeonato;
-import Modelo.Clase_Temporada;      
+import Modelo.Clase_Temporada;
 import Vista.VistaTemporada;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -23,11 +28,10 @@ import javax.swing.table.TableRowSorter;
  * @author tatip
  */
 public class Controlador_temporada {
-    
-    
-     Modelo_Temporada  modelo;
-    
-   Modelo_Campeonato modeloCamp;
+
+    Modelo_Temporada modelo;
+
+    Modelo_Campeonato modeloCamp;
 
     VistaTemporada vista;
 
@@ -41,7 +45,7 @@ public class Controlador_temporada {
         this.modelo = modelo;
 
         this.vista = vista;
-        
+
         this.modeloCamp = modeloCamp;
 
         vista.setVisible(true);
@@ -52,18 +56,49 @@ public class Controlador_temporada {
     public void iniciaControl() {
         // Configuración inicial de la vista
         vista.setTitle("Campeonatos");
-        
+
         vista.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vista.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vista.getBtnEliminar().addActionListener(l -> EliminarTemmporada());
         vista.getBtnCancelarDlg().addActionListener(l -> cerrarDialogo());
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarTemporada());
         vista.getBtnBuscar().addActionListener(l -> buscar());
+        vista.getBtnBuscarCampeonato().addActionListener(l -> buscarCampeonato() );
         
-        mostrarDatosTabla();
         
+        // TABLA
+        
+        vista.getTblCampeonatoFK().addMouseListener(new MouseAdapter(){
+            
+            @Override
+            
+            public void mouseClicked (MouseEvent e ){
+                
+                llenarCamposDeTextoCampeonato();
+                
+            }
+            
+        });
+        
+        //--------------
+        
+         vista.getTblCampeonatoFK().getSelectionModel().addListSelectionListener(e -> {
+            // Verifica si hay alguna fila seleccionada
+            if (vista.getTblCampeonatoFK().getSelectedRow() != -1) {
+                // Llama al método para llenar los campos de texto
+                llenarCamposDeTextoCampeonato();
+            } else {
+                JOptionPane.showMessageDialog(vista, "Debe seleccionar un registro de la tabla de campeonatos para la temporada",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+         
+         //-------------
+         
+         mostrarDatosTabla();
+        mostrarDatosTablaCampeonato();
 
-   }
+    }
 
 //-----------------------------------------------------------Dialogo------------------------------------------------------------------------//
     private void cerrarDialogo() {
@@ -83,29 +118,31 @@ public class Controlador_temporada {
         }
     }
 
-        private void abrirDialogo(String ce) {
+     private void abrirDialogo(String ce) {
 
         vista.getDlgaTemporada().setLocationRelativeTo(vista);
-        vista.getDlgaTemporada().setSize(700, 600
-
-        );
+        vista.getDlgaTemporada().setSize(825,600 );
         vista.getDlgaTemporada().setTitle(ce);
 
         if (vista.getDlgaTemporada().getTitle().equals("Crear")) {
+            
+            
 
-            vista.getBtnRegistrarModificarDlg().setText("Registrar");
-            limpiar();
-            vista.getTxtCodigo().setEnabled(true);
-        } else {
+            if (vista.getTblCampeonatoFK().getSelectedRow() == -1 ) {
 
-            vista.getBtnRegistrarModificarDlg().setText("Modificar");
-            llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(true);
-
+                JOptionPane.showMessageDialog(vista, "Seleccione el campeonato perteneciente a la temporada", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                vista.getBtnRegistrarModificarDlg().setText("Registrar");
+                vista.getTxtCodigoCampeonatoFK().setEditable(true);
+                llenarCamposDeTextoCampeonato();
+                vista.getDlgaTemporada().setVisible(true);
+                llenafecha();
+                // crearFactura();
+                mostrarDatosTabla();
+                mostrarDatosTablaCampeonato();
+            }
         }
-        vista.getDlgaTemporada().setVisible(true);
     }
-    
 
 //-------------------------------------------------------------CREAR MODIFICAR ELIMINAR---------------------------------------------------------------//
     private void crearEditarEliminarTemporada() {
@@ -149,7 +186,7 @@ public class Controlador_temporada {
                 modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
                 modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
                 modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
-                modelo.setFechaFin((Date)vista.getTxtFechaFin().getDate());
+                modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
 
                 if (modelo.ModificarTemporada()) {
                     JOptionPane.showMessageDialog(vista, "Datos modificados ",
@@ -159,14 +196,13 @@ public class Controlador_temporada {
                 }
             }
 
-        } 
+        }
     }
 
-    
 //------------------------------------------------ Verifica si hay campos vacíos en el formulario----------------------------------------\\
     private boolean camposVacios() {
         return// vista.getTxtCodigo().getText().isEmpty()
-                vista.getTxtFechaFin().getDate()== null
+                vista.getTxtFechaFin().getDate() == null
                 || vista.getTxtFechaIni().getDate().equals(null)
                 || vista.getTxtCodigoCampeonatoFK().getText().equals(null);
 
@@ -175,7 +211,7 @@ public class Controlador_temporada {
 
     public void llenarCamposDeTexto() {
         // Obtener la lista de productos
-        List <Clase_Temporada> listTempo = modelo.ListaTemporada();
+        List<Clase_Temporada> listTempo = modelo.ListaTemporada();
 
         // Recorrer la lista de productos
         listTempo.stream().forEach(p -> {
@@ -215,99 +251,8 @@ public class Controlador_temporada {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
         vista.getTblTemporada().setRowSorter(sorter);
     }
-    
-    //---------------------------------------------------MOSTRAR DATOS TABLA CAMPEONATO----------------------------------\\
-    
-       /* public void llenarCamposDeTextoCampeonato() {
-        // Obtener la lista de productos
-        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
 
-        // Recorrer la lista de productos
-        listCamp.stream().forEach(p -> {
-            // Verificar si el codigo del producto coincide con el codigo seleccionado en la tabla
-            if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
-
-                // Llenar los campos de la vista con los datos de producto seleccionado
-                vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCod_campeonato()));
-
-            }
-        });
-    }
-
-    //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
-    public void mostrarDatosTablaCampeonato() {
-
-        DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
-        tabla.setRowCount(0);
-
-        // Obtener la lista de productos
-        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
-
-        // Recorrer la lista de productos
-        listCamp.forEach(p -> {
-
-            // Crear un objeto datos con los valores de los campos correspondientes del producto
-            Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
-
-            // Agregar el objeto como una nueva fila a la tabla
-            tabla.addRow(datos);
-        });
-
-        // Agregar ordenamiento y filtrado a la tabla
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
-        vista.getTblCampeonatoFK().setRowSorter(sorter);
-    }*/
-    
-    
-        public void llenarCamposDeTextoCampeonato() {
-        // Obtener la lista de productos
-        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
-
-        // Recorrer la lista de productos
-        listCamp.stream().forEach(p -> {
-            // Verificar si el codigo del producto coincide con el codigo seleccionado en la tabla
-            if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
-
-                // Llenar los campos de la vista con los datos de producto seleccionado
-                vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCod_campeonato()));
-                
-            }
-        });
-    }
-
-    //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
-    
-    
-    
-        public void mostrarDatosTablaCampeonato() {
-
-        DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
-        tabla.setRowCount(0);
-
-        // Obtener la lista de productos
-        List<Clase_Campeonato> listCampeon = modeloCamp.ListaCampeonato();
-
-        // Recorrer la lista de productos
-        listCampeon.stream().forEach(p -> {
-
-            if (!p.isEstado_elim()) {
-
-                Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
-
-                // Agregar el objeto como una nueva fila a la tabla
-                tabla.addRow(datos);
-
-            }
-
-        });
-
-    }
-    
-  // ------------------------------------------------------------------------------------------ -----------------------------------\\
-    
-    
     //-------------------------------------------------------------------------------------------------------------------------------------------------------\\
-
 //--------------------------------------------------------BUSCAR---------------------------------------------------\\
     public void buscar() {
         // Obtener el código ingresado en el campo de búsqueda
@@ -341,6 +286,102 @@ public class Controlador_temporada {
         }
     }
 
+    //------------------------------------------------CAMPEONATO-------------------------------------------------------\\
+    //---------------------------------------------------MOSTRAR DATOS TABLA CAMPEONATO----------------------------------\\
+   
+    public void llenarCamposDeTextoCampeonato() {
+
+        List<Clase_Campeonato> listaCampeonato = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listaCampeonato.stream().forEach(p -> {
+            // Verificar si el código del producto coincide con el código seleccionado en la tabla
+            try {
+                if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
+
+                    vista.getTxtBuscarCampeonato().setText(String.valueOf(p.getCod_campeonato()));                 
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        });
+    }
+
+    //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
+    public void mostrarDatosTablaCampeonato() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
+        tabla.setRowCount(0);
+
+        // Obtener la lista de productos
+        List<Clase_Campeonato> listCampeon = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listCampeon.stream().forEach(p -> {
+
+            if (!p.isEstado_elim()) {
+
+                Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+
+                // Agregar el objeto como una nueva fila a la tabla
+                tabla.addRow(datos);
+
+            }
+
+        });
+
+    }
+
+    // ------------------------------------------------------------------------------------------ -----------------------------------\\
+    //-------------------------------------------BUSCA CAMPEONATO-------------------------------------------------------\\
+    public void buscarCampeonato() {
+        try {
+            // Obtener el código ingresado en el campo de búsqueda
+            String codigoTexto = vista.getTxtBuscarCampeonato().getText();
+
+            if (codigoTexto.isEmpty()) {
+                // Mostrar mensaje de error si el campo está vacío
+                JOptionPane.showMessageDialog(null, "Ingrese el código del campeonato que desea buscar",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int codigo = Integer.parseInt(codigoTexto);
+
+                if (codigo == 0) {
+                    // Mostrar mensaje de error si el código es igual a cero
+                    JOptionPane.showMessageDialog(null, "Ingrese otro código diferente",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Obtener el modelo de la tabla
+                    DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
+                    // Limpiar el modelo de datos de la tabla
+                    tabla.setNumRows(0);
+
+                    // Obtener la lista de campeonatos
+                    List<Clase_Campeonato> listaCampeonatos = modeloCamp.ListaCampeonato();
+
+                    // Utilizar un stream para procesar la lista de campeonatos
+                    listaCampeonatos.stream()
+                            // Filtrar los campeonatos por el código
+                            .filter(p -> codigo == p.getCod_campeonato())
+                            // Mapear cada campeonato filtrado a un objeto "datos" que contiene los valores deseados
+                            .map(p -> {
+                                // Crear un objeto "datos"
+                                Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+                                return datos;
+                            })
+                            // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
+                            .forEach(tabla::addRow);
+                }
+            }
+        } catch (NumberFormatException e) {
+            // Mostrar mensaje de error si el texto ingresado no es un número válido
+            JOptionPane.showMessageDialog(null, "Ingrese un código de campeonato válido (número entero)",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // ------------------------------------------------------------------------------------------ -----------------------------------\\
+    //------------------------------------------------------FIN CAMPEONATO------------------------------------------------------------------------------\\ 
 //--------------------------------------------------------------LIMPIAR------------------------------------------------------------//
     public void limpiar() {
 
@@ -352,9 +393,12 @@ public class Controlador_temporada {
 
     }
 
-    private void limpiaBusca() {
+    private void limpiaActualizaBusca() {
         vista.getTxtBuscar().setText("");
+        vista.getTxtBuscarCampeonato().setText("");
+        
         mostrarDatosTabla();
+        mostrarDatosTablaCampeonato();
     }
 
     /* private void reporte(){
@@ -403,8 +447,6 @@ public class Controlador_temporada {
                         Logger.getLogger(ControladorPersonas.class.getName()).log(Level.SEVERE, null, ex);
  }
     }*/
-    
-    
     public void EliminarTemmporada() {
 
         if (vista.getTblTemporada().getSelectedRow() == -1) {
@@ -416,17 +458,14 @@ public class Controlador_temporada {
             int x = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar la factura?", "Advertecia!", JOptionPane.YES_NO_OPTION);
             if (x == 0) {
 
-               modelo.setCodigoPk(vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).hashCode());
-                
+                modelo.setCodigoPk(vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).hashCode());
 
                 if (modelo.OcultarTemporada()) {
 
-                   
+                    JOptionPane.showMessageDialog(null, "Temporada eliminada con exito ",
+                            "Eliminado", JOptionPane.INFORMATION_MESSAGE);
 
-                        JOptionPane.showMessageDialog(null, "Temporada eliminada con exito ",
-                                "Eliminado", JOptionPane.INFORMATION_MESSAGE);
-
-                        mostrarDatosTabla();
+                    mostrarDatosTabla();
 
                 } else {
 
@@ -437,4 +476,8 @@ public class Controlador_temporada {
         }
     }
     
+     public void llenafecha() {
+        vista.getTxtFechaIni().setDate(new java.sql.Date(System.currentTimeMillis()));
+    }
+
 }
