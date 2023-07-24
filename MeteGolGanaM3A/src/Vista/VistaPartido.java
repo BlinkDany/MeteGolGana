@@ -157,14 +157,25 @@ public class VistaPartido extends javax.swing.JInternalFrame {
 
         btnEstadio.setBackground(new java.awt.Color(204, 204, 204));
         btnEstadio.setText("Buscar Estadio");
+        btnEstadio.setColorHover(new java.awt.Color(0, 0, 0));
+        btnEstadio.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnEstadio.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnEstadio.setColorTextHover(new java.awt.Color(255, 255, 255));
         jPanel3.add(btnEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
 
         btnEquipo1.setBackground(new java.awt.Color(204, 204, 204));
         btnEquipo1.setText("Buscar Equipo");
+        btnEquipo1.setColorHover(new java.awt.Color(0, 0, 0));
+        btnEquipo1.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnEquipo1.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnEquipo1.setColorTextHover(new java.awt.Color(255, 255, 255));
         jPanel3.add(btnEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
-        btnTemporada.setBackground(new java.awt.Color(204, 204, 204));
         btnTemporada.setText("Buscar Temporada");
+        btnTemporada.setColorHover(new java.awt.Color(0, 0, 0));
+        btnTemporada.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnTemporada.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnTemporada.setColorTextHover(new java.awt.Color(255, 255, 255));
         btnTemporada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTemporadaActionPerformed(evt);
@@ -174,6 +185,10 @@ public class VistaPartido extends javax.swing.JInternalFrame {
 
         btnEquipo2.setBackground(new java.awt.Color(204, 204, 204));
         btnEquipo2.setText("Buscar Equipo");
+        btnEquipo2.setColorHover(new java.awt.Color(0, 0, 0));
+        btnEquipo2.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnEquipo2.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnEquipo2.setColorTextHover(new java.awt.Color(255, 255, 255));
         jPanel3.add(btnEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, -1, -1));
 
         txtCodPartido.setForeground(new java.awt.Color(0, 0, 0));
@@ -276,6 +291,10 @@ public class VistaPartido extends javax.swing.JInternalFrame {
 
         btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
         btnBuscar.setText("Buscar");
+        btnBuscar.setColorHover(new java.awt.Color(0, 0, 0));
+        btnBuscar.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnBuscar.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnBuscar.setColorTextHover(new java.awt.Color(255, 255, 255));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -392,11 +411,11 @@ public class VistaPartido extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(655, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
             .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -419,35 +438,34 @@ public class VistaPartido extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(77, 77, 77))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(78, 78, 78))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnModificar)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnEliminar)
-                        .addContainerGap(259, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -488,10 +506,6 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTemporadaActionPerformed
 
-    private void txtCodPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPartidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodPartidoActionPerformed
-
     private void cmestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmestadoActionPerformed
@@ -515,6 +529,10 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void txtCodPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPartidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodPartidoActionPerformed
 
   public static JButton getBtnAgregar() {
         return btnAgregar;
@@ -700,14 +718,15 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         VistaPartido.txtCampeonato = txtCampeonato;
     }
 
-    public static FSTexFieldMD getTxtCodPartido() {
+    public FSTexFieldMD getTxtCodPartido() {
         return txtCodPartido;
     }
 
-    public static void setTxtCodPartido(FSTexFieldMD txtCodPartido) {
-        VistaPartido.txtCodPartido = txtCodPartido;
+    public void setTxtCodPartido(FSTexFieldMD txtCodPartido) {
+        this.txtCodPartido = txtCodPartido;
     }
 
+ 
     public static FSTexFieldMD getTxtEquipo1() {
         return txtEquipo1;
     }
@@ -785,7 +804,7 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCampeonato;
-    public static LIB.FSTexFieldMD txtCodPartido;
+    private LIB.FSTexFieldMD txtCodPartido;
     public static LIB.FSTexFieldMD txtEquipo1;
     public static LIB.FSTexFieldMD txtEquipo2;
     public static LIB.FSTexFieldMD txtEstadio;

@@ -31,7 +31,7 @@ public class Modelo_Partido extends Clase_Partido {
         List<Clase_Partido> listaPartidos = new ArrayList<Clase_Partido>();
 
         try {
-            String sql = "select * from partido";
+            String sql = "select * from partido where estado_elim = false";
             ResultSet rs = CPG.Consultas(sql);
             while (rs.next()) {
                 Clase_Partido partido = new Clase_Partido();
@@ -43,6 +43,7 @@ public class Modelo_Partido extends Clase_Partido {
                 partido.setEstado(rs.getString("estado"));
                 partido.setCod_equipo1(rs.getInt("cod_equipo1fk"));
                 partido.setCod_equipo2(rs.getInt("cod_equipo2fk"));
+                partido.setEstado_elim(rs.getBoolean("estado_elim"));
 
                 listaPartidos.add(partido);
 
@@ -55,13 +56,32 @@ public class Modelo_Partido extends Clase_Partido {
         }
     }
 
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from partido;";
+        ResultSet res = CPG.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Partido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
+    }
+
     public List<Clase_Partido> BuscarPartidos(String aux) {
 
         try {
 
             String sql = "SELECT * "
                     + "from partido "
-                    + "WHERE codigo = '" + aux + "'";
+                    + "WHERE codigo = '" + aux + "'and estado_elim = false";
 
             ResultSet rs = CPG.Consultas(sql);
             List<Clase_Partido> par = new ArrayList<>();
@@ -78,6 +98,7 @@ public class Modelo_Partido extends Clase_Partido {
                 partido.setEstado(rs.getString("estado"));
                 partido.setCod_equipo1(rs.getInt("cod_equipo1fk"));
                 partido.setCod_equipo2(rs.getInt("cod_equipo2fk"));
+                partido.setEstado_elim(rs.getBoolean("estado_elim"));
 
                 par.add(partido);
             }
@@ -96,23 +117,24 @@ public class Modelo_Partido extends Clase_Partido {
     public boolean InsertarPartido() {
         String sql;
         sql = "INSERT INTO partido(codigo,cod_estadiofk,cod_temporadafk,fecha,grupo,estado,cod_equipo1fk,cod_equipo2fk,estado_elim)";
-        sql += "VALUES('" + getCod_partido() + "','" + getCod_estadio() + "','" + getCod_temporadafk() + "','" + getFecha() + "','" + getGrupo() + "','" + getEstado() + "','" + getCod_equipo1() + "','" + getCod_equipo2() + "','" + false + "')";
+        sql += "VALUES('" + getCod_partido() + "','" + getCod_estadio() + "','" + getCod_temporadafk() + "','" + getFecha() + "','" + getGrupo() + "','" + getEstado() + "','" + getCod_equipo1() + "','" + getCod_equipo2() +"','" + false +  "')";
         return CPG.CRUD(sql);
 
     }
 
     public boolean ModificarPartido() {
         String sql;
-        sql = "update partido set codigo='" + getCod_partido() + "' ,cod_estadiofk='" + getCod_estadio() + "' ,cod_temporadafk='" + getCod_temporadafk() + "' ,fecha='" + getFecha() + "' ,grupo='" + getGrupo() + "' ,estado='" + getEstado() + "',cod_equipo1fk='" + getCod_equipo1() + "',cod_equipo2fk='" + getCod_equipo2()+ "'where codigo='" + getCod_partido() + "';";
+        sql = "update partido set codigo='" + getCod_partido() + "' ,cod_estadiofk='" + getCod_estadio() + "' ,cod_temporadafk='" + getCod_temporadafk() + "' ,fecha='" + getFecha() + "' ,grupo='" + getGrupo() + "' ,estado='" + getEstado() + "',cod_equipo1fk='" + getCod_equipo1() + "',cod_equipo2fk='" + getCod_equipo2() + "'where codigo='" + getCod_partido() + "';";
         return CPG.CRUD(sql);
 
     }
 
     public boolean EliminarPartido() {
-        String sql;
-        sql = "delete from partido where codigo='" + getCod_partido() + "';";
-        return CPG.CRUD(sql);
 
+        String sql = "UPDATE partido SET estado_elim=true "
+                + "WHERE codigo=" + getCod_partido() + ";";
+
+        return CPG.CRUD(sql);
     }
 
 }
