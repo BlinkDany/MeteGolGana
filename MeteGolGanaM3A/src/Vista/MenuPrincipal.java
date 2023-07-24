@@ -81,15 +81,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnReporteFac(JMenu btnReporteFac) {
         this.btnReporteFac = btnReporteFac;
     }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
+    
     public JMenuBar getjMenuBar1() {
         return jMenuBar1;
     }
@@ -136,22 +128,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public void setjPanel1(JPanel jPanel1) {
         this.jPanel1 = jPanel1;
-    }
-
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
-
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
-
-    public void setjPanel3(JPanel jPanel3) {
-        this.jPanel3 = jPanel3;
     }
 
     public JToolBar.Separator getjSeparator1() {
@@ -254,10 +230,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnGoles = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         BtnArbitros = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         desctopPrincipal = new javax.swing.JDesktopPane();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -355,42 +328,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         desctopPrincipalLayout.setVerticalGroup(
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desctopPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(desctopPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        jLabel1.setText("Mete Gol Gana 1.0");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(12, 12, 12))
+            .addGap(0, 542, Short.MAX_VALUE)
         );
 
         mnClientes.setText("Clientes");
@@ -435,17 +373,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(desctopPrincipal)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addComponent(desctopPrincipal))
         );
 
         pack();
@@ -468,15 +405,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu btnReporteFac;
     private javax.swing.JButton btnTemporada;
     private javax.swing.JDesktopPane desctopPrincipal;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;

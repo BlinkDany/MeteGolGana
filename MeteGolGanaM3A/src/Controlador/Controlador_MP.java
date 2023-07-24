@@ -63,10 +63,11 @@ public class Controlador_MP {
     private void menuTemporada() {
 
         Modelo.Modelo_Temporada mod = new Modelo_Temporada();
+        Modelo.Modelo_Campeonato mc = new Modelo_Campeonato();
         Vista.VistaTemporada vis = new VistaTemporada();
         Clase_Temporada miTempo = new Clase_Temporada();
         vistaPrincipal.getDesctopPrincipal().add(vis);
-        Controlador_temporada controlPro = new Controlador_temporada(mod, vis);
+        Controlador_temporada controlPro = new Controlador_temporada(mod, vis,mc);
         controlPro.iniciaControl();
 
     }

@@ -25,7 +25,7 @@ import javax.swing.table.TableRowSorter;
 public class Controlador_temporada {
     
     
-    Modelo_Temporada  modelo;
+     Modelo_Temporada  modelo;
     
    Modelo_Campeonato modeloCamp;
 
@@ -36,11 +36,13 @@ public class Controlador_temporada {
     public Controlador_temporada() {
     }
 
-    public Controlador_temporada(Modelo_Temporada modelo, VistaTemporada vista) {
+    public Controlador_temporada(Modelo_Temporada modelo, VistaTemporada vista, Modelo_Campeonato modeloCamp) {
 
         this.modelo = modelo;
 
         this.vista = vista;
+        
+        this.modeloCamp = modeloCamp;
 
         vista.setVisible(true);
 
@@ -84,7 +86,7 @@ public class Controlador_temporada {
         private void abrirDialogo(String ce) {
 
         vista.getDlgaTemporada().setLocationRelativeTo(vista);
-        vista.getDlgaTemporada().setSize(900, 900
+        vista.getDlgaTemporada().setSize(700, 600
 
         );
         vista.getDlgaTemporada().setTitle(ce);
@@ -98,7 +100,7 @@ public class Controlador_temporada {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
             llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(false);
+            vista.getTxtCodigo().setEnabled(true);
 
         }
         vista.getDlgaTemporada().setVisible(true);
@@ -120,7 +122,7 @@ public class Controlador_temporada {
                 modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
                 modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
                 modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
-                modelo.setEstadoEli(1);
+                modelo.setEstadoEli(false);
 
                 if (modelo.InsertarTemporada()) {
                     JOptionPane.showMessageDialog(null, "Datos guardados exitosamente",
@@ -142,7 +144,7 @@ public class Controlador_temporada {
 
             if (confirmacion == JOptionPane.YES_OPTION) {
 
-                vista.getTxtCodigo().setEditable(false);
+                vista.getTxtCodigo().setEditable(true);
 
                 modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
                 modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
@@ -216,7 +218,7 @@ public class Controlador_temporada {
     
     //---------------------------------------------------MOSTRAR DATOS TABLA CAMPEONATO----------------------------------\\
     
-        public void llenarCamposDeTextoCampeonato() {
+       /* public void llenarCamposDeTextoCampeonato() {
         // Obtener la lista de productos
         List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
 
@@ -254,7 +256,55 @@ public class Controlador_temporada {
         // Agregar ordenamiento y filtrado a la tabla
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
         vista.getTblCampeonatoFK().setRowSorter(sorter);
+    }*/
+    
+    
+        public void llenarCamposDeTextoCampeonato() {
+        // Obtener la lista de productos
+        List<Clase_Campeonato> listCamp = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listCamp.stream().forEach(p -> {
+            // Verificar si el codigo del producto coincide con el codigo seleccionado en la tabla
+            if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
+
+                // Llenar los campos de la vista con los datos de producto seleccionado
+                vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCod_campeonato()));
+                
+            }
+        });
     }
+
+    //----------------------------------MOSTRAR DATOS TABLA---------------------------------------------------------\\
+    
+    
+    
+        public void mostrarDatosTablaCampeonato() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblCampeonatoFK().getModel();
+        tabla.setRowCount(0);
+
+        // Obtener la lista de productos
+        List<Clase_Campeonato> listCampeon = modeloCamp.ListaCampeonato();
+
+        // Recorrer la lista de productos
+        listCampeon.stream().forEach(p -> {
+
+            if (!p.isEstado_elim()) {
+
+                Object[] datos = {p.getCod_campeonato(), p.getNombre(), p.getTipo_campeonato(), p.getMax_equipos()};
+
+                // Agregar el objeto como una nueva fila a la tabla
+                tabla.addRow(datos);
+
+            }
+
+        });
+
+    }
+    
+  // ------------------------------------------------------------------------------------------ -----------------------------------\\
+    
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

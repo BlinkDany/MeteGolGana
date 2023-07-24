@@ -1,11 +1,10 @@
 package Modelo;
 
-import java.time.format.DateTimeFormatter;
 
 public class Clase_Gol {
     private int cod_gol;
     private String descripcion;
-    private DateTimeFormatter minuto;
+    private String minuto;
     private int cod_jugador;
     private int cod_equipo;
     private int cod_partido;
@@ -14,7 +13,7 @@ public class Clase_Gol {
     public Clase_Gol() {
     }
 
-    public Clase_Gol(int cod_gol, String descripcion, DateTimeFormatter minuto, int cod_jugador, int cod_equipo, int cod_partido, int estado_elim) {
+    public Clase_Gol(int cod_gol, String descripcion, String minuto, int cod_jugador, int cod_equipo, int cod_partido, int estado_elim) {
         this.cod_gol = cod_gol;
         this.descripcion = descripcion;
         this.minuto = minuto;
@@ -40,11 +39,11 @@ public class Clase_Gol {
         this.descripcion = descripcion;
     }
 
-    public DateTimeFormatter getMinuto() {
+    public String getMinuto() {
         return minuto;
     }
 
-    public void setMinuto(DateTimeFormatter minuto) {
+    public void setMinuto(String minuto) {
         this.minuto = minuto;
     }
 
