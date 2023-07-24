@@ -302,20 +302,20 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, -1, -1));
 
-        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre"
+                "Codigo", "Nombre", "Varios"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -336,6 +336,12 @@ public class VistaPartido extends javax.swing.JInternalFrame {
             dialogtablasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
         );
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Partidos");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -407,9 +413,8 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
+                .addGap(100, 100, 100)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(655, Short.MAX_VALUE))
         );
@@ -804,7 +809,7 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCampeonato;
-    private LIB.FSTexFieldMD txtCodPartido;
+    public static LIB.FSTexFieldMD txtCodPartido;
     public static LIB.FSTexFieldMD txtEquipo1;
     public static LIB.FSTexFieldMD txtEquipo2;
     public static LIB.FSTexFieldMD txtEstadio;

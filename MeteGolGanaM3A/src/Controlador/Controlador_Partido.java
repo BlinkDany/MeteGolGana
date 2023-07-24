@@ -64,6 +64,11 @@ public class Controlador_Partido {
                 buscar();
             }
         });
+        vistapar.getTxtBuscar().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntrada(evt);
+            }
+        });
         vistapar.getBtnCancelar1().addActionListener(e -> {
             vistapar.getTblbuscar().clearSelection();
         });
@@ -73,7 +78,6 @@ public class Controlador_Partido {
         vistapar.getBtnRegistrarModificar().addActionListener(e -> {
             vistapar.getTblPartidos().clearSelection();
         });
-
         vistapar.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
@@ -103,7 +107,8 @@ public class Controlador_Partido {
         } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
             vistapar.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
-
+            vistapar.getLblReMoJugadores().setText("ELIMINAR PARTIDOS");
+            vistapar.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
         }
     }
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------
@@ -329,7 +334,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi()), p.getCiudad()};
             mJtable.addRow(rowData);
         }
         );
@@ -342,7 +347,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Temporada> listaC = modeloTem.ListaTemporada();
         listaC.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCodigoPk()), String.valueOf(p.getCodCampeonatoFk())};
+            String[] rowData = {String.valueOf(p.getCodigoPk()), String.valueOf(p.getFechaIni()), String.valueOf(p.getFechaFin())};
             mJtable.addRow(rowData);
         }
         );
@@ -398,8 +403,9 @@ public class Controlador_Partido {
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo");
-            modeloTabla.addColumn("Nombre");
+            modeloTabla.addColumn("Codigo Equipo");
+            modeloTabla.addColumn("Nombre Equipo");
+            modeloTabla.addColumn("Ciudad Equipo");
 
             for (Clase_Equipo e : listaequipos) {
 
@@ -407,7 +413,8 @@ public class Controlador_Partido {
 
                     Object[] fila = {
                         e.getCod_equipo(),
-                        e.getNombre_equi()};
+                        e.getNombre_equi(),
+                        e.getCiudad()};
                     modeloTabla.addRow(fila);
                 }
 
@@ -419,8 +426,9 @@ public class Controlador_Partido {
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo");
-            modeloTabla.addColumn("Nombre");
+            modeloTabla.addColumn("Codigo Equipo");
+            modeloTabla.addColumn("Nombre Equipo");
+            modeloTabla.addColumn("Ciudad Equipo");
 
             for (Clase_Equipo e : listaequipos) {
 
@@ -428,7 +436,8 @@ public class Controlador_Partido {
 
                     Object[] fila = {
                         e.getCod_equipo(),
-                        e.getNombre_equi()};
+                        e.getNombre_equi(),
+                        e.getCiudad()};
                     modeloTabla.addRow(fila);
                 }
 
@@ -441,8 +450,9 @@ public class Controlador_Partido {
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo");
-            modeloTabla.addColumn("Nombre");
+            modeloTabla.addColumn("Codigo Estadio");
+            modeloTabla.addColumn("Nombre Estadio");
+            modeloTabla.addColumn("nose Estadio");
 
             for (Clase_Equipo e : listaequipos) {
 
@@ -450,7 +460,8 @@ public class Controlador_Partido {
 
                     Object[] fila = {
                         e.getCod_equipo(),
-                        e.getNombre_equi()};
+                        e.getNombre_equi(),
+                        e.getCiudad()};
                     modeloTabla.addRow(fila);
                 }
 
@@ -463,8 +474,9 @@ public class Controlador_Partido {
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo");
-            modeloTabla.addColumn("Nombre");
+            modeloTabla.addColumn("Codigo Temporada");
+            modeloTabla.addColumn("Fecha Inicio");
+            modeloTabla.addColumn("Fecha Fin");
 
             for (Clase_Temporada e : listaTemporada) {
 
@@ -472,7 +484,8 @@ public class Controlador_Partido {
 
                     Object[] fila = {
                         e.getCodigoPk(),
-                        e.getFechaIni()};
+                        e.getFechaIni(),
+                        e.getFechaFin()};
                     modeloTabla.addRow(fila);
                 }
 
@@ -498,8 +511,21 @@ public class Controlador_Partido {
             });
         }
     }
-    //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
+//------------------------------------------------------- VALIDAR ENTRADA--------------------------------------------------------------------------------------------
 
+    private void validarEntrada(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+
+    }
+
+//------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
     public void salirdialogo() {
         limpiar();
         vistapar.getDialogRegistrarModificar().setVisible(false);
