@@ -208,8 +208,8 @@ public class Controlador_Gol {
                 int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
                 int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
                 int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
-                String grupo = vistapar.getTxtgrupo().getText();
-                vistapar.getDtfecha().getDate();
+                String grupo = vistagol.getTxtgrupo().getText();
+                vistagol.getDtfecha().getDate();
                 boolean estado = false;
 
                 model.setCod_partido(codigopartido);
@@ -220,20 +220,20 @@ public class Controlador_Gol {
                 model.setGrupo(grupo);
                 model.setFecha(vistapar.getDtfecha().getDate());
 
-                if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
+                if (vistagol.getCmestado().getSelectedItem().equals("Finalizado")) {
                     model.setEstado("Finalizado");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
+                } else if (vistagol.getCmestado().getSelectedItem().equals("Activo")) {
                     model.setEstado("Activo");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
+                } else if (vistagol.getCmestado().getSelectedItem().equals("Suspendido")) {
                     model.setEstado("Suspendido");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
+                } else if (vistagol.getCmestado().getSelectedItem().equals("En Espera")) {
                     model.setEstado("En Espera");
                 }
                 model.setEstado_elim(estado);
-                if (model.InsertarPartido()) {
+                if (model.InsertarGol()) {
                     limpiar();
-                    JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
-                    vistapar.getDialogRegistrarModificar().setVisible(false);
+                    JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
+                    vistagol.getJdgGoles().setVisible(false);
                     cargaPartidos();
                 } else {
                     JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
@@ -241,7 +241,7 @@ public class Controlador_Gol {
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
 
-        } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
+        } else if (vistagol.getJdgGoles().getTitle().contentEquals("Editar")) {
 
             Modelo_Gol model = new Modelo_Gol();
 
