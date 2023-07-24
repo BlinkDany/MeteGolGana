@@ -24,9 +24,9 @@ import javax.swing.JOptionPane;
  */
 public class Modelo_Temporada extends Clase_Temporada {
     
-      Conexion.ConexionMySql con = new ConexionMySql();
+        Conexion.ConexionMySql con = new ConexionMySql();
     
-     public boolean InsertarTemporada() {
+    /* public boolean InsertarTemporada() {
 
         String sql = "INSERT INTO temporada(fecha_inicio, fecha_fin, codigo_campeonato) "
                 + "VALUES ('" + getFechaIni()+ "','" + getFechaFin()+ "'," + getCodCampeonatoFk() + ");";
@@ -60,7 +60,7 @@ public class Modelo_Temporada extends Clase_Temporada {
                     + "ORDER BY codigo";
             ResultSet res = con.Consultas(sql);
             List<Clase_Temporada> listTemporada = new ArrayList<>();
-            byte[] bytea;
+           
 
             while (res.next()) {
 
@@ -118,6 +118,76 @@ public class Modelo_Temporada extends Clase_Temporada {
         JOptionPane.showMessageDialog(null, ex.getMessage());
         return null;
     }
-}
+}*/
+    
+       public boolean InsertarTemporada() {
+//construir consulta para insertar el producto 
+        String sql = "INSERT INTO public.temporada(\n"
+                + "	codigo, fecha_inicio, fecha_fin, codigo_campeonato, estado_elim)\n"
+                + "	VALUES ('" + getCodigoPk()+ "','" + getFechaIni()+ "','" + getFechaFin()+ "', '" + getCodCampeonatoFk()+ "', '" + isEstadoEli()+ "');";
+
+        return con.CRUD(sql);
+
+    }
+
+    
+    public boolean ModificarTemporada() {
+
+        // Construir la consulta SQL para actualizar los datos del producto
+        String sql = "UPDATE public.temporada SET fecha_inicio = '" + getFechaIni()+ "', fecha_fin = '" + getFechaFin()+ "', codigo_campeonato = '"
+                + getCodCampeonatoFk()+ "' "
+                + "WHERE codigo ='" + getCodigoPk()+ "';";
+
+        return con.CRUD(sql);
+    }
+
+ 
+    
+      public boolean OcultarTemporada () {
+        
+        String sql = "UPDATE public.temporada\n" +
+"	SET  estado_elim= true\n" +
+"	WHERE codigo = "+getCodigoPk()+" ;";
+        
+        return con.CRUD(sql);
+        
+    }
+
+    public List<Clase_Temporada> ListaTemporada() {
+
+        try {
+
+            String sql = "SELECT * "
+                    + "FROM temporada "                    
+                    + "ORDER BY codigo";
+            ResultSet res = con.Consultas(sql);
+            List<Clase_Temporada> listTempo = new ArrayList<>();
+            
+
+            while (res.next()) {
+
+                Clase_Temporada mitempo = new Clase_Temporada();
+
+                //campeonato
+                mitempo.setCodigoPk(res.getInt("codigo"));
+                mitempo.setFechaIni(res.getDate("fecha_inicio"));
+                mitempo.setFechaFin(res.getDate("fecha_fin"));
+                mitempo.setCodCampeonatoFk(res.getInt("codigo_campeonato"));
+                mitempo.setEstadoEli(res.getBoolean("estado_elim"));
+                
+                listTempo.add(mitempo);
+            }
+
+            res.close();
+            return listTempo;
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Modelo_Temporada.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            return null;
+        }
+    }
+
     
 }
