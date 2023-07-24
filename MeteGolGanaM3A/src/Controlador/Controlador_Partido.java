@@ -522,7 +522,10 @@ public class Controlador_Partido {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
         }
-
+        if (vistapar.getTxtBuscar().getText().trim().length() > 3) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
     }
 
 //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
