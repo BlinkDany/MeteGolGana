@@ -1,6 +1,9 @@
 package Controlador;
 
+import Modelo.Clase_Equipo;
 import Modelo.Clase_Gol;
+import Modelo.Clase_Jugador;
+import Modelo.Clase_Partido;
 import Modelo.ModeloEquipos;
 import Modelo.Modelo_Gol;
 import Modelo.Modelo_Jugador;
@@ -130,6 +133,10 @@ public class Controlador_Gol {
         limpiar();
         vistagol.getJdgGoles().setVisible(false);
     }
+    public void salirdialogo1() {
+        limpiartablas();
+        vistagol.getJdggolestabla().setVisible(false);
+    }
     private void limpiar() {
 
         vistagol.getTxtCodPartido().setText("");
@@ -147,5 +154,195 @@ public class Controlador_Gol {
 
         vistagol.getTxtBuscar().setText("");
 
+    }
+     private void mandardatos() {
+
+        String set = vistagol.getTxtbuscarcod().getText();
+
+        if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
+            int selectedRow = vistagol.getTblbuscar().getSelectedRow();
+
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistagol.getTxtCodJugador().setText(selectedId);
+                salirdialogo1();
+            }
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDOS")) {
+            int selectedRow = vistagol.getTblbuscar().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistagol.getTxtCodPartido().setText(selectedId);
+                salirdialogo1();
+            }
+
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPOS")) {
+            int selectedRow = vistagol.getTblbuscar().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+            } else {
+                String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
+                vistagol.getTxtCodEquipo().setText(selectedId);
+                salirdialogo1();
+            }
+        } 
+    }
+    //--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
+    //-------------------------------------------------------AGREGAR--------------------------------------------------------------------------------------------
+
+    private void crearEditarPartido() {
+        if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
+
+            Modelo_Gol model = new Modelo_Gol();
+
+            if (vistagol.getTxtCodPartido().equals("") || vistagol.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+
+                JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
+
+            } else {
+                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
+                int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
+                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
+                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
+                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
+                String grupo = vistapar.getTxtgrupo().getText();
+                vistapar.getDtfecha().getDate();
+                boolean estado = false;
+
+                model.setCod_partido(codigopartido);
+                model.setCod_temporadafk(codtemporada);
+                model.setCod_equipo1(equipo1);
+                model.setCod_equipo2(equipo2);
+                model.setCod_estadio(estadio);
+                model.setGrupo(grupo);
+                model.setFecha(vistapar.getDtfecha().getDate());
+
+                if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
+                    model.setEstado("Finalizado");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
+                    model.setEstado("Activo");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
+                    model.setEstado("Suspendido");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
+                    model.setEstado("En Espera");
+                }
+                model.setEstado_elim(estado);
+                if (model.InsertarPartido()) {
+                    limpiar();
+                    JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
+                    vistapar.getDialogRegistrarModificar().setVisible(false);
+                    cargaPartidos();
+                } else {
+                    JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                }
+            }
+//-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
+
+        } else if (vistapar.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
+
+            Modelo_Gol model = new Modelo_Gol();
+
+            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+
+                JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
+
+            } else {
+                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
+                int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
+                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
+                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
+                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
+                String grupo = vistapar.getTxtgrupo().getText();
+                vistapar.getDtfecha().getDate();
+                boolean estado = false;
+
+                model.setCod_partido(codigopartido);
+                model.setCod_temporadafk(codtemporada);
+                model.setCod_equipo1(equipo1);
+                model.setCod_equipo2(equipo2);
+                model.setCod_estadio(estadio);
+                model.setGrupo(grupo);
+                model.setFecha(vistapar.getDtfecha().getDate());
+
+                if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
+                    model.setEstado("Finalizado");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
+                    model.setEstado("Activo");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
+                    model.setEstado("Suspendido");
+                } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
+                    model.setEstado("En Espera");
+                }
+                model.setEstado_elim(estado);
+                if (model.ModificarGol()) {
+                    limpiar();
+                    JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
+                    vistagol.getJdgGoles().setVisible(false);
+                    cargaPartidos();
+                } else {
+                    JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");
+                }
+
+            }
+//-------------------------------------------------------ELIMINAR--------------------------------------------------------------------------------------------
+
+        } else if (vistagol.getJdgGoles().getTitle().contentEquals("Eliminar")) {
+            Modelo_Gol model = new Modelo_Gol();
+            model.setCod_partido(Integer.valueOf(vistagol.getTxtCodPartido().getText()));
+            if (model.EliminarGol()) {
+
+                limpiar();
+                JOptionPane.showMessageDialog(vistagol, "DATOS ELIMINADOS");
+
+                vistagol.getJdgGoles().setVisible(false);
+                cargaPartidos();
+
+            } else {
+                JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");
+            }
+
+        }
+    }
+
+//-------------------------------------------------------CARGAR PARTIDOS EN LA TABLA--------------------------------------------------------------------------------------------
+    private void cargaPartidos() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistagol.getTblPartidos().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Partido> listaP = modeloPar.listarPartidos();
+        listaP.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2()), String.valueOf(p.getCod_estadio())};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+//-------------------------------------------------------CARGAR EQUIPOS EN LA TABLA--------------------------------------------------------------------------------------------
+
+    private void cargaequipos() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
+        listaE.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+//-------------------------------------------------------CARGAR CAMPEONATOS EN LA TABLA--------------------------------------------------------------------------------------------
+
+    private void cargajugadores() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Jugador> listaC = modeloTem.ListaTemporada();
+        listaC.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCodigoPk()), String.valueOf(p.getCodCampeonatoFk())};
+            mJtable.addRow(rowData);
+        }
+        );
     }
 }
