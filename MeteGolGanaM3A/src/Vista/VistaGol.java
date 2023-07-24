@@ -8,6 +8,7 @@ import LIB.FSButtonMD;
 import LIB.FSTexFieldMD;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 
 /**
@@ -21,6 +22,10 @@ public class VistaGol extends javax.swing.JFrame {
      */
     public VistaGol() {
         initComponents();
+    }
+
+    public JLabel getLblReMoGoles() {
+        return lblReMoGoles;
     }
 
     public static JButton getBtnAgregar() {
