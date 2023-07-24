@@ -209,6 +209,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnArbitros(JButton BtnArbitros) {
         this.BtnArbitros = BtnArbitros;
     }
+
+    public JButton getBtnPatidos() {
+        return BtnPatidos;
+    }
+
+    public void setBtnPatidos(JButton BtnPatidos) {
+        this.BtnPatidos = BtnPatidos;
+    }
     
     
     
@@ -230,6 +238,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnGoles = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         BtnArbitros = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
+        BtnPatidos = new javax.swing.JButton();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
@@ -304,6 +314,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnArbitros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnArbitros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnArbitros);
+        toolBar.add(jSeparator6);
+
+        BtnPatidos.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        BtnPatidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/campo-de-futbol.png"))); // NOI18N
+        BtnPatidos.setText("Partidos");
+        BtnPatidos.setFocusable(false);
+        BtnPatidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnPatidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BtnPatidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPatidosActionPerformed(evt);
+            }
+        });
+        toolBar.add(BtnPatidos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -392,6 +416,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void BtnPatidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPatidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPatidosActionPerformed
+
 
    
     
@@ -400,6 +428,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BtnArbitros;
     private javax.swing.JButton BtnEquipos;
     private javax.swing.JButton BtnGoles;
+    private javax.swing.JButton BtnPatidos;
     private javax.swing.JButton btnCampeonato;
     private javax.swing.JButton btnJugadores;
     private javax.swing.JMenu btnReporteFac;
@@ -416,6 +445,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;

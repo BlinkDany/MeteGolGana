@@ -9,6 +9,7 @@ import Modelo.Clase_Arbitro;
 import Modelo.Clase_Campeonato;
 import Modelo.Clase_Temporada;
 import Modelo.ModeloEquipos;
+import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Campeonato;
 import Modelo.Modelo_Jugador;
@@ -21,6 +22,7 @@ import Vista.VistaJugadores;
 import Vista.VistaTemporada;
 import Vista.VistaEquipos;
 import Vista.VistaGol;
+import Vista.VistaPartido;
 import Vista.Vista_Arbitro;
 
 /**
@@ -46,6 +48,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnEquipos().addActionListener(l -> MenuEquipos());
         vistaPrincipal.getBtnGoles().addActionListener(l -> MenuJugadores());
         vistaPrincipal.getBtnArbitros().addActionListener(l -> MenuArbitros());
+        vistaPrincipal.getBtnPatidos().addActionListener(l -> MenuPartidos());
 
     }
 
@@ -67,7 +70,7 @@ public class Controlador_MP {
         Vista.VistaTemporada vis = new VistaTemporada();
         Clase_Temporada miTempo = new Clase_Temporada();
         vistaPrincipal.getDesctopPrincipal().add(vis);
-        Controlador_temporada controlPro = new Controlador_temporada(mod, vis,mc);
+        Controlador_temporada controlPro = new Controlador_temporada(mod, vis, mc);
         controlPro.iniciaControl();
 
     }
@@ -91,7 +94,7 @@ public class Controlador_MP {
         Controlador_Equipo controlEqui = new Controlador_Equipo(moEqui, visequi);
         controlEqui.iniciaControl();
     }
-    
+
     private void MenuArbitros() {
 
         Modelo.Modelo_Arbitro moJu = new Modelo_Arbitro();
@@ -103,7 +106,18 @@ public class Controlador_MP {
         controlJuga.InicarControlador();
 
     }
-    
+
+    private void MenuPartidos() {
+        Modelo_Partido moPar = new Modelo_Partido();
+        Vista.VistaPartido visPar = new VistaPartido();
+        Modelo.Modelo_Temporada moTem = new Modelo_Temporada();
+        Modelo.ModeloEquipos moEq = new ModeloEquipos();
+        vistaPrincipal.getDesctopPrincipal().add(visPar);
+        Controlador.Controlador_Partido controlPar = new Controlador_Partido(moPar, moTem, moEq, visPar);
+        controlPar.iniciaControl();
+
+    }
+
     /*private void MenuGoles(){     
         Modelo.Modelo moEqui = new ModeloEquipos();
         Vista.VistaEquipos visequi = new VistaEquipos();
