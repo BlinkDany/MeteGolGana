@@ -55,7 +55,7 @@ public class Modelo_Partido extends Clase_Partido {
         }
     }
 
-    public List<Clase_Partido> BuscarPartidos(int aux) {
+    public List<Clase_Partido> BuscarPartidos(String aux) {
 
         try {
 
@@ -65,7 +65,6 @@ public class Modelo_Partido extends Clase_Partido {
 
             ResultSet rs = CPG.Consultas(sql);
             List<Clase_Partido> par = new ArrayList<>();
-            byte[] bytea;
 
             while (rs.next()) {
 
@@ -104,7 +103,7 @@ public class Modelo_Partido extends Clase_Partido {
 
     public boolean ModificarPartido() {
         String sql;
-        sql = "update partido set codigo='" + getCod_partido() + "' ,cod_estadiofk='" + getCod_estadio() + "' ,cod_temporadafk='" + getCod_temporadafk() + "' ,fecha='" + getFecha() + "' ,grupo='" + getGrupo() + "' ,estado='" + getEstado() + "',cod_equipo1='" + getCod_equipo1() + "',cod_equipo2='" + getCod_equipo2() + "',cod_estadio='" + getCod_estadio() + "'where codigo='" + getCod_partido() + "';";
+        sql = "update partido set codigo='" + getCod_partido() + "' ,cod_estadiofk='" + getCod_estadio() + "' ,cod_temporadafk='" + getCod_temporadafk() + "' ,fecha='" + getFecha() + "' ,grupo='" + getGrupo() + "' ,estado='" + getEstado() + "',cod_equipo1fk='" + getCod_equipo1() + "',cod_equipo2fk='" + getCod_equipo2()+ "'where codigo='" + getCod_partido() + "';";
         return CPG.CRUD(sql);
 
     }

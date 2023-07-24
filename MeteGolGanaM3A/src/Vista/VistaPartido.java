@@ -327,20 +327,20 @@ public class VistaPartido extends javax.swing.JFrame {
             }
         });
 
-        tblPartidos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblPartidos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblPartidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "CodigoPartido", "Equipo1", "Equipo2", "Campeonato", "Estadio"
+                "CodigoPartido", "CodigoEstadio", "CodigoTemporada", "Fecha", "Grupo", "Estado", "Equipo1", "Equipo2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -426,7 +426,7 @@ public class VistaPartido extends javax.swing.JFrame {
                         .addComponent(btnAgregar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
