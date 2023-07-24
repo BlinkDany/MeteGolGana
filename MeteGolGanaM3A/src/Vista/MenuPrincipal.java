@@ -62,8 +62,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.desctopPrincipal = desctopPrincipal;
     }
 
-    public FSButtonMD getBtnJugadores() {
+    public JButton getBtnJugadores() {
         return btnJugadores;
+    }
+
+    public void setBtnJugadores(JButton btnJugadores) {
+        this.btnJugadores = btnJugadores;
     }
 
     public void setBtnJugadores(FSButtonMD btnJugadores) {
@@ -243,10 +247,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnCampeonato = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnJugadores = new LIB.FSButtonMD();
+        btnJugadores = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         BtnEquipos = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
         BtnGoles = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         BtnArbitros = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         desctopPrincipal = new javax.swing.JDesktopPane();
@@ -271,7 +277,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         toolBar.setRollover(true);
 
+        btnTemporada.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnTemporada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/calendario 64x64.jpg"))); // NOI18N
+        btnTemporada.setText("Temporada");
         btnTemporada.setToolTipText("Ver las temporadas existentes");
         btnTemporada.setFocusable(false);
         btnTemporada.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -279,7 +287,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         toolBar.add(btnTemporada);
         toolBar.add(jSeparator2);
 
+        btnCampeonato.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnCampeonato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/campeonato64x64.png"))); // NOI18N
+        btnCampeonato.setText("Campeonato");
         btnCampeonato.setToolTipText("Ver Campeonatos");
         btnCampeonato.setFocusable(false);
         btnCampeonato.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -287,7 +297,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         toolBar.add(btnCampeonato);
         toolBar.add(jSeparator1);
 
-        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/jugador-de-futbol.png"))); // NOI18N
+        btnJugadores.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/jugador-de-futbol (1).png"))); // NOI18N
         btnJugadores.setText("Jugadores");
         btnJugadores.setFocusable(false);
         btnJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -295,19 +306,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         toolBar.add(btnJugadores);
         toolBar.add(jSeparator3);
 
+        BtnEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         BtnEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/partners (1).png"))); // NOI18N
+        BtnEquipos.setText("Equipos");
         BtnEquipos.setFocusable(false);
         BtnEquipos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnEquipos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnEquipos);
+        toolBar.add(jSeparator4);
 
+        BtnGoles.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         BtnGoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnGoles.setText("Goles");
         BtnGoles.setFocusable(false);
         BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnGoles);
+        toolBar.add(jSeparator5);
 
-        BtnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnArbitros.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        BtnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/arbitro (1).png"))); // NOI18N
+        BtnArbitros.setText("Arbitro");
         BtnArbitros.setFocusable(false);
         BtnArbitros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnArbitros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -321,8 +340,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -336,7 +355,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         desctopPrincipalLayout.setVerticalGroup(
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 457, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -347,7 +366,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desctopPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(desctopPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -421,8 +442,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -443,7 +464,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BtnEquipos;
     private javax.swing.JButton BtnGoles;
     private javax.swing.JButton btnCampeonato;
-    private LIB.FSButtonMD btnJugadores;
+    private javax.swing.JButton btnJugadores;
     private javax.swing.JMenu btnReporteFac;
     private javax.swing.JButton btnTemporada;
     private javax.swing.JDesktopPane desctopPrincipal;
@@ -459,6 +480,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;
