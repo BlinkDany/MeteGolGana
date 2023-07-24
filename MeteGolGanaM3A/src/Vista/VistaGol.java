@@ -9,6 +9,7 @@ import LIB.FSTexFieldMD;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
@@ -26,6 +27,42 @@ public class VistaGol extends javax.swing.JFrame {
 
     public JLabel getLblReMoGoles() {
         return lblReMoGoles;
+    }
+
+    public FSButtonMD getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JDialog getJdggolestabla() {
+        return jdggolestabla;
+    }
+
+    public static FSButtonMD getBtnCancelar1() {
+        return btnCancelar1;
+    }
+
+    public static FSButtonMD getBtnmandardatos() {
+        return btnmandardatos;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JLabel getLblbusqueda() {
+        return lblbusqueda;
+    }
+
+    public static JTable getTblbuscar() {
+        return tblbuscar;
+    }
+
+    public static FSTexFieldMD getTxtbuscarcod() {
+        return txtbuscarcod;
     }
 
     public static JButton getBtnAgregar() {
@@ -116,6 +153,14 @@ public class VistaGol extends javax.swing.JFrame {
         btnJugador = new LIB.FSButtonMD();
         btnPartido = new LIB.FSButtonMD();
         btnEquipo = new LIB.FSButtonMD();
+        jdggolestabla = new javax.swing.JDialog();
+        btnCancelar1 = new LIB.FSButtonMD();
+        txtbuscarcod = new LIB.FSTexFieldMD();
+        lblbusqueda = new javax.swing.JLabel();
+        btnmandardatos = new LIB.FSButtonMD();
+        btnBuscar = new LIB.FSButtonMD();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblbuscar = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
         txtBuscar = new LIB.FSTexFieldMD();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -233,6 +278,109 @@ public class VistaGol extends javax.swing.JFrame {
                     .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
+        );
+
+        btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.setColorHover(new java.awt.Color(0, 0, 0));
+        btnCancelar1.setColorNormal(new java.awt.Color(255, 0, 0));
+        btnCancelar1.setColorTextHover(new java.awt.Color(255, 255, 255));
+
+        txtbuscarcod.setForeground(new java.awt.Color(0, 0, 0));
+        txtbuscarcod.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtbuscarcod.setPlaceholder("Codigo");
+        txtbuscarcod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarcodActionPerformed(evt);
+            }
+        });
+
+        lblbusqueda.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        lblbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        lblbusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblbusqueda.setText("tabla");
+
+        btnmandardatos.setForeground(new java.awt.Color(0, 0, 0));
+        btnmandardatos.setText("Guardar");
+        btnmandardatos.setColorHover(new java.awt.Color(0, 102, 204));
+        btnmandardatos.setColorPressed(new java.awt.Color(0, 204, 51));
+        btnmandardatos.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnmandardatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmandardatosActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblbuscar);
+
+        javax.swing.GroupLayout jdggolestablaLayout = new javax.swing.GroupLayout(jdggolestabla.getContentPane());
+        jdggolestabla.getContentPane().setLayout(jdggolestablaLayout);
+        jdggolestablaLayout.setHorizontalGroup(
+            jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdggolestablaLayout.createSequentialGroup()
+                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jdggolestablaLayout.createSequentialGroup()
+                .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdggolestablaLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(txtbuscarcod, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdggolestablaLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnmandardatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdggolestablaLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jdggolestablaLayout.setVerticalGroup(
+            jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdggolestablaLayout.createSequentialGroup()
+                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtbuscarcod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnmandardatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -377,29 +525,49 @@ public class VistaGol extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void txtbuscarcodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarcodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarcodActionPerformed
+
+    private void btnmandardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmandardatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmandardatosActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
-    private LIB.FSButtonMD btnCancelar;
+    private LIB.FSButtonMD btnBuscar;
+    public static LIB.FSButtonMD btnCancelar;
+    public static LIB.FSButtonMD btnCancelar1;
     public static javax.swing.JButton btnEliminar;
     private LIB.FSButtonMD btnEquipo;
     public static LIB.FSButtonMD btnInicio;
     private LIB.FSButtonMD btnJugador;
     public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnPartido;
-    private LIB.FSButtonMD btnRegistrarModificar;
+    public static LIB.FSButtonMD btnRegistrarModificar;
+    public static LIB.FSButtonMD btnmandardatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jdgGoles;
+    private javax.swing.JDialog jdggolestabla;
     private javax.swing.JLabel lblReMoGoles;
+    private javax.swing.JLabel lblbusqueda;
     public static javax.swing.JTable tblGoles;
+    public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
-    private LIB.FSTexFieldMD txtCodEquipo;
-    private LIB.FSTexFieldMD txtCodJugador;
-    private LIB.FSTexFieldMD txtCodPartido;
-    private LIB.FSTexFieldMD txtMinuto;
-    private LIB.FSTexFieldMD txtcodGol;
-    private LIB.FSTexFieldMD txtdescripcion;
+    public static LIB.FSTexFieldMD txtCodEquipo;
+    public static LIB.FSTexFieldMD txtCodJugador;
+    public static LIB.FSTexFieldMD txtCodPartido;
+    public static LIB.FSTexFieldMD txtMinuto;
+    public static LIB.FSTexFieldMD txtbuscarcod;
+    public static LIB.FSTexFieldMD txtcodGol;
+    public static LIB.FSTexFieldMD txtdescripcion;
     // End of variables declaration//GEN-END:variables
 }
