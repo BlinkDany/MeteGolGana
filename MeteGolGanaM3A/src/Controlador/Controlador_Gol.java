@@ -310,7 +310,7 @@ public class Controlador_Gol {
 //-------------------------------------------------------CARGAR PARTIDOS EN LA TABLA--------------------------------------------------------------------------------------------
     private void cargaPartidos() {
         DefaultTableModel mJtable;
-        mJtable = (DefaultTableModel) vistagol.getTblPartidos().getModel();
+        mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
         listaP.stream().forEach(p -> {
@@ -323,7 +323,7 @@ public class Controlador_Gol {
 
     private void cargaequipos() {
         DefaultTableModel mJtable;
-        mJtable = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+        mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
@@ -338,9 +338,9 @@ public class Controlador_Gol {
         DefaultTableModel mJtable;
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
-        List<Clase_Jugador> listaC = modeloTem.ListaTemporada();
+        List<Clase_Jugador> listaC = modeloJug.ListaJugador();
         listaC.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCodigoPk()), String.valueOf(p.getCodCampeonatoFk())};
+            String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1())};
             mJtable.addRow(rowData);
         }
         );
