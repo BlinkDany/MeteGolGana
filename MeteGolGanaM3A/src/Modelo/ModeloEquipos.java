@@ -37,7 +37,7 @@ public class ModeloEquipos extends Clase_Equipo{
 
             }
             rs.close();//CIERRO CONEXION
-            return listarEquipos();
+            return listaEquipos;
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Partido.class.getName()).log(Level.SEVERE, null, ex);
             return null;
