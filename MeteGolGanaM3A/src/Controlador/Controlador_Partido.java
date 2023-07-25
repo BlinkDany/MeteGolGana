@@ -324,7 +324,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
         listaP.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_estadio()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getFecha()), p.getGrupo(), p.getEstado(), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2())};
+            Object[] rowData = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
             mJtable.addRow(rowData);
         }
         );
@@ -337,7 +337,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi()), p.getCiudad()};
+            Object[] rowData = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
             mJtable.addRow(rowData);
         }
         );
@@ -350,7 +350,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Temporada> listaC = modeloTem.ListaTemporada();
         listaC.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCodigoPk()), String.valueOf(p.getFechaIni()), String.valueOf(p.getFechaFin())};
+            Object[] rowData = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin()};
             mJtable.addRow(rowData);
         }
         );
@@ -363,7 +363,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Estadio> listaE = modeloEst.ListaEstadios();
         listaE.stream().forEach(p -> {
-         String[] rowData = {String.valueOf(p.getCodigo()), String.valueOf(p.getNombre()), String.valueOf(p.getUbicacion())};
+            Object[] rowData = {p.getCodigo(), p.getNombre(), p.getUbicacion()};
             mJtable.addRow(rowData);
         }
         );
@@ -509,7 +509,7 @@ public class Controlador_Partido {
             List<Clase_Partido> par = modeloPar.BuscarPartidos(vistapar.txtBuscar.getText());
             par.stream().forEach(p -> {
 
-                Object datos[] = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_estadio()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getFecha()), p.getGrupo(), p.getEstado(), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2())};
+                Object datos[] = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(),p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
                 tabla.addRow(datos);
             });
         }
