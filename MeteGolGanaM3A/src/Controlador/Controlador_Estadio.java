@@ -129,17 +129,17 @@ public class Controlador_Estadio {
         visEstadio.getDialogRegistrarModificar().setVisible(true);
 
         if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
-            visEstadio.getLblReMoJugadores().setText("REGISTRO DE PARTIDOS");
-            visEstadio.getBtnRegistrarModificar().setText("REGISTRO DE PARTIDOS");
+            visEstadio.getLblReMoJugadores().setText("REGISTRO DE ESTADIOS");
+            visEstadio.getBtnRegistrarModificar().setText("REGISTRO DE ESTADIOS");
 
         } else if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
-            visEstadio.getLblReMoJugadores().setText("MODIFICAR PARTIDOS");
+            visEstadio.getLblReMoJugadores().setText("MODIFICAR ESTADIOS");
             LlenarDatos();
-            visEstadio.getBtnRegistrarModificar().setText("MODIFICAR PARTIDOS");
+            visEstadio.getBtnRegistrarModificar().setText("MODIFICAR ESTADIOS");
 
         } else if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
-            visEstadio.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
+            visEstadio.getBtnRegistrarModificar().setText("ELIMINAR ESTADIOS");
 
         }
     }
