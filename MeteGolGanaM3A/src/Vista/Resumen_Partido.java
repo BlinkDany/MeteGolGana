@@ -1102,7 +1102,11 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
