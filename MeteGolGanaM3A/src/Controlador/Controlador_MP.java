@@ -24,6 +24,7 @@ import Vista.VistaCampeonato;
 import Vista.VistaJugadores;
 import Vista.VistaTemporada;
 import Vista.VistaEquipos;
+import Vista.VistaEstadios;
 import Vista.VistaGol;
 import Vista.VistaPartido;
 import Vista.Vista_Arbitro;
@@ -53,9 +54,20 @@ public class Controlador_MP {
         vistaPrincipal.getBtnArbitros().addActionListener(l -> MenuArbitros());
         vistaPrincipal.getBtnPatidos().addActionListener(l -> MenuPartidos());
         vistaPrincipal.getBtnResumen().addActionListener(l -> MenuResumen());
+        vistaPrincipal.getBtnEstadios().addActionListener(l -> MenuEstadios());
 
     }
 
+      private void MenuEstadios() {
+
+        Modelo.Modelo_Estadio moEst = new Modelo.Modelo_Estadio();
+        Vista.VistaEstadios visEst = new VistaEstadios();
+        vistaPrincipal.getDesctopPrincipal().add(visEst);
+        Controlador_Estadio controlEst = new Controlador_Estadio(moEst, visEst);
+        controlEst.InicarControlador();
+
+    }
+    
     private void menuCampeonato() {
 
         Modelo.Modelo_Campeonato model = new Modelo_Campeonato();

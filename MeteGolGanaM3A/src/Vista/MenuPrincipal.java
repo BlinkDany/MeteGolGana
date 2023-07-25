@@ -30,6 +30,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnEstadios() {
+        return btnEstadios;
+    }
+
+    public void setBtnEstadios(JButton btnEstadios) {
+        this.btnEstadios = btnEstadios;
+    }
+    
+    
+
     public JButton getBtnCampeonato() {
         return btnCampeonato;
     }
@@ -249,6 +259,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JToolBar.Separator();
         BtnPatidos = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
+        btnEstadios = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
         btnResumen = new javax.swing.JButton();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -339,6 +351,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         toolBar.add(BtnPatidos);
         toolBar.add(jSeparator7);
+
+        btnEstadios.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnEstadios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/estadio.png"))); // NOI18N
+        btnEstadios.setText("Estadios");
+        btnEstadios.setFocusable(false);
+        btnEstadios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEstadios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnEstadios);
+        toolBar.add(jSeparator8);
 
         btnResumen.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/analisis.png"))); // NOI18N
@@ -449,6 +470,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BtnGoles;
     private javax.swing.JButton BtnPatidos;
     private javax.swing.JButton btnCampeonato;
+    private javax.swing.JButton btnEstadios;
     private javax.swing.JButton btnJugadores;
     private javax.swing.JMenu btnReporteFac;
     private javax.swing.JButton btnResumen;
@@ -467,6 +489,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;
