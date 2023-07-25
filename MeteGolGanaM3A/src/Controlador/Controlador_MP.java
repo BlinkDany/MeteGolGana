@@ -12,6 +12,7 @@ import Modelo.ModeloEquipos;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Campeonato;
+import Modelo.Modelo_Estadio;
 import Modelo.Modelo_Gol;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
@@ -58,7 +59,7 @@ public class Controlador_MP {
 
     }
 
-      private void MenuEstadios() {
+    private void MenuEstadios() {
 
         Modelo.Modelo_Estadio moEst = new Modelo.Modelo_Estadio();
         Vista.VistaEstadios visEst = new VistaEstadios();
@@ -67,7 +68,7 @@ public class Controlador_MP {
         controlEst.InicarControlador();
 
     }
-    
+
     private void menuCampeonato() {
 
         Modelo.Modelo_Campeonato model = new Modelo_Campeonato();
@@ -128,14 +129,15 @@ public class Controlador_MP {
         Vista.VistaPartido visPar = new VistaPartido();
         Modelo.Modelo_Temporada moTem = new Modelo_Temporada();
         Modelo.ModeloEquipos moEq = new ModeloEquipos();
+        Modelo.Modelo_Estadio moEst = new Modelo_Estadio();
         vistaPrincipal.getDesctopPrincipal().add(visPar);
-        Controlador.Controlador_Partido controlPar = new Controlador_Partido(moPar, moTem, moEq, visPar);
+        Controlador.Controlador_Partido controlPar = new Controlador_Partido(moPar, moTem, moEq, moEst, visPar);
         controlPar.iniciaControl();
 
     }
-    
-    private void MenuResumen(){
-        
+
+    private void MenuResumen() {
+
         ModeloEquipos moe = new ModeloEquipos();
         Modelo.Modelo_Resumen_Partido mor = new Modelo_Resumen_Partido();
         Modelo_Partido mop = new Modelo_Partido();
@@ -145,18 +147,18 @@ public class Controlador_MP {
         ctr.IniciarControlador();
     }
 
-    private void MenuGoles(){     
+    private void MenuGoles() {
         Modelo.Modelo_Gol moGol = new Modelo_Gol();
         Modelo.Modelo_Partido moPart = new Modelo_Partido();
         Modelo.Modelo_Jugador moJug = new Modelo_Jugador();
         Modelo.ModeloEquipos moequ = new ModeloEquipos();
         Vista.VistaGol visequi = new VistaGol();
         vistaPrincipal.getDesctopPrincipal().add(visequi);
-        Controlador_Gol controlEqui = new Controlador_Gol(moPart,  moJug,moequ, visequi,moGol);
-        controlEqui.iniciaControl(); 
+        Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol);
+        controlEqui.iniciaControl();
     }
 
- /* private void menuFactura () { 
+    /* private void menuFactura () { 
         
         modelo.ModeloDetalleFactura mod = new ModeloDetalleFactura();
         modelo.ModeloFactura mf = new ModeloFactura();
