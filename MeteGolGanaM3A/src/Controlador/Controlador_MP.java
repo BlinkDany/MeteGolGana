@@ -12,6 +12,7 @@ import Modelo.ModeloEquipos;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Campeonato;
+import Modelo.Modelo_Gol;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Resumen_Partido;
@@ -48,7 +49,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnTemporada().addActionListener(l -> menuTemporada());
         vistaPrincipal.getBtnJugadores().addActionListener(l -> MenuJugadores());
         vistaPrincipal.getBtnEquipos().addActionListener(l -> MenuEquipos());
-        vistaPrincipal.getBtnGoles().addActionListener(l -> MenuJugadores());
+        vistaPrincipal.getBtnGoles().addActionListener(l -> MenuGoles());
         vistaPrincipal.getBtnArbitros().addActionListener(l -> MenuArbitros());
         vistaPrincipal.getBtnPatidos().addActionListener(l -> MenuPartidos());
         vistaPrincipal.getBtnResumen().addActionListener(l -> MenuResumen());
@@ -132,13 +133,16 @@ public class Controlador_MP {
         ctr.IniciarControlador();
     }
 
-    /*private void MenuGoles(){     
-        Modelo.Modelo moEqui = new ModeloEquipos();
-        Vista.VistaEquipos visequi = new VistaEquipos();
+    private void MenuGoles(){     
+        Modelo.Modelo_Gol moGol = new Modelo_Gol();
+        Modelo.Modelo_Partido moPart = new Modelo_Partido();
+        Modelo.Modelo_Jugador moJug = new Modelo_Jugador();
+        Modelo.ModeloEquipos moequ = new ModeloEquipos();
+        Vista.VistaGol visequi = new VistaGol();
         vistaPrincipal.getDesctopPrincipal().add(visequi);
-        Controlador_Equipo controlEqui = new Controlador_Equipo(moEqui, visequi);
+        Controlador_Gol controlEqui = new Controlador_Gol(moPart,  moJug,moequ, visequi,moGol);
         controlEqui.iniciaControl(); 
-    }*/
+    }
 
  /* private void menuFactura () { 
         
