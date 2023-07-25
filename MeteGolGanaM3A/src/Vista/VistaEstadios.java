@@ -71,14 +71,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
     public void setButtonGroup1(ButtonGroup buttonGroup1) {
         this.buttonGroup1 = buttonGroup1;
     }
-
-    public JComboBox<String> getCbxNombreEquipo() {
-        return cbxNombreEquipo;
-    }
-
-    public void setCbxNombreEquipo(JComboBox<String> cbxNombreEquipo) {
-        this.cbxNombreEquipo = cbxNombreEquipo;
-    }
+    
 
     public static JDialog getDialogRegistrarModificar() {
         return dialogRegistrarModificar;
@@ -105,11 +98,11 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
     }
 
     public JTable getTblEstadios1() {
-        return tblEstadios1;
+        return tblEquipos;
     }
 
     public void setTblEstadios1(JTable tblEstadios1) {
-        this.tblEstadios1 = tblEstadios1;
+        this.tblEquipos = tblEstadios1;
     }
 
     public FSTexFieldMD getTxtAforoEst() {
@@ -131,6 +124,23 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
     public FSTexFieldMD getTxtCodigoEst() {
         return txtCodigoEst;
     }
+
+    public static JTable getTblEquipos() {
+        return tblEquipos;
+    }
+
+    public static void setTblEquipos(JTable tblEquipos) {
+        VistaEstadios.tblEquipos = tblEquipos;
+    }
+
+    public static FSTexFieldMD getTxtCodigoEquipo() {
+        return txtCodigoEquipo;
+    }
+
+    public static void setTxtCodigoEquipo(FSTexFieldMD txtCodigoEquipo) {
+        VistaEstadios.txtCodigoEquipo = txtCodigoEquipo;
+    }
+    
 
     public void setTxtCodigoEst(FSTexFieldMD txtCodigoEst) {
         this.txtCodigoEst = txtCodigoEst;
@@ -164,21 +174,13 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         txtCodigoEst = new LIB.FSTexFieldMD();
         txtNombreEst = new LIB.FSTexFieldMD();
         txtAforoEst = new LIB.FSTexFieldMD();
-        cbxNombreEquipo = new javax.swing.JComboBox<>();
         txtUbicacionEst = new LIB.FSTexFieldMD();
         btnCancelar = new LIB.FSButtonMD();
         btnRegistrarModificar = new LIB.FSButtonMD();
-        jPanel5 = new javax.swing.JPanel();
-        lblFoto = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblEstadios1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        tblEquipos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel9 = new javax.swing.JLabel();
+        txtCodigoEquipo = new LIB.FSTexFieldMD();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -223,25 +225,22 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         txtCodigoEst.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoEst.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigoEst.setPlaceholder("Codigo");
-        jPanel3.add(txtCodigoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
+        jPanel3.add(txtCodigoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 210, -1));
 
         txtNombreEst.setForeground(new java.awt.Color(0, 0, 0));
         txtNombreEst.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtNombreEst.setPlaceholder("Nombre Estadio");
-        jPanel3.add(txtNombreEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, -1));
+        jPanel3.add(txtNombreEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 210, -1));
 
         txtAforoEst.setForeground(new java.awt.Color(0, 0, 0));
         txtAforoEst.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtAforoEst.setPlaceholder("Aforo Estadio");
-        jPanel3.add(txtAforoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, -1));
-
-        cbxNombreEquipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Posicion", "Portero", "Defensa Central", "Defensa Lateral", "Centro Campista Defensivo", "Centro Campista Ofensivo", "Delantero Lateral", "Centrodelantero" }));
-        jPanel3.add(cbxNombreEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 200, 32));
+        jPanel3.add(txtAforoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 210, -1));
 
         txtUbicacionEst.setForeground(new java.awt.Color(0, 0, 0));
         txtUbicacionEst.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtUbicacionEst.setPlaceholder("Ubicacion Estadio");
-        jPanel3.add(txtUbicacionEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
+        jPanel3.add(txtUbicacionEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 210, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -255,72 +254,36 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         btnRegistrarModificar.setColorTextHover(new java.awt.Color(255, 255, 255));
         jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 140, 130));
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar foto");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 140, -1));
-
-        tblEstadios1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        tblEstadios1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        tblEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Aforo", "Ubicacion", "Nombre Equipo"
+                "Codigo", "Nombre Equipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tblEstadios1);
+        jScrollPane3.setViewportView(tblEquipos);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 530, 170));
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Nombre de Equipo dueño de Estadio");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Foto Estadio");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 530, 290));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Tabla de Estadio:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+        jLabel8.setText("Tabla de Equipos:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
-        jRadioButton1.setText("Falso");
-        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
-
-        jRadioButton2.setText("Verdadero");
-        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Eliminacion de Estadio:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        txtCodigoEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigoEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodigoEquipo.setPlaceholder("Codigo Equipo");
+        jPanel3.add(txtCodigoEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 210, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -501,37 +464,29 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
-    private LIB.FSButtonMD btnCancelar;
+    public static LIB.FSButtonMD btnCancelar;
     public static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
-    private LIB.FSButtonMD btnRegistrarModificar;
+    public static LIB.FSButtonMD btnRegistrarModificar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbxNombreEquipo;
     public static javax.swing.JDialog dialogRegistrarModificar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReMoJugadores;
+    public static javax.swing.JTable tblEquipos;
     public static javax.swing.JTable tblEstadios;
-    private javax.swing.JTable tblEstadios1;
-    private LIB.FSTexFieldMD txtAforoEst;
+    public static LIB.FSTexFieldMD txtAforoEst;
     public static LIB.FSTexFieldMD txtBuscar;
-    private LIB.FSTexFieldMD txtCodigoEst;
-    private LIB.FSTexFieldMD txtNombreEst;
-    private LIB.FSTexFieldMD txtUbicacionEst;
+    public static LIB.FSTexFieldMD txtCodigoEquipo;
+    public static LIB.FSTexFieldMD txtCodigoEst;
+    public static LIB.FSTexFieldMD txtNombreEst;
+    public static LIB.FSTexFieldMD txtUbicacionEst;
     // End of variables declaration//GEN-END:variables
 }
