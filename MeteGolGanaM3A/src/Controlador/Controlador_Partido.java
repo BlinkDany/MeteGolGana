@@ -28,12 +28,14 @@ public class Controlador_Partido {
     private Modelo_Partido modeloPar;
     private Modelo_Temporada modeloTem;
     private ModeloEquipos modeloEqu;
+    private Modelo_Estadio modeloEst;
     private VistaPartido vistapar;
 
-    public Controlador_Partido(Modelo_Partido modeloPar, Modelo_Temporada modeloTem, ModeloEquipos modeloEqu, VistaPartido vistapar) {
+    public Controlador_Partido(Modelo_Partido modeloPar, Modelo_Temporada modeloTem, ModeloEquipos modeloEqu, Modelo_Estadio modeloEst, VistaPartido vistapar) {
         this.modeloPar = modeloPar;
         this.modeloTem = modeloTem;
         this.modeloEqu = modeloEqu;
+        this.modeloEst = modeloEst;
         this.vistapar = vistapar;
         vistapar.setVisible(true);
         vistapar.getTxtCodPartido().setEnabled(false);
@@ -127,6 +129,7 @@ public class Controlador_Partido {
             cargaequipos();
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
             vistapar.getLblbusqueda().setText("ESTADIOS");
+            cargaestadios();
 
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("TEMPORADA")) {
             vistapar.getLblbusqueda().setText("TEMPORADA");
@@ -356,11 +359,11 @@ public class Controlador_Partido {
 
     private void cargaestadios() {
         DefaultTableModel mJtable;
-        mJtable = (DefaultTableModel) vistapar.getTblPartidos().getModel();
+        mJtable = (DefaultTableModel) vistapar.getTblbuscar().getModel();
         mJtable.setNumRows(0);
-        List<Clase_Partido> listaP = modeloPar.listarPartidos();
-        listaP.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2()), String.valueOf(p.getCod_estadio())};
+        List<Clase_Estadio> listaE = modeloEst.ListaEstadios();
+        listaE.stream().forEach(p -> {
+         String[] rowData = {String.valueOf(p.getCodigo()), String.valueOf(p.getNombre()), String.valueOf(p.getUbicacion())};
             mJtable.addRow(rowData);
         }
         );
@@ -446,22 +449,22 @@ public class Controlador_Partido {
             vistapar.getTblbuscar().setModel(modeloTabla);
 //-------------------------------------------------------BUSCAR ESTADIOS--------------------------------------------------------------------------------------------
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
-            List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
+            List<Clase_Estadio> listaestadios = modeloEst.ListaEstadios();
             String idBuscado = vistapar.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
             modeloTabla.addColumn("Codigo Estadio");
             modeloTabla.addColumn("Nombre Estadio");
-            modeloTabla.addColumn("nose Estadio");
+            modeloTabla.addColumn("Ubicacion Estadio");
 
-            for (Clase_Equipo e : listaequipos) {
+            for (Clase_Estadio e : listaestadios) {
 
-                if (String.valueOf(e.getCod_equipo()).equals(idBuscado)) {
+                if (String.valueOf(e.getCodigo()).equals(idBuscado)) {
 
                     Object[] fila = {
-                        e.getCod_equipo(),
-                        e.getNombre_equi(),
-                        e.getCiudad()};
+                        e.getCodigo(),
+                        e.getNombre(),
+                        e.getUbicacion()};
                     modeloTabla.addRow(fila);
                 }
 
