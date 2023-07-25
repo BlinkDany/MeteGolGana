@@ -214,7 +214,7 @@ public class Controlador_Resumen_Partido {
                     MensajeError("Seleccione un equipo");
                 } else {
 
-                    ccodEquipo2 = visRes.getTblEquipos2().getValueAt(visRes.getTblEquipos().getSelectedRow(), 0).hashCode();
+                    ccodEquipo2 = visRes.getTblEquipos2().getValueAt(visRes.getTblEquipos2().getSelectedRow(), 0).hashCode();
 
                     modRes.setCodigo_equipofk(ccodEquipo2);
                     modRes.setCodigo_partidofk(Integer.valueOf(visRes.getLblPartido().getText()));
@@ -246,7 +246,7 @@ public class Controlador_Resumen_Partido {
         DefaultTableModel tabla = (DefaultTableModel) visRes.getTblResuemn().getModel();
         tabla.setNumRows(0);
 
-        List<Clase_Resumen_Partido> res = modRes.ListaResumen();
+        List<Clase_Resumen_Partido> res = modRes.Mostrar();
         res.stream().forEach(p -> {
 
             Object datos[] = {p.getCodigo(), p.getCodigo_partidofk(), p.getCodigo_equipofk()};
