@@ -34,20 +34,21 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
 
         try {
             String sql = "select codigo_equipofk from resumen_partido\n"
-                    + "where codigo_partidofk = 1";
+                    + "where codigo_partidofk = " + getCodigo_partidofk() +"";
             ResultSet res = con.Consultas(sql);
             List<Integer> listaod = new ArrayList<>();
 
             while (res.next()) {
                 int cod;
 
-                cod = res.getInt("codigo_partidofk");
+                cod = res.getInt("codigo_equipofk");
                 listaod.add(cod);
             }
 
             return listaod;
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
             return null;
         }
     }

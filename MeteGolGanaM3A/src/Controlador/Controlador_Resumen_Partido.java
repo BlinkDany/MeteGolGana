@@ -45,6 +45,11 @@ public class Controlador_Resumen_Partido {
         MostrarDatos();
         MostrarEquipos();
         MostrarPartidos();
+        visRes.getBtnAgregar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Registrar"));
+        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo1());
+        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo2());
+        visRes.getBtnModificar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Visualizar"));
+        
         visRes.getLblEquipo4().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -87,9 +92,6 @@ public class Controlador_Resumen_Partido {
                 visRes.getDlgPartido().dispose();
             }
         });
-        visRes.getBtnAgregar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Registrar"));
-        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo1());
-        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo2());
 
     }
 
@@ -137,7 +139,7 @@ public class Controlador_Resumen_Partido {
 
         if (visRes.getDlgRegistrarConsultar().getTitle().equals("Registrar")) {
 
-        } else {
+        } else if (visRes.getDlgRegistrarConsultar().getTitle().equals("Visualizar")) {
 
             LlenarDatos();
         }
@@ -291,6 +293,7 @@ public class Controlador_Resumen_Partido {
         if (!(visRes.getTblResuemn().getSelectedRow() == -1)) {
 
             int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 1).hashCode();
+            modRes.setCodigo_partidofk(codpar);
 
             List<Clase_Resumen_Partido> res = modRes.ListaResumen();
             List<Integer> liscodigo = modRes.extarerResumen();
