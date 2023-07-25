@@ -35,6 +35,22 @@ public class Resumen_Partido extends javax.swing.JFrame {
         Resumen_Partido.btnAgregar = btnAgregar;
     }
 
+    public static JTable getTblEquipos() {
+        return tblEquipos;
+    }
+
+    public static void setTblEquipos(JTable tblEquipos) {
+        Resumen_Partido.tblEquipos = tblEquipos;
+    }
+
+    public static JTable getTblEquipos2() {
+        return tblEquipos2;
+    }
+
+    public static void setTblEquipos2(JTable tblEquipos2) {
+        Resumen_Partido.tblEquipos2 = tblEquipos2;
+    }
+
     public static JButton getBtnEliminar() {
         return btnEliminar;
     }
@@ -515,22 +531,6 @@ public class Resumen_Partido extends javax.swing.JFrame {
         this.jScrollPane2 = jScrollPane2;
     }
 
-    public static JTable getTblPartidos() {
-        return tblPartidos;
-    }
-
-    public static void setTblPartidos(JTable tblPartidos) {
-        Resumen_Partido.tblPartidos = tblPartidos;
-    }
-
-    public static JTable getTblPartidos1() {
-        return tblPartidos1;
-    }
-
-    public static void setTblPartidos1(JTable tblPartidos1) {
-        Resumen_Partido.tblPartidos1 = tblPartidos1;
-    }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -540,12 +540,12 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPartidos = new javax.swing.JTable();
+        tblEquipos = new javax.swing.JTable();
         dlgEquipo2 = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblPartidos1 = new javax.swing.JTable();
+        tblEquipos2 = new javax.swing.JTable();
         dlgRegistrarConsultar = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -605,7 +605,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Selecionar Equipo");
+        jLabel16.setText("Selecionar Equipo 1");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -618,27 +618,27 @@ public class Resumen_Partido extends javax.swing.JFrame {
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
 
-        tblPartidos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
-        tblPartidos.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CodigoPartido", "Equipo1", "Equipo2", "Campeonato", "Estadio"
+                "Codigo", "Nombre", "Ciudad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblPartidos);
+        jScrollPane1.setViewportView(tblEquipos);
 
         javax.swing.GroupLayout dlgEquipo1Layout = new javax.swing.GroupLayout(dlgEquipo1.getContentPane());
         dlgEquipo1.getContentPane().setLayout(dlgEquipo1Layout);
@@ -664,7 +664,7 @@ public class Resumen_Partido extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Selecionar Equipo");
+        jLabel17.setText("Selecionar Equipo 2");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -677,27 +677,27 @@ public class Resumen_Partido extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
 
-        tblPartidos1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
-        tblPartidos1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipos2.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblEquipos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CodigoPartido", "Equipo1", "Equipo2", "Campeonato", "Estadio"
+                "Codigo", "Nombre", "Ciudad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblPartidos1);
+        jScrollPane2.setViewportView(tblEquipos2);
 
         javax.swing.GroupLayout dlgEquipo2Layout = new javax.swing.GroupLayout(dlgEquipo2.getContentPane());
         dlgEquipo2.getContentPane().setLayout(dlgEquipo2Layout);
@@ -1077,15 +1077,23 @@ public class Resumen_Partido extends javax.swing.JFrame {
 
         tblResuemn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Partido", "Equipo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblResuemn);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -1220,8 +1228,8 @@ public class Resumen_Partido extends javax.swing.JFrame {
     private javax.swing.JLabel lblGoles;
     private javax.swing.JLabel lblGoles1;
     private javax.swing.JLabel lblPartido;
-    public static javax.swing.JTable tblPartidos;
-    public static javax.swing.JTable tblPartidos1;
+    public static javax.swing.JTable tblEquipos;
+    public static javax.swing.JTable tblEquipos2;
     private javax.swing.JTable tblResuemn;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtFaltas;
