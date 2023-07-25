@@ -35,6 +35,30 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         Resumen_Partido.btnAgregar = btnAgregar;
     }
 
+    public JDialog getDlgPartido() {
+        return dlgPartido;
+    }
+
+    public void setDlgPartido(JDialog dlgPartido) {
+        this.dlgPartido = dlgPartido;
+    }
+
+    public JTable getTblPartido() {
+        return tblPartido;
+    }
+
+    public void setTblPartido(JTable tblPartido) {
+        this.tblPartido = tblPartido;
+    }
+
+    public JLabel getLblEquipo4() {
+        return lblEquipo4;
+    }
+
+    public void setLblEquipo4(JLabel lblEquipo4) {
+        this.lblEquipo4 = lblEquipo4;
+    }
+
     public static JTable getTblEquipos() {
         return tblEquipos;
     }
@@ -562,7 +586,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         lblGoles1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        lblEquipo1 = new javax.swing.JLabel();
+        lblEquipo4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         txtFaltas = new LIB.FSTexFieldMD();
         txtTarjetasAmarillas = new LIB.FSTexFieldMD();
@@ -589,6 +613,11 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         btnCancelar = new LIB.FSButtonMD();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        dlgPartido = new javax.swing.JDialog();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblPartido = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -777,7 +806,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblEquipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEquipo2.setText("Seleccionar equipo");
         lblEquipo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 240, -1));
+        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 220, -1));
         jPanel2.add(fSLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 13, -1, -1));
         jPanel2.add(fSLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
@@ -840,12 +869,12 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 90, 20));
 
-        lblEquipo1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 20)); // NOI18N
-        lblEquipo1.setForeground(new java.awt.Color(255, 255, 255));
-        lblEquipo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEquipo1.setText("Selecionar equipo");
-        lblEquipo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 126, 240, -1));
+        lblEquipo4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 20)); // NOI18N
+        lblEquipo4.setForeground(new java.awt.Color(255, 255, 255));
+        lblEquipo4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEquipo4.setText("Seleccionar equipo");
+        lblEquipo4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(lblEquipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 220, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1000, 220));
 
@@ -990,6 +1019,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblPartido.setForeground(new java.awt.Color(255, 255, 255));
         lblPartido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPartido.setText("Partido");
+        lblPartido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.add(lblPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 330, 42));
 
         btnRegistrar.setText("Guardar resumen");
@@ -1013,6 +1043,64 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 880));
 
         dlgRegistrarConsultar.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, -1, 820));
+
+        jPanel13.setBackground(new java.awt.Color(0, 102, 204));
+
+        jLabel18.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Selecionar Partido");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+        );
+
+        tblPartido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Fecha", "Grupo", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblPartido);
+
+        javax.swing.GroupLayout dlgPartidoLayout = new javax.swing.GroupLayout(dlgPartido.getContentPane());
+        dlgPartido.getContentPane().setLayout(dlgPartidoLayout);
+        dlgPartidoLayout.setHorizontalGroup(
+            dlgPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dlgPartidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addContainerGap())
+        );
+        dlgPartidoLayout.setVerticalGroup(
+            dlgPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgPartidoLayout.createSequentialGroup()
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1191,6 +1279,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private LIB.FSButtonMD btnRegistrar;
     private javax.swing.JDialog dlgEquipo1;
     private javax.swing.JDialog dlgEquipo2;
+    private javax.swing.JDialog dlgPartido;
     private javax.swing.JDialog dlgRegistrarConsultar;
     private LIB.FSLabel fSLabel1;
     private LIB.FSLabel fSLabel2;
@@ -1200,6 +1289,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -1211,6 +1301,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1222,14 +1313,16 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblClaseGol;
-    private javax.swing.JLabel lblEquipo1;
     private javax.swing.JLabel lblEquipo2;
+    private javax.swing.JLabel lblEquipo4;
     private javax.swing.JLabel lblGoles;
     private javax.swing.JLabel lblGoles1;
     private javax.swing.JLabel lblPartido;
     public static javax.swing.JTable tblEquipos;
     public static javax.swing.JTable tblEquipos2;
+    private javax.swing.JTable tblPartido;
     private javax.swing.JTable tblResuemn;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtFaltas;
