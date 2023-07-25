@@ -34,6 +34,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnCampeonato;
     }
 
+    public JButton getBtnResumen() {
+        return btnResumen;
+    }
+
+    public void setBtnResumen(JButton btnResumen) {
+        this.btnResumen = btnResumen;
+    }
+
     public void setBtnCampeonato(JButton btnCampeonato) {
         this.btnCampeonato = btnCampeonato;
     }

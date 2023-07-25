@@ -14,9 +14,11 @@ import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Campeonato;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
+import Modelo.Modelo_Resumen_Partido;
 import Modelo.Modelo_Temporada;
 import Vista.LogIn;
 import Vista.MenuPrincipal;
+import Vista.Resumen_Partido;
 import Vista.VistaCampeonato;
 import Vista.VistaJugadores;
 import Vista.VistaTemporada;
@@ -49,6 +51,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnGoles().addActionListener(l -> MenuJugadores());
         vistaPrincipal.getBtnArbitros().addActionListener(l -> MenuArbitros());
         vistaPrincipal.getBtnPatidos().addActionListener(l -> MenuPartidos());
+        vistaPrincipal.getBtnResumen().addActionListener(l -> MenuResumen());
 
     }
 
@@ -116,6 +119,17 @@ public class Controlador_MP {
         Controlador.Controlador_Partido controlPar = new Controlador_Partido(moPar, moTem, moEq, visPar);
         controlPar.iniciaControl();
 
+    }
+    
+    private void MenuResumen(){
+        
+        ModeloEquipos moe = new ModeloEquipos();
+        Modelo.Modelo_Resumen_Partido mor = new Modelo_Resumen_Partido();
+        Modelo_Partido mop = new Modelo_Partido();
+        Vista.Resumen_Partido vres = new Resumen_Partido();
+        Controlador_Resumen_Partido ctr = new Controlador_Resumen_Partido(mor, vres, mop, moe);
+        vistaPrincipal.getDesctopPrincipal().add(vres);
+        ctr.IniciarControlador();
     }
 
     /*private void MenuGoles(){     

@@ -18,7 +18,7 @@ import javax.swing.JTable;
  *
  * @author blink
  */
-public class Resumen_Partido extends javax.swing.JFrame {
+public class Resumen_Partido extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Resumen_Partido
