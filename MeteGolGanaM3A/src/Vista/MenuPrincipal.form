@@ -254,6 +254,22 @@
             </Component>
             <Component class="javax.swing.JToolBar$Separator" name="jSeparator7">
             </Component>
+            <Component class="javax.swing.JButton" name="btnEstadios">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Yu Gothic Medium" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imgs/estadio.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Estadios"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator8">
+            </Component>
             <Component class="javax.swing.JButton" name="btnResumen">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
