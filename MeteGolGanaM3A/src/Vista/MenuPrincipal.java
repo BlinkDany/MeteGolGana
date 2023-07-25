@@ -240,6 +240,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnArbitros = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         BtnPatidos = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
+        btnResumen = new javax.swing.JButton();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
@@ -328,6 +330,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         toolBar.add(BtnPatidos);
+        toolBar.add(jSeparator7);
+
+        btnResumen.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/analisis.png"))); // NOI18N
+        btnResumen.setText("Resumen partidos");
+        btnResumen.setFocusable(false);
+        btnResumen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnResumen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnResumen);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -432,6 +443,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCampeonato;
     private javax.swing.JButton btnJugadores;
     private javax.swing.JMenu btnReporteFac;
+    private javax.swing.JButton btnResumen;
     private javax.swing.JButton btnTemporada;
     private javax.swing.JDesktopPane desctopPrincipal;
     private javax.swing.JMenuBar jMenuBar1;
@@ -446,6 +458,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;
