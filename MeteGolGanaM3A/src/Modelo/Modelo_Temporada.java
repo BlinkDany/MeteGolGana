@@ -39,7 +39,7 @@ public class Modelo_Temporada extends Clase_Temporada {
     }
 
     
-    public boolean ModificarTemporada() {
+        public boolean ModificarTemporada() {
 
         // Construir la consulta SQL para actualizar los datos del producto
         String sql = "UPDATE public.temporada SET fecha_inicio = '" + getFechaIni()+ "', fecha_fin = '" + getFechaFin()+ "', codigo_campeonato = '"
@@ -48,6 +48,7 @@ public class Modelo_Temporada extends Clase_Temporada {
 
         return con.CRUD(sql);
     }
+
 
  
     
@@ -66,7 +67,7 @@ public class Modelo_Temporada extends Clase_Temporada {
         try {
 
             String sql = "SELECT * "
-                    + "FROM temporada "                    
+                    + "FROM temporada where estado_elim = false "                    
                     + "ORDER BY codigo";
             ResultSet res = con.Consultas(sql);
             List<Clase_Temporada> listTempo = new ArrayList<>();

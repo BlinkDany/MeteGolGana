@@ -255,7 +255,6 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        txtCodigoCampeonatoFK.setEditable(false);
         txtCodigoCampeonatoFK.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoCampeonatoFK.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigoCampeonatoFK.setPlaceholder("Código del campeonato");
@@ -310,7 +309,10 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximizable(true);
+        setResizable(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
