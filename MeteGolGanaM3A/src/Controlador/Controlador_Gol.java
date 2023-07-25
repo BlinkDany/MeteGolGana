@@ -41,10 +41,10 @@ public class Controlador_Gol {
         vistagol.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
-        vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
-        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
-        vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
-        vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
+        vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
+        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogo("JUGADOR"));
+        vistagol.getBtnJugador().addActionListener(l -> abrirDialogo("PARTIDO"));
+        vistagol.getBtnPartido().addActionListener(l -> abrirDialogo("EQUIPO"));
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -52,7 +52,7 @@ public class Controlador_Gol {
             }
         });
         vistagol.getBtnCancelar().addActionListener(e -> {
-            //vistagol.getTblbuscar().clearSelection();
+            vistagol.getTblbuscar().clearSelection();
         });
         vistagol.getBtnCancelar().addActionListener(e -> {
             vistagol.getTblGoles().clearSelection();
@@ -193,50 +193,36 @@ public class Controlador_Gol {
     //--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
     //-------------------------------------------------------AGREGAR--------------------------------------------------------------------------------------------
 
-    private void crearEditarPartido() {
+    private void crearEditarGoles() {
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
 
             Modelo_Gol model = new Modelo_Gol();
 
-            if (vistagol.getTxtCodPartido().equals("") || vistagol.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+            if (vistagol.getTxtcodGol().equals("") || vistagol.getTxtdescripcion().equals("") || vistagol.getTxtMinuto().equals("") || vistagol.getTxtCodJugador().equals("") || vistagol.getTxtCodPartido().equals("") || vistagol.getTxtCodEquipo().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
-                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
-                String grupo = vistagol.getTxtgrupo().getText();
-                vistagol.getDtfecha().getDate();
-                boolean estado = false;
+                int codigogol = Integer.valueOf(vistagol.getTxtcodGol().getText());
+                String descrip = vistagol.getTxtdescripcion().getText();
+                String minut = vistagol.getTxtMinuto().getText();
+                int codjugador = Integer.valueOf(vistagol.getTxtCodJugador().getText());
+                int codpartido = Integer.valueOf(vistagol.getTxtCodPartido().getText());
+                int codequipo = Integer.valueOf(vistagol.getTxtCodEquipo().getText());
 
-                model.setCod_partido(codigopartido);
-                model.setCod_temporadafk(codtemporada);
-                model.setCod_equipo1(equipo1);
-                model.setCod_equipo2(equipo2);
-                model.setCod_estadio(estadio);
-                model.setGrupo(grupo);
-                model.setFecha(vistapar.getDtfecha().getDate());
-
-                if (vistagol.getCmestado().getSelectedItem().equals("Finalizado")) {
-                    model.setEstado("Finalizado");
-                } else if (vistagol.getCmestado().getSelectedItem().equals("Activo")) {
-                    model.setEstado("Activo");
-                } else if (vistagol.getCmestado().getSelectedItem().equals("Suspendido")) {
-                    model.setEstado("Suspendido");
-                } else if (vistagol.getCmestado().getSelectedItem().equals("En Espera")) {
-                    model.setEstado("En Espera");
-                }
-                model.setEstado_elim(estado);
+                model.setCod_gol(codigogol);
+                model.setDescripcion(descrip);
+                model.setMinuto(minut);
+                model.setCod_partido(codpartido);
+                model.setCod_jugador(codjugador);
+                model.setCod_equipo(codequipo);
                 if (model.InsertarGol()) {
                     limpiar();
                     JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
                     vistagol.getJdgGoles().setVisible(false);
                     cargaPartidos();
                 } else {
-                    JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                    JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");
                 }
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
@@ -245,38 +231,24 @@ public class Controlador_Gol {
 
             Modelo_Gol model = new Modelo_Gol();
 
-            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+            if (vistagol.getTxtcodGol().equals("") || vistagol.getTxtdescripcion().equals("") || vistagol.getTxtMinuto().equals("") || vistagol.getTxtCodJugador().equals("") || vistagol.getTxtCodPartido().equals("") || vistagol.getTxtCodEquipo().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
-                int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
-                String grupo = vistapar.getTxtgrupo().getText();
-                vistapar.getDtfecha().getDate();
-                boolean estado = false;
+                int codigogol = Integer.valueOf(vistagol.getTxtcodGol().getText());
+                String descrip = vistagol.getTxtdescripcion().getText();
+                String minut = vistagol.getTxtMinuto().getText();
+                int codjugador = Integer.valueOf(vistagol.getTxtCodJugador().getText());
+                int codpartido = Integer.valueOf(vistagol.getTxtCodPartido().getText());
+                int codequipo = Integer.valueOf(vistagol.getTxtCodEquipo().getText());
 
-                model.setCod_partido(codigopartido);
-                model.setCod_temporadafk(codtemporada);
-                model.setCod_equipo1(equipo1);
-                model.setCod_equipo2(equipo2);
-                model.setCod_estadio(estadio);
-                model.setGrupo(grupo);
-                model.setFecha(vistapar.getDtfecha().getDate());
-
-                if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
-                    model.setEstado("Finalizado");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
-                    model.setEstado("Activo");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
-                    model.setEstado("Suspendido");
-                } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
-                    model.setEstado("En Espera");
-                }
-                model.setEstado_elim(estado);
+                model.setCod_gol(codigogol);
+                model.setDescripcion(descrip);
+                model.setMinuto(minut);
+                model.setCod_partido(codpartido);
+                model.setCod_jugador(codjugador);
+                model.setCod_equipo(codequipo);
                 if (model.ModificarGol()) {
                     limpiar();
                     JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
