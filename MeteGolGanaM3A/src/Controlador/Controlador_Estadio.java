@@ -4,10 +4,13 @@
  */
 package Controlador;
 
+import LIB.FSTexFieldMD;
 import Modelo.Clase_Arbitro;
+import Modelo.Clase_Equipo;
 import Modelo.Clase_Estadio;
 import Modelo.Clase_Partido;
 import Modelo.Clase_Persona;
+import Modelo.ModeloEquipos;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Estadio;
 import Modelo.Modelo_Persona;
@@ -19,6 +22,8 @@ import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -58,7 +63,6 @@ public class Controlador_Estadio {
         visEstadio.setTitle("Estadios");
         MostrarDatos();
         visEstadio.btnAgregar.addActionListener(l -> abrirDialogo("Crear"));
-        visEstadio.btnModificar.addActionListener(l -> abrirDialogo("Editar"));
         visEstadio.btnModificar.addActionListener(l -> {
             if (visEstadio.tblEstadios.getSelectedRow() == -1) {
 
@@ -66,23 +70,31 @@ public class Controlador_Estadio {
 
             } else {
 
-//                IniciarDialogPersona("Editar");
+                abrirDialogo("Editar");
 
             }
         });
-//        visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
-//        Vista_Arbitro.btnRegistrarModificar.addActionListener(l -> RegistrarEditarArbitro());
-//        visPer.btnFoto.addActionListener(l -> Foto());
-//        Vista_Arbitro.btnEliminar.addActionListener(l -> EliminarArbitro());
+        visEstadio.tblEquipos.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int cod = (int) visEstadio.tblEquipos.getValueAt(visEstadio.tblEquipos.getSelectedRow(), 0);
+                visEstadio.txtCodigoEquipo.setText(String.valueOf(cod));
+            }
+
+        });
+        visEstadio.btnRegistrarModificar.addActionListener(l -> RegistrarEditarEstadio());
+        visEstadio.btnEliminar.addActionListener(l -> EliminarEstadio());
         visEstadio.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 //char tecla = e.getKeyChar();
-                if(!Character.isDigit( e.getKeyChar())){
+                if (!Character.isDigit(e.getKeyChar())) {
                     e.consume();
-                    
-                 }
+
+                }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 //char tecla = e.getKeyChar();
@@ -104,8 +116,8 @@ public class Controlador_Estadio {
     }
 
     public void BuscarEstadios() {
-        
-        if(visEstadio.txtBuscar.getText().isEmpty()){
+
+        if (visEstadio.txtBuscar.getText().isEmpty()) {
             MostrarDatos();
             return;
         }
@@ -114,14 +126,16 @@ public class Controlador_Estadio {
         tabla.setNumRows(0);
 
         List<Clase_Estadio> est = modEstadio.BuscarEstadio(visEstadio.txtBuscar.getText());
-         est.stream().forEach(p -> {
+        est.stream().forEach(p -> {
 
             Object datos[] = {p.getCodigo(), p.getNombre(), p.getAforo(), p.getUbicacion(), p.getNombreEquipo()};
             tabla.addRow(datos);
         });
     }
-    
+
     private void abrirDialogo(String ce) {
+        
+        limpiarDatos();
 
         visEstadio.getDialogRegistrarModificar().setLocationRelativeTo(null);
         visEstadio.getDialogRegistrarModificar().setSize(900, 900);
@@ -131,11 +145,13 @@ public class Controlador_Estadio {
         if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
             visEstadio.getLblReMoJugadores().setText("REGISTRO DE ESTADIOS");
             visEstadio.getBtnRegistrarModificar().setText("REGISTRO DE ESTADIOS");
+            LlenarTablaEquipos();
 
         } else if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
             visEstadio.getLblReMoJugadores().setText("MODIFICAR ESTADIOS");
             LlenarDatos();
             visEstadio.getBtnRegistrarModificar().setText("MODIFICAR ESTADIOS");
+            LlenarTablaEquipos();
 
         } else if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
@@ -144,6 +160,104 @@ public class Controlador_Estadio {
         }
     }
     
+    public void limpiarDatos(){
+        visEstadio.txtAforoEst.setText("");
+        visEstadio.txtCodigoEquipo.setText("");
+        visEstadio.txtCodigoEst.setText("");
+        visEstadio.txtNombreEst.setText("");
+        visEstadio.txtUbicacionEst.setText("");
+        visEstadio.txtCodigoEst.setEnabled(true);
+    }
+    
+    public void EliminarEstadio() {
+
+        if (visEstadio.tblEstadios.getSelectedRow() == -1) {
+
+            MensajeError("Seleccione el Estadio que desea eliminar");
+        } else {
+
+            int x = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar esta informacion?", "Advertencia", JOptionPane.YES_NO_OPTION);
+
+            if (x == 0) {
+
+                modEstadio.setCodigo((int) visEstadio.tblEstadios.getValueAt(visEstadio.tblEstadios.getSelectedRow(), 0));
+
+                if (modEstadio.OcultarEstadio()) {
+
+                    MensajeSucces("Se ha eliminado con exito");
+                    MostrarDatos();
+                } else {
+
+                    MensajeError("No se ha podido eliminar debido a un error en la base de datos");
+                    MostrarDatos();
+                }
+            }
+        }
+    }
+
+    public boolean validarNumeros(String txt, String nombreComponente){
+        try {
+            Integer.parseInt(txt);
+            return true;
+        } catch (Exception e) {
+            MensajeError("Debe Ingresar solo Numeros en "+nombreComponente);
+            return false;
+        }
+    }
+    
+    public void RegistrarEditarEstadio() {
+        
+        if(!validarNumeros(visEstadio.txtAforoEst.getText(),"aforo")||!validarNumeros(visEstadio.txtCodigoEquipo.getText(),"codigo de equipo")){
+            return;
+        }
+
+        if (visEstadio.getDialogRegistrarModificar().getTitle().equals("Crear")) {
+            if (visEstadio.txtAforoEst.getText().isEmpty() || visEstadio.txtCodigoEquipo.getText().isEmpty() || visEstadio.txtCodigoEst.getText().isEmpty()
+                    || visEstadio.txtNombreEst.getText().isEmpty() || visEstadio.txtUbicacionEst.getText().isEmpty()) {
+
+                MensajeError("Faltan campos por llenar");
+
+            } else {
+
+                modEstadio.setAforo(Integer.parseInt(visEstadio.txtAforoEst.getText()));
+                modEstadio.setCod_equipofk(Integer.parseInt(visEstadio.txtCodigoEquipo.getText()));
+                modEstadio.setCodigo(Integer.parseInt(visEstadio.txtCodigoEst.getText()));
+                modEstadio.setNombre(visEstadio.txtNombreEst.getText());
+                modEstadio.setUbicacion(visEstadio.txtUbicacionEst.getText());
+                modEstadio.setEstado_elim(false);
+
+                if (modEstadio.InsertarEstadio()) {
+
+                    MensajeSucces("Se ha Registrado Correctamente");
+                    visEstadio.getDialogRegistrarModificar().dispose();
+                    MostrarDatos();
+                } else {
+
+                    MensajeError("Ha ocurrido un error al registrar en la base");
+                }
+            }
+        } else if (visEstadio.getDialogRegistrarModificar().getTitle().equals("Editar")) {
+
+            modEstadio.setAforo(Integer.parseInt(visEstadio.txtAforoEst.getText()));
+            modEstadio.setCod_equipofk(Integer.parseInt(visEstadio.txtCodigoEquipo.getText()));
+            modEstadio.setCodigo(Integer.parseInt(visEstadio.txtCodigoEst.getText()));
+            modEstadio.setNombre(visEstadio.txtNombreEst.getText());
+            modEstadio.setUbicacion(visEstadio.txtUbicacionEst.getText());
+            modEstadio.setEstado_elim(false);
+
+            if (modEstadio.ModificarEstadio()) {
+
+                MensajeSucces("Se ha Registrado Correctamente");
+                visEstadio.getDialogRegistrarModificar().dispose();
+                MostrarDatos();
+            } else {
+
+                MensajeError("Ha ocurrido un error al actualizar en la base");
+                MostrarDatos();
+            }
+        }
+    }
+
     public void LlenarDatos() {
         List<Clase_Estadio> Listpar = modEstadio.ListaEstadios();
         int selectedRow = visEstadio.getTblEstadios().getSelectedRow();
@@ -163,11 +277,25 @@ public class Controlador_Estadio {
                 visEstadio.getTxtNombreEst().setText(String.valueOf(p.getNombre()));
                 visEstadio.getTxtAforoEst().setText(String.valueOf(p.getAforo()));
                 visEstadio.getTxtUbicacionEst().setText(String.valueOf(p.getUbicacion()));
-
+                visEstadio.getTxtCodigoEquipo().setText(String.valueOf(p.getCod_equipofk()));
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");
             }
         }
+    }
+
+    public void LlenarTablaEquipos() {
+        ModeloEquipos meq = new ModeloEquipos();
+
+        List<Clase_Equipo> equi = meq.listarEquipos();
+        DefaultTableModel tabla = (DefaultTableModel) VistaEstadios.tblEquipos.getModel();
+        tabla.setNumRows(0);
+
+        equi.stream().forEach(p -> {
+
+            Object datos[] = {p.getCod_equipo(), p.getNombre_equi()};
+            tabla.addRow(datos);
+        });
     }
 
     public void MensajeSucces(String mensaje) {
