@@ -60,12 +60,12 @@ public class Controlador_Gol {
         vistagol.getBtnRegistrarModificar().addActionListener(e -> {
             vistagol.getTblGoles().clearSelection();
         });
-        //vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
+        vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
     }
      private void abrirDialogo(String ce) {
 
         vistagol.getJdgGoles().setLocationRelativeTo(null);
-        vistagol.getJdgGoles().setSize(900, 900);
+        vistagol.getJdgGoles().setSize(900, 500);
         vistagol.getJdgGoles().setTitle(ce);
         vistagol.getJdgGoles().setVisible(true);
 
@@ -316,5 +316,79 @@ public class Controlador_Gol {
             mJtable.addRow(rowData);
         }
         );
+    }
+    private void buscarFK() {
+        if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
+            List<Clase_Jugador> listajugador = modeloJug.ListaJugador();
+            String idBuscado = vistagol.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo Jugador");
+            modeloTabla.addColumn("Nombre Jugador");
+            modeloTabla.addColumn("Codigo Equipo");
+
+            for (Clase_Jugador e : listajugador) {
+
+                if (String.valueOf(e.getCod_jugador()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCedula_persona(),
+                        e.getNombnre1(),
+                        e.getCod_equipo()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
+            vistagol.getTblbuscar().setModel(modeloTabla);
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDOS")) {
+            List<Clase_Partido> listapartidos = modeloPar.listarPartidos();
+            String idBuscado = vistagol.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo Partido");
+            modeloTabla.addColumn("Fecha del Partido");
+            modeloTabla.addColumn("Grupo");
+
+            for (Clase_Partido e : listapartidos) {
+
+                if (String.valueOf(e.getCod_partido()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCod_partido(),
+                        e.getFecha(),
+                        e.getGrupo()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
+            vistagol.getTblbuscar().setModel(modeloTabla);
+//-------------------------------------------------------BUSCAR ESTADIOS--------------------------------------------------------------------------------------------
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
+            List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
+            String idBuscado = vistagol.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo Estadio");
+            modeloTabla.addColumn("Nombre Estadio");
+            modeloTabla.addColumn("nose Estadio");
+
+            for (Clase_Equipo e : listaequipos) {
+
+                if (String.valueOf(e.getCod_equipo()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCod_equipo(),
+                        e.getNombre_equi(),
+                        e.getCiudad()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
+            vistagol.getTblbuscar().setModel(modeloTabla);
+//-------------------------------------------------------BUSCAR CAMPEONATOS--------------------------------------------------------------------------------------------      
+        } 
     }
 }
