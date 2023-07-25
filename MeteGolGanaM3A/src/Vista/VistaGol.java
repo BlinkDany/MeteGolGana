@@ -16,7 +16,7 @@ import javax.swing.JTable;
  *
  * @author Derek
  */
-public class VistaGol extends javax.swing.JFrame {
+public class VistaGol extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaGol

@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class VistaEquipos extends javax.swing.JFrame {
+public class VistaEquipos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaEquipos
