@@ -288,7 +288,6 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         txtFechaIni.setToolTipText("Fecha de inicio de temporada");
         jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 40));
 
-        txtCodigo.setEditable(false);
         txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigo.setPlaceholder("Código del campeonato");

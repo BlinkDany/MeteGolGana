@@ -59,6 +59,7 @@ public class Controlador_temporada {
 
         vista.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vista.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
+        vista.getBtnModificar().addActionListener(l -> abrirEditarDialogo("Editar"));
         vista.getBtnEliminar().addActionListener(l -> EliminarTemmporada());
         vista.getBtnCancelarDlg().addActionListener(l -> cerrarDialogo());
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarTemporada());
@@ -80,18 +81,6 @@ public class Controlador_temporada {
             
         });
         
-        //--------------
-        
-         vista.getTblCampeonatoFK().getSelectionModel().addListSelectionListener(e -> {
-            // Verifica si hay alguna fila seleccionada
-            if (vista.getTblCampeonatoFK().getSelectedRow() != -1) {
-                // Llama al método para llenar los campos de texto
-                llenarCamposDeTextoCampeonato();
-            } else {
-                JOptionPane.showMessageDialog(vista, "Debe seleccionar un registro de la tabla de campeonatos para la temporada",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
          
          //-------------
          
@@ -107,11 +96,11 @@ public class Controlador_temporada {
 
     }
 
-    private void abrirEditarDialogo() {
+    private void abrirEditarDialogo(String editar) {
         int selectedRow = vista.getTblTemporada().getSelectedRow();
 
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(vista, "Debe seleccionar un registro de la tabla",
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar un registro de la tabla de temporadas para poder modificarlo",
                     "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             abrirDialogo("Editar");
@@ -156,8 +145,24 @@ public class Controlador_temporada {
 
                 // Asignar valores al modelo
                 modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
-                modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
-                modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
+              //  modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
+              
+              // Convert java.util.Date to java.sql.Date
+java.util.Date utilDate = vista.getTxtFechaIni().getDate();
+java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+// Set the java.sql.Date object in your model
+modelo.setFechaIni(sqlDate);
+              
+                //modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
+                
+                // Convert java.util.Date to java.sql.Date
+java.util.Date utilDateFin = vista.getTxtFechaFin().getDate();
+java.sql.Date sqlDateFin = new java.sql.Date(utilDateFin.getTime());
+
+// Set the java.sql.Date object in your model
+modelo.setFechaFin(sqlDateFin);
+                
                 modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
                 modelo.setEstadoEli(false);
 
@@ -299,7 +304,7 @@ public class Controlador_temporada {
             try {
                 if (vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
 
-                    vista.getTxtBuscarCampeonato().setText(String.valueOf(p.getCod_campeonato()));                 
+                    vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCod_campeonato()));                 
                 }
             } catch (Exception e) {
                 System.out.println(e);
