@@ -24,7 +24,7 @@ public class ModeloEquipos extends Clase_Equipo{
         List<Clase_Equipo> listaEquipos = new ArrayList<Clase_Equipo>();
 
         try {
-            String sql = "select * from equipo";
+            String sql = "select * from equipo where estado_elim = false";
             ResultSet rs = CPG.Consultas(sql);
             while (rs.next()) {
                 Clase_Equipo equipo = new Clase_Equipo();
@@ -47,7 +47,7 @@ public class ModeloEquipos extends Clase_Equipo{
     public boolean InsertarEquipo() {
         String sql;
         sql = "INSERT INTO equipo(codigo,nombre,anio_fundacion,ciudad,estado_elim)";
-        sql += "VALUES('" + getCod_equipo() + "','" + getNombre_equi() + "','" + getAnio_fundacion() + "','" + getCiudad() + "','" + getEstado_elim() + "')";
+        sql += "VALUES('" + getCod_equipo() + "','" + getNombre_equi() + "','" + getAnio_fundacion() + "','" + getCiudad() + "','" + false + "')";
         return CPG.CRUD(sql);
 
     }
@@ -61,7 +61,7 @@ public class ModeloEquipos extends Clase_Equipo{
 
     public boolean EliminarPartido() {
         String sql;
-        sql = "delete from equipo where codigo='" + getCod_equipo() + "';";
+        sql = "update equipo set estado_elim = true where codigo='" + getCod_equipo() + "';";
         return CPG.CRUD(sql);
 
     }
