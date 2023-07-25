@@ -22,7 +22,7 @@ public class Modelo_Gol extends Clase_Gol{
         List<Clase_Gol> listargoles = new ArrayList<Clase_Gol>();
 
         try {
-            String sql = "select * from partido";
+            String sql = "select * from gol where estado_elim = false";
             ResultSet rs = CPG.Consultas(sql);
             while (rs.next()) {
                 Clase_Gol goles = new Clase_Gol();
@@ -95,7 +95,7 @@ public class Modelo_Gol extends Clase_Gol{
 
     public boolean EliminarGol() {
         String sql;
-        sql = "delete from gol where codigo='" + getCod_partido() + "';";
+        sql = "update gol set estado_elim = true where codigo='" + getCod_partido() + "';";
         return CPG.CRUD(sql);
 
     }
