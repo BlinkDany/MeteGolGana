@@ -31,14 +31,6 @@ public class MeteGolGanaM3A {
         Controlador_MP cmp = new Controlador_MP(mp);
 
         cmp.iniciaControl();
-
-        Modelo_Jugador modju = new Modelo_Jugador();
-        Modelo.Modelo_Persona modper = new Modelo_Persona();
-        Vista.VistaJugadores visju = new VistaJugadores();
-        Vista.LogIn lo = new LogIn();
-
-        Controlador.Controlador_Jugador con = new Controlador_Jugador(modju, visju, modper, lo);
-        con.InicarControlador();
     
     }
 

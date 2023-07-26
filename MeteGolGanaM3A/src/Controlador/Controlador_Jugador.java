@@ -4,8 +4,10 @@
  */
 package Controlador;
 
+import Modelo.Clase_Equipo;
 import Modelo.Clase_Jugador;
 import Modelo.Clase_Persona;
+import Modelo.ModeloEquipos;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
 import Vista.LogIn;
@@ -40,24 +42,27 @@ public class Controlador_Jugador {
     private Modelo.Modelo_Jugador modJugador;
     private Vista.VistaJugadores visJugador;
     private Modelo.Modelo_Persona modPersona;
+    private Modelo.ModeloEquipos modequipo;
     private Vista.LogIn visPer;
     private JFileChooser jfc;
 
     public Controlador_Jugador() {
     }
 
-    public Controlador_Jugador(Modelo_Jugador modJugador, VistaJugadores visJugador, Modelo_Persona modPersona, LogIn visPer) {
+    public Controlador_Jugador(Modelo_Jugador modJugador, VistaJugadores visJugador, Modelo_Persona modPersona, ModeloEquipos modequipo, LogIn visPer) {
         this.modJugador = modJugador;
         this.visJugador = visJugador;
         this.modPersona = modPersona;
+        this.modequipo = modequipo;
         this.visPer = visPer;
-        visJugador.setVisible(true);
+        this.visJugador.setVisible(true);
     }
 
     public void InicarControlador() {
 
         visJugador.setTitle("Jugadores");
         MostrarDatos();
+        MostrarEquipos();
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
         visJugador.btnModificar.addActionListener(l -> {
             if (visJugador.tblJugadores.getSelectedRow() == -1) {
@@ -487,6 +492,20 @@ public class Controlador_Jugador {
             Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getApellido1(), p.getCod_equipo(), p.getPosicion(), p.getSueldo()};
             tabla.addRow(datos);
         });
+    }
+    
+    public void MostrarEquipos(){
+        
+        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblEquipo.getModel();
+        tabla.setNumRows(0);
+
+        List<Clase_Equipo> jug = modequipo.listarEquipos();
+        jug.stream().forEach(p -> {
+
+            Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
+            tabla.addRow(datos);
+        });
+        
     }
 
     public void BuscarJugador() {
