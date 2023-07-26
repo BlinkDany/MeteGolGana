@@ -49,7 +49,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
     public boolean EliminarEntrenador() {
 
         String sql = "UPDATE entrenador SET estado_elim=true "
-                + "WHERE `codigo`=" + getCodigo() + ";";
+                + "WHERE codigo =" + getCodigo() + ";";
 
         return con.CRUD(sql);
     }
@@ -60,7 +60,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
 
             String sql = "SELECT * "
                     + "FROM entrenador j, persona p, equipo f "
-                    + "WHERE p.cedula = j.cedula_personafk and p.estado_elim = false and f.codigo = j.codigo_equipofk  "
+                    + "WHERE p.cedula = j.cedula_personafk and p.estado_elim = false "
                     + "AND (j.cedula_personafk LIKE '%" + aux + "%' OR CONCAT(p.nombre1, ' ', p.apellido1) LIKE '%" + aux + "%') "
                     + "ORDER BY j.codigo ";
             ResultSet res = con.Consultas(sql);
@@ -120,8 +120,8 @@ public class Modelo_Entrenador extends Clase_Entrenador {
         try {
 
             String sql = "SELECT * "
-                    + "FROM entrenador j, persona p, equipo f "
-                    + "WHERE p.cedula = j.cedula_personafk AND p.estado_elim = false and f.codigo = j.codigo_equipofk "
+                    + "FROM entrenador j, persona p "
+                    + "WHERE p.cedula = j.cedula_personafk AND j.estado_elim = false "
                     + "ORDER BY j.codigo ";
             ResultSet res = con.Consultas(sql);
             List<Clase_Entrenador> ent = new ArrayList<>();

@@ -120,7 +120,7 @@ public class Controlador_Entrenador {
         visPer.dlgPersona.dispose();
         VistaEntrenador.dialogRegistrarModificar.setVisible(true);
         VistaEntrenador.dialogRegistrarModificar.setTitle(titulo);
-        VistaEntrenador.dialogRegistrarModificar.setSize(500, 500);
+        VistaEntrenador.dialogRegistrarModificar.setSize(900, 900);
 
         if (VistaEntrenador.dialogRegistrarModificar.getTitle().equals("Registrar Entrenador")) {
 
@@ -314,7 +314,7 @@ public class Controlador_Entrenador {
 
                 modEnt.setAniosexp(Integer.valueOf(VistaEntrenador.txtAñosExperiencia.getText()));
                 modEnt.setCodigo_equipofk(VistaEntrenador.txtEquipo.getText());
-                modEnt.setCedula(VistaEntrenador.txtCedula.getText());
+                modEnt.setCedula_personafk(VistaEntrenador.txtCedula.getText());
                 modEnt.setCodigo(Integer.valueOf(VistaEntrenador.txtCodigo.getText()));
                 modEnt.setSueldo(Double.valueOf(VistaEntrenador.txtSueldo.getText()));
 
