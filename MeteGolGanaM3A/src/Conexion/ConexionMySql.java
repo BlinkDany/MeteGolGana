@@ -36,7 +36,6 @@ public class ConexionMySql {
 
         try {
             con = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("conectado");
         } catch (SQLException ex) {
             Logger.getLogger(ConexionMySql.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
