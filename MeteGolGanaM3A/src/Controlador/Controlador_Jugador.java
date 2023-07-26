@@ -73,6 +73,8 @@ public class Controlador_Jugador {
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
         visPer.btnFoto.addActionListener(l -> Foto());
         visJugador.btnEliminar.addActionListener(l -> EliminarJugador());
+        visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
+        visPer.btnRetrocederDlgRegistro.addActionListener(l -> visPer.dlgPersona.dispose());
         visJugador.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
