@@ -70,8 +70,8 @@ public class Controlador_Gol {
         vistagol.getJdgGoles().setVisible(true);
 
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
-            vistagol.getLblReMoGoles().setText("REGISTRO DE PARTIDOS");
-            vistagol.getBtnRegistrarModificar().setText("REGISTRO DE PARTIDOS");
+            vistagol.getLblReMoGoles().setText("REGISTRO DE GOLES");
+            vistagol.getBtnRegistrarModificar().setText("REGISTRO DE GOLES");
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Editar")) {
             vistagol.getLblReMoGoles().setText("MODIFICAR GOLES");
@@ -116,7 +116,7 @@ public class Controlador_Gol {
         DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
         tabla.setNumRows(0);
         if (vistagol.getTxtBuscar().equals(null)) {
-            System.out.println("pene");
+            System.out.println("pudo");
         } else {
 
             List<Clase_Gol> par = modeloGol.BuscarGoles(Integer.parseInt(vistagol.txtBuscar.getText()));
