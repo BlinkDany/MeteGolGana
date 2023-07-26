@@ -37,9 +37,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnEstadios(JButton btnEstadios) {
         this.btnEstadios = btnEstadios;
     }
-    
-    
 
+    public JButton getBtnEntrenador() {
+        return btnEntrenador;
+    }
+
+    public void setBtnEntrenador(JButton btnEntrenador) {
+        this.btnEntrenador = btnEntrenador;
+    }
+    
     public JButton getBtnCampeonato() {
         return btnCampeonato;
     }
@@ -257,10 +263,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         BtnArbitros = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
+        btnEntrenador = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
         BtnPatidos = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
         btnEstadios = new javax.swing.JButton();
-        jSeparator8 = new javax.swing.JToolBar.Separator();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
         btnResumen = new javax.swing.JButton();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -351,6 +359,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         toolBar.add(BtnArbitros);
         toolBar.add(jSeparator6);
 
+        btnEntrenador.setBackground(new java.awt.Color(255, 255, 255));
+        btnEntrenador.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnEntrenador.setForeground(new java.awt.Color(0, 153, 204));
+        btnEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/personal.png"))); // NOI18N
+        btnEntrenador.setText("Entrenador");
+        btnEntrenador.setFocusable(false);
+        btnEntrenador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEntrenador.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrenadorActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnEntrenador);
+        toolBar.add(jSeparator8);
+
         BtnPatidos.setBackground(new java.awt.Color(255, 255, 255));
         BtnPatidos.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         BtnPatidos.setForeground(new java.awt.Color(0, 153, 204));
@@ -376,7 +400,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnEstadios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEstadios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnEstadios);
-        toolBar.add(jSeparator8);
+        toolBar.add(jSeparator9);
 
         btnResumen.setBackground(new java.awt.Color(255, 255, 255));
         btnResumen.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -477,6 +501,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnPatidosActionPerformed
 
+    private void btnEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrenadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntrenadorActionPerformed
+
 
    
     
@@ -487,6 +515,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BtnGoles;
     private javax.swing.JButton BtnPatidos;
     private javax.swing.JButton btnCampeonato;
+    private javax.swing.JButton btnEntrenador;
     private javax.swing.JButton btnEstadios;
     private javax.swing.JButton btnJugadores;
     private javax.swing.JMenu btnReporteFac;
@@ -507,6 +536,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;
