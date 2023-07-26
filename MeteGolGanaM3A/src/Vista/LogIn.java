@@ -59,6 +59,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         fSButtonMD1 = new LIB.FSButtonMD();
         fSButtonMD2 = new LIB.FSButtonMD();
+        jLabel3 = new javax.swing.JLabel();
 
         dlgPersona.setResizable(false);
 
@@ -245,7 +246,7 @@ public class LogIn extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0, 200));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
@@ -281,10 +282,9 @@ public class LogIn extends javax.swing.JFrame {
         fSButtonMD1.setBackground(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setText("Ingresar");
         fSButtonMD1.setToolTipText("Inicia Sesión");
-        fSButtonMD1.setColorHover(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setColorNormal(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setColorPressed(new java.awt.Color(51, 102, 255));
-        fSButtonMD1.setColorTextHover(new java.awt.Color(255, 255, 255));
+        fSButtonMD1.setColorTextHover(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
 
         fSButtonMD2.setText("Crear Cuenta");
@@ -339,7 +339,10 @@ public class LogIn extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 380, 510));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/El-negocio-del-futbol-en-la-mira-de-los-fondos-de-inversion.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 690));
 
         pack();
         setLocationRelativeTo(null);
@@ -428,6 +431,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
