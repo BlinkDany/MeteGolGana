@@ -42,9 +42,11 @@ public class Controlador_Gol {
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
-        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogo("EQUIPO"));
-        vistagol.getBtnJugador().addActionListener(l -> abrirDialogo("JUGADOR"));
-        vistagol.getBtnPartido().addActionListener(l -> abrirDialogo("PARTIDO"));
+        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
+        vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
+        vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
+        vistagol.getBtnmandardatos().addActionListener(l -> mandardatos());
+        vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
