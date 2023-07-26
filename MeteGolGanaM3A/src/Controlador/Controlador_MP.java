@@ -97,9 +97,10 @@ public class Controlador_MP {
         Modelo.Modelo_Jugador moJu = new Modelo_Jugador();
         Vista.VistaJugadores visju = new VistaJugadores();
         Modelo.Modelo_Persona modper = new Modelo_Persona();
+        Modelo.ModeloEquipos modequi = new ModeloEquipos();
         Vista.LogIn vislo = new LogIn();
         vistaPrincipal.getDesctopPrincipal().add(visju);
-        Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, vislo);
+        Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, modequi, vislo);
         controlJuga.InicarControlador();
 
     }
