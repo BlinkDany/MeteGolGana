@@ -16,6 +16,9 @@ import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -64,16 +67,6 @@ public class Controlador_Jugador {
         MostrarDatos();
         MostrarEquipos();
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
-        visJugador.btnModificar.addActionListener(l -> {
-            if (visJugador.tblJugadores.getSelectedRow() == -1) {
-
-                MensajeError("Seleccione al jugador que desea edita");
-
-            } else {
-
-                IniciarDialogPersona("Editar");
-            }
-        });
         visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
         visPer.btnFoto.addActionListener(l -> Foto());
@@ -85,6 +78,23 @@ public class Controlador_Jugador {
             public void keyReleased(KeyEvent e) {
 
                 BuscarJugador();
+            }
+        });
+        visJugador.btnModificar.addActionListener(l -> {
+            if (visJugador.tblJugadores.getSelectedRow() == -1) {
+
+                MensajeError("Seleccione al jugador que desea edita");
+
+            } else {
+
+                IniciarDialogPersona("Editar");
+            }
+        });
+        visJugador.tblEquipo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                
+                visJugador.txtEquipo.setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
             }
         });
     }
