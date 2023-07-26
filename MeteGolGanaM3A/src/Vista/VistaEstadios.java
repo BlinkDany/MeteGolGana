@@ -281,6 +281,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         jLabel8.setText("Tabla de Equipos:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
+        txtCodigoEquipo.setEditable(false);
         txtCodigoEquipo.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigoEquipo.setPlaceholder("Codigo Equipo");
