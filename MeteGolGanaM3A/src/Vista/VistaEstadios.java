@@ -142,6 +142,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
     }
     
 
+    
     public void setTxtCodigoEst(FSTexFieldMD txtCodigoEst) {
         this.txtCodigoEst = txtCodigoEst;
     }

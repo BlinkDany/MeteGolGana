@@ -63,6 +63,7 @@ public class Controlador_Estadio {
         visEstadio.setTitle("Estadios");
         MostrarDatos();
         visEstadio.btnAgregar.addActionListener(l -> abrirDialogo("Crear"));
+        visEstadio.getBtnCancelar().addActionListener(l -> cerrarDialogo());
         visEstadio.btnModificar.addActionListener(l -> {
             if (visEstadio.tblEstadios.getSelectedRow() == -1) {
 
@@ -74,6 +75,8 @@ public class Controlador_Estadio {
 
             }
         });
+        
+        
         visEstadio.tblEquipos.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -103,6 +106,12 @@ public class Controlador_Estadio {
         });
     }
 
+      private void cerrarDialogo() {
+
+        visEstadio.getDialogRegistrarModificar().dispose();
+
+    }
+    
     public void MostrarDatos() {
 
         DefaultTableModel tabla = (DefaultTableModel) VistaEstadios.tblEstadios.getModel();
