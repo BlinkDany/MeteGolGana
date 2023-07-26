@@ -49,7 +49,7 @@ public class Controlador_Resumen_Partido {
         visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo1());
         visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo2());
         visRes.getBtnModificar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Visualizar"));
-        
+
         visRes.getLblEquipo4().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -118,7 +118,7 @@ public class Controlador_Resumen_Partido {
 //            visRes.getDlgEquipo2().dispose();
         }
     }
-    
+
     public void InicarDialogPartido() {
 
         visRes.getDlgPartido().setVisible(true);
@@ -139,7 +139,7 @@ public class Controlador_Resumen_Partido {
 
         if (visRes.getDlgRegistrarConsultar().getTitle().equals("Registrar")) {
 
-        } else if (visRes.getDlgRegistrarConsultar().getTitle().equals("Visualizar")) {
+        } else {
 
             LlenarDatos();
         }
@@ -274,9 +274,9 @@ public class Controlador_Resumen_Partido {
         });
 
     }
-    
-    public void MostrarPartidos(){
-        
+
+    public void MostrarPartidos() {
+
         DefaultTableModel mJtable;
         mJtable = (DefaultTableModel) visRes.getTblPartido().getModel();
         mJtable.setNumRows(0);
@@ -294,42 +294,50 @@ public class Controlador_Resumen_Partido {
 
             int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 1).hashCode();
             modRes.setCodigo_partidofk(codpar);
+            
+            int codEquipo = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 2).hashCode();
+            modRes.setCodigo_equipofk(codEquipo);
 
             List<Clase_Resumen_Partido> res = modRes.ListaResumen();
+            List<Clase_Equipo> par = modEquipos.listarEquipos();
             List<Integer> liscodigo = modRes.extarerResumen();
             res.stream().forEach(p -> {
-                for (int i = 0; i < liscodigo.size(); i++) {
+                par.stream().forEach(l -> {
 
-                    if (p.getCodigo_partidofk() == codpar) {
+                    for (int i = 0; i < liscodigo.size(); i++) {
 
-                        if (p.getCodigo_equipofk() == liscodigo.get(i)) {
+                        if (p.getCodigo_partidofk() == codpar) {
 
-                            visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
-                            visRes.getTxtFaltas().setText(String.valueOf(p.getFaltas()));
-                            visRes.getTxtPenales().setText(String.valueOf(p.getPenales()));
-                            visRes.getTxtSaquesBanda().setText(String.valueOf(p.getSaques_mano()));
-                            visRes.getTxtTarjetasAmarillas().setText(String.valueOf(p.getTarjetas_amarillas()));
-                            visRes.getTxtTarjetasRojas().setText(String.valueOf(p.getTarjetas_rojas()));
-                            visRes.getTxtTirosEsquina().setText(String.valueOf(p.getTiros_esquina()));
-                            visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
-                            visRes.getLblEquipo1().setText(String.valueOf(p.getCodigo_equipofk()));
-                            visRes.getLblGoles().setText(String.valueOf(p.getGoles()));
+                            if (p.getCodigo_equipofk() == l.getCod_equipo()) {
 
-                        } else {
+                                if (codEquipo == liscodigo.get(i)) {
 
-                            visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
-                            visRes.getTxtFaltas1().setText(String.valueOf(p.getFaltas()));
-                            visRes.getTxtPenales1().setText(String.valueOf(p.getPenales()));
-                            visRes.getTxtSaquesBanda1().setText(String.valueOf(p.getSaques_mano()));
-                            visRes.getTxtTarjetasAmarillas1().setText(String.valueOf(p.getTarjetas_amarillas()));
-                            visRes.getTxtTarjetasRojas1().setText(String.valueOf(p.getTarjetas_rojas()));
-                            visRes.getTxtTirosEsquina1().setText(String.valueOf(p.getTiros_esquina()));
-                            visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
-                            visRes.getLblEquipo2().setText(String.valueOf(p.getCodigo_equipofk()));
-                            visRes.getLblGoles1().setText(String.valueOf(p.getGoles()));
+                                    visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
+                                    visRes.getTxtFaltas().setText(String.valueOf(p.getFaltas()));
+                                    visRes.getTxtPenales().setText(String.valueOf(p.getPenales()));
+                                    visRes.getTxtSaquesBanda().setText(String.valueOf(p.getSaques_mano()));
+                                    visRes.getTxtTarjetasAmarillas().setText(String.valueOf(p.getTarjetas_amarillas()));
+                                    visRes.getTxtTarjetasRojas().setText(String.valueOf(p.getTarjetas_rojas()));
+                                    visRes.getTxtTirosEsquina().setText(String.valueOf(p.getTiros_esquina()));
+                                    visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
+                                    visRes.getLblEquipo4().setText(l.getNombre_equi());
+                                } else if (p.getCodigo_equipofk() == liscodigo.get(i)){
+
+                                    visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
+                                    visRes.getTxtFaltas1().setText(String.valueOf(p.getFaltas()));
+                                    visRes.getTxtPenales1().setText(String.valueOf(p.getPenales()));
+                                    visRes.getTxtSaquesBanda1().setText(String.valueOf(p.getSaques_mano()));
+                                    visRes.getTxtTarjetasAmarillas1().setText(String.valueOf(p.getTarjetas_amarillas()));
+                                    visRes.getTxtTarjetasRojas1().setText(String.valueOf(p.getTarjetas_rojas()));
+                                    visRes.getTxtTirosEsquina1().setText(String.valueOf(p.getTiros_esquina()));
+                                    visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
+                                    visRes.getLblEquipo2().setText(l.getNombre_equi());
+                                }
+
+                            }
                         }
                     }
-                }
+                });
             });
 
         } else {

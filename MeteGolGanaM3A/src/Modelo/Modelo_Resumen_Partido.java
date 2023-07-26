@@ -56,7 +56,7 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
     public List<Clase_Resumen_Partido> Mostrar() {
 
         try {
-            String sql = "select * from resumen_partido order by codigo";
+            String sql = "select * from resumen_partido where estado_elim = false order by codigo";
 
             ResultSet res = con.Consultas(sql);
             List<Clase_Resumen_Partido> lisres = new ArrayList<>();
@@ -90,16 +90,7 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
     public List<Clase_Resumen_Partido> ListaResumen() {
 
         try {
-            String sql = "select r.faltas, r.tarjetas_amarillas, r.tarjetas_rojas, r.tiros_esquina, r.saques_mano, r.tiros_libres, r.penales, r.codigo_equipofk, \n"
-                    + "r.codigo_partidofk, r.estado_elim, count(i.codigo) as \"Goles\"\n"
-                    + "from resumen_partido r\n"
-                    + "join partido l\n"
-                    + "on l.codigo = r.codigo_partidofk\n"
-                    + "join gol i  \n"
-                    + "on l.codigo = i.codigo_partidofk and r.codigo_equipofk = i.cod_equipofk\n"
-                    + "where r.codigo = 1 and r.estado_elim = true\n"
-                    + "group by r.faltas, r.tarjetas_amarillas, r.tarjetas_rojas, r.tiros_esquina, r.saques_mano, r.tiros_libres, r.penales, r.codigo_equipofk, \n"
-                    + "r.estado_elim, r.codigo_partidofk";
+            String sql = "select * from resumen_partido where estado_elim = false and codigo_equipofk = " + getCodigo_equipofk() + " order by codigo";
 
             ResultSet res = con.Consultas(sql);
             List<Clase_Resumen_Partido> lisres = new ArrayList<>();
@@ -118,7 +109,6 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
                 resumen.setTarjetas_rojas(res.getInt("tarjetas_rojas"));
                 resumen.setTiros_esquina(res.getInt("tiros_esquina"));
                 resumen.setTiros_libres(res.getInt("tiros_libres"));
-                resumen.setGoles(res.getInt("Goles"));
 
                 lisres.add(resumen);
             }

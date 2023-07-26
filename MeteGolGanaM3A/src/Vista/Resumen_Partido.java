@@ -179,22 +179,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         this.btnRegistrar = btnRegistrar;
     }
 
-    public FSLabel getfSLabel1() {
-        return fSLabel1;
-    }
-
-    public void setfSLabel1(FSLabel fSLabel1) {
-        this.fSLabel1 = fSLabel1;
-    }
-
-    public FSLabel getfSLabel2() {
-        return fSLabel2;
-    }
-
-    public void setfSLabel2(FSLabel fSLabel2) {
-        this.fSLabel2 = fSLabel2;
-    }
-
     public JLabel getjLabel1() {
         return jLabel1;
     }
@@ -579,8 +563,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         lblClaseGol = new javax.swing.JLabel();
         lblEquipo2 = new javax.swing.JLabel();
-        fSLabel1 = new LIB.FSLabel();
-        fSLabel2 = new LIB.FSLabel();
         jPanel5 = new javax.swing.JPanel();
         lblGoles = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -806,9 +788,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblEquipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEquipo2.setText("Seleccionar equipo");
         lblEquipo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 220, -1));
-        jPanel2.add(fSLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 13, -1, -1));
-        jPanel2.add(fSLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
+        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 220, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -874,7 +854,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblEquipo4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEquipo4.setText("Seleccionar equipo");
         lblEquipo4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblEquipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 220, -1));
+        jPanel2.add(lblEquipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1000, 220));
 
@@ -1253,8 +1233,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JDialog dlgEquipo2;
     private javax.swing.JDialog dlgPartido;
     private javax.swing.JDialog dlgRegistrarConsultar;
-    private LIB.FSLabel fSLabel1;
-    private LIB.FSLabel fSLabel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
