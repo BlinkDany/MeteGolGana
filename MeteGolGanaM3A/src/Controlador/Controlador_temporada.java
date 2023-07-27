@@ -106,7 +106,7 @@ public class Controlador_temporada {
     private void abrirDialogo(String ce) {
 
         vista.getDlgaTemporada().setLocationRelativeTo(vista);
-        vista.getDlgaTemporada().setSize(800, 600);
+        vista.getDlgaTemporada().setSize(700, 550);
         vista.getDlgaTemporada().setTitle(ce);
 
         if (vista.getDlgaTemporada().getTitle().equals("Crear")) {
@@ -114,7 +114,9 @@ public class Controlador_temporada {
             if (vista.getTblCampeonatoFK().getSelectedRow() == -1) {
 
                 JOptionPane.showMessageDialog(vista, "Seleccione el campeonato perteneciente a la temporada", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+                
+            } else 
+            {
                 vista.getBtnRegistrarModificarDlg().setText("Registrar");
                 vista.getTxtCodigoCampeonatoFK().setEditable(true);
                 llenarCamposDeTextoCampeonato();
@@ -123,6 +125,7 @@ public class Controlador_temporada {
                 // crearFactura();
                 mostrarDatosTabla();
                 mostrarDatosTablaCampeonato();
+                vista.getDlgaTemporada().setVisible(true);
             }
         } else {
 
@@ -132,8 +135,6 @@ public class Controlador_temporada {
             
 
         }
-
-        vista.getDlgaTemporada().setVisible(true);
 
     }
 
