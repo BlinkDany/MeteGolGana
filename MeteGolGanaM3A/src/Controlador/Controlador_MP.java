@@ -136,7 +136,7 @@ public class Controlador_MP {
         Modelo.ModeloEquipos modequi = new ModeloEquipos();
         Vista.LogIn vislo = new LogIn();
         vistaPrincipal.getDesctopPrincipal().add(visEnt);
-        Controlador_Entrenador controlEnt = new Controlador_Entrenador(moEnt, visEnt, modper,modequi, vislo);
+        Controlador_Entrenador controlEnt = new Controlador_Entrenador(moEnt, visEnt, modper, modequi, vislo);
         controlEnt.InicarControlador();
 
     }
