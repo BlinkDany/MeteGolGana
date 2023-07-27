@@ -61,24 +61,43 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
             String sql = "select count(codigo_partidofk) from resumen_partido\n"
                     + "where codigo_partidofk = " + getCodigo_partidofk() + "";
             ResultSet res = con.Consultas(sql);
-            
+
             while (res.next()) {
-                
+
                 count = res.getInt("count");
                 System.out.println(count);
             }
-            
+
             if (count == 2) {
-                
+
                 val = true;
             }
-            
+
             return val;
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
             return false;
         }
+    }
+
+    public int ConsultarGoles() throws SQLException {
+
+        int goles = 0;
+
+        String sql = "select count(*) \n"
+                + "from gol l, resumen_partido r\n"
+                + "where l.codigo_partidofk = r.codigo_partidofk and l.cod_equipofk = r.codigo_equipofk \n"
+                + "and l.cod_equipofk = " + getCodigo_equipofk() + " and l.codigo_partidofk = " + getCodigo_partidofk() + "";
+
+        ResultSet res = con.Consultas(sql);
+
+        while (res.next()) {
+
+            goles = res.getInt("count");
+        }
+
+        return goles;
     }
 
     public List<Clase_Resumen_Partido> Mostrar() {
