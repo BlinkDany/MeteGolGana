@@ -113,7 +113,7 @@ public class Controlador_Campeonato {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
             llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(false);
+           
 
         }
         vista.getDlgCampeonatos().setVisible(true);
@@ -131,7 +131,7 @@ public class Controlador_Campeonato {
             } else {
 
                 // Asignar valores al modelo
-                modelo.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
+               
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
                 modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
@@ -160,9 +160,16 @@ public class Controlador_Campeonato {
 
             if (confirmacion == JOptionPane.YES_OPTION) {
 
-                vista.getTxtCodigo().setEditable(false);
+                List<Clase_Campeonato> listCampeo = modelo.ListaCampeonato();
 
-                modelo.setCod_campeonato(Integer.valueOf(vista.getTxtCodigo().getText()));
+                listCampeo.stream().forEach(p -> {
+
+                    if (vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
+
+                        // Llenar los campos de la vista con los datos de producto seleccionado
+                        modelo.setCod_campeonato((int) vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0));
+                    }
+
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
                 modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
@@ -174,6 +181,7 @@ public class Controlador_Campeonato {
                     mostrarDatosTabla();
                     cerrarDialogo();
                 }
+                });
             }
         } 
     }
@@ -199,7 +207,7 @@ public class Controlador_Campeonato {
             if (vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
 
                 // Llenar los campos de la vista con los datos de producto seleccionado
-                vista.getTxtCodigo().setText(String.valueOf(p.getCod_campeonato()));
+               
                 vista.getTxtNombre().setText(p.getNombre());
                 vista.getCbxTipoCampeonato().setSelectedItem(p.getTipo_campeonato());
                 vista.getSpnMaxEqipo().setValue(p.getMax_equipos());

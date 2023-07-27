@@ -159,13 +159,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         VistaCampeonato.txtBuscar = txtBuscar;
     }
 
-    public static FSTexFieldMD getTxtCodigo() {
-        return txtCodigo;
-    }
-
-    public static void setTxtCodigo(FSTexFieldMD txtCodigo) {
-        VistaCampeonato.txtCodigo = txtCodigo;
-    }
 
     public static FSTexFieldMD getTxtNombre() {
         return txtNombre;
@@ -191,7 +184,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         lblReMoJugadores = new javax.swing.JLabel();
-        txtCodigo = new LIB.FSTexFieldMD();
         txtNombre = new LIB.FSTexFieldMD();
         btnCancelarDlg = new LIB.FSButtonMD();
         btnRegistrarModificarDlg = new LIB.FSButtonMD();
@@ -246,15 +238,10 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodigo.setPlaceholder("Codigo");
-        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 84, 200, -1));
-
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtNombre.setPlaceholder("Nombre del campeonato");
-        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, -1));
+        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 200, -1));
 
         btnCancelarDlg.setText("Cancelar");
         btnCancelarDlg.setColorHover(new java.awt.Color(0, 0, 0));
@@ -270,22 +257,22 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel2.setText("Número Máximo de Equipos");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         cbxTipoCampeonato.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         cbxTipoCampeonato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona:", "Fútbol sala", "Fútbol 6 vs 6", "Fúbol 7 vs 7", "Fútball 12 vs 12", " " }));
-        jPanel3.add(cbxTipoCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 200, 40));
+        jPanel3.add(cbxTipoCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 40));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel3.setText("Tipo de Campeonato");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         spnMaxEqipo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         spnMaxEqipo.setModel(new javax.swing.SpinnerNumberModel(2, null, null, 2));
-        jPanel3.add(spnMaxEqipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 90, 40));
+        jPanel3.add(spnMaxEqipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 90, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/campeonatoremovebg400x390.png"))); // NOI18N
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
         btnLimpiarDlg.setText("Limpiar");
         btnLimpiarDlg.setToolTipText("Limpiar los campos de texto");
@@ -296,7 +283,7 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
                 btnLimpiarDlgActionPerformed(evt);
             }
         });
-        jPanel3.add(btnLimpiarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 200, -1));
+        jPanel3.add(btnLimpiarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 190, -1));
 
         javax.swing.GroupLayout dlgCampeonatosLayout = new javax.swing.GroupLayout(dlgCampeonatos.getContentPane());
         dlgCampeonatos.getContentPane().setLayout(dlgCampeonatosLayout);
@@ -511,7 +498,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spnMaxEqipo;
     public static javax.swing.JTable tblCampeonato;
     public static LIB.FSTexFieldMD txtBuscar;
-    public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtNombre;
     // End of variables declaration//GEN-END:variables
 }

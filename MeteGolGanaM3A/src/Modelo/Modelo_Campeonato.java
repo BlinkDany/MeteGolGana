@@ -32,8 +32,8 @@ public class Modelo_Campeonato extends Clase_Campeonato {
      public boolean InsertarCampeonato() {
 //construir consulta para insertar el producto 
         String sql = "INSERT INTO public.campeonato(\n"
-                + "	codigo, nombre, tipo_campeonato, max_equipos, estado_elim)\n"
-                + "	VALUES ('" + getCod_campeonato()+ "','" + getNombre()+ "','" + getTipo_campeonato()+ "', '" + getMax_equipos()+ "', '" + isEstado_elim() + "');";
+                + "	nombre, tipo_campeonato, max_equipos, estado_elim)\n"
+                + "	VALUES ('" +getNombre()+ "','" + getTipo_campeonato()+ "', '" + getMax_equipos()+ "', '" + isEstado_elim() + "');";
 
         return con.CRUD(sql);
 
