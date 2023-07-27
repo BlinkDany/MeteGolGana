@@ -285,15 +285,13 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         lblReMoJugadores.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         lblReMoJugadores.setForeground(new java.awt.Color(255, 255, 255));
         lblReMoJugadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReMoJugadores.setText("Registro o Modificar");
+        lblReMoJugadores.setText("REGISTRO DE ASIGNACION");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(lblReMoJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblReMoJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,13 +300,13 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         txtcodPartido.setEditable(false);
         txtcodPartido.setForeground(new java.awt.Color(0, 0, 0));
         txtcodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtcodPartido.setPlaceholder("Partido");
-        jPanel3.add(txtcodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 250, -1));
+        jPanel3.add(txtcodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 250, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -319,7 +317,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 180, -1));
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 180, -1));
 
         btnRegistrarModificar.setText("Registrar");
         btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
@@ -330,7 +328,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 btnRegistrarModificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 180, -1));
+        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 180, -1));
 
         txtcodArbitro.setEditable(false);
         txtcodArbitro.setForeground(new java.awt.Color(0, 0, 0));
@@ -341,7 +339,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 txtcodArbitroActionPerformed(evt);
             }
         });
-        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 250, -1));
+        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 250, -1));
 
         btnPartido.setBackground(new java.awt.Color(204, 204, 204));
         btnPartido.setText("Buscar Partido");
@@ -349,7 +347,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         btnPartido.setColorNormal(new java.awt.Color(204, 204, 204));
         btnPartido.setColorPressed(new java.awt.Color(204, 204, 204));
         btnPartido.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 130, -1));
+        jPanel3.add(btnPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 130, -1));
 
         btnArbitro.setText("Buscar Arbitro");
         btnArbitro.setColorHover(new java.awt.Color(0, 0, 0));
@@ -361,7 +359,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 btnArbitroActionPerformed(evt);
             }
         });
-        jPanel3.add(btnArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 130, -1));
+        jPanel3.add(btnArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 130, -1));
 
         txtCodAsignacion.setEditable(false);
         txtCodAsignacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -372,20 +370,20 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 txtCodAsignacionActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCodAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 250, -1));
+        jPanel3.add(txtCodAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 250, -1));
 
         dtfecha.setDateFormatString("yyyy-MM-dd");
-        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, 40));
+        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 40));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel5.setText("Fecha Asignacion");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
