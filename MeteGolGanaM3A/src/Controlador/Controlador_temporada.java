@@ -194,7 +194,7 @@ public class Controlador_temporada {
                     if (vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).equals(p.getCodigoPk())) {
 
                         // Llenar los campos de la vista con los datos de producto seleccionado
-                        modelo.setCodigoPk((int) vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0));
+                        modelo.setCodigoPk((int) vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0));
                     }
 
                     //modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
