@@ -30,10 +30,10 @@ public class Controlador_Asignacion {
     private Modelo_Partido modeloPart;
     private Vista_Asignacion vistaAsig;
 
-    public Controlador_Asignacion(Modelo_Asignacion modeloAsig,Modelo_Arbitro modeloArb,Modelo_Partido modeloPart, Vista_Asignacion vistaAsig) {
+    public Controlador_Asignacion(Modelo_Asignacion modeloAsig, Modelo_Arbitro modeloArb, Modelo_Partido modeloPart, Vista_Asignacion vistaAsig) {
         this.modeloAsig = modeloAsig;
         this.modeloArb = modeloArb;
-       this.modeloPart = modeloPart;
+        this.modeloPart = modeloPart;
         this.vistaAsig = vistaAsig;
 
         vistaAsig.setVisible(true);
@@ -43,7 +43,17 @@ public class Controlador_Asignacion {
 //-------------------------------------------------------CONTROL--------------------------------------------------------------------------------------------
     public void iniciaControl() {
         vistaAsig.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
-        vistaAsig.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
+        vistaAsig.btnModificar.addActionListener(l -> {
+            if (vistaAsig.tblAsignacion.getSelectedRow() == -1) {
+
+                JOptionPane.showMessageDialog(null, "Seleccione una asignacion", "Error", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+
+                abrirDialogo("Editar");
+
+            }
+        });
         vistaAsig.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaAsig.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistaAsig.getBtnCancelar1().addActionListener(l -> salirdialogo1());
@@ -91,18 +101,18 @@ public class Controlador_Asignacion {
 
         if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
             vistaAsig.getLblReMoJugadores().setText("REGISTRO DE ASIGNACION");
-            vistaAsig.getBtnRegistrarModificar().setText("REGISTRO DE ASIGNACION");
+            vistaAsig.getBtnRegistrarModificar().setText("REGISTRAR");
 
         } else if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
             vistaAsig.getLblReMoJugadores().setText("MODIFICAR ASIGNACION");
             LlenarDatos();
-            vistaAsig.getBtnRegistrarModificar().setText("MODIFICAR ASIGNACION");
+            vistaAsig.getBtnRegistrarModificar().setText("MODIFICAR");
 
         } else if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
             vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR ASIGNACION");
-            vistaAsig.getLblReMoJugadores().setText("ELIMINAR ASIGNACION");
-            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR ASIGNACION");
+            vistaAsig.getLblReMoJugadores().setText("ELIMINAR");
+            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR");
         }
     }
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------

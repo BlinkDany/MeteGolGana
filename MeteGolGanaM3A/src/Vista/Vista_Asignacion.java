@@ -140,11 +140,11 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     }
 
     public static JTable getTblPartidos() {
-        return tblPartidos;
+        return tblAsignacion;
     }
 
     public static void setTblPartidos(JTable tblPartidos) {
-        Vista_Asignacion.tblPartidos = tblPartidos;
+        Vista_Asignacion.tblAsignacion = tblPartidos;
     }
 
     public static JTable getTblbuscar() {
@@ -264,7 +264,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPartidos = new javax.swing.JTable();
+        tblAsignacion = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -514,8 +514,8 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
             }
         });
 
-        tblPartidos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        tblPartidos.setModel(new javax.swing.table.DefaultTableModel(
+        tblAsignacion.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        tblAsignacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -534,7 +534,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblPartidos);
+        jScrollPane1.setViewportView(tblAsignacion);
 
         btnModificar.setBackground(new java.awt.Color(0, 102, 204));
         btnModificar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -723,7 +723,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JLabel lblbusqueda;
-    public static javax.swing.JTable tblPartidos;
+    public static javax.swing.JTable tblAsignacion;
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCodAsignacion;
