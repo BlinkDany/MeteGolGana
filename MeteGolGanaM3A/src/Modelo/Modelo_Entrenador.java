@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import Conexion.ConexionMySql;
@@ -23,8 +22,6 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-
-
 public class Modelo_Entrenador extends Clase_Entrenador {
 
     Conexion.ConexionMySql con = new ConexionMySql();
@@ -60,7 +57,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
 
             String sql = "SELECT * "
                     + "FROM entrenador j, persona p, equipo f "
-                    + "WHERE p.cedula = j.cedula_personafk and p.estado_elim = false "
+                    + "WHERE p.cedula = j.cedula_personafk and p.estado_elim = false and j.codigo_equipofk=f.codigo "
                     + "AND (j.cedula_personafk LIKE '%" + aux + "%' OR CONCAT(p.nombre1, ' ', p.apellido1) LIKE '%" + aux + "%') "
                     + "ORDER BY j.codigo ";
             ResultSet res = con.Consultas(sql);
@@ -74,6 +71,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
                 mientrenador.setCodigo(res.getInt("codigo"));
                 mientrenador.setCodigo_equipofk(res.getString("codigo_equipofk"));
                 mientrenador.setAniosexp(res.getInt("anios_exp"));
+                mientrenador.setNombreEquipo(res.getString("nombre"));
                 mientrenador.setSueldo(res.getDouble("sueldo"));
                 mientrenador.setEstado_elim(res.getBoolean("estado_elim"));
                 mientrenador.setCedula_personafk(res.getString("cedula_personafk"));
@@ -115,13 +113,33 @@ public class Modelo_Entrenador extends Clase_Entrenador {
         }
     }
 
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from entrenador;";
+        ResultSet res = con.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Partido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
+    }
+
     public List<Clase_Entrenador> ListaEntrenador() {
 
         try {
 
-            String sql = "SELECT * "
-                    + "FROM entrenador j, persona p "
-                    + "WHERE p.cedula = j.cedula_personafk AND j.estado_elim = false "
+            String sql = "SELECT *, f.nombre "
+                    + "FROM entrenador j "
+                    + "INNER JOIN persona P ON p.cedula = j.cedula_personafk AND j.estado_elim = false "
+                    + "INNER JOIN equipo f ON j.codigo_equipofk=f.codigo "
                     + "ORDER BY j.codigo ";
             ResultSet res = con.Consultas(sql);
             List<Clase_Entrenador> ent = new ArrayList<>();
@@ -134,6 +152,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
                 //entrenador
                 mientrenador.setCodigo(res.getInt("codigo"));
                 mientrenador.setCodigo_equipofk(res.getString("codigo_equipofk"));
+                mientrenador.setNombreEquipo(res.getString("nombre"));
                 mientrenador.setAniosexp(res.getInt("anios_exp"));
                 mientrenador.setSueldo(res.getDouble("sueldo"));
                 mientrenador.setEstado_elim(res.getBoolean("estado_elim"));

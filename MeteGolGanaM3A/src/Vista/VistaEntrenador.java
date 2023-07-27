@@ -116,11 +116,11 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
     }
 
     public static JTable getTblArbitros() {
-        return tblArbitros;
+        return tblEntrenador;
     }
 
     public static void setTblArbitros(JTable tblArbitros) {
-        VistaEntrenador.tblArbitros = tblArbitros;
+        VistaEntrenador.tblEntrenador = tblArbitros;
     }
 
     public static FSTexFieldMD getTxtAñosExperiencia() {
@@ -191,7 +191,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         txtBuscar = new LIB.FSTexFieldMD();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblArbitros = new javax.swing.JTable();
+        tblEntrenador = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -380,8 +380,8 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         btnAgregar.setText("Crear nuevo");
         btnAgregar.setToolTipText("Registrar un nuevo jugador");
 
-        tblArbitros.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
-        tblArbitros.setModel(new javax.swing.table.DefaultTableModel(
+        tblEntrenador.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        tblEntrenador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -400,7 +400,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblArbitros);
+        jScrollPane1.setViewportView(tblEntrenador);
 
         btnModificar.setBackground(new java.awt.Color(0, 102, 204));
         btnModificar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -452,7 +452,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -502,7 +502,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReMoJugadores;
-    public static javax.swing.JTable tblArbitros;
+    public static javax.swing.JTable tblEntrenador;
     public static javax.swing.JTable tblEquipo;
     public static LIB.FSTexFieldMD txtAñosExperiencia;
     public static LIB.FSTexFieldMD txtBuscar;
