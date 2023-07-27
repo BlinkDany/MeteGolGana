@@ -48,6 +48,7 @@ public class Controlador_Jugador {
     private Modelo.ModeloEquipos modequipo;
     private Vista.LogIn visPer;
     private JFileChooser jfc;
+    private Validaciones val;
 
     public Controlador_Jugador() {
     }
@@ -63,9 +64,9 @@ public class Controlador_Jugador {
 
     public void InicarControlador() {
 
-        visJugador.setTitle("Jugadores");
-        MostrarDatos(); 
+        MostrarDatos();
         MostrarEquipos();
+        visJugador.setTitle("Jugadores");
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
         visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
@@ -93,8 +94,48 @@ public class Controlador_Jugador {
         visJugador.tblEquipo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+
                 visJugador.txtEquipo.setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
+            }
+        });
+        visPer.txtCedulaDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Sólo se permiten números para la cedula");
+                }
+
+                if (visPer.txtCedulaDLG.getText().length() == 10) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
+                }
+
+            }
+        });
+
+        visPer.txt1erNomDlg.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
             }
         });
     }
@@ -278,14 +319,14 @@ public class Controlador_Jugador {
         if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
             try {
-            
-            FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-            int largo = (int) jfc.getSelectedFile().length();
-            modPersona.setImageFile(img);
-            modPersona.setLength(largo);
+
+                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                int largo = (int) jfc.getSelectedFile().length();
+                modPersona.setImageFile(img);
+                modPersona.setLength(largo);
 
                 if (modPersona.ActualizarPersona()) {
-                    
+
                     MensajeSucces("Se modifico con exito la foto de la persona");
                     MostrarDatos();
                 } else {
@@ -503,9 +544,9 @@ public class Controlador_Jugador {
             tabla.addRow(datos);
         });
     }
-    
-    public void MostrarEquipos(){
-        
+
+    public void MostrarEquipos() {
+
         DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblEquipo.getModel();
         tabla.setNumRows(0);
 
@@ -515,7 +556,7 @@ public class Controlador_Jugador {
             Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
             tabla.addRow(datos);
         });
-        
+
     }
 
     public void BuscarJugador() {
