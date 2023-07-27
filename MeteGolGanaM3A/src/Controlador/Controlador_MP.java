@@ -11,6 +11,7 @@ import Modelo.Clase_Temporada;
 import Modelo.ModeloEquipos;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
+import Modelo.Modelo_Entrenador;
 import Modelo.Modelo_Campeonato;
 import Modelo.Modelo_Estadio;
 import Modelo.Modelo_Gol;
@@ -22,6 +23,7 @@ import Vista.LogIn;
 import Vista.MenuPrincipal;
 import Vista.Resumen_Partido;
 import Vista.VistaCampeonato;
+import Vista.VistaEntrenador;
 import Vista.VistaJugadores;
 import Vista.VistaTemporada;
 import Vista.VistaEquipos;
@@ -56,6 +58,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnPatidos().addActionListener(l -> MenuPartidos());
         vistaPrincipal.getBtnResumen().addActionListener(l -> MenuResumen());
         vistaPrincipal.getBtnEstadios().addActionListener(l -> MenuEstadios());
+        vistaPrincipal.getBtnEntrenador().addActionListener(l -> MenuEntrenador());
 
     }
 
@@ -97,9 +100,10 @@ public class Controlador_MP {
         Modelo.Modelo_Jugador moJu = new Modelo_Jugador();
         Vista.VistaJugadores visju = new VistaJugadores();
         Modelo.Modelo_Persona modper = new Modelo_Persona();
+        Modelo.ModeloEquipos modequi = new ModeloEquipos();
         Vista.LogIn vislo = new LogIn();
         vistaPrincipal.getDesctopPrincipal().add(visju);
-        Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, vislo);
+        Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, modequi, vislo);
         controlJuga.InicarControlador();
 
     }
@@ -121,6 +125,19 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visju);
         Controlador_Arbitro controlJuga = new Controlador_Arbitro(moJu, visju, modper, vislo);
         controlJuga.InicarControlador();
+
+    }
+
+    private void MenuEntrenador() {
+
+        Modelo.Modelo_Entrenador moEnt = new Modelo_Entrenador();
+        Vista.VistaEntrenador visEnt = new VistaEntrenador();
+        Modelo.Modelo_Persona modper = new Modelo_Persona();
+        Modelo.ModeloEquipos modequi = new ModeloEquipos();
+        Vista.LogIn vislo = new LogIn();
+        vistaPrincipal.getDesctopPrincipal().add(visEnt);
+        Controlador_Entrenador controlEnt = new Controlador_Entrenador(moEnt, visEnt, modper, modequi, vislo);
+        controlEnt.InicarControlador();
 
     }
 

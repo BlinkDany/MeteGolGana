@@ -42,9 +42,11 @@ public class Controlador_Gol {
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
-        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogo("JUGADOR"));
-        vistagol.getBtnJugador().addActionListener(l -> abrirDialogo("PARTIDO"));
-        vistagol.getBtnPartido().addActionListener(l -> abrirDialogo("EQUIPO"));
+        vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
+        vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
+        vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
+        vistagol.getBtnmandardatos().addActionListener(l -> mandardatos());
+        vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -82,6 +84,23 @@ public class Controlador_Gol {
             LlenarDatos();
             vistagol.getBtnRegistrarModificar().setText("ELIMINAR GOLES");
 
+        }
+    }
+     private void abrirDialogobusqueda(String ce) {
+
+        vistagol.getJdggolestabla().setSize(810, 680);
+        vistagol.getJdggolestabla().setTitle(ce);
+        vistagol.getJdggolestabla().setVisible(true);
+
+        if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
+            vistagol.getLblbusqueda().setText("JUGADOR");
+            cargajugadores();
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
+            vistagol.getLblbusqueda().setText("PARTIDO");
+            cargaPartidos();
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
+            vistagol.getLblbusqueda().setText("EQUIPO");
+            cargaequipos();
         }
     }
      public void LlenarDatos() {

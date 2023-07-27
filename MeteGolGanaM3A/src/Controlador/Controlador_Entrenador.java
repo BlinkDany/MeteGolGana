@@ -4,13 +4,14 @@
  */
 package Controlador;
 
+import Modelo.Clase_Entrenador;
 import Modelo.Clase_Equipo;
-import Modelo.Clase_Jugador;
 import Modelo.Clase_Persona;
 import Modelo.ModeloEquipos;
-import Modelo.Modelo_Jugador;
+import Modelo.Modelo_Entrenador;
 import Modelo.Modelo_Persona;
 import Vista.LogIn;
+import Vista.VistaEntrenador;
 import Vista.VistaJugadores;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -18,7 +19,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,110 +38,123 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author blink
+ * @author Usuario
  */
-public class Controlador_Jugador {
+public class Controlador_Entrenador {
 
-    private Modelo.Modelo_Jugador modJugador;
-    private Vista.VistaJugadores visJugador;
+    private Modelo.Modelo_Entrenador modEnt;
+    private Vista.VistaEntrenador visEnt;
     private Modelo.Modelo_Persona modPersona;
     private Modelo.ModeloEquipos modequipo;
     private Vista.LogIn visPer;
     private JFileChooser jfc;
 
-    public Controlador_Jugador() {
+    public Controlador_Entrenador() {
     }
 
-    public Controlador_Jugador(Modelo_Jugador modJugador, VistaJugadores visJugador, Modelo_Persona modPersona, ModeloEquipos modequipo, LogIn visPer) {
-        this.modJugador = modJugador;
-        this.visJugador = visJugador;
+    public Controlador_Entrenador(Modelo_Entrenador modEnt, VistaEntrenador visEnt, Modelo_Persona modPersona, ModeloEquipos modequipo, LogIn visPer) {
+        this.modEnt = modEnt;
+        this.visEnt = visEnt;
         this.modPersona = modPersona;
         this.modequipo = modequipo;
         this.visPer = visPer;
-        this.visJugador.setVisible(true);
+        this.visEnt.setVisible(true);
+        VistaEntrenador.txtCedula.setEnabled(false);
+        VistaEntrenador.txtCodigo.setEnabled(false);
     }
 
     public void InicarControlador() {
 
-        visJugador.setTitle("Jugadores");
-        MostrarDatos(); 
+        MostrarDatos();
         MostrarEquipos();
-        visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
-        visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
-        visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
-        visPer.btnFoto.addActionListener(l -> Foto());
-        visJugador.btnEliminar.addActionListener(l -> EliminarJugador());
-        visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
+        visEnt.btnCancelar.addActionListener(l -> visEnt.dialogRegistrarModificar.dispose());
         visPer.btnRetrocederDlgRegistro.addActionListener(l -> visPer.dlgPersona.dispose());
-        visJugador.txtBuscar.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-                BuscarJugador();
+        VistaEntrenador.btnAgregar.addActionListener(l -> {
+            try {
+                IniciarDialogPersona("Registrar");
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        visJugador.btnModificar.addActionListener(l -> {
-            if (visJugador.tblJugadores.getSelectedRow() == -1) {
+        VistaEntrenador.btnModificar.addActionListener(l -> {
+            if (visEnt.tblEntrenador.getSelectedRow() == -1) {
 
-                MensajeError("Seleccione al jugador que desea edita");
+                MensajeError("Seleccione al Entrenador que desea editar");
 
             } else {
 
-                IniciarDialogPersona("Editar");
+                try {
+                    IniciarDialogPersona("Editar");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
-        visJugador.tblEquipo.addMouseListener(new MouseAdapter() {
+        visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
+        VistaEntrenador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarEntrenador());
+        visPer.btnFoto.addActionListener(l -> Foto());
+        VistaEntrenador.btnEliminar.addActionListener(l -> EliminarEntrenador());
+        VistaEntrenador.txtBuscar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                BuscarEntrenador();
+            }
+        });
+        VistaEntrenador.tblEquipo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
-                visJugador.txtEquipo.setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
+
+                VistaEntrenador.txtEquipo.setText(VistaEntrenador.tblEquipo.getValueAt(VistaEntrenador.tblEquipo.getSelectedRow(), 0).toString());
             }
         });
     }
 
-    public void IniciarDialogPersona(String titulo) {
+    public void IniciarDialogPersona(String titulo) throws SQLException {
 
         visPer.dlgPersona.setVisible(true);
         visPer.dlgPersona.setTitle(titulo);
         visPer.dlgPersona.setSize(1020, 568);
-        if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
-            visJugador.btnRegistrarModificar.setText("Registrar");
+        if (visPer.dlgPersona.getTitle().equals("Registrar")) {
+            CargarID();
+            VistaEntrenador.btnRegistrarModificar.setText("Registrar");
             LimpiarDatos();
         } else {
 
             LlenarDatosPersona();
-            visJugador.btnRegistrarModificar.setText("Aceptar");
+            VistaEntrenador.btnRegistrarModificar.setText("Aceptar");
         }
 
     }
 
-    public void IniciarDialogJugador(String titulo) {
+    public void IniciarDialogEntrenador(String titulo) {
 
         visPer.dlgPersona.dispose();
-        visJugador.dialogRegistrarModificar.setVisible(true);
-        visJugador.dialogRegistrarModificar.setTitle(titulo);
-        visJugador.dialogRegistrarModificar.setSize(850, 676);
-        if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
+        VistaEntrenador.dialogRegistrarModificar.setVisible(true);
+        VistaEntrenador.dialogRegistrarModificar.setTitle(titulo);
+        VistaEntrenador.dialogRegistrarModificar.setSize(1025, 500);
 
-            visJugador.txtCedula.setText(visPer.txtCedulaDLG.getText());
+        if (VistaEntrenador.dialogRegistrarModificar.getTitle().equals("Registrar Entrenador")) {
+
+            VistaEntrenador.txtCedula.setText(visPer.txtCedulaDLG.getText());
             List<Clase_Persona> jug = modPersona.ListaPersona();
             jug.stream().forEach(p -> {
 
-                if (p.getCedula().equals(visJugador.txtCedula.getText())) {
+                if (p.getCedula().equals(VistaEntrenador.txtCedula.getText())) {
 
                     Image foto = p.getFoto();
                     if (foto != null) {
-                        foto = foto.getScaledInstance(VistaJugadores.lblFoto.getWidth(), VistaJugadores.lblFoto.getHeight(), Image.SCALE_SMOOTH);
+                        foto = foto.getScaledInstance(VistaEntrenador.lblFoto.getWidth(), VistaEntrenador.lblFoto.getHeight(), Image.SCALE_SMOOTH);
                         ImageIcon icono = new ImageIcon(foto);
                         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaJugadores.lblFoto.setIcon(icono);
+                        VistaEntrenador.lblFoto.setIcon(icono);
                     }
                 }
             });
         } else {
-
-            LlenarDatosJugador();
+            LlenarDatosEntrenador();
         }
     }
 
@@ -181,7 +194,7 @@ public class Controlador_Jugador {
                 visPer.lblFoto.setIcon(icono);
                 visPer.lblFoto.updateUI();
             } catch (IOException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
                 MensajeError(ex.getMessage());
             }
         }
@@ -219,14 +232,14 @@ public class Controlador_Jugador {
                     modPersona.setLength(largo);
 
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 try {
 
                     if (modPersona.InsertarPersona()) {
 
-                        IniciarDialogJugador("Registrar Jugador");
+                        IniciarDialogEntrenador("Registrar Entrenador");
                     } else {
 
                         MensajeError("Ha ocurrido un error al registrar en la base");
@@ -238,7 +251,7 @@ public class Controlador_Jugador {
 
                 } catch (SQLException ex) {
 
-                    Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
                     MensajeError(ex.getMessage());
                 }
             }
@@ -259,7 +272,7 @@ public class Controlador_Jugador {
 
                 if (modPersona.ActualizarPersona()) {
 
-                    IniciarDialogJugador("Editar");
+                    IniciarDialogEntrenador("Editar");
                     MostrarDatos();
                 } else {
 
@@ -268,9 +281,13 @@ public class Controlador_Jugador {
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    private void CargarID() throws SQLException {
+        VistaEntrenador.txtCodigo.setText(String.valueOf(modEnt.CargarCodigoID()));
     }
 
     public void ModificarFoto() {
@@ -278,14 +295,14 @@ public class Controlador_Jugador {
         if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
             try {
-            
-            FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-            int largo = (int) jfc.getSelectedFile().length();
-            modPersona.setImageFile(img);
-            modPersona.setLength(largo);
+
+                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                int largo = (int) jfc.getSelectedFile().length();
+                modPersona.setImageFile(img);
+                modPersona.setLength(largo);
 
                 if (modPersona.ActualizarPersona()) {
-                    
+
                     MensajeSucces("Se modifico con exito la foto de la persona");
                     MostrarDatos();
                 } else {
@@ -295,60 +312,56 @@ public class Controlador_Jugador {
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
     }
 
-    public void RegistrarEditarJugador() {
+    public void RegistrarEditarEntrenador() {
 
-        if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
+        if (visEnt.dialogRegistrarModificar.getTitle().equals("Registrar Entrenador")) {
 
-            if (visJugador.txtAñosExperiencia.getText().isEmpty() || visJugador.txtCedula.getText().isEmpty() || visJugador.txtEquipo.getText().isEmpty()
-                    || VistaJugadores.txtSueldo.getText().isEmpty() || VistaJugadores.dateFechaFin.getDate() == null || visJugador.dateFechaInicio.getDate() == null
-                    || visJugador.cbxPosicion.getSelectedIndex() == 0) {
+            if (VistaEntrenador.txtCodigo.getText().isEmpty() || VistaEntrenador.txtCedula.getText().isEmpty()
+                    || VistaEntrenador.txtAñosExperiencia.getText().isEmpty() || VistaEntrenador.getTxtSueldo().getText().isEmpty() || VistaEntrenador.txtEquipo.getText().isEmpty()) {
 
                 MensajeError("Faltan campos por llenar");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCedula_persona(visJugador.txtCedula.getText());
-                modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                modEnt.setAniosexp(Integer.valueOf(VistaEntrenador.txtAñosExperiencia.getText()));
+                modEnt.setCodigo_equipofk(VistaEntrenador.txtEquipo.getText());
+                modEnt.setCedula_personafk(VistaEntrenador.txtCedula.getText());
+                modEnt.setCodigo(Integer.valueOf(VistaEntrenador.txtCodigo.getText()));
+                modEnt.setSueldo(Double.valueOf(VistaEntrenador.txtSueldo.getText()));
 
-                if (modJugador.InsertarJugador()) {
+                if (modEnt.InsertarEntrenador()) {
 
                     MensajeSucces("Se ha registrado con exito ");
                     MostrarDatos();
-                    visJugador.dialogRegistrarModificar.dispose();
+                    VistaEntrenador.dialogRegistrarModificar.dispose();
+
                 } else {
 
                     MensajeError("No se ha podido registrar debido a un error en la base de datos");
                     MostrarDatos();
                 }
             }
-        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
+        } else if (VistaEntrenador.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
-            if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
+            if (VistaEntrenador.tblEntrenador.getSelectedRow() == -1) {
 
-                MensajeError("Seleccione al jugador que desea modificar");
+                MensajeError("Seleccione al entrenador que desea modificar");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCod_equipo(visJugador.tblEquipo.getValueAt(VistaJugadores.tblEquipo.getSelectedRow(), 0).hashCode());
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
-                modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                modEnt.setAniosexp(Integer.valueOf(VistaEntrenador.txtAñosExperiencia.getText()));
+                modEnt.setCodigo_equipofk(VistaEntrenador.txtEquipo.getText());
+                modEnt.setCodigo(Integer.valueOf(VistaEntrenador.txtCodigo.getText()));
+                modEnt.setSueldo(Double.valueOf(VistaEntrenador.txtSueldo.getText()));
+                modEnt.setCodigo(VistaEntrenador.tblEntrenador.getValueAt(VistaEntrenador.tblEntrenador.getSelectedRow(), 0).hashCode());
 
-                if (modJugador.ModificarJugador()) {
+                if (modEnt.ModificarEntrenador()) {
 
                     MensajeSucces("Se ha modifcado con exito ");
                     MostrarDatos();
@@ -362,20 +375,20 @@ public class Controlador_Jugador {
 
     }
 
-    public void EliminarJugador() {
+    public void EliminarEntrenador() {
 
-        if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
+        if (VistaEntrenador.tblEntrenador.getSelectedRow() == -1) {
 
-            MensajeError("Seleccione al jugador que desea eliminar");
+            MensajeError("Seleccione al entrenador que desea eliminar");
         } else {
 
             int x = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar esta informacion?", "Advertencia", JOptionPane.YES_NO_OPTION);
 
             if (x == 0) {
 
-                modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                modEnt.setCodigo(VistaEntrenador.tblEntrenador.getValueAt(VistaEntrenador.tblEntrenador.getSelectedRow(), 0).hashCode());
 
-                if (modJugador.OcultarJugador()) {
+                if (modEnt.EliminarEntrenador()) {
 
                     MensajeSucces("Se ha eliminado con exito");
                     MostrarDatos();
@@ -390,9 +403,9 @@ public class Controlador_Jugador {
 
     public void LlenarDatosPersona() {
 
-        String ced = visJugador.tblJugadores.getValueAt(visJugador.tblJugadores.getSelectedRow(), 1).toString();
+        String ced = VistaEntrenador.tblEntrenador.getValueAt(VistaEntrenador.tblEntrenador.getSelectedRow(), 1).toString();
 
-        List<Clase_Jugador> per = modJugador.ListaJugador();
+        List<Clase_Entrenador> per = modEnt.ListaEntrenador();
         per.stream().forEach(p -> {
 
             if (p.getCedula().equals(ced) && p.getCedula().equals(ced)) {
@@ -432,31 +445,28 @@ public class Controlador_Jugador {
 
     }
 
-    public void LlenarDatosJugador() {
+    public void LlenarDatosEntrenador() {
 
         try {
-            String ced = visJugador.tblJugadores.getValueAt(visJugador.tblJugadores.getSelectedRow(), 1).toString();
+            String ced = VistaEntrenador.tblEntrenador.getValueAt(VistaEntrenador.tblEntrenador.getSelectedRow(), 1).toString();
 
-            List<Clase_Jugador> jug = modJugador.ListaJugador();
+            List<Clase_Entrenador> jug = modEnt.ListaEntrenador();
             jug.stream().forEach(p -> {
 
-                if (p.getCedula_persona().equals(ced)) {
+                if (p.getCedula_personafk().equals(ced)) {
 
-                    //Jugador
-                    visJugador.txtAñosExperiencia.setText(String.valueOf(p.getAnios_exp()));
-                    visJugador.txtCedula.setText(String.valueOf(p.getCedula()));
-                    visJugador.cbxPosicion.setSelectedItem(p.getPosicion());
-                    visJugador.txtSueldo.setText(String.valueOf(p.getSueldo()));
-                    visJugador.txtEquipo.setText(String.valueOf(p.getCod_equipo()));
-                    visJugador.dateFechaFin.setDate(p.getFecha_finContrato());
-                    visJugador.dateFechaInicio.setDate(p.getFecha_inicioContrato());
+                    VistaEntrenador.txtAñosExperiencia.setText(String.valueOf(p.getAniosexp()));
+                    VistaEntrenador.txtCedula.setText(String.valueOf(p.getCedula()));
+                    VistaEntrenador.txtEquipo.setText(p.getCodigo_equipofk());
+                    VistaEntrenador.txtCodigo.setText(String.valueOf(p.getCodigo()));
+                    VistaEntrenador.txtSueldo.setText(String.valueOf(p.getSueldo()));
 
                     Image foto = p.getFoto();
                     if (foto != null) {
-                        foto = foto.getScaledInstance(VistaJugadores.lblFoto.getWidth(), VistaJugadores.lblFoto.getHeight(), Image.SCALE_SMOOTH);
+                        foto = foto.getScaledInstance(VistaEntrenador.lblFoto.getWidth(), VistaEntrenador.lblFoto.getHeight(), Image.SCALE_SMOOTH);
                         ImageIcon icono = new ImageIcon(foto);
                         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaJugadores.lblFoto.setIcon(icono);
+                        VistaEntrenador.lblFoto.setIcon(icono);
                     }
                 }
             });
@@ -480,33 +490,30 @@ public class Controlador_Jugador {
         visPer.btnGrupo1.clearSelection();
         visPer.lblFoto.setIcon(null);
 
-        visJugador.txtAñosExperiencia.setText("");
-        visJugador.txtCedula.setText("");
-        visJugador.txtEquipo.setText("");
-        visJugador.txtSueldo.setText("");
-        visJugador.dateFechaFin.setDate(null);
-        visJugador.dateFechaInicio.setDate(null);
-        visJugador.cbxPosicion.setSelectedIndex(0);
-        visJugador.lblFoto.setIcon(null);
+        VistaEntrenador.txtAñosExperiencia.setText("");
+        VistaEntrenador.txtCedula.setText("");
+        VistaEntrenador.txtSueldo.setText("");
+        VistaEntrenador.txtEquipo.setText("");
+        VistaEntrenador.lblFoto.setIcon(null);
 
     }
 
     public void MostrarDatos() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblJugadores.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
         tabla.setNumRows(0);
 
-        List<Clase_Jugador> jug = modJugador.ListaJugador();
+        List<Clase_Entrenador> jug = modEnt.ListaEntrenador();
         jug.stream().forEach(p -> {
 
-            Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getApellido1(), p.getCod_equipo(), p.getPosicion(), p.getSueldo()};
+            Object datos[] = {p.getCodigo(), p.getCedula_personafk(), p.getNombnre1(), p.getApellido1(), p.getNombreEquipo(), p.getSueldo()};
             tabla.addRow(datos);
         });
     }
-    
-    public void MostrarEquipos(){
-        
-        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblEquipo.getModel();
+
+    public void MostrarEquipos() {
+
+        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEquipo.getModel();
         tabla.setNumRows(0);
 
         List<Clase_Equipo> jug = modequipo.listarEquipos();
@@ -515,18 +522,18 @@ public class Controlador_Jugador {
             Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
             tabla.addRow(datos);
         });
-        
+
     }
 
-    public void BuscarJugador() {
+    public void BuscarEntrenador() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblJugadores.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
         tabla.setNumRows(0);
 
-        List<Clase_Jugador> jug = modJugador.BuscarJugador(visJugador.txtBuscar.getText());
+        List<Clase_Entrenador> jug = modEnt.BuscarEntrenador(VistaEntrenador.txtBuscar.getText());
         jug.stream().forEach(p -> {
 
-            Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getCod_equipo(), p.getPosicion(), p.getSueldo()};
+            Object datos[] = {p.getCodigo(), p.getCedula_personafk(), p.getNombnre1(), p.getApellido1(), p.getCodigo_equipofk(), p.getSueldo()};
             tabla.addRow(datos);
         });
     }
