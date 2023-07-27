@@ -14,7 +14,10 @@ import Vista.Resumen_Partido;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -308,7 +311,7 @@ public class Controlador_Resumen_Partido {
         }
         );
     }
-
+    
     public void LlenarDatos() {
 
         int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 1).hashCode();
@@ -337,6 +340,13 @@ public class Controlador_Resumen_Partido {
                             visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
                             visRes.getLblPartido().setText(String.valueOf(codpar));
                             visRes.getLblEquipo4().setText(l.getNombre_equi());
+                            
+                            try {
+                                modRes.setCodigo_equipofk(liscodigo.get(0));
+                                visRes.getLblGoles().setText(String.valueOf(modRes.ConsultarGoles()));
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 
                         } else if (p.getCodigo_equipofk() == liscodigo.get(1)) {
 
@@ -349,7 +359,14 @@ public class Controlador_Resumen_Partido {
                             visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
                             visRes.getLblPartido().setText(String.valueOf(codpar));
                             visRes.getLblEquipo2().setText(l.getNombre_equi());
-
+                            
+                            try {
+                                modRes.setCodigo_equipofk(liscodigo.get(1));
+                                visRes.getLblGoles1().setText(String.valueOf(modRes.ConsultarGoles()));
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
                         }
                     }
                 }

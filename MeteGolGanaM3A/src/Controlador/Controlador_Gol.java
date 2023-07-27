@@ -34,7 +34,7 @@ public class Controlador_Gol {
         this.modeloGol = modeloGol;
         this.vistagol = vistagol;
         vistagol.setVisible(true);
-        //cargaGoles();
+        cargaGoles();
     }
      public void iniciaControl() {
         vistagol.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
@@ -111,12 +111,12 @@ public class Controlador_Gol {
             JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
         } else {
             String selectedId = vistagol.getTblGoles().getValueAt(selectedRow, 0).toString();
-            Optional<Clase_Gol> matchingPartido = Listgol.stream()
+            Optional<Clase_Gol> matchingGoles = Listgol.stream()
                     .filter(p -> selectedId.equals(String.valueOf(p.getCod_partido())))
                     .findFirst();
 
-            if (matchingPartido.isPresent()) {
-                Clase_Gol p = matchingPartido.get();
+            if (matchingGoles.isPresent()) {
+                Clase_Gol p = matchingGoles.get();
                 vistagol.getTxtcodGol().setText(String.valueOf(p.getCod_partido()));
                 vistagol.getTxtdescripcion().setText(p.getDescripcion());
                 vistagol.getTxtMinuto().setText(p.getMinuto());
@@ -138,8 +138,8 @@ public class Controlador_Gol {
             System.out.println("pudo");
         } else {
 
-            List<Clase_Gol> par = modeloGol.BuscarGoles(Integer.parseInt(vistagol.txtBuscar.getText()));
-            par.stream().forEach(p -> {
+            List<Clase_Gol> gol = modeloGol.BuscarGoles(Integer.parseInt(vistagol.txtBuscar.getText()));
+            gol.stream().forEach(p -> {
 
                 Object datos[] = {p.getCod_gol(), p.getDescripcion(),p.getMinuto(),p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
                 tabla.addRow(datos);
@@ -323,8 +323,6 @@ public class Controlador_Gol {
         }
         );
     }
-//-------------------------------------------------------CARGAR CAMPEONATOS EN LA TABLA--------------------------------------------------------------------------------------------
-
     private void cargajugadores() {
         DefaultTableModel mJtable;
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
@@ -332,6 +330,17 @@ public class Controlador_Gol {
         List<Clase_Jugador> listaC = modeloJug.ListaJugador();
         listaC.stream().forEach(p -> {
             String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1())};
+            mJtable.addRow(rowData);
+        }
+        );
+    }
+    private void cargaGoles() {
+        DefaultTableModel mJtable;
+        mJtable = (DefaultTableModel) vistagol.getTblGoles().getModel();
+        mJtable.setNumRows(0);
+        List<Clase_Gol> listaG = modeloGol.listarGoles();
+        listaG.stream().forEach(p -> {
+            String[] rowData = {String.valueOf(p.getCod_gol()),p.getDescripcion(),p.getMinuto(),String.valueOf(p.getCod_jugador()),String.valueOf(p.getCod_partido()),String.valueOf(p.getCod_equipo())};
             mJtable.addRow(rowData);
         }
         );
@@ -383,7 +392,7 @@ public class Controlador_Gol {
             }
 
             vistagol.getTblbuscar().setModel(modeloTabla);
-//-------------------------------------------------------BUSCAR ESTADIOS--------------------------------------------------------------------------------------------
+//-------------------------------------------------------BUSCAR EQUIPOS--------------------------------------------------------------------------------------------
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
             List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
             String idBuscado = vistagol.getTxtbuscarcod().getText();
@@ -405,9 +414,7 @@ public class Controlador_Gol {
                 }
 
             }
-
             vistagol.getTblbuscar().setModel(modeloTabla);
-//-------------------------------------------------------BUSCAR CAMPEONATOS--------------------------------------------------------------------------------------------      
         } 
     }
 }

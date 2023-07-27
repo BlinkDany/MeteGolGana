@@ -258,6 +258,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnResumen = new javax.swing.JButton();
         jSeparator21 = new javax.swing.JToolBar.Separator();
         desctopPrincipal = new javax.swing.JDesktopPane();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -426,15 +427,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         desctopPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/El-negocio-del-futbol-en-la-mira-de-los-fondos-de-inversion.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+        );
+
+        desctopPrincipal.setLayer(panelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desctopPrincipalLayout = new javax.swing.GroupLayout(desctopPrincipal);
         desctopPrincipal.setLayout(desctopPrincipalLayout);
         desctopPrincipalLayout.setHorizontalGroup(
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         desctopPrincipalLayout.setVerticalGroup(
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mnClientes.setText("Clientes");
@@ -544,6 +560,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mniProductosMP;
     private javax.swing.JMenu mniReportesMP;
     private javax.swing.JMenu mniReportesMP1;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,6 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         lblReMoJugadores = new javax.swing.JLabel();
-        txtCodigo = new LIB.FSTexFieldMD();
         txtCedula = new LIB.FSTexFieldMD();
         txtAñosExperiencia = new LIB.FSTexFieldMD();
         cbxPosicion = new javax.swing.JComboBox<>();
@@ -32,7 +31,6 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -76,20 +74,15 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodigo.setPlaceholder("Codigo");
-        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
-
         txtCedula.setForeground(new java.awt.Color(0, 0, 0));
         txtCedula.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCedula.setPlaceholder("Cedula");
-        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, -1));
+        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, -1));
 
         txtAñosExperiencia.setForeground(new java.awt.Color(0, 0, 0));
         txtAñosExperiencia.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtAñosExperiencia.setPlaceholder("Años de experiencia");
-        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, -1));
+        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, -1));
 
         cbxPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Posicion", "Portero", "Defensa Central", "Defensa Lateral", "Centro Campista Defensivo", "Centro Campista Ofensivo", "Delantero Lateral", "Centrodelantero" }));
         jPanel3.add(cbxPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 200, 32));
@@ -97,22 +90,22 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         txtEquipo.setForeground(new java.awt.Color(0, 0, 0));
         txtEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtEquipo.setPlaceholder("Equippo");
-        jPanel3.add(txtEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 210, -1));
-        jPanel3.add(dateFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 200, 35));
+        jPanel3.add(txtEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 210, -1));
+        jPanel3.add(dateFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 200, 35));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setText("Foto");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel4.setText("Fecha fin de contrato");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 157, -1));
-        jPanel3.add(dateFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 200, 35));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 157, -1));
+        jPanel3.add(dateFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 200, 35));
 
         txtSueldo.setForeground(new java.awt.Color(0, 0, 0));
         txtSueldo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtSueldo.setPlaceholder("Sueldo");
-        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
+        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 210, -1));
 
         tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,7 +128,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblEquipo);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 430, 260));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 430, 200));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -151,7 +144,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel5.setText("Fecha Inicio de contrato");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, -1, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -166,12 +159,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
             .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 140, 130));
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar foto");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 140, -1));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 140, 130));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -345,7 +333,6 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     public static com.toedter.calendar.JDateChooser dateFechaFin;
     public static com.toedter.calendar.JDateChooser dateFechaInicio;
     public static javax.swing.JDialog dialogRegistrarModificar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -361,13 +348,12 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblReMoJugadores;
+    public static javax.swing.JLabel lblReMoJugadores;
     public static javax.swing.JTable tblEquipo;
     public static javax.swing.JTable tblJugadores;
     public static LIB.FSTexFieldMD txtAñosExperiencia;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCedula;
-    public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtEquipo;
     public static LIB.FSTexFieldMD txtSueldo;
     // End of variables declaration//GEN-END:variables
