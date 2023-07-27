@@ -58,7 +58,7 @@ public class Controlador_temporada {
         vista.setTitle("Campeonatos");
 
         vista.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
-        //vista.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
+        vista.getBtnLimpiar().addActionListener(l -> limpiaActualizaBusca());
         vista.getBtnModificar().addActionListener(l -> abrirEditarDialogo("Editar"));
         vista.getBtnEliminar().addActionListener(l -> EliminarTemmporada());
         vista.getBtnCancelarDlg().addActionListener(l -> cerrarDialogo());

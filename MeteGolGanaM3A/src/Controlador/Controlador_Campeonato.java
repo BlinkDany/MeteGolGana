@@ -113,7 +113,7 @@ public class Controlador_Campeonato {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
             llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(true);
+            vista.getTxtCodigo().setEnabled(false);
 
         }
         vista.getDlgCampeonatos().setVisible(true);
