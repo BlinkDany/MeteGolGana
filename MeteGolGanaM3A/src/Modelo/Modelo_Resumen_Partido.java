@@ -53,25 +53,32 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
         }
     }
 
-    public boolean ValidarNumeroPartido() throws SQLException {
+    public boolean ValidarNumeroPartido() {
 
-        int count = 0;
-        boolean val = false;
-        String sql = "select count(codigo_partidofk) from resumen_partido\n"
-                + "where codigo_partidofk = " + getCodigo_partidofk() + "";
-        ResultSet res = con.Consultas(sql);
-
-        while (res.next()) {
-
-            count = res.getInt("count");
+        try {
+            int count = 0;
+            boolean val = false;
+            String sql = "select count(codigo_partidofk) from resumen_partido\n"
+                    + "where codigo_partidofk = " + getCodigo_partidofk() + "";
+            ResultSet res = con.Consultas(sql);
+            
+            while (res.next()) {
+                
+                count = res.getInt("count");
+                System.out.println(count);
+            }
+            
+            if (count == 2) {
+                
+                val = true;
+            }
+            
+            return val;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+            return false;
         }
-
-        if (count == 2) {
-
-            val = true;
-        }
-
-        return val;
     }
 
     public List<Clase_Resumen_Partido> Mostrar() {
