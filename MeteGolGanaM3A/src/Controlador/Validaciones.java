@@ -11,32 +11,31 @@ public class Validaciones {
         boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
         boolean retroceso = codigo1 == 8;
 
-        if (!(numeros1 || retroceso )) {
+        if (!(numeros1 || retroceso)) {
             evento.consume();
             JOptionPane.showMessageDialog(null, "Sólo se permiten números");
         }
 
-        if (telf.trim().length() == 10) {
+        if (telf.trim().length()== 15) {
             evento.consume();
-            JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 10 caracteres");
+            JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
         }
     }
 
-    public void ValidarCodigos(java.awt.event.KeyEvent evento, String cod) {
+    public void ValidarCedulas(java.awt.event.KeyEvent evento, String ced) {
 
         int codigo1 = evento.getKeyChar();
         boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
-        boolean espacio = codigo1 == 32;
         boolean retroceso = codigo1 == 8;
 
-        if (!(numeros1 || retroceso || espacio)) {
+        if (!(numeros1 || retroceso)) {
             evento.consume();
-            JOptionPane.showMessageDialog(null, "Sólo se permiten números");
+            JOptionPane.showMessageDialog(null, "Sólo se permiten números para la cedula");
         }
 
-        if (cod.trim().length() == 7) {
+        if (ced.length() == 10) {
             evento.consume();
-            JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 7 caracteres");
+            JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
         }
     }
 
@@ -47,8 +46,10 @@ public class Validaciones {
         boolean minusculas = nombre >= 97 && nombre <= 122;
         boolean espacio = nombre == 32;
         boolean reto = nombre == 8;
+        boolean especial = nombre == 164;
+        boolean especial1 = nombre == 165;
 
-        if (!(mayusculas || minusculas || espacio || reto)) {
+        if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
             evento.consume();
             JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
         }
@@ -58,6 +59,28 @@ public class Validaciones {
 
         return email.matches("^([A-Za-z0-9_-]+)@([A-Za-z]+)*(\\.[a-z]{2,})$");
     }
+    
+    
+
+    public boolean matricula(String matricul) {
+
+        return matricul.matches("^([A-Z]{3})*(\\-[0-9]{4})$");
+    }
+
+    public boolean dimenciones(String dimen) {
+
+        return dimen.matches("^([0-9]{1,3})x([0-9]{1,3})$");
+    }
+
+    public boolean fecha(String fech) {
+
+        return fech.matches("^([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})$");
+    }
+
+   /* public boolean hora(String hor) {
+
+        return hor.matches("^([01]\\d|2[0-3]):([0-5]\\d)$");
+    }*/
 
     public void Decimales(java.awt.event.KeyEvent evento, String cod) {
 
@@ -72,9 +95,38 @@ public class Validaciones {
             JOptionPane.showMessageDialog(null, "Sólo se permiten números o numeros con decimales");
         }
 
-        if (cod.trim().length() == 7) {
+        if (cod.trim().length() == 6) {
             evento.consume();
             JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 7 caracteres");
+        }
+    }
+
+    public void validaNomMaterial(java.awt.event.KeyEvent evento) {
+
+        int dato = evento.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+        boolean espacio = dato == 32;
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean punto = dato == 46;
+        boolean guion = dato == 45;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || espacio || minusculas || tildeE || tildesMinusculas || numeros)) {
+
+            evento.consume();
+            JOptionPane.showMessageDialog(null, "Digito Incorrecto");
+            System.out.println("Dato es:" + dato);
+
         }
     }
 
@@ -89,32 +141,17 @@ public class Validaciones {
             JOptionPane.showMessageDialog(null, "Sólo se permiten números");
         }
 
-        if (cod.trim().length() == 3) {
+        if (cod.trim().length() == 2) {
             evento.consume();
             JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 3 caracteres");
         }
     }
-        public void ValidarMesas(java.awt.event.KeyEvent evento, String me) {
 
-        int codigo1 = evento.getKeyChar();
-        boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
-        boolean retroceso = codigo1 == 8;
-
-        if (!(numeros1 || retroceso )) {
-            evento.consume();
-            JOptionPane.showMessageDialog(null, "Sólo se permiten números");
-        }
-
-        if (me.trim().length() == 3) {
-            evento.consume();
-            JOptionPane.showMessageDialog(null, "El numero de mesas no debe exceder de los 3 caracteres");
-        }
-    }
-            public boolean validarCedula(String cedula) {
+    public boolean validarCedula(String cedula) {
         boolean validar = false;
-        //Divide la cadena en los 10 numeros
-        //Integer.parseInt sirve para transformar una cadena a entero. 
-        //subString es un metodo de string(Desde, hasta)
+        /*Divide la cadena en los 10 numeros
+        Integer.parseInt sirve para transformar una cadena a entero. 
+        subString es un metodo de string(Desde, hasta)*/
         if (cedula.matches("\\d{10}")) {
             int d1 = Integer.parseInt(cedula.substring(0, 1));
             int d2 = Integer.parseInt(cedula.substring(1, 2));
@@ -171,5 +208,6 @@ public class Validaciones {
 
         return validar;
     }
+
 
 }
