@@ -100,7 +100,7 @@ public class Controlador_Campeonato {
         private void abrirDialogo(String ce) {
 
         vista.getDlgCampeonatos().setLocationRelativeTo(vista);
-        vista.getDlgCampeonatos().setSize(900, 900);
+        vista.getDlgCampeonatos().setSize(750, 600);
         vista.getDlgCampeonatos().setTitle(ce);
 
         if (vista.getDlgCampeonatos().getTitle().equals("Crear")) {
