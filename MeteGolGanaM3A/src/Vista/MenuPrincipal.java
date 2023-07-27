@@ -381,7 +381,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnAsignacion.setBackground(new java.awt.Color(255, 255, 255));
         BtnAsignacion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         BtnAsignacion.setForeground(new java.awt.Color(0, 153, 204));
-        BtnAsignacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/arbitro (1).png"))); // NOI18N
+        BtnAsignacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/recurso.png"))); // NOI18N
         BtnAsignacion.setText("Asignacion");
         BtnAsignacion.setFocusable(false);
         BtnAsignacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
