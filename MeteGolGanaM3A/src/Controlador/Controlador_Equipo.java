@@ -31,7 +31,7 @@ public class Controlador_Equipo {
         vistaequi.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
-        vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
+        vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
 
         //vista.getBtnSalir1().addActionListener(l -> salirdialogo());
         //vista.getBtnImprimir().addActionListener(l -> generarreporte());
@@ -57,7 +57,7 @@ public class Controlador_Equipo {
             LlenarDatos();
         }
     }
-    private void crearEditarPartido() {
+    private void crearEditarEquipo() {
         if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Crear")) {
 
             ModeloEquipos model = new ModeloEquipos();
@@ -67,15 +67,14 @@ public class Controlador_Equipo {
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
-                int codigopartido = Integer.valueOf(vistaequi.getTxtcodequipo().getText());
+                int codigoequipo = Integer.valueOf(vistaequi.getTxtcodequipo().getText());
                 String nombreequi = vistaequi.getTxtNombreequipo().getText();
-                String equipo1 = vistaequi.getJdcaniofundacion().getDateFormatString();
                 String ciudadequi = vistaequi.getTxtCiudadequipo().getText();
                 int estado = 0;
 
-                model.setCod_equipo(codigopartido);
+                model.setCod_equipo(codigoequipo);
                 model.setNombre_equi(nombreequi);
-                model.setAnio_fundacion(java.sql.Date.valueOf(equipo1));
+                model.setAnio_fundacion(new java.sql.Date(vistaequi.getJdcaniofundacion().getDate().getTime()));
                 model.setCiudad(ciudadequi);
                 model.setEstado_elim(estado);
                 if (model.InsertarEquipo()) {
@@ -100,12 +99,11 @@ public class Controlador_Equipo {
             } else {
                 int codigoequi = Integer.valueOf(vistaequi.getTxtcodequipo().getText());
                 String nombreequi = vistaequi.getTxtNombreequipo().getText();
-                String fechaequi = String.valueOf(vistaequi.getJdcaniofundacion().getDateFormatString());
                 String ciudadequi = vistaequi.getTxtCiudadequipo().getText();
 
                 model.setCod_equipo(codigoequi);
                 model.setNombre_equi(nombreequi);
-                model.setAnio_fundacion(java.sql.Date.valueOf(fechaequi));
+                model.setAnio_fundacion(new java.sql.Date(vistaequi.getJdcaniofundacion().getDate().getTime()));
                 model.setCiudad(ciudadequi);
                 if (model.ModificarEquipo()) {
                     limpiar();
