@@ -51,7 +51,7 @@ public class Controlador_Resumen_Partido {
         visRes.getBtnModificar().addActionListener(l -> {
 
             if (!(visRes.getTblResuemn().getSelectedRow() == -1)) {
-                
+
                 IniciarDialogRegisrarVisualizar("Visualizar");
             } else {
                 MensajeError("Seleccione un resumen de partido");
@@ -143,10 +143,11 @@ public class Controlador_Resumen_Partido {
 
         visRes.getDlgRegistrarConsultar().setVisible(true);
         visRes.getDlgRegistrarConsultar().setTitle(titulo);
-        visRes.getDlgRegistrarConsultar().setSize(1040, 881);
+        visRes.getDlgRegistrarConsultar().setSize(1060, 890);
 
         if (visRes.getDlgRegistrarConsultar().getTitle().equals("Registrar")) {
 
+            Limpiar();
         } else {
 
             LlenarDatos();
@@ -301,53 +302,79 @@ public class Controlador_Resumen_Partido {
         int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 1).hashCode();
         modRes.setCodigo_partidofk(codpar);
 
-        int codEquipo = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 2).hashCode();
-        modRes.setCodigo_equipofk(codEquipo);
-
-        List<Clase_Resumen_Partido> res = modRes.ListaResumen();
-        List<Clase_Equipo> par = modEquipos.listarEquipos();
+        List<Clase_Resumen_Partido> res = modRes.Mostrar();
         List<Integer> liscodigo = modRes.extarerResumen();
+        List<Clase_Equipo> equipo = modEquipos.listarEquipos();
+
         res.stream().forEach(p -> {
-            par.stream().forEach(l -> {
 
-                for (int i = 0; i < liscodigo.size(); i++) {
+            equipo.stream().forEach(l -> {
 
-                    if (p.getCodigo_partidofk() == codpar) {
+                if (codpar == p.getCodigo_partidofk()) {
 
-                        if (p.getCodigo_equipofk() == l.getCod_equipo()) {
+                    if (p.getCodigo_equipofk() == l.getCod_equipo()) {
 
-                            if (codEquipo == liscodigo.get(i)) {
+                        if (p.getCodigo_equipofk() == liscodigo.get(0)) {
 
-                                visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
-                                visRes.getTxtFaltas().setText(String.valueOf(p.getFaltas()));
-                                visRes.getTxtPenales().setText(String.valueOf(p.getPenales()));
-                                visRes.getTxtSaquesBanda().setText(String.valueOf(p.getSaques_mano()));
-                                visRes.getTxtTarjetasAmarillas().setText(String.valueOf(p.getTarjetas_amarillas()));
-                                visRes.getTxtTarjetasRojas().setText(String.valueOf(p.getTarjetas_rojas()));
-                                visRes.getTxtTirosEsquina().setText(String.valueOf(p.getTiros_esquina()));
-                                visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
-                                visRes.getLblEquipo4().setText(l.getNombre_equi());
+                            visRes.getTxtFaltas().setText(String.valueOf(p.getFaltas()));
+                            visRes.getTxtPenales().setText(String.valueOf(p.getPenales()));
+                            visRes.getTxtSaquesBanda().setText(String.valueOf(p.getSaques_mano()));
+                            visRes.getTxtTarjetasAmarillas().setText(String.valueOf(p.getTarjetas_amarillas()));
+                            visRes.getTxtTarjetasRojas().setText(String.valueOf(p.getTarjetas_rojas()));
+                            visRes.getTxtTirosEsquina().setText(String.valueOf(p.getTiros_esquina()));
+                            visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
+                            visRes.getLblPartido().setText(String.valueOf(codpar));
+                            visRes.getLblEquipo4().setText(l.getNombre_equi());
 
-                            } else if (p.getCodigo_equipofk() == liscodigo.get(i)) {
+                        } else if (p.getCodigo_equipofk() == liscodigo.get(1)) {
 
-                                visRes.getLblPartido().setText(String.valueOf(p.getCodigo_partidofk()));
-                                visRes.getTxtFaltas1().setText(String.valueOf(p.getFaltas()));
-                                visRes.getTxtPenales1().setText(String.valueOf(p.getPenales()));
-                                visRes.getTxtSaquesBanda1().setText(String.valueOf(p.getSaques_mano()));
-                                visRes.getTxtTarjetasAmarillas1().setText(String.valueOf(p.getTarjetas_amarillas()));
-                                visRes.getTxtTarjetasRojas1().setText(String.valueOf(p.getTarjetas_rojas()));
-                                visRes.getTxtTirosEsquina1().setText(String.valueOf(p.getTiros_esquina()));
-                                visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
-                                visRes.getLblEquipo2().setText(l.getNombre_equi());
-                            }
+                            visRes.getTxtFaltas1().setText(String.valueOf(p.getFaltas()));
+                            visRes.getTxtPenales1().setText(String.valueOf(p.getPenales()));
+                            visRes.getTxtSaquesBanda1().setText(String.valueOf(p.getSaques_mano()));
+                            visRes.getTxtTarjetasAmarillas1().setText(String.valueOf(p.getTarjetas_amarillas()));
+                            visRes.getTxtTarjetasRojas1().setText(String.valueOf(p.getTarjetas_rojas()));
+                            visRes.getTxtTirosEsquina1().setText(String.valueOf(p.getTiros_esquina()));
+                            visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
+                            visRes.getLblPartido().setText(String.valueOf(codpar));
+                            visRes.getLblEquipo2().setText(l.getNombre_equi());
 
                         }
                     }
                 }
             });
+
         });
+
     }
 
+    public void Limpiar() {
+
+        visRes.getTxtFaltas().setText("");
+        visRes.getTxtPenales().setText("");
+        visRes.getTxtSaquesBanda().setText("");
+        visRes.getTxtTarjetasAmarillas().setText("");
+        visRes.getTxtTarjetasRojas().setText("");
+        visRes.getTxtTirosEsquina().setText("");
+        visRes.getTxtTirosLibres().setText("");
+        visRes.getLblEquipo4().setText("Seleccionar equipo");
+        visRes.getTxtFaltas1().setText("");
+        visRes.getTxtPenales1().setText("");
+        visRes.getTxtSaquesBanda1().setText("");
+        visRes.getTxtTarjetasAmarillas1().setText("");
+        visRes.getTxtTarjetasRojas1().setText("");
+        visRes.getTxtTirosEsquina1().setText("");
+        visRes.getTxtTirosLibres1().setText("");
+        visRes.getLblPartido().setText("Partido");
+        visRes.getLblEquipo2().setText("Seleccionar equipo");
+
+    }
+
+    public void Validar2Resumenes(){
+        
+        
+        
+    }
+    
     public void MensajeSucces(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Advertencia", JOptionPane.INFORMATION_MESSAGE);
