@@ -140,6 +140,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visju);
         Controlador_Arbitro controlJuga = new Controlador_Arbitro(moJu, visju, modper, vislo);
         controlJuga.InicarControlador();
+        
 
     }
 
