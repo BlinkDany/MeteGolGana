@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import Conexion.ConexionMySql;
@@ -8,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Derek
  */
-public class ModeloEquipos extends Clase_Equipo{
+public class ModeloEquipos extends Clase_Equipo {
+
     ConexionMySql CPG = new ConexionMySql();
 
     public ModeloEquipos() {
@@ -44,6 +45,40 @@ public class ModeloEquipos extends Clase_Equipo{
         }
     }
 
+    public List<Clase_Equipo> BuscarEquipo(String aux) {
+
+        try {
+
+            String sql = "SELECT * "
+                    + "from equipo "
+                    + "WHERE codigo = '" + aux + "'and estado_elim = false";
+
+            ResultSet rs = CPG.Consultas(sql);
+            List<Clase_Equipo> par = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Clase_Equipo equipo = new Clase_Equipo();
+                equipo.setCod_equipo(rs.getInt("codigo"));
+                equipo.setNombre_equi(rs.getString("nombre"));
+                equipo.setAnio_fundacion(rs.getDate("anio_fundacion"));
+                equipo.setCiudad(rs.getString("ciudad"));
+                equipo.setEstado_elim(rs.getInt("estado_elim"));
+
+                par.add(equipo);
+            }
+
+            rs.close();
+            return par;
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            return null;
+        }
+    }
+
     public boolean InsertarEquipo() {
         String sql;
         sql = "INSERT INTO equipo(codigo,nombre,anio_fundacion,ciudad,estado_elim)";
@@ -59,10 +94,29 @@ public class ModeloEquipos extends Clase_Equipo{
 
     }
 
-    public boolean EliminarPartido() {
+    public boolean EliminarEquipo() {
         String sql;
         sql = "update equipo set estado_elim = true where codigo='" + getCod_equipo() + "';";
         return CPG.CRUD(sql);
 
+    }
+
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from equipo;";
+        ResultSet res = CPG.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
     }
 }

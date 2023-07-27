@@ -3,10 +3,13 @@ package Controlador;
 import Modelo.Clase_Equipo;
 import Modelo.ModeloEquipos;
 import Vista.VistaEquipos;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,11 +35,69 @@ public class Controlador_Equipo {
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
+        vistaequi.txtBuscar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                buscar();
+            }
+        });
+        vistaequi.getTxtBuscar().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntrada(evt);
+            }
+        });
+        vistaequi.getBtnCancelar().addActionListener(e -> {
+            vistaequi.getTblEquipos().clearSelection();
+        });
+        vistaequi.getBtnCancelar().addActionListener(e -> {
+            vistaequi.getTblEquipos().clearSelection();
+        });
+        vistaequi.getBtnRegistrarModificar().addActionListener(e -> {
+            vistaequi.getTblEquipos().clearSelection();
+        });
+        vistaequi.getBtnAgregar().addActionListener(l -> {
+            try {
+                CargarID();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
-        //vista.getBtnSalir1().addActionListener(l -> salirdialogo());
-        //vista.getBtnImprimir().addActionListener(l -> generarreporte());
-        //vista.getBtnSalir().addActionListener(l -> salir());
-        //vista.getBtnCrear().addActionListener(l -> {
+    }
+
+    public void buscar() {
+        if (vistaequi.getTxtBuscar().getText().equals("")) {
+            cargarEquipos();
+        } else {
+            DefaultTableModel tabla = (DefaultTableModel) vistaequi.getTblEquipos().getModel();
+            tabla.setNumRows(0);
+
+            List<Clase_Equipo> par = modeloEqui.BuscarEquipo(vistaequi.txtBuscar.getText());
+            par.stream().forEach(p -> {
+
+                Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getAnio_fundacion(), p.getCiudad()};
+                tabla.addRow(datos);
+            });
+        }
+    }
+
+    private void validarEntrada(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (vistaequi.getTxtBuscar().getText().trim().length() > 3) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
+    }
+
+    private void CargarID() throws SQLException {
+        vistaequi.getTxtcodequipo().setText(String.valueOf(modeloEqui.CargarCodigoID()));
     }
 
     private void abrirDialogo(String ce) {
@@ -57,6 +118,7 @@ public class Controlador_Equipo {
             LlenarDatos();
         }
     }
+
     private void crearEditarEquipo() {
         if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Crear")) {
 
@@ -120,7 +182,7 @@ public class Controlador_Equipo {
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Eliminar")) {
             ModeloEquipos model = new ModeloEquipos();
             model.setCod_equipo(Integer.valueOf(vistaequi.getTxtcodequipo().getText()));
-            if (model.EliminarPartido()) {
+            if (model.EliminarEquipo()) {
 
                 limpiar();
                 JOptionPane.showMessageDialog(vistaequi, "DATOS ELIMINADOS");
