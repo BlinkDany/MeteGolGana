@@ -11,6 +11,7 @@ import Modelo.Clase_Temporada;
 import Modelo.ModeloEquipos;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
+import Modelo.Modelo_Asignacion;
 import Modelo.Modelo_Entrenador;
 import Modelo.Modelo_Campeonato;
 import Modelo.Modelo_Estadio;
@@ -31,6 +32,7 @@ import Vista.VistaEstadios;
 import Vista.VistaGol;
 import Vista.VistaPartido;
 import Vista.Vista_Arbitro;
+import Vista.Vista_Asignacion;
 
 /**
  *
@@ -59,6 +61,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnResumen().addActionListener(l -> MenuResumen());
         vistaPrincipal.getBtnEstadios().addActionListener(l -> MenuEstadios());
         vistaPrincipal.getBtnEntrenador().addActionListener(l -> MenuEntrenador());
+        vistaPrincipal.getBtnAsignacion().addActionListener(l -> MenuAsignacion());
 
     }
 
@@ -69,6 +72,18 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visEst);
         Controlador_Estadio controlEst = new Controlador_Estadio(moEst, visEst);
         controlEst.InicarControlador();
+
+    }
+
+    private void MenuAsignacion() {
+
+        Modelo_Asignacion moAsig = new Modelo_Asignacion();
+        Vista.Vista_Asignacion visAsig = new Vista_Asignacion();
+        Modelo.Modelo_Arbitro moArb = new Modelo_Arbitro();
+        Modelo.Modelo_Partido moPart = new Modelo_Partido();
+        vistaPrincipal.getDesctopPrincipal().add(visAsig);
+        Controlador.Controlador_Asignacion controlPar = new Controlador_Asignacion(moAsig, moArb, moPart, visAsig);
+        controlPar.iniciaControl();
 
     }
 

@@ -30,10 +30,10 @@ public class Controlador_Asignacion {
     private Modelo_Partido modeloPart;
     private Vista_Asignacion vistaAsig;
 
-    public Controlador_Asignacion(Modelo_Asignacion modeloAsig, Modelo_Arbitro modeloArb, Modelo_Partido modeloPart, Vista_Asignacion vistaAsig) {
+    public Controlador_Asignacion(Modelo_Asignacion modeloAsig,Modelo_Arbitro modeloArb,Modelo_Partido modeloPart, Vista_Asignacion vistaAsig) {
         this.modeloAsig = modeloAsig;
         this.modeloArb = modeloArb;
-        this.modeloPart = modeloPart;
+       this.modeloPart = modeloPart;
         this.vistaAsig = vistaAsig;
 
         vistaAsig.setVisible(true);
@@ -85,24 +85,24 @@ public class Controlador_Asignacion {
 
     private void abrirDialogo(String ce) {
 
-        vistaAsig.getDialogRegistrarModificar().setSize(1047, 700);
+        vistaAsig.getDialogRegistrarModificar().setSize(515, 535);
         vistaAsig.getDialogRegistrarModificar().setTitle(ce);
         vistaAsig.getDialogRegistrarModificar().setVisible(true);
 
         if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
-            vistaAsig.getLblReMoJugadores().setText("REGISTRO DE PARTIDOS");
-            vistaAsig.getBtnRegistrarModificar().setText("REGISTRO DE PARTIDOS");
+            vistaAsig.getLblReMoJugadores().setText("REGISTRO DE ASIGNACION");
+            vistaAsig.getBtnRegistrarModificar().setText("REGISTRO DE ASIGNACION");
 
         } else if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Editar")) {
-            vistaAsig.getLblReMoJugadores().setText("MODIFICAR PARTIDOS");
+            vistaAsig.getLblReMoJugadores().setText("MODIFICAR ASIGNACION");
             LlenarDatos();
-            vistaAsig.getBtnRegistrarModificar().setText("MODIFICAR PARTIDOS");
+            vistaAsig.getBtnRegistrarModificar().setText("MODIFICAR ASIGNACION");
 
         } else if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
             LlenarDatos();
-            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
-            vistaAsig.getLblReMoJugadores().setText("ELIMINAR PARTIDOS");
-            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
+            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR ASIGNACION");
+            vistaAsig.getLblReMoJugadores().setText("ELIMINAR ASIGNACION");
+            vistaAsig.getBtnRegistrarModificar().setText("ELIMINAR ASIGNACION");
         }
     }
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------

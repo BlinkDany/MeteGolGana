@@ -241,6 +241,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnPatidos(JButton BtnPatidos) {
         this.BtnPatidos = BtnPatidos;
     }
+
+    public JButton getBtnAsignacion() {
+        return BtnAsignacion;
+    }
+
+    public void setBtnAsignacion(JButton BtnAsignacion) {
+        this.BtnAsignacion = BtnAsignacion;
+    }
     
     
     
@@ -270,6 +278,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnEstadios = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JToolBar.Separator();
         btnResumen = new javax.swing.JButton();
+        jSeparator10 = new javax.swing.JToolBar.Separator();
+        BtnAsignacion = new javax.swing.JButton();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
@@ -411,6 +421,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnResumen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnResumen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnResumen);
+        toolBar.add(jSeparator10);
+
+        BtnAsignacion.setBackground(new java.awt.Color(255, 255, 255));
+        BtnAsignacion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        BtnAsignacion.setForeground(new java.awt.Color(0, 153, 204));
+        BtnAsignacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/arbitro (1).png"))); // NOI18N
+        BtnAsignacion.setText("Asignacion");
+        BtnAsignacion.setFocusable(false);
+        BtnAsignacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnAsignacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnAsignacion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -511,6 +532,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnArbitros;
+    private javax.swing.JButton BtnAsignacion;
     private javax.swing.JButton BtnEquipos;
     private javax.swing.JButton BtnGoles;
     private javax.swing.JButton BtnPatidos;
@@ -529,6 +551,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator10;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
