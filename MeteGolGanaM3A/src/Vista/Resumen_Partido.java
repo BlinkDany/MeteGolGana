@@ -594,6 +594,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         btnRegistrar = new LIB.FSButtonMD();
         btnCancelar = new LIB.FSButtonMD();
         jLabel15 = new javax.swing.JLabel();
+        lblPartido1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         dlgPartido = new javax.swing.JDialog();
         jPanel13 = new javax.swing.JPanel();
@@ -998,9 +999,9 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblPartido.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblPartido.setForeground(new java.awt.Color(255, 255, 255));
         lblPartido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPartido.setText("Partido");
+        lblPartido.setText("partido");
         lblPartido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(lblPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 330, 42));
+        jPanel4.add(lblPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 110, 42));
 
         btnRegistrar.setText("Guardar resumen");
         btnRegistrar.setColorPressed(new java.awt.Color(0, 204, 51));
@@ -1016,6 +1017,13 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Tiros Libres");
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 330, 42));
+
+        lblPartido1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPartido1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPartido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPartido1.setText("Seleccionar partido");
+        lblPartido1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(lblPartido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 190, 42));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 800, 530));
 
@@ -1270,6 +1278,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblGoles;
     private javax.swing.JLabel lblGoles1;
     private javax.swing.JLabel lblPartido;
+    private javax.swing.JLabel lblPartido1;
     public static javax.swing.JTable tblEquipos;
     public static javax.swing.JTable tblEquipos2;
     private javax.swing.JTable tblPartido;
