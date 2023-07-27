@@ -32,13 +32,28 @@ public class Controlador_Equipo {
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
+        vistaequi.getBtnEquipo().addActionListener(l -> crearEditarEquipo());
 
         //vista.getBtnSalir1().addActionListener(l -> salirdialogo());
         //vista.getBtnImprimir().addActionListener(l -> generarreporte());
         //vista.getBtnSalir().addActionListener(l -> salir());
         //vista.getBtnCrear().addActionListener(l -> {
     }
+public void buscar() {
+        if (vistaequi.getTxtBuscar().getText().equals("")) {
+            cargarEquipos();
+        } else {
+            DefaultTableModel tabla = (DefaultTableModel) vistaequi.getTblEquipos().getModel();
+            tabla.setNumRows(0);
 
+            List<Clase_Equipo> par = modeloEqui.BuscarEquipo(vistaequi.txtBuscar.getText());
+            par.stream().forEach(p -> {
+
+                Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getAnio_fundacion(),p.getCiudad()};
+                tabla.addRow(datos);
+            });
+        }
+    }
     private void abrirDialogo(String ce) {
 
         vistaequi.getJdlgEquipos().setLocationRelativeTo(null);
@@ -120,7 +135,7 @@ public class Controlador_Equipo {
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Eliminar")) {
             ModeloEquipos model = new ModeloEquipos();
             model.setCod_equipo(Integer.valueOf(vistaequi.getTxtcodequipo().getText()));
-            if (model.EliminarPartido()) {
+            if (model.EliminarEquipo()) {
 
                 limpiar();
                 JOptionPane.showMessageDialog(vistaequi, "DATOS ELIMINADOS");
