@@ -31,8 +31,8 @@ public class Modelo_Temporada extends Clase_Temporada {
        public boolean InsertarTemporada() {
 //construir consulta para insertar el producto 
         String sql = "INSERT INTO public.temporada(\n"
-                + "	codigo, fecha_inicio, fecha_fin, codigo_campeonato, estado_elim)\n"
-                + "	VALUES ('" + getCodigoPk()+ "','" + getFechaIni()+ "','" + getFechaFin()+ "', '" + getCodCampeonatoFk()+ "', '" + isEstadoEli()+ "');";
+                + "fecha_inicio, fecha_fin, codigo_campeonato, estado_elim)\n"
+                + "	VALUES ('" + getFechaIni()+ "','" + getFechaFin()+ "', '" + getCodCampeonatoFk()+ "', '" + isEstadoEli()+ "');";
 
         return con.CRUD(sql);
 

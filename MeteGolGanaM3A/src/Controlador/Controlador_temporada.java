@@ -106,7 +106,7 @@ public class Controlador_temporada {
     private void abrirDialogo(String ce) {
 
         vista.getDlgaTemporada().setLocationRelativeTo(vista);
-        vista.getDlgaTemporada().setSize(825, 600);
+        vista.getDlgaTemporada().setSize(800, 600);
         vista.getDlgaTemporada().setTitle(ce);
 
         if (vista.getDlgaTemporada().getTitle().equals("Crear")) {
@@ -129,7 +129,7 @@ public class Controlador_temporada {
             vista.getDlgaTemporada().setVisible(true);
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
             llenarCamposDeTexto();
-            vista.getTxtCodigo().setEnabled(false);
+            
 
         }
 
@@ -148,9 +148,7 @@ public class Controlador_temporada {
             } else {
 
                 // Asignar valores al modelo
-                modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
-                //  modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
-
+                // modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
                 // Convert java.util.Date to java.sql.Date
                 java.util.Date utilDate = vista.getTxtFechaIni().getDate();
                 java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -189,35 +187,42 @@ public class Controlador_temporada {
 
             if (confirmacion == JOptionPane.YES_OPTION) {
 
-                vista.getTxtCodigo().setEditable(false);
+                List<Clase_Temporada> listTempo = modelo.ListaTemporada();
 
-                modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
+                listTempo.stream().forEach(p -> {
 
-                //modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
-                java.util.Date fechaIni = vista.getTxtFechaIni().getDate();
-                java.sql.Date sqlIni = new java.sql.Date(fechaIni.getTime());
+                    if (vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).equals(p.getCodigoPk())) {
+
+                        // Llenar los campos de la vista con los datos de producto seleccionado
+                        modelo.setCodigoPk((int) vista.getTblCampeonatoFK().getValueAt(vista.getTblCampeonatoFK().getSelectedRow(), 0));
+                    }
+
+                    //modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
+                    java.util.Date fechaIni = vista.getTxtFechaIni().getDate();
+                    java.sql.Date sqlIni = new java.sql.Date(fechaIni.getTime());
 
 // Set the java.sql.Date object in your model
-                modelo.setFechaIni(sqlIni);
+                    modelo.setFechaIni(sqlIni);
 
-                //modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
-                java.util.Date fechaFin = vista.getTxtFechaFin().getDate();
-                java.sql.Date sqlFin = new java.sql.Date(fechaFin.getTime());
-                
+                    //modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
+                    java.util.Date fechaFin = vista.getTxtFechaFin().getDate();
+                    java.sql.Date sqlFin = new java.sql.Date(fechaFin.getTime());
+
 // Set the java.sql.Date object in your model
-                modelo.setFechaFin(sqlFin);
-                
-                modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
+                    modelo.setFechaFin(sqlFin);
 
-                if (modelo.ModificarTemporada()) {
-                    JOptionPane.showMessageDialog(vista, "Datos modificados ",
-                            "Advertencia", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    cerrarDialogo();
-                    mostrarDatosTabla();
-                }
+                    modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
+
+                    if (modelo.ModificarTemporada()) {
+                        JOptionPane.showMessageDialog(vista, "Datos modificados ",
+                                "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+
+                        cerrarDialogo();
+                        mostrarDatosTabla();
+                    }
+                });
+
             }
-
         }
     }
 
@@ -241,7 +246,7 @@ public class Controlador_temporada {
             if (vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).equals(p.getCodigoPk())) {
 
                 // Llenar los campos de la vista con los datos de producto seleccionado
-                vista.getTxtCodigo().setText(String.valueOf(p.getCodigoPk()));
+               
                 vista.getTxtFechaFin().setDate(p.getFechaFin());
                 vista.getTxtFechaIni().setDate(p.getFechaIni());
                 vista.getTxtCodigoCampeonatoFK().setText(String.valueOf(p.getCodCampeonatoFk()));
@@ -406,7 +411,7 @@ public class Controlador_temporada {
 //--------------------------------------------------------------LIMPIAR------------------------------------------------------------//
     public void limpiar() {
 
-        vista.getTxtCodigo().setText("");
+        
         vista.getTxtFechaIni().setDateFormatString("");
         vista.getTxtFechaFin().setDateFormatString("");
         vista.getTxtCodigoCampeonatoFK().setText("");
