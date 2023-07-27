@@ -96,8 +96,20 @@ public class Controlador_Resumen_Partido {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                visRes.getLblPartido().setText(String.valueOf(visRes.getTblPartido().getValueAt(visRes.getTblPartido().getSelectedRow(), 0).toString()));
-                visRes.getDlgPartido().dispose();
+                int codpar = Integer.valueOf(visRes.getTblPartido().getValueAt(visRes.getTblPartido().getSelectedRow(), 0).toString());
+                modRes.setCodigo_partidofk(codpar);
+
+                System.out.println(codpar);
+                
+                if (!modRes.ValidarNumeroPartido()) {
+
+                    visRes.getLblPartido().setText(String.valueOf(visRes.getTblPartido().getValueAt(visRes.getTblPartido().getSelectedRow(), 0).toString()));
+                    visRes.getDlgPartido().dispose();
+
+                } else {
+
+                    MensajeError("El partido ya tiene registrado dos equipos registrados en resumen");
+                }
             }
         });
 
@@ -369,12 +381,6 @@ public class Controlador_Resumen_Partido {
 
     }
 
-    public void Validar2Resumenes(){
-        
-        
-        
-    }
-    
     public void MensajeSucces(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Advertencia", JOptionPane.INFORMATION_MESSAGE);
