@@ -154,30 +154,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.jPanel1 = jPanel1;
     }
 
-    public JToolBar.Separator getjSeparator1() {
-        return jSeparator1;
-    }
-
-    public void setjSeparator1(JToolBar.Separator jSeparator1) {
-        this.jSeparator1 = jSeparator1;
-    }
-
-    public JToolBar.Separator getjSeparator2() {
-        return jSeparator2;
-    }
-
-    public void setjSeparator2(JToolBar.Separator jSeparator2) {
-        this.jSeparator2 = jSeparator2;
-    }
-
-    public JToolBar.Separator getjSeparator3() {
-        return jSeparator3;
-    }
-
-    public void setjSeparator3(JToolBar.Separator jSeparator3) {
-        this.jSeparator3 = jSeparator3;
-    }
-
     public JMenu getMnClientes() {
         return mnClientes;
     }
@@ -259,27 +235,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
-        btnTemporada = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
         btnCampeonato = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnJugadores = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JToolBar.Separator();
+        jSeparator12 = new javax.swing.JToolBar.Separator();
+        btnTemporada = new javax.swing.JButton();
+        jSeparator11 = new javax.swing.JToolBar.Separator();
         BtnEquipos = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JToolBar.Separator();
-        BtnGoles = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JToolBar.Separator();
-        BtnArbitros = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JToolBar.Separator();
-        btnEntrenador = new javax.swing.JButton();
-        jSeparator8 = new javax.swing.JToolBar.Separator();
-        BtnPatidos = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JToolBar.Separator();
+        jSeparator13 = new javax.swing.JToolBar.Separator();
         btnEstadios = new javax.swing.JButton();
-        jSeparator9 = new javax.swing.JToolBar.Separator();
-        btnResumen = new javax.swing.JButton();
-        jSeparator10 = new javax.swing.JToolBar.Separator();
+        jSeparator14 = new javax.swing.JToolBar.Separator();
+        btnJugadores = new javax.swing.JButton();
+        jSeparator15 = new javax.swing.JToolBar.Separator();
+        btnEntrenador = new javax.swing.JButton();
+        jSeparator16 = new javax.swing.JToolBar.Separator();
+        BtnArbitros = new javax.swing.JButton();
+        jSeparator17 = new javax.swing.JToolBar.Separator();
+        BtnPatidos = new javax.swing.JButton();
+        jSeparator18 = new javax.swing.JToolBar.Separator();
         BtnAsignacion = new javax.swing.JButton();
+        jSeparator19 = new javax.swing.JToolBar.Separator();
+        BtnGoles = new javax.swing.JButton();
+        jSeparator20 = new javax.swing.JToolBar.Separator();
+        btnResumen = new javax.swing.JButton();
+        jSeparator21 = new javax.swing.JToolBar.Separator();
         desctopPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
@@ -301,18 +278,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         toolBar.setBackground(new java.awt.Color(0, 51, 102));
         toolBar.setRollover(true);
 
-        btnTemporada.setBackground(new java.awt.Color(255, 255, 255));
-        btnTemporada.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnTemporada.setForeground(new java.awt.Color(0, 153, 204));
-        btnTemporada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/calendario 64x64.jpg"))); // NOI18N
-        btnTemporada.setText("Temporada");
-        btnTemporada.setToolTipText("Ver las temporadas existentes");
-        btnTemporada.setFocusable(false);
-        btnTemporada.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTemporada.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnTemporada);
-        toolBar.add(jSeparator2);
-
         btnCampeonato.setBackground(new java.awt.Color(255, 255, 255));
         btnCampeonato.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnCampeonato.setForeground(new java.awt.Color(0, 153, 204));
@@ -323,18 +288,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnCampeonato.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCampeonato.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnCampeonato);
-        toolBar.add(jSeparator1);
+        toolBar.add(jSeparator12);
 
-        btnJugadores.setBackground(new java.awt.Color(255, 255, 255));
-        btnJugadores.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnJugadores.setForeground(new java.awt.Color(0, 153, 204));
-        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/jugador-de-futbol (1).png"))); // NOI18N
-        btnJugadores.setText("Jugadores");
-        btnJugadores.setFocusable(false);
-        btnJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnJugadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnJugadores);
-        toolBar.add(jSeparator3);
+        btnTemporada.setBackground(new java.awt.Color(255, 255, 255));
+        btnTemporada.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnTemporada.setForeground(new java.awt.Color(0, 153, 204));
+        btnTemporada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/calendario 64x64.jpg"))); // NOI18N
+        btnTemporada.setText("Temporada");
+        btnTemporada.setToolTipText("Ver las temporadas existentes");
+        btnTemporada.setFocusable(false);
+        btnTemporada.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTemporada.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnTemporada);
+        toolBar.add(jSeparator11);
 
         BtnEquipos.setBackground(new java.awt.Color(255, 255, 255));
         BtnEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -345,29 +311,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnEquipos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnEquipos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnEquipos);
-        toolBar.add(jSeparator4);
+        toolBar.add(jSeparator13);
 
-        BtnGoles.setBackground(new java.awt.Color(255, 255, 255));
-        BtnGoles.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        BtnGoles.setForeground(new java.awt.Color(0, 153, 204));
-        BtnGoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
-        BtnGoles.setText("Goles");
-        BtnGoles.setFocusable(false);
-        BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(BtnGoles);
-        toolBar.add(jSeparator5);
+        btnEstadios.setBackground(new java.awt.Color(255, 255, 255));
+        btnEstadios.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnEstadios.setForeground(new java.awt.Color(0, 153, 204));
+        btnEstadios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/estadio.png"))); // NOI18N
+        btnEstadios.setText("Estadios");
+        btnEstadios.setFocusable(false);
+        btnEstadios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEstadios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnEstadios);
+        toolBar.add(jSeparator14);
 
-        BtnArbitros.setBackground(new java.awt.Color(255, 255, 255));
-        BtnArbitros.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        BtnArbitros.setForeground(new java.awt.Color(0, 153, 204));
-        BtnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/arbitro (1).png"))); // NOI18N
-        BtnArbitros.setText("Arbitro");
-        BtnArbitros.setFocusable(false);
-        BtnArbitros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnArbitros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(BtnArbitros);
-        toolBar.add(jSeparator6);
+        btnJugadores.setBackground(new java.awt.Color(255, 255, 255));
+        btnJugadores.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnJugadores.setForeground(new java.awt.Color(0, 153, 204));
+        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/jugador-de-futbol (1).png"))); // NOI18N
+        btnJugadores.setText("Jugadores");
+        btnJugadores.setFocusable(false);
+        btnJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJugadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnJugadores);
+        toolBar.add(jSeparator15);
 
         btnEntrenador.setBackground(new java.awt.Color(255, 255, 255));
         btnEntrenador.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -383,7 +349,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         toolBar.add(btnEntrenador);
-        toolBar.add(jSeparator8);
+        toolBar.add(jSeparator16);
+
+        BtnArbitros.setBackground(new java.awt.Color(255, 255, 255));
+        BtnArbitros.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        BtnArbitros.setForeground(new java.awt.Color(0, 153, 204));
+        BtnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/arbitro (1).png"))); // NOI18N
+        BtnArbitros.setText("Arbitro");
+        BtnArbitros.setFocusable(false);
+        BtnArbitros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnArbitros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnArbitros);
+        toolBar.add(jSeparator17);
 
         BtnPatidos.setBackground(new java.awt.Color(255, 255, 255));
         BtnPatidos.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -399,29 +376,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         toolBar.add(BtnPatidos);
-        toolBar.add(jSeparator7);
-
-        btnEstadios.setBackground(new java.awt.Color(255, 255, 255));
-        btnEstadios.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnEstadios.setForeground(new java.awt.Color(0, 153, 204));
-        btnEstadios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/estadio.png"))); // NOI18N
-        btnEstadios.setText("Estadios");
-        btnEstadios.setFocusable(false);
-        btnEstadios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEstadios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnEstadios);
-        toolBar.add(jSeparator9);
-
-        btnResumen.setBackground(new java.awt.Color(255, 255, 255));
-        btnResumen.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnResumen.setForeground(new java.awt.Color(0, 153, 204));
-        btnResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/analisis.png"))); // NOI18N
-        btnResumen.setText("Resumen partidos");
-        btnResumen.setFocusable(false);
-        btnResumen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnResumen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnResumen);
-        toolBar.add(jSeparator10);
+        toolBar.add(jSeparator18);
 
         BtnAsignacion.setBackground(new java.awt.Color(255, 255, 255));
         BtnAsignacion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -432,6 +387,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BtnAsignacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnAsignacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(BtnAsignacion);
+        toolBar.add(jSeparator19);
+
+        BtnGoles.setBackground(new java.awt.Color(255, 255, 255));
+        BtnGoles.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        BtnGoles.setForeground(new java.awt.Color(0, 153, 204));
+        BtnGoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/goal.png"))); // NOI18N
+        BtnGoles.setText("Goles");
+        BtnGoles.setFocusable(false);
+        BtnGoles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnGoles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(BtnGoles);
+        toolBar.add(jSeparator20);
+
+        btnResumen.setBackground(new java.awt.Color(255, 255, 255));
+        btnResumen.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnResumen.setForeground(new java.awt.Color(0, 153, 204));
+        btnResumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/analisis.png"))); // NOI18N
+        btnResumen.setText("Resumen partidos");
+        btnResumen.setFocusable(false);
+        btnResumen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnResumen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnResumen);
+        toolBar.add(jSeparator21);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -446,7 +424,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        desctopPrincipal.setBackground(new java.awt.Color(153, 153, 153));
+        desctopPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout desctopPrincipalLayout = new javax.swing.GroupLayout(desctopPrincipal);
         desctopPrincipal.setLayout(desctopPrincipalLayout);
@@ -550,16 +528,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator10;
-    private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JToolBar.Separator jSeparator6;
-    private javax.swing.JToolBar.Separator jSeparator7;
-    private javax.swing.JToolBar.Separator jSeparator8;
-    private javax.swing.JToolBar.Separator jSeparator9;
+    private javax.swing.JToolBar.Separator jSeparator11;
+    private javax.swing.JToolBar.Separator jSeparator12;
+    private javax.swing.JToolBar.Separator jSeparator13;
+    private javax.swing.JToolBar.Separator jSeparator14;
+    private javax.swing.JToolBar.Separator jSeparator15;
+    private javax.swing.JToolBar.Separator jSeparator16;
+    private javax.swing.JToolBar.Separator jSeparator17;
+    private javax.swing.JToolBar.Separator jSeparator18;
+    private javax.swing.JToolBar.Separator jSeparator19;
+    private javax.swing.JToolBar.Separator jSeparator20;
+    private javax.swing.JToolBar.Separator jSeparator21;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mniAyudaMP;
     private javax.swing.JMenu mniProductosMP;
