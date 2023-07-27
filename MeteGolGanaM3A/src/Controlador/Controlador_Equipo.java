@@ -157,12 +157,12 @@ public class Controlador_Equipo {
             JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
         } else {
             String selectedId = vistaequi.getTblEquipos().getValueAt(selectedRow, 0).toString();
-            Optional<Clase_Equipo> matchingPartido = Listequi.stream()
+            Optional<Clase_Equipo> matchingEquipo = Listequi.stream()
                     .filter(p -> selectedId.equals(p.getCod_equipo()))
                     .findFirst();
 
-            if (matchingPartido.isPresent()) {
-                Clase_Equipo p = matchingPartido.get();
+            if (matchingEquipo.isPresent()) {
+                Clase_Equipo p = matchingEquipo.get();
                 vistaequi.getTxtcodequipo().setText(String.valueOf(p.getCod_equipo()));
                 vistaequi.getTxtcodequipo().setEnabled(false);
                 vistaequi.getTxtNombreequipo().setText(String.valueOf(p.getNombre_equi()));
