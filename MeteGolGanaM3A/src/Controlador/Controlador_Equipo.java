@@ -5,10 +5,7 @@ import Modelo.ModeloEquipos;
 import Vista.VistaEquipos;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -59,7 +56,11 @@ public class Controlador_Equipo {
             vistaequi.getTblEquipos().clearSelection();
         });
         vistaequi.getBtnAgregar().addActionListener(l -> {
-            CargarID();
+            try {
+                CargarID();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
     }
@@ -94,11 +95,11 @@ public class Controlador_Equipo {
             JOptionPane.showMessageDialog(null, "Superior al limite (4)");
         }
     }
- private void CargarID() throws SQLException {
-        vistaequi.getTxtcodequipo().setText(String.valueOf(modeloEqui.Cargar));
+
+    private void CargarID() throws SQLException {
+        vistaequi.getTxtcodequipo().setText(String.valueOf(modeloEqui.CargarCodigoID()));
     }
- 
- 
+
     private void abrirDialogo(String ce) {
 
         vistaequi.getJdlgEquipos().setLocationRelativeTo(null);

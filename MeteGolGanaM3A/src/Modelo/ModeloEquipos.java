@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import Conexion.ConexionMySql;
@@ -14,7 +13,8 @@ import javax.swing.JOptionPane;
  *
  * @author Derek
  */
-public class ModeloEquipos extends Clase_Equipo{
+public class ModeloEquipos extends Clase_Equipo {
+
     ConexionMySql CPG = new ConexionMySql();
 
     public ModeloEquipos() {
@@ -44,7 +44,8 @@ public class ModeloEquipos extends Clase_Equipo{
             return null;
         }
     }
-public List<Clase_Equipo> BuscarEquipo(String aux) {
+
+    public List<Clase_Equipo> BuscarEquipo(String aux) {
 
         try {
 
@@ -77,6 +78,7 @@ public List<Clase_Equipo> BuscarEquipo(String aux) {
             return null;
         }
     }
+
     public boolean InsertarEquipo() {
         String sql;
         sql = "INSERT INTO equipo(codigo,nombre,anio_fundacion,ciudad,estado_elim)";
@@ -98,6 +100,7 @@ public List<Clase_Equipo> BuscarEquipo(String aux) {
         return CPG.CRUD(sql);
 
     }
+
     public int CargarCodigoID() throws SQLException {
 
         int codigo = 0;
