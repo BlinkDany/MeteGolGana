@@ -207,6 +207,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         txtFechaFin = new com.toedter.calendar.JDateChooser();
         txtFechaIni = new com.toedter.calendar.JDateChooser();
         btnLimpiarDlg = new LIB.FSButtonMD();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -261,40 +262,43 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         txtCodigoCampeonatoFK.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoCampeonatoFK.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodigoCampeonatoFK.setPlaceholder("Código del campeonato");
-        jPanel3.add(txtCodigoCampeonatoFK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 200, -1));
+        jPanel3.add(txtCodigoCampeonatoFK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 200, -1));
 
         btnCancelarDlg.setText("Cancelar");
         btnCancelarDlg.setColorHover(new java.awt.Color(0, 0, 0));
         btnCancelarDlg.setColorNormal(new java.awt.Color(255, 0, 0));
         btnCancelarDlg.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnCancelarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 200, -1));
+        jPanel3.add(btnCancelarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 200, -1));
 
         btnRegistrarModificarDlg.setText("Registrar");
         btnRegistrarModificarDlg.setColorHover(new java.awt.Color(0, 102, 204));
         btnRegistrarModificarDlg.setColorPressed(new java.awt.Color(0, 204, 51));
         btnRegistrarModificarDlg.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnRegistrarModificarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 200, -1));
+        jPanel3.add(btnRegistrarModificarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel3.setText("Fecha de Inicio");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel5.setText("Fecha de finalización");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txtFechaFin.setToolTipText("Fecha de finalizacion de temporada");
-        jPanel3.add(txtFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 40));
+        jPanel3.add(txtFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 40));
 
         txtFechaIni.setBackground(new java.awt.Color(0, 51, 255));
         txtFechaIni.setToolTipText("Fecha de inicio de temporada");
-        jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 40));
+        jPanel3.add(txtFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 200, 40));
 
         btnLimpiarDlg.setText("Limpiar");
         btnLimpiarDlg.setToolTipText("Limpiar los campos de texto");
         btnLimpiarDlg.setColorNormal(new java.awt.Color(0, 102, 255));
         btnLimpiarDlg.setColorPressed(new java.awt.Color(0, 204, 51));
         jPanel3.add(btnLimpiarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/messy.png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
         javax.swing.GroupLayout dlgaTemporadaLayout = new javax.swing.GroupLayout(dlgaTemporada.getContentPane());
         dlgaTemporada.getContentPane().setLayout(dlgaTemporadaLayout);
@@ -573,6 +577,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnRegistrarModificarDlg;
     public static javax.swing.JDialog dlgaTemporada;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
