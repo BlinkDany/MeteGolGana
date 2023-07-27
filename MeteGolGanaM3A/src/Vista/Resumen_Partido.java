@@ -788,7 +788,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblEquipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEquipo2.setText("Seleccionar equipo");
         lblEquipo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 220, -1));
+        jPanel2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 220, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 

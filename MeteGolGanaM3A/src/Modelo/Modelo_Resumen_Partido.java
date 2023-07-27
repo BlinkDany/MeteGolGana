@@ -30,16 +30,16 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
         return con.CRUD(sql);
     }
 
-    public List extarerResumen() {
+    public List<Integer> extarerResumen() {
 
         try {
+            int cod = 0;
             String sql = "select codigo_equipofk from resumen_partido\n"
-                    + "where codigo_partidofk = " + getCodigo_partidofk() +"";
+                    + "where codigo_partidofk = " + getCodigo_partidofk() + "";
             ResultSet res = con.Consultas(sql);
             List<Integer> listaod = new ArrayList<>();
 
             while (res.next()) {
-                int cod;
 
                 cod = res.getInt("codigo_equipofk");
                 listaod.add(cod);
@@ -51,6 +51,27 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
             System.out.println(ex.getMessage());
             return null;
         }
+    }
+
+    public boolean ValidarNumeroPartido() throws SQLException {
+
+        int count = 0;
+        boolean val = false;
+        String sql = "select count(codigo_partidofk) from resumen_partido\n"
+                + "where codigo_partidofk = " + getCodigo_partidofk() + "";
+        ResultSet res = con.Consultas(sql);
+
+        while (res.next()) {
+
+            count = res.getInt("count");
+        }
+
+        if (count == 2) {
+
+            val = true;
+        }
+
+        return val;
     }
 
     public List<Clase_Resumen_Partido> Mostrar() {
@@ -86,38 +107,5 @@ public class Modelo_Resumen_Partido extends Clase_Resumen_Partido {
             return null;
         }
     }
-    
-    public List<Clase_Resumen_Partido> ListaResumen() {
 
-        try {
-            String sql = "select * from resumen_partido where estado_elim = false and codigo_equipofk = " + getCodigo_equipofk() + " order by codigo";
-
-            ResultSet res = con.Consultas(sql);
-            List<Clase_Resumen_Partido> lisres = new ArrayList<>();
-
-            while (res.next()) {
-
-                Clase_Resumen_Partido resumen = new Clase_Resumen_Partido();
-                resumen.setCodigo(res.getInt("codigo"));
-                resumen.setCodigo_equipofk(res.getInt("codigo_equipofk"));
-                resumen.setCodigo_partidofk(res.getInt("codigo_partidofk"));
-                resumen.setEstado_elim(res.getBoolean("estado_elim"));
-                resumen.setFaltas(res.getInt("faltas"));
-                resumen.setSaques_mano(res.getInt("saques_mano"));
-                resumen.setPenales(res.getInt("penales"));
-                resumen.setTarjetas_amarillas(res.getInt("tarjetas_amarillas"));
-                resumen.setTarjetas_rojas(res.getInt("tarjetas_rojas"));
-                resumen.setTiros_esquina(res.getInt("tiros_esquina"));
-                resumen.setTiros_libres(res.getInt("tiros_libres"));
-
-                lisres.add(resumen);
-            }
-
-            res.close();
-            return lisres;
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
 }
