@@ -98,4 +98,22 @@ public List<Clase_Equipo> BuscarEquipo(String aux) {
         return CPG.CRUD(sql);
 
     }
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from equipo;";
+        ResultSet res = CPG.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
+    }
 }
