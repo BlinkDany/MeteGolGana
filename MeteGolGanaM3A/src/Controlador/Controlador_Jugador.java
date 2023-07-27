@@ -148,11 +148,13 @@ public class Controlador_Jugador {
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
             visJugador.btnRegistrarModificar.setText("Registrar");
+            visPer.lblTitulo.setText("Registrar Persona");
             LimpiarDatos();
         } else {
 
             LlenarDatosPersona();
             visJugador.btnRegistrarModificar.setText("Aceptar");
+            visPer.lblTitulo.setText("Modficar Persona");
         }
 
     }
@@ -164,6 +166,8 @@ public class Controlador_Jugador {
         visJugador.dialogRegistrarModificar.setTitle(titulo);
         visJugador.dialogRegistrarModificar.setSize(850, 676);
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
+            
+            visJugador.lblReMoJugadores.setText("Registrar Jugador");
 
             visJugador.txtCedula.setText(visPer.txtCedulaDLG.getText());
             List<Clase_Persona> jug = modPersona.ListaPersona();
@@ -182,6 +186,7 @@ public class Controlador_Jugador {
             });
         } else {
 
+            visJugador.lblReMoJugadores.setText("Modificar Jugador");
             LlenarDatosJugador();
         }
     }
@@ -231,7 +236,7 @@ public class Controlador_Jugador {
     public void RegistrarEditarPersona() {
 
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
-
+            
             if (visPer.txtCedulaDLG.getText().isEmpty() || visPer.txt1erApeDLG.getText().isEmpty() || visPer.txt1erNomDlg.getText().isEmpty()
                     || visPer.txt2doApeDLG.getText().isEmpty() || visPer.txt2doNomDLG.getText().isEmpty() || visPer.txtCorreoDlg.getText().isEmpty()
                     || visPer.txtDirecDLG.getText().isEmpty() || visPer.txtFechaDlg.getDate() == null || visPer.txtTelfDLG.getText().isEmpty()
@@ -284,7 +289,7 @@ public class Controlador_Jugador {
                 }
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
-
+            
             modPersona.setApellido1(visPer.txt1erApeDLG.getText());
             modPersona.setApellido2(visPer.txt2doApeDLG.getText());
             modPersona.setCedula(visPer.txtCedulaDLG.getText());
@@ -347,7 +352,7 @@ public class Controlador_Jugador {
     public void RegistrarEditarJugador() {
 
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
-
+            
             if (visJugador.txtAñosExperiencia.getText().isEmpty() || visJugador.txtCedula.getText().isEmpty() || visJugador.txtEquipo.getText().isEmpty()
                     || VistaJugadores.txtSueldo.getText().isEmpty() || VistaJugadores.dateFechaFin.getDate() == null || visJugador.dateFechaInicio.getDate() == null
                     || visJugador.cbxPosicion.getSelectedIndex() == 0) {
@@ -375,7 +380,7 @@ public class Controlador_Jugador {
                 }
             }
         } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
-
+            
             if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
 
                 MensajeError("Seleccione al jugador que desea modificar");
@@ -393,6 +398,7 @@ public class Controlador_Jugador {
 
                     MensajeSucces("Se ha modifcado con exito ");
                     MostrarDatos();
+                    visJugador.dialogRegistrarModificar.dispose();
                 } else {
 
                     MensajeError("No se ha podido modificar debido a un error en la base de datos");

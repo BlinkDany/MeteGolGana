@@ -348,7 +348,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblReMoJugadores;
+    public static javax.swing.JLabel lblReMoJugadores;
     public static javax.swing.JTable tblEquipo;
     public static javax.swing.JTable tblJugadores;
     public static LIB.FSTexFieldMD txtAñosExperiencia;
