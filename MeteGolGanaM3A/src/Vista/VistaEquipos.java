@@ -115,6 +115,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
+        lblReMoEquipos.setBackground(new java.awt.Color(0, 102, 204));
         lblReMoEquipos.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
         lblReMoEquipos.setForeground(new java.awt.Color(255, 255, 255));
         lblReMoEquipos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
