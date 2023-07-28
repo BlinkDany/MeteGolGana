@@ -258,9 +258,12 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         jButton1.setText("Agregar foto");
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 140, -1));
 
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodigo.setPlaceholder("Cedula");
+        txtCodigo.setEditable(false);
+        txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setBorder(null);
+        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        txtCodigo.setPlaceholder("CODIGO");
         jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 70, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
