@@ -391,29 +391,28 @@ public class Controlador_Jugador {
 
             } else {
 
-                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-                modPersona.setSexo(Sexo());
-
                 try {
+                    modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                    modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                    modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                    modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                    modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                    modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                    modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                    modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                    modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                    modPersona.setSexo(Sexo());
 
-                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                    int largo = (int) jfc.getSelectedFile().length();
-                    modPersona.setImageFile(img);
-                    modPersona.setLength(largo);
+                    try {
 
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                        int largo = (int) jfc.getSelectedFile().length();
+                        modPersona.setImageFile(img);
+                        modPersona.setLength(largo);
 
-                try {
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                     if (modPersona.InsertarPersona()) {
 
@@ -431,22 +430,25 @@ public class Controlador_Jugador {
 
                     Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
                     MensajeError(ex.getMessage());
+                    
+                } catch (java.lang.NullPointerException e){
+                    
+                    MensajeError("Ingrese una fecha correcta");
                 }
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
-            modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-            modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-            modPersona.setCedula(visPer.txtCedulaDLG.getText());
-            modPersona.setDireccion(visPer.txtDirecDLG.getText());
-            modPersona.setTelefono(visPer.txtTelfDLG.getText());
-            modPersona.setEmail(visPer.txtCorreoDlg.getText());
-            modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-            modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-            modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-            modPersona.setSexo(Sexo());
-
             try {
+                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                modPersona.setSexo(Sexo());
 
                 if (modPersona.ActualizarPersona()) {
 
@@ -457,7 +459,13 @@ public class Controlador_Jugador {
                 }
 
             } catch (SQLException ex) {
+                
                 Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                MensajeError(ex.getMessage());
+                
+            } catch (java.lang.NullPointerException e) {
+
+                MensajeError("Ingrese una fecha correcta");
             }
         }
     }
@@ -503,49 +511,66 @@ public class Controlador_Jugador {
                 MensajeError("Faltan campos por llenar");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCedula_persona(visJugador.txtCedula.getText());
-                modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                if (VistaJugadores.txtEquipo.getText().isEmpty()) {
 
-                if (modJugador.InsertarJugador()) {
-
-                    MensajeSucces("Se ha registrado con exito ");
-                    MostrarDatos();
-                    visJugador.dialogRegistrarModificar.dispose();
+                    MensajeError("Seleccione un equipo");
                 } else {
 
-                    MensajeError("No se ha podido registrar debido a un error en la base de datos");
-                    MostrarDatos();
+                    try {
+                        modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
+                        modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
+                        modJugador.setCedula_persona(visJugador.txtCedula.getText());
+                        modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
+                        modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
+                        modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
+                        modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+
+                        if (modJugador.InsertarJugador()) {
+
+                            MensajeSucces("Se ha registrado con exito ");
+                            MostrarDatos();
+                            visJugador.dialogRegistrarModificar.dispose();
+                        } else {
+
+                            MensajeError("No se ha podido registrar debido a un error en la base de datos");
+                            MostrarDatos();
+                        }
+                    } catch (java.lang.NullPointerException e) {
+
+                        MensajeError("Ingrese una fecha correcta");
+                    }
                 }
             }
         } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
-            if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
+            if (VistaJugadores.txtEquipo.getText().isEmpty()) {
 
-                MensajeError("Seleccione al jugador que desea modificar");
+                MensajeError("Seleccione un equipo");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCod_equipo(visJugador.tblEquipo.getValueAt(VistaJugadores.tblEquipo.getSelectedRow(), 0).hashCode());
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
-                modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                try {
+                    modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
+                    modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
+                    modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
+                    modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
+                    modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
+                    modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                    modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
 
-                if (modJugador.ModificarJugador()) {
+                    if (modJugador.ModificarJugador()) {
 
-                    MensajeSucces("Se ha modifcado con exito ");
-                    MostrarDatos();
-                    visJugador.dialogRegistrarModificar.dispose();
-                } else {
+                        MensajeSucces("Se ha modifcado con exito ");
+                        MostrarDatos();
+                        visJugador.dialogRegistrarModificar.dispose();
+                    } else {
 
-                    MensajeError("No se ha podido modificar debido a un error en la base de datos");
-                    MostrarDatos();
+                        MensajeError("No se ha podido modificar debido a un error en la base de datos");
+                        MostrarDatos();
+                    }
+
+                } catch (java.lang.NullPointerException e) {
+
+                    MensajeError("Ingrese una fecha correcta");
                 }
             }
         }
