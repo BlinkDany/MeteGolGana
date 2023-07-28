@@ -292,7 +292,7 @@ public class Controlador_Arbitro {
 
         if (visArbi.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
 
-            if (Vista_Arbitro.txtCodigo.getText().isEmpty() || Vista_Arbitro.txtCedula.getText().isEmpty()
+            if (Vista_Arbitro.txtCedula.getText().isEmpty()
                     || Vista_Arbitro.txtAñosExperiencia.getText().isEmpty() || Vista_Arbitro.getTxtSueldo().getText().isEmpty() || Vista_Arbitro.cbxPosicion.getSelectedIndex() == 0) {
 
                 MensajeError("Faltan campos por llenar");
@@ -301,7 +301,6 @@ public class Controlador_Arbitro {
                 modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
                 modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
                 modArbi.setCedula_persona_arbitro(Vista_Arbitro.txtCedula.getText());
-                modArbi.setCodigo_arbitro(Integer.valueOf(Vista_Arbitro.txtCodigo.getText()));
                 modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
 
                 if (modArbi.InsertarArbitro()) {
@@ -324,7 +323,6 @@ public class Controlador_Arbitro {
 
                 modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
                 modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
-                modArbi.setCodigo_arbitro(Integer.valueOf(Vista_Arbitro.txtCodigo.getText()));
                 modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
                 modArbi.setCodigo_arbitro(Vista_Arbitro.tblArbitros.getValueAt(Vista_Arbitro.tblArbitros.getSelectedRow(), 0).hashCode());
 
@@ -339,7 +337,6 @@ public class Controlador_Arbitro {
                 }
             }
         }
-
     }
 
     public void EliminarArbitro() {

@@ -121,14 +121,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         Vista_Arbitro.txtCedula = txtCedula;
     }
 
-    public static FSTexFieldMD getTxtCodigo() {
-        return txtCodigo;
-    }
-
-    public static void setTxtCodigo(FSTexFieldMD txtCodigo) {
-        Vista_Arbitro.txtCodigo = txtCodigo;
-    }
-
     public static FSTexFieldMD getTxtSueldo() {
         return txtSueldo;
     }
@@ -152,7 +144,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         lblReMoJugadores = new javax.swing.JLabel();
-        txtCodigo = new LIB.FSTexFieldMD();
         txtCedula = new LIB.FSTexFieldMD();
         txtAñosExperiencia = new LIB.FSTexFieldMD();
         cbxPosicion = new javax.swing.JComboBox<>();
@@ -201,32 +192,28 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, -1));
 
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodigo.setPlaceholder("Codigo");
-        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
-
         txtCedula.setForeground(new java.awt.Color(0, 0, 0));
         txtCedula.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCedula.setPlaceholder("Cedula");
-        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, -1));
+        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
 
         txtAñosExperiencia.setForeground(new java.awt.Color(0, 0, 0));
         txtAñosExperiencia.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtAñosExperiencia.setPlaceholder("Años de experiencia");
-        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, -1));
+        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, -1));
 
+        cbxPosicion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         cbxPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Posicion", "Principal", "Lateral", "Central" }));
-        jPanel3.add(cbxPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 160, 32));
+        jPanel3.add(cbxPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 210, 40));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setText("Foto");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
 
         txtSueldo.setForeground(new java.awt.Color(0, 0, 0));
         txtSueldo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtSueldo.setPlaceholder("Sueldo");
-        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
+        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 210, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -246,19 +233,19 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+            .addComponent(lblFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 140, 130));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 140, 130));
 
         jButton1.setBackground(new java.awt.Color(0, 153, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Agregar foto");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 140, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 140, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -437,7 +424,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtAñosExperiencia;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCedula;
-    public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtSueldo;
     // End of variables declaration//GEN-END:variables
 }
