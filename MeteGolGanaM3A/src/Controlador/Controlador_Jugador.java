@@ -430,9 +430,9 @@ public class Controlador_Jugador {
 
                     Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
                     MensajeError(ex.getMessage());
-                    
-                } catch (java.lang.NullPointerException e){
-                    
+
+                } catch (java.lang.NullPointerException e) {
+
                     MensajeError("Ingrese una fecha correcta");
                 }
             }
@@ -459,10 +459,10 @@ public class Controlador_Jugador {
                 }
 
             } catch (SQLException ex) {
-                
+
                 Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
                 MensajeError(ex.getMessage());
-                
+
             } catch (java.lang.NullPointerException e) {
 
                 MensajeError("Ingrese una fecha correcta");
@@ -525,16 +525,24 @@ public class Controlador_Jugador {
                         modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
                         modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
 
-                        if (modJugador.InsertarJugador()) {
+                        if (modJugador.ValidarNumJugadorEquipo() <= 12) {
 
-                            MensajeSucces("Se ha registrado con exito ");
-                            MostrarDatos();
-                            visJugador.dialogRegistrarModificar.dispose();
+                            if (modJugador.InsertarJugador()) {
+
+                                MensajeSucces("Se ha registrado con exito ");
+                                MostrarDatos();
+                                visJugador.dialogRegistrarModificar.dispose();
+                            } else {
+
+                                MensajeError("No se ha podido registrar debido a un error en la base de datos");
+                                MostrarDatos();
+                            }
+                            
                         } else {
-
-                            MensajeError("No se ha podido registrar debido a un error en la base de datos");
-                            MostrarDatos();
+                            
+                            MensajeError("El equipo no puede tener mas de 12 jugadores");
                         }
+
                     } catch (java.lang.NullPointerException e) {
 
                         MensajeError("Ingrese una fecha correcta");
