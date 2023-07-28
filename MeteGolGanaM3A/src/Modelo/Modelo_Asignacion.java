@@ -108,7 +108,7 @@ public class Modelo_Asignacion extends Clase_Asignacion {
 
     public boolean InsertarAsignacion() {
         String sql;
-        sql = "INSERT INTO asignacion(codigo,fecha,codigo_arbitrofk,codigo_partidofk,grupo,estado_elim)";
+        sql = "INSERT INTO asignacion(codigo,fecha,codigo_arbitrofk,codigo_partidofk,estado_elim)";
         sql += "VALUES('" + getCodigo_asignacion() + "','" + getFecha_asignacion() + "','" + getCodigo_arbitro_asignacion() + "','" + getCodigo_partido_asignacion() + "','" + false + "')";
         return CPG.CRUD(sql);
 
