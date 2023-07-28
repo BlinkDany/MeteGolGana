@@ -1,9 +1,11 @@
+package Controlador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+
 
 import Modelo.Clase_Arbitro;
 import Modelo.Clase_Campeonato;
@@ -33,6 +35,9 @@ import Vista.VistaGol;
 import Vista.VistaPartido;
 import Vista.Vista_Arbitro;
 import Vista.Vista_Asignacion;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -41,9 +46,9 @@ import Vista.Vista_Asignacion;
 public class Controlador_MP {
 
     MenuPrincipal vistaPrincipal;
+    private List<JInternalFrame> escritoriosAbiertos = new ArrayList<>();
 
     public Controlador_MP(MenuPrincipal vistaPrincipal) {
-
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
     }
@@ -72,6 +77,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visEst);
         Controlador_Estadio controlEst = new Controlador_Estadio(moEst, visEst);
         controlEst.InicarControlador();
+        abrirNuevoEscritorio(visEst);
 
     }
 
@@ -84,6 +90,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visAsig);
         Controlador.Controlador_Asignacion controlPar = new Controlador_Asignacion(moAsig, moArb, moPart, visAsig);
         controlPar.iniciaControl();
+        abrirNuevoEscritorio(visAsig);
 
     }
 
@@ -95,6 +102,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(vista);
         Controlador.Controlador_Campeonato controlPer = new Controlador_Campeonato(model, vista);
         controlPer.iniciaControl();
+        abrirNuevoEscritorio(vista);
 
     }
 
@@ -107,6 +115,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(vis);
         Controlador_temporada controlPro = new Controlador_temporada(mod, vis, mc);
         controlPro.iniciaControl();
+        abrirNuevoEscritorio(vis);
 
     }
 
@@ -120,6 +129,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visju);
         Controlador_Jugador controlJuga = new Controlador_Jugador(moJu, visju, modper, modequi, vislo);
         controlJuga.InicarControlador();
+        abrirNuevoEscritorio(visju);
 
     }
 
@@ -129,6 +139,8 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visequi);
         Controlador_Equipo controlEqui = new Controlador_Equipo(moEqui, visequi);
         controlEqui.iniciaControl();
+        abrirNuevoEscritorio(visequi);
+
     }
 
     private void MenuArbitros() {
@@ -140,7 +152,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visju);
         Controlador_Arbitro controlJuga = new Controlador_Arbitro(moJu, visju, modper, vislo);
         controlJuga.InicarControlador();
-        
+        abrirNuevoEscritorio(visju);
 
     }
 
@@ -154,6 +166,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visEnt);
         Controlador_Entrenador controlEnt = new Controlador_Entrenador(moEnt, visEnt, modper, modequi, vislo);
         controlEnt.InicarControlador();
+        abrirNuevoEscritorio(visEnt);
 
     }
 
@@ -166,6 +179,7 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visPar);
         Controlador.Controlador_Partido controlPar = new Controlador_Partido(moPar, moTem, moEq, moEst, visPar);
         controlPar.iniciaControl();
+        abrirNuevoEscritorio(visPar);
 
     }
 
@@ -178,6 +192,8 @@ public class Controlador_MP {
         Controlador_Resumen_Partido ctr = new Controlador_Resumen_Partido(mor, vres, mop, moe);
         vistaPrincipal.getDesctopPrincipal().add(vres);
         ctr.IniciarControlador();
+        abrirNuevoEscritorio(vres);
+
     }
 
     private void MenuGoles() {
@@ -189,6 +205,29 @@ public class Controlador_MP {
         vistaPrincipal.getDesctopPrincipal().add(visequi);
         Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol);
         controlEqui.iniciaControl();
+        abrirNuevoEscritorio(visequi);
+
+    }
+
+    private void cerrarEscritoriosAbiertos() {
+        for (JInternalFrame escritorio : escritoriosAbiertos) {
+            escritorio.dispose();
+        }
+        escritoriosAbiertos.clear();
+    }
+
+    private void abrirNuevoEscritorio(JInternalFrame escritorio) {
+        if (!escritoriosAbiertos.contains(escritorio)) {
+            cerrarEscritoriosAbiertos(); // Cierra los escritorios abiertos
+
+            // Verifica si el JInternalFrame ya tiene un JDesktopPane padre
+            if (escritorio.getParent() == null) {
+                vistaPrincipal.getDesctopPrincipal().add(escritorio);
+            }
+
+            escritoriosAbiertos.add(escritorio);
+            escritorio.setVisible(true);
+        }
     }
 
     /* private void menuFactura () { 
