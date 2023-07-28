@@ -57,23 +57,27 @@ public class Modelo_Jugador extends Clase_Jugador {
         return con.CRUD(sql);
     }
 
-    public void ValidarNumJugadorEquipo() {
+    public int ValidarNumJugadorEquipo() {
 
+        int count = 0;
         try {
-            int count = 0;
+
             String sql = "select count(cod_equipofk) from jugador\n"
                     + "where cod_equipofk = " + getCod_equipo() + ";";
-            
+
             ResultSet res = con.Consultas(sql);
-            
+
             while (res.next()) {
-                
+
                 count = res.getInt("count");
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
 
+        return count;
     }
 
     public List<Clase_Jugador> ListaJugador() {
