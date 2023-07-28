@@ -49,8 +49,8 @@ public class Controlador_Resumen_Partido {
         MostrarEquipos();
         MostrarPartidos();
         visRes.getBtnAgregar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Registrar"));
-        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo1());
-        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipo2());
+        visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipos());
+        visRes.getBtnGoles().addActionListener(l -> BotonGoles());
         visRes.getBtnModificar().addActionListener(l -> {
 
             if (!(visRes.getTblResuemn().getSelectedRow() == -1)) {
@@ -103,7 +103,7 @@ public class Controlador_Resumen_Partido {
                 modRes.setCodigo_partidofk(codpar);
 
                 System.out.println(codpar);
-                
+
                 if (!modRes.ValidarNumeroPartido()) {
 
                     visRes.getLblPartido().setText(String.valueOf(visRes.getTblPartido().getValueAt(visRes.getTblPartido().getSelectedRow(), 0).toString()));
@@ -154,6 +154,70 @@ public class Controlador_Resumen_Partido {
         }
     }
 
+    public void BotonGoles() {
+
+        if (visRes.getLblEquipo2().getText().equals("Selecionar equipo") || visRes.getLblEquipo4().getText().equals("Selecionar equipo")) {
+
+            MensajeError("Seleccione los equipos para el resumen");
+
+        } else {
+
+            if (visRes.getTblPartido().getSelectedRow() == -1) {
+
+                MensajeError("Seleccione un partido");
+            } else {
+
+                int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 0).hashCode();
+                modRes.setCodigo_partidofk(codpar);
+
+                if (visRes.getTblEquipos().getSelectedRow() == -1 || visRes.getTblEquipos().getSelectedRow() == -1) {
+
+                    MensajeError("Seleccione los equipos");
+
+                } else {
+
+                    int codequipo1 = visRes.getTblEquipos().getValueAt(visRes.getTblEquipos().getSelectedRow(), 0).hashCode();
+                    modRes.setCodigo_equipofk(codequipo1);
+
+                    int codequipo2 = visRes.getTblEquipos2().getValueAt(visRes.getTblEquipos2().getSelectedRow(), 0).hashCode();
+                    modRes.setCodigo_equipofk(codequipo2);
+
+                    List<Clase_Resumen_Partido> res = modRes.Mostrar();
+                    List<Integer> liscodigo = modRes.extarerResumen();
+
+                    res.stream().forEach(p -> {
+
+                        if (codpar == p.getCodigo_partidofk()) {
+
+                            if (codequipo1 == liscodigo.get(0)) {
+
+                                try {
+                                    modRes.setCodigo_equipofk(liscodigo.get(0));
+                                    visRes.getLblGoles().setText(String.valueOf(modRes.ConsultarGoles()));
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                            } else if (codequipo2 == liscodigo.get(1)) {
+
+                                try {
+                                    modRes.setCodigo_equipofk(liscodigo.get(1));
+                                    visRes.getLblGoles1().setText(String.valueOf(modRes.ConsultarGoles()));
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                            }
+
+                        }
+
+                    });
+                }
+            }
+        }
+
+    }
+
     public void IniciarDialogRegisrarVisualizar(String titulo) {
 
         visRes.getDlgRegistrarConsultar().setVisible(true);
@@ -170,6 +234,19 @@ public class Controlador_Resumen_Partido {
 
     }
 
+    public void RegistrarEquipos() {
+
+        if (visRes.getLblEquipo2().getText().equals(visRes.getLblEquipo4().getText())) {
+
+            MensajeError("No se puede registrar debido que debe seleccionar dos quipos diferentes");
+        } else {
+
+            RegistrarEquipo1();
+            RegistrarEquipo2();
+        }
+
+    }
+
     public void RegistrarEquipo1() {
 
         if (visRes.getLblEquipo4().getText().equals(visRes.getLblEquipo2().getText())) {
@@ -179,10 +256,9 @@ public class Controlador_Resumen_Partido {
 
             if (visRes.getTxtFaltas().getText().isEmpty() || visRes.getTxtPenales().getText().isEmpty() || visRes.getTxtSaquesBanda().getText().isEmpty()
                     || visRes.getTxtTarjetasAmarillas().getText().isEmpty() || visRes.getTxtTarjetasRojas().getText().isEmpty() || visRes.getTxtTirosEsquina().getText().isEmpty()
-                    || visRes.getTxtTirosLibres().getText().isEmpty() || visRes.getLblEquipo1().getText().equals("Selecionar equipo")
-                    || visRes.getLblEquipo2().getText().equals("Selecionar equipo") || visRes.getLblPartido().getText().equals("Partido")) {
+                    || visRes.getTxtTirosLibres().getText().isEmpty() || visRes.getLblEquipo2().getText().equals("Selecionar equipo") || visRes.getLblPartido().getText().equals("Partido")) {
 
-                MensajeError("Faltan campos por llenar");
+                MensajeError("Faltan campos por llenar para el equipo 1");
             } else {
 
                 int ccodEquipo;
@@ -207,7 +283,7 @@ public class Controlador_Resumen_Partido {
 
                     if (modRes.InsertarResumen()) {
 
-                        MensajeSucces("Se registro el equipo 1");
+                        MensajeSucces("Se registro el resumen");
                         MostrarDatos();
                     } else {
 
@@ -227,10 +303,9 @@ public class Controlador_Resumen_Partido {
         } else {
             if (visRes.getTxtFaltas1().getText().isEmpty() || visRes.getTxtPenales1().getText().isEmpty() || visRes.getTxtSaquesBanda1().getText().isEmpty()
                     || visRes.getTxtTarjetasAmarillas1().getText().isEmpty() || visRes.getTxtTarjetasRojas1().getText().isEmpty() || visRes.getTxtTirosEsquina1().getText().isEmpty()
-                    || visRes.getTxtTirosLibres1().getText().isEmpty() || visRes.getLblEquipo1().getText().equals("Selecionar equipo")
-                    || visRes.getLblEquipo2().getText().equals("Selecionar equipo") || visRes.getLblPartido().getText().equals("Partido")) {
+                    || visRes.getTxtTirosLibres1().getText().isEmpty() || visRes.getLblEquipo2().getText().equals("Selecionar equipo") || visRes.getLblPartido().getText().equals("Partido")) {
 
-                MensajeError("Faltan campos por llenar");
+                MensajeError("Faltan campos por llenar para el equipo 2");
             } else {
 
                 int ccodEquipo2;
@@ -255,7 +330,7 @@ public class Controlador_Resumen_Partido {
 
                     if (modRes.InsertarResumen()) {
 
-                        MensajeSucces("Se registro el equipo 2");
+                        //MensajeSucces("Se registro el equipo 2");
                         MostrarDatos();
                     } else {
 
@@ -311,7 +386,7 @@ public class Controlador_Resumen_Partido {
         }
         );
     }
-    
+
     public void LlenarDatos() {
 
         int codpar = visRes.getTblResuemn().getValueAt(visRes.getTblResuemn().getSelectedRow(), 1).hashCode();
@@ -340,7 +415,7 @@ public class Controlador_Resumen_Partido {
                             visRes.getTxtTirosLibres().setText(String.valueOf(p.getTiros_libres()));
                             visRes.getLblPartido().setText(String.valueOf(codpar));
                             visRes.getLblEquipo4().setText(l.getNombre_equi());
-                            
+
                             try {
                                 modRes.setCodigo_equipofk(liscodigo.get(0));
                                 visRes.getLblGoles().setText(String.valueOf(modRes.ConsultarGoles()));
@@ -359,14 +434,14 @@ public class Controlador_Resumen_Partido {
                             visRes.getTxtTirosLibres1().setText(String.valueOf(p.getTiros_libres()));
                             visRes.getLblPartido().setText(String.valueOf(codpar));
                             visRes.getLblEquipo2().setText(l.getNombre_equi());
-                            
+
                             try {
                                 modRes.setCodigo_equipofk(liscodigo.get(1));
                                 visRes.getLblGoles1().setText(String.valueOf(modRes.ConsultarGoles()));
                             } catch (SQLException ex) {
                                 Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            
+
                         }
                     }
                 }

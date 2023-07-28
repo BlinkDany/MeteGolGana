@@ -27,6 +27,14 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public FSButtonMD getBtnGoles() {
+        return fSButtonMD1;
+    }
+
+    public void setBtnGoles(FSButtonMD btnGoles) {
+        this.fSButtonMD1 = btnGoles;
+    }
+
     public static JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -129,14 +137,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
 
     public void setjScrollPane3(JScrollPane jScrollPane3) {
         this.jScrollPane3 = jScrollPane3;
-    }
-
-    public JLabel getLblClaseGol() {
-        return lblClaseGol;
-    }
-
-    public void setLblClaseGol(JLabel lblClaseGol) {
-        this.lblClaseGol = lblClaseGol;
     }
 
     public JTable getTblResuemn() {
@@ -321,14 +321,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
 
     public void setjPanel8(JPanel jPanel8) {
         this.jPanel8 = jPanel8;
-    }
-
-    public JLabel getLblEquipo1() {
-        return lblClaseGol;
-    }
-
-    public void setLblEquipo1(JLabel lblEquipo1) {
-        this.lblClaseGol = lblEquipo1;
     }
 
     public JLabel getLblEquipo2() {
@@ -561,7 +553,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        lblClaseGol = new javax.swing.JLabel();
         lblEquipo2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblGoles = new javax.swing.JLabel();
@@ -569,6 +560,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblGoles1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblEquipo4 = new javax.swing.JLabel();
+        fSButtonMD1 = new LIB.FSButtonMD();
         jPanel4 = new javax.swing.JPanel();
         txtFaltas = new LIB.FSTexFieldMD();
         txtTarjetasAmarillas = new LIB.FSTexFieldMD();
@@ -777,13 +769,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 0, -1, -1));
 
-        lblClaseGol.setFont(new java.awt.Font("Yu Gothic Medium", 1, 20)); // NOI18N
-        lblClaseGol.setForeground(new java.awt.Color(255, 255, 255));
-        lblClaseGol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblClaseGol.setText("Ingresar Goles");
-        lblClaseGol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblClaseGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 220, -1));
-
         lblEquipo2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 20)); // NOI18N
         lblEquipo2.setForeground(new java.awt.Color(255, 255, 255));
         lblEquipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -856,6 +841,11 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         lblEquipo4.setText("Seleccionar equipo");
         lblEquipo4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(lblEquipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, -1));
+
+        fSButtonMD1.setText("Ver goles");
+        fSButtonMD1.setColorNormal(new java.awt.Color(0, 102, 204));
+        fSButtonMD1.setColorPressed(new java.awt.Color(0, 102, 204));
+        jPanel2.add(fSButtonMD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 120, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1000, 220));
 
@@ -1241,6 +1231,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JDialog dlgEquipo2;
     private javax.swing.JDialog dlgPartido;
     private javax.swing.JDialog dlgRegistrarConsultar;
+    private LIB.FSButtonMD fSButtonMD1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -1272,7 +1263,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JLabel lblClaseGol;
     private javax.swing.JLabel lblEquipo2;
     private javax.swing.JLabel lblEquipo4;
     private javax.swing.JLabel lblGoles;
