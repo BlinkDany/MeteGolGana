@@ -239,7 +239,7 @@ public class Controlador_Gol {
                     limpiar();
                     JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
                     vistagol.getJdgGoles().setVisible(false);
-                    cargaPartidos();
+                    cargaGoles();
                 } else {
                     JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");
                 }
