@@ -73,7 +73,7 @@ public class ModeloEquipos extends Clase_Equipo {
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloEquipos.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage());
             return null;
         }

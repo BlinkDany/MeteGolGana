@@ -28,9 +28,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
-                  <Component id="btnEquipo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace min="27" pref="161" max="32767" attributes="0"/>
               </Group>
               <Component id="lblReMoEquipos" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
@@ -45,14 +43,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblReMoEquipos" min="-2" pref="66" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtcodequipo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="btnEquipo" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblReMoEquipos" min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtcodequipo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtNombreequipo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -140,14 +133,6 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;o de Fundacion"/>
           </Properties>
         </Component>
-        <Component class="LIB.FSButtonMD" name="btnEquipo">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Equipo"/>
-          </Properties>
-        </Component>
         <Component class="LIB.FSButtonMD" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -224,6 +209,8 @@
                       <Component id="txtBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnEquipo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -246,7 +233,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="btnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEquipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -330,6 +320,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="LIB.FSButtonMD" name="btnEquipo">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Buscar Equipo"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="btnAgregar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

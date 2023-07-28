@@ -80,7 +80,7 @@ public class Modelo_Gol extends Clase_Gol{
 
     public boolean InsertarGol() {
         String sql;
-        sql = "INSERT INTO gol(codigo,descripcion,minuto,cod_jugadorfk,cod_partidofk,cod_equipofk,estado_elim)";
+        sql = "INSERT INTO gol(codigo,descripcion,minuto,codigo_jugadorfk,codigo_partidofk,cod_equipofk,estado_elim)";
         sql += "VALUES('" + getCod_gol() + "','" + getDescripcion() + "','" + getMinuto() + "','" + getCod_jugador() + "','" + getCod_partido() + "','" + getCod_equipo() + "','" + false + "')";
         return CPG.CRUD(sql);
 
@@ -88,7 +88,7 @@ public class Modelo_Gol extends Clase_Gol{
 
     public boolean ModificarGol() {
         String sql;
-        sql = "update gol set codigo='" + getCod_gol() + "' ,cod_estadiofk='" + getDescripcion() + "' ,cod_temporadafk='" + getMinuto() + "' ,fecha='" + getCod_jugador() + "' ,grupo='" + getCod_partido() + "' ,estado='" + getCod_equipo() + "'where codigo='" + getCod_gol() + "';";
+        sql = "update gol set codigo='" + getCod_gol() + "' ,descripcion='" + getDescripcion() + "' ,minuto='" + getMinuto() + "' ,codigo_jugadorfk='" + getCod_jugador() + "' ,codigo_partidofk='" + getCod_partido() + "' ,cod_equipofk='" + getCod_equipo() + "'where codigo='" + getCod_gol() + "';";
         return CPG.CRUD(sql);
 
     }

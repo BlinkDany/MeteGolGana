@@ -102,12 +102,12 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         txtcodequipo = new LIB.FSTexFieldMD();
         jdcaniofundacion = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        btnEquipo = new LIB.FSButtonMD();
         btnCancelar = new LIB.FSButtonMD();
         btnRegistrarModificar = new LIB.FSButtonMD();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new LIB.FSButtonMD();
+        btnEquipo = new LIB.FSButtonMD();
         btnAgregar = new javax.swing.JButton();
         txtBuscar = new LIB.FSTexFieldMD();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -135,9 +135,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(140, 140, 140));
         jLabel2.setText("Año de Fundacion");
-
-        btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
-        btnEquipo.setText("Buscar Equipo");
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -178,9 +175,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
                                     .addComponent(jdcaniofundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(27, 161, Short.MAX_VALUE))
             .addComponent(lblReMoEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdlgEquiposLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -192,12 +187,9 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         jdlgEquiposLayout.setVerticalGroup(
             jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                        .addComponent(lblReMoEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtcodequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblReMoEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtcodequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtNombreequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
@@ -249,6 +241,9 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
+
+        btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
+        btnEquipo.setText("Buscar Equipo");
 
         btnAgregar.setBackground(new java.awt.Color(0, 153, 0));
         btnAgregar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
@@ -320,6 +315,8 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
@@ -336,7 +333,9 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar)
+                        .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)

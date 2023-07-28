@@ -188,7 +188,7 @@ public class Controlador_Gol {
                 vistagol.getTxtCodJugador().setText(selectedId);
                 salirdialogo1();
             }
-        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDOS")) {
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
             int selectedRow = vistagol.getTblbuscar().getSelectedRow();
             if (selectedRow == -1) {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
@@ -198,7 +198,7 @@ public class Controlador_Gol {
                 salirdialogo1();
             }
 
-        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPOS")) {
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
             int selectedRow = vistagol.getTblbuscar().getSelectedRow();
             if (selectedRow == -1) {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
