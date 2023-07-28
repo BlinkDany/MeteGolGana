@@ -32,8 +32,8 @@ public class Modelo_Arbitro extends Clase_Arbitro {
 
     public boolean InsertarArbitro() {
 
-        String sql = "INSERT INTO arbitro(codigo, posicion, anios_exp, salario, estado_elim, cedula_personafk) "
-           + "VALUES ('" + getCodigo_arbitro() + "','" + getPosicion_arbitro() + "'," + getAnios_esperiencia_arbitro() + ",'" + getSalario_arbitro()
+        String sql = "INSERT INTO arbitro(posicion, anios_exp, salario, estado_elim, cedula_personafk) "
+           + "VALUES ('" + getPosicion_arbitro() + "'," + getAnios_esperiencia_arbitro() + ",'" + getSalario_arbitro()
            + "','" + isEstado_eliminado_arbitro() + "','" + getCedula_persona_arbitro() + "');";
 
         return con.CRUD(sql);
