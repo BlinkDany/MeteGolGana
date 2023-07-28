@@ -250,14 +250,14 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modificar.png"))); // NOI18N
         btnModificar.setText("Modificar");
-        btnModificar.setToolTipText("Registrar un nuevo jugador");
+        btnModificar.setToolTipText("Modificar jugador");
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("Registrar un nuevo jugador");
+        btnEliminar.setToolTipText("Eliminar jugador");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

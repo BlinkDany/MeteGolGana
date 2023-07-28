@@ -67,6 +67,8 @@ public class Controlador_Jugador {
         MostrarDatos();
         MostrarEquipos();
         visJugador.setTitle("Jugadores");
+        visJugador.txtEquipo.setEditable(false);
+        visJugador.txtCedula.setEnabled(false);
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
         visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
@@ -113,7 +115,7 @@ public class Controlador_Jugador {
 
                 if (visPer.txtCedulaDLG.getText().length() == 10) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
+                    //JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
                 }
 
             }
@@ -136,6 +138,149 @@ public class Controlador_Jugador {
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
                 }
 
+            }
+        });
+
+        visPer.txt2doNomDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
+            }
+        });
+
+        visPer.txt1erApeDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
+            }
+        });
+
+        visPer.txt2doApeDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
+            }
+        });
+
+        visPer.txtDirecDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
+            }
+        });
+
+        visPer.txtTelfDLG.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
+                }
+
+                if (visPer.txtTelfDLG.getText().trim().length() == 15) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
+                }
+            }
+        });
+
+        visJugador.txtAñosExperiencia.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
+                }
+
+                if (visJugador.txtAñosExperiencia.getText().trim().length() == 2) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
+                }
+
+            }
+        });
+
+        visJugador.txtSueldo.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean punto = codigo1 == 46;
+                boolean coma = codigo1 == 44;
+                boolean retroceso = codigo1 == 8;
+
+                if (!(numeros1 || retroceso || punto || coma)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números o numeros con decimales");
+                }
+
+                /*if (visJugador.txtSueldo.getText().trim().length() == 6) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 7 caracteres");
+                }*/
             }
         });
     }
@@ -166,7 +311,7 @@ public class Controlador_Jugador {
         visJugador.dialogRegistrarModificar.setTitle(titulo);
         visJugador.dialogRegistrarModificar.setSize(850, 676);
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
-            
+
             visJugador.lblReMoJugadores.setText("Registrar Jugador");
 
             visJugador.txtCedula.setText(visPer.txtCedulaDLG.getText());
@@ -236,7 +381,7 @@ public class Controlador_Jugador {
     public void RegistrarEditarPersona() {
 
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
-            
+
             if (visPer.txtCedulaDLG.getText().isEmpty() || visPer.txt1erApeDLG.getText().isEmpty() || visPer.txt1erNomDlg.getText().isEmpty()
                     || visPer.txt2doApeDLG.getText().isEmpty() || visPer.txt2doNomDLG.getText().isEmpty() || visPer.txtCorreoDlg.getText().isEmpty()
                     || visPer.txtDirecDLG.getText().isEmpty() || visPer.txtFechaDlg.getDate() == null || visPer.txtTelfDLG.getText().isEmpty()
@@ -246,29 +391,28 @@ public class Controlador_Jugador {
 
             } else {
 
-                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-                modPersona.setSexo(Sexo());
-
                 try {
+                    modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                    modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                    modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                    modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                    modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                    modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                    modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                    modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                    modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                    modPersona.setSexo(Sexo());
 
-                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                    int largo = (int) jfc.getSelectedFile().length();
-                    modPersona.setImageFile(img);
-                    modPersona.setLength(largo);
+                    try {
 
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                        int largo = (int) jfc.getSelectedFile().length();
+                        modPersona.setImageFile(img);
+                        modPersona.setLength(largo);
 
-                try {
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                     if (modPersona.InsertarPersona()) {
 
@@ -286,35 +430,42 @@ public class Controlador_Jugador {
 
                     Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
                     MensajeError(ex.getMessage());
+
+                } catch (java.lang.NullPointerException e) {
+
+                    MensajeError("Ingrese una fecha correcta");
                 }
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
-            
-            modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-            modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-            modPersona.setCedula(visPer.txtCedulaDLG.getText());
-            modPersona.setDireccion(visPer.txtDirecDLG.getText());
-            modPersona.setTelefono(visPer.txtTelfDLG.getText());
-            modPersona.setEmail(visPer.txtCorreoDlg.getText());
-            modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-            modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-            modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-            modPersona.setSexo(Sexo());
 
             try {
+                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                modPersona.setSexo(Sexo());
 
                 if (modPersona.ActualizarPersona()) {
 
                     IniciarDialogJugador("Editar");
-                    MostrarDatos();
                 } else {
 
                     MensajeError("Ha ocurrido un error al actualizar en la base");
-                    MostrarDatos();
                 }
 
             } catch (SQLException ex) {
+
                 Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+                MensajeError(ex.getMessage());
+
+            } catch (java.lang.NullPointerException e) {
+
+                MensajeError("Ingrese una fecha correcta");
             }
         }
     }
@@ -352,7 +503,7 @@ public class Controlador_Jugador {
     public void RegistrarEditarJugador() {
 
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
-            
+
             if (visJugador.txtAñosExperiencia.getText().isEmpty() || visJugador.txtCedula.getText().isEmpty() || visJugador.txtEquipo.getText().isEmpty()
                     || VistaJugadores.txtSueldo.getText().isEmpty() || VistaJugadores.dateFechaFin.getDate() == null || visJugador.dateFechaInicio.getDate() == null
                     || visJugador.cbxPosicion.getSelectedIndex() == 0) {
@@ -360,49 +511,74 @@ public class Controlador_Jugador {
                 MensajeError("Faltan campos por llenar");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCedula_persona(visJugador.txtCedula.getText());
-                modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                if (VistaJugadores.txtEquipo.getText().isEmpty()) {
 
-                if (modJugador.InsertarJugador()) {
-
-                    MensajeSucces("Se ha registrado con exito ");
-                    MostrarDatos();
-                    visJugador.dialogRegistrarModificar.dispose();
+                    MensajeError("Seleccione un equipo");
                 } else {
 
-                    MensajeError("No se ha podido registrar debido a un error en la base de datos");
-                    MostrarDatos();
+                    try {
+                        modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
+                        modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
+                        modJugador.setCedula_persona(visJugador.txtCedula.getText());
+                        modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
+                        modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
+                        modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
+                        modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+
+                        if (modJugador.ValidarNumJugadorEquipo() <= 12) {
+
+                            if (modJugador.InsertarJugador()) {
+
+                                MensajeSucces("Se ha registrado con exito ");
+                                MostrarDatos();
+                                visJugador.dialogRegistrarModificar.dispose();
+                            } else {
+
+                                MensajeError("No se ha podido registrar debido a un error en la base de datos");
+                                MostrarDatos();
+                            }
+                            
+                        } else {
+                            
+                            MensajeError("El equipo no puede tener mas de 12 jugadores");
+                        }
+
+                    } catch (java.lang.NullPointerException e) {
+
+                        MensajeError("Ingrese una fecha correcta");
+                    }
                 }
             }
-        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
-            
-            if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
+        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
-                MensajeError("Seleccione al jugador que desea modificar");
+            if (VistaJugadores.txtEquipo.getText().isEmpty()) {
+
+                MensajeError("Seleccione un equipo");
             } else {
 
-                modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                modJugador.setCod_equipo(visJugador.tblEquipo.getValueAt(VistaJugadores.tblEquipo.getSelectedRow(), 0).hashCode());
-                modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
-                modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                try {
+                    modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
+                    modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
+                    modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
+                    modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
+                    modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
+                    modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                    modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
 
-                if (modJugador.ModificarJugador()) {
+                    if (modJugador.ModificarJugador()) {
 
-                    MensajeSucces("Se ha modifcado con exito ");
-                    MostrarDatos();
-                    visJugador.dialogRegistrarModificar.dispose();
-                } else {
+                        MensajeSucces("Se ha modifcado con exito ");
+                        MostrarDatos();
+                        visJugador.dialogRegistrarModificar.dispose();
+                    } else {
 
-                    MensajeError("No se ha podido modificar debido a un error en la base de datos");
-                    MostrarDatos();
+                        MensajeError("No se ha podido modificar debido a un error en la base de datos");
+                        MostrarDatos();
+                    }
+
+                } catch (java.lang.NullPointerException e) {
+
+                    MensajeError("Ingrese una fecha correcta");
                 }
             }
         }
@@ -544,10 +720,16 @@ public class Controlador_Jugador {
         tabla.setNumRows(0);
 
         List<Clase_Jugador> jug = modJugador.ListaJugador();
+        List<Clase_Equipo> equipo = modequipo.listarEquipos();
         jug.stream().forEach(p -> {
+            equipo.stream().forEach(l -> {
 
-            Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getApellido1(), p.getCod_equipo(), p.getPosicion(), p.getSueldo()};
-            tabla.addRow(datos);
+                if (p.getCod_equipo() == l.getCod_equipo()) {
+
+                    Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getApellido1(), l.getNombre_equi(), p.getPosicion(), p.getSueldo()};
+                    tabla.addRow(datos);
+                }
+            });
         });
     }
 
@@ -571,10 +753,16 @@ public class Controlador_Jugador {
         tabla.setNumRows(0);
 
         List<Clase_Jugador> jug = modJugador.BuscarJugador(visJugador.txtBuscar.getText());
+        List<Clase_Equipo> equipo = modequipo.listarEquipos();
         jug.stream().forEach(p -> {
+            equipo.stream().forEach(l -> {
 
-            Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getCod_equipo(), p.getPosicion(), p.getSueldo()};
-            tabla.addRow(datos);
+                if (p.getCod_equipo() == l.getCod_equipo()) {
+
+                    Object datos[] = {p.getCod_jugador(), p.getCedula_persona(), p.getNombnre1(), p.getApellido1(), l.getNombre_equi(), p.getPosicion(), p.getSueldo()};
+                    tabla.addRow(datos);
+                }
+            });
         });
     }
 
