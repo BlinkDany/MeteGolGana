@@ -608,7 +608,7 @@
               <Image iconType="3" name="/imgs/modificar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo jugador"/>
+            <Property name="toolTipText" type="java.lang.String" value="Modificar jugador"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -629,7 +629,7 @@
               <Image iconType="3" name="/imgs/contenedor-de-basura.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo jugador"/>
+            <Property name="toolTipText" type="java.lang.String" value="Eliminar jugador"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
