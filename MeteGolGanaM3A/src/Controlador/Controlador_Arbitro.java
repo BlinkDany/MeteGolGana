@@ -9,11 +9,14 @@ import Modelo.Clase_Persona;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Persona;
 import Vista.LogIn;
+import Vista.VistaGol;
 import Vista.Vista_Arbitro;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -52,6 +55,7 @@ public class Controlador_Arbitro {
         this.modPersona = modPersona;
         this.visPer = visPer;
         visArbitro.setVisible(true);
+        visArbi.txtCodigo.setVisible(false);
     }
 
     public void InicarControlador() {
@@ -59,6 +63,17 @@ public class Controlador_Arbitro {
         visArbi.setTitle("Arbitros");
         MostrarDatos();
         Vista_Arbitro.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
+        Vista_Arbitro.btnCancelar.addActionListener(l -> {
+            Vista_Arbitro.dialogRegistrarModificar.dispose();
+            visArbi.tblArbitros.setEnabled(true);
+            visPer.txtCedulaDLG.setEnabled(true);
+
+        });
+        visPer.btnRetrocederDlgRegistro.addActionListener(l -> {
+            visPer.dlgPersona.dispose();
+            visArbi.tblArbitros.setEnabled(true);
+            visPer.txtCedulaDLG.setEnabled(true);
+        });
         Vista_Arbitro.btnModificar.addActionListener(l -> {
             if (visArbi.tblArbitros.getSelectedRow() == -1) {
 
@@ -67,6 +82,8 @@ public class Controlador_Arbitro {
             } else {
 
                 IniciarDialogPersona("Editar");
+                visPer.txtCedulaDLG.setEnabled(false);
+                visArbi.tblArbitros.setEnabled(false);
 
             }
         });
@@ -79,6 +96,7 @@ public class Controlador_Arbitro {
             public void keyReleased(KeyEvent e) {
 
                 BuscarArbitros();
+
             }
         });
     }
@@ -107,7 +125,7 @@ public class Controlador_Arbitro {
         Vista_Arbitro.dialogRegistrarModificar.setVisible(true);
         Vista_Arbitro.dialogRegistrarModificar.setTitle(titulo);
         Vista_Arbitro.dialogRegistrarModificar.setSize(500, 500);
-        
+
         if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
 
             Vista_Arbitro.txtCedula.setText(visPer.txtCedulaDLG.getText());
@@ -316,25 +334,21 @@ public class Controlador_Arbitro {
             }
         } else if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
-            if (Vista_Arbitro.tblArbitros.getSelectedRow() == -1) {
+            modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
+            modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
+            modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
+            modArbi.setCodigo_arbitro(Integer.valueOf(Vista_Arbitro.txtCodigo.getText()));
 
-                MensajeError("Seleccione al Arbitro que desea modificar");
+            if (modArbi.ModificarArbitro()) {
+
+                MensajeSucces("Se ha modifcado con exito ");
+                MostrarDatos();
+                visArbi.dialogRegistrarModificar.dispose();
+                visPer.txtCedulaDLG.setEnabled(true);
             } else {
 
-                modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
-                modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
-                modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
-                modArbi.setCodigo_arbitro(Vista_Arbitro.tblArbitros.getValueAt(Vista_Arbitro.tblArbitros.getSelectedRow(), 0).hashCode());
-
-                if (modArbi.ModificarArbitro()) {
-
-                    MensajeSucces("Se ha modifcado con exito ");
-                    MostrarDatos();
-                } else {
-
-                    MensajeError("No se ha podido modificar debido a un error en la base de datos");
-                    MostrarDatos();
-                }
+                MensajeError("No se ha podido modificar debido a un error en la base de datos");
+                MostrarDatos();
             }
         }
     }
@@ -424,7 +438,7 @@ public class Controlador_Arbitro {
                     Vista_Arbitro.txtCedula.setText(String.valueOf(p.getCedula_persona_arbitro()));
                     Vista_Arbitro.cbxPosicion.setSelectedItem(p.getPosicion_arbitro());
                     Vista_Arbitro.txtSueldo.setText(String.valueOf(p.getSalario_arbitro()));
-
+                    Vista_Arbitro.txtCodigo.setText(String.valueOf(p.getCodigo_arbitro()));
                     Image foto = p.getFoto();
                     if (foto != null) {
                         foto = foto.getScaledInstance(Vista_Arbitro.lblFoto.getWidth(), Vista_Arbitro.lblFoto.getHeight(), Image.SCALE_SMOOTH);
@@ -496,6 +510,6 @@ public class Controlador_Arbitro {
     public void MensajeError(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
-        
+
     }
 }
