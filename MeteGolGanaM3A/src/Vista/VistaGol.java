@@ -402,7 +402,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
         });
 
         txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscar.setToolTipText("Ingrese el Codigo del Partido");
+        txtBuscar.setToolTipText("Ingrese el Codigo del Gol");
         txtBuscar.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtBuscar.setPlaceholder("Buscar Goles");
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {

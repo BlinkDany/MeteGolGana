@@ -272,7 +272,7 @@ public class Controlador_Gol {
                     limpiar();
                     JOptionPane.showMessageDialog(vistagol, "DATOS CREADOS");
                     vistagol.getJdgGoles().setVisible(false);
-                    cargaPartidos();
+                    cargaGoles();
                 } else {
                     JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");
                 }
@@ -282,14 +282,14 @@ public class Controlador_Gol {
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Eliminar")) {
             Modelo_Gol model = new Modelo_Gol();
-            model.setCod_partido(Integer.valueOf(vistagol.getTxtCodPartido().getText()));
+            model.setCod_gol(Integer.valueOf(vistagol.getTxtcodGol().getText()));
             if (model.EliminarGol()) {
 
                 limpiar();
                 JOptionPane.showMessageDialog(vistagol, "DATOS ELIMINADOS");
 
                 vistagol.getJdgGoles().setVisible(false);
-                cargaPartidos();
+                cargaGoles();
 
             } else {
                 JOptionPane.showMessageDialog(vistagol, "ERROR AL GRABAR DATOS");

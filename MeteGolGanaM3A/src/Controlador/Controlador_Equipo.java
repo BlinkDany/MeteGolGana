@@ -64,23 +64,6 @@ public class Controlador_Equipo {
         });
 
     }
-
-    /*public void buscar() {
-        if (vistaequi.getTxtBuscar().getText().equals("")) {
-            cargarEquipos();
-        } else {
-            DefaultTableModel tabla = (DefaultTableModel) vistaequi.getTblEquipos().getModel();
-            tabla.setNumRows(0);
-
-            List<Clase_Equipo> par = modeloEqui.BuscarEquipo(vistaequi.txtBuscar.getText());
-            par.stream().forEach(p -> {
-
-                Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getAnio_fundacion(), p.getCiudad()};
-                tabla.addRow(datos);
-            });
-        }
-    }*/
-    
     public void buscar() {
         // Obtener el código ingresado en el campo de búsqueda
         int codigo = Integer.parseInt(vistaequi.getTxtBuscar().getText());
@@ -250,9 +233,9 @@ public class Controlador_Equipo {
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
         } else {
-            String selectedId = vistaequi.getTblEquipos().getValueAt(selectedRow, 0).toString();
+            int selectedId = Integer.valueOf(vistaequi.getTblEquipos().getValueAt(selectedRow, 0).toString());
             Optional<Clase_Equipo> matchingEquipo = Listequi.stream()
-                    .filter(p -> selectedId.equals(p.getCod_equipo()))
+                    .filter(p -> selectedId == (p.getCod_equipo()))
                     .findFirst();
 
             if (matchingEquipo.isPresent()) {
@@ -263,9 +246,7 @@ public class Controlador_Equipo {
                 vistaequi.getJdcaniofundacion().setDate(p.getAnio_fundacion());
                 vistaequi.getTxtCiudadequipo().setText(String.valueOf(p.getCiudad()));
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");
-            }
+            } 
         }
     }
 //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
