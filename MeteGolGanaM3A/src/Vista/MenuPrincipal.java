@@ -276,7 +276,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        toolBar.setBackground(new java.awt.Color(0, 51, 102));
+        toolBar.setBackground(new java.awt.Color(102, 102, 102));
         toolBar.setRollover(true);
 
         btnCampeonato.setBackground(new java.awt.Color(255, 255, 255));
@@ -427,7 +427,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         desctopPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/El-negocio-del-futbol-en-la-mira-de-los-fondos-de-inversion.jpg"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/wallhaven-96gro1.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
