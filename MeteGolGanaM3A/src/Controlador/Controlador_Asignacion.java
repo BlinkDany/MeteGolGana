@@ -11,6 +11,10 @@ import Vista.Vista_Asignacion;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +47,7 @@ public class Controlador_Asignacion {
 //-------------------------------------------------------CONTROL--------------------------------------------------------------------------------------------
     public void iniciaControl() {
         vistaAsig.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
+        vistaAsig.getBtnAgregar().addActionListener(l -> fechaLocal());
         vistaAsig.btnModificar.addActionListener(l -> {
             if (vistaAsig.tblAsignacion.getSelectedRow() == -1) {
 
@@ -77,10 +82,10 @@ public class Controlador_Asignacion {
             vistaAsig.getTblbuscar().clearSelection();
         });
         vistaAsig.getBtnCancelar().addActionListener(e -> {
-            vistaAsig.getTblPartidos().clearSelection();
+            vistaAsig.getTblAsignacion().clearSelection();
         });
         vistaAsig.getBtnRegistrarModificar().addActionListener(e -> {
-            vistaAsig.getTblPartidos().clearSelection();
+            vistaAsig.getTblAsignacion().clearSelection();
         });
         vistaAsig.getBtnAgregar().addActionListener(l -> {
             try {
@@ -90,6 +95,11 @@ public class Controlador_Asignacion {
             }
         });
 
+    }
+
+    //--------------------------------------------------FECHA------------------------------------------------------------------------//
+    public void fechaLocal() {
+        vistaAsig.dtfecha.setText(LocalDate.now().toString());
     }
 //-------------------------------------------------------DIALOGO--------------------------------------------------------------------------------------------
 
@@ -147,7 +157,9 @@ public class Controlador_Asignacion {
             int selectedRow = vistaAsig.getTblbuscar().getSelectedRow();
 
             if (selectedRow == -1) {
+
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
+
             } else {
 
                 String selectedId = vistaAsig.getTblbuscar().getValueAt(selectedRow, 0).toString();
@@ -181,23 +193,32 @@ public class Controlador_Asignacion {
 
             } else {
 
-                int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
-                int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
+                try {
+                    int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
+                    int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
+                    String fechaS = vistaAsig.getDtfecha().getText();
 
-                boolean estado = false;
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    java.util.Date fechaUtil = formato.parse(fechaS);
+                    java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
 
-                model.setCodigo_arbitro_asignacion(codigoArbitro);
-                model.setCodigo_partido_asignacion(CodigoPartido);
-                model.setFecha_asignacion(new java.sql.Date(vistaAsig.getDtfecha().getDate().getTime()));
-                model.setEstado_asignacion(estado);
+                    boolean estado = false;
 
-                if (model.InsertarAsignacion()) {
-                    limpiar();
-                    JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
-                    vistaAsig.getDialogRegistrarModificar().setVisible(false);
-                    cargaAsignacion();
-                } else {
-                    JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                    model.setCodigo_arbitro_asignacion(codigoArbitro);
+                    model.setCodigo_partido_asignacion(CodigoPartido);
+                    model.setFecha_asignacion(fechaSQL);
+                    model.setEstado_asignacion(estado);
+
+                    if (model.InsertarAsignacion()) {
+                        limpiar();
+                        JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
+                        vistaAsig.getDialogRegistrarModificar().setVisible(false);
+                        cargaAsignacion();
+                    } else {
+                        JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
@@ -212,25 +233,33 @@ public class Controlador_Asignacion {
 
             } else {
 
-                int codigoAsignacion = Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText());
-                int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
-                int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
-
-                boolean estado = false;
-
-                model.setCodigo_asignacion(codigoAsignacion);
-                model.setCodigo_arbitro_asignacion(codigoArbitro);
-                model.setCodigo_partido_asignacion(CodigoPartido);
-                model.setFecha_asignacion(new java.sql.Date(vistaAsig.getDtfecha().getDate().getTime()));
-                model.setEstado_asignacion(estado);
-
-                if (model.ModificarAsignacion()) {
-                    limpiar();
-                    JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
-                    vistaAsig.getDialogRegistrarModificar().setVisible(false);
-                    cargaAsignacion();
-                } else {
-                    JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                try {
+                    int codigoAsignacion = Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText());
+                    int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
+                    int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
+                    String fechaS = vistaAsig.getDtfecha().getText();
+                    
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    java.util.Date fechaUtil = formato.parse(fechaS);
+                    java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
+                    boolean estado = false;
+                    
+                    model.setCodigo_asignacion(codigoAsignacion);
+                    model.setCodigo_arbitro_asignacion(codigoArbitro);
+                    model.setCodigo_partido_asignacion(CodigoPartido);
+                    model.setFecha_asignacion(fechaSQL);
+                    model.setEstado_asignacion(estado);
+                    
+                    if (model.ModificarAsignacion()) {
+                        limpiar();
+                        JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
+                        vistaAsig.getDialogRegistrarModificar().setVisible(false);
+                        cargaAsignacion();
+                    } else {
+                        JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 //-------------------------------------------------------ELIMINAR--------------------------------------------------------------------------------------------
@@ -258,7 +287,7 @@ public class Controlador_Asignacion {
 
     private void cargaAsignacion() {
         DefaultTableModel mJtable;
-        mJtable = (DefaultTableModel) vistaAsig.getTblPartidos().getModel();
+        mJtable = (DefaultTableModel) vistaAsig.getTblAsignacion().getModel();
         mJtable.setNumRows(0);
         List<Clase_Asignacion> listaP = modeloAsig.listarAsignacion();
         listaP.stream().forEach(p -> {
@@ -297,12 +326,12 @@ public class Controlador_Asignacion {
 
     public void LlenarDatos() {
         List<Clase_Asignacion> Listpar = modeloAsig.listarAsignacion();
-        int selectedRow = vistaAsig.getTblPartidos().getSelectedRow();
+        int selectedRow = vistaAsig.getTblAsignacion().getSelectedRow();
 
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
         } else {
-            String selectedId = vistaAsig.getTblPartidos().getValueAt(selectedRow, 0).toString();
+            String selectedId = vistaAsig.getTblAsignacion().getValueAt(selectedRow, 0).toString();
             Optional<Clase_Asignacion> matchingPartido = Listpar.stream()
                     .filter(p -> selectedId.equals(String.valueOf(p.getCodigo_asignacion())))
                     .findFirst();
@@ -310,7 +339,7 @@ public class Controlador_Asignacion {
             if (matchingPartido.isPresent()) {
                 Clase_Asignacion p = matchingPartido.get();
                 vistaAsig.getTxtCodAsignacion().setText(String.valueOf(p.getCodigo_asignacion()));
-                vistaAsig.getDtfecha().setDate((p.getFecha_asignacion()));
+                vistaAsig.getDtfecha().setText(String.valueOf(p.getFecha_asignacion()));
                 vistaAsig.getTxtcodArbitro().setText(String.valueOf(p.getCodigo_arbitro_asignacion()));
                 vistaAsig.getTxtcodPartido().setText(String.valueOf(p.getCodigo_partido_asignacion()));
 
@@ -377,7 +406,7 @@ public class Controlador_Asignacion {
         if (vistaAsig.getTxtBuscar().getText().equals("")) {
             cargaAsignacion();
         } else {
-            DefaultTableModel tabla = (DefaultTableModel) vistaAsig.getTblPartidos().getModel();
+            DefaultTableModel tabla = (DefaultTableModel) vistaAsig.getTblAsignacion().getModel();
             tabla.setNumRows(0);
 
             List<Clase_Asignacion> par = modeloAsig.BuscarAsignacion(vistaAsig.txtBuscar.getText());
@@ -423,7 +452,7 @@ public class Controlador_Asignacion {
         vistaAsig.getTxtCodAsignacion().setText("");
         vistaAsig.getTxtcodArbitro().setText("");
         vistaAsig.getTxtcodPartido().setText("");
-        vistaAsig.getDtfecha().setDate(null);
+        vistaAsig.getDtfecha().setText("");
 
     }
 //------------------------------------------------------- LIMPIAR--------------------------------------------------------------------------------------------
