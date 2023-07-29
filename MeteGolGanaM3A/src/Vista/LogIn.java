@@ -125,6 +125,7 @@ public class LogIn extends javax.swing.JFrame {
         lblFoto = new javax.swing.JLabel();
         btnFoto = new javax.swing.JButton();
         btnGrupo1 = new javax.swing.ButtonGroup();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -134,7 +135,6 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         fSButtonMD1 = new LIB.FSButtonMD();
         fSButtonMD2 = new LIB.FSButtonMD();
-        jLabel3 = new javax.swing.JLabel();
 
         dlgPersona.setResizable(false);
 
@@ -317,9 +317,10 @@ public class LogIn extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/wallhaven-4xj8l3.jpg"))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0, 200));
 
@@ -345,7 +346,7 @@ public class LogIn extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 102, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Jugador", "Entrenador", "Arbitro" }));
         jComboBox1.setToolTipText("Tipo de usuario");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 16)); // NOI18N
@@ -353,6 +354,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("¿Olvidaste tu contraseña?");
         jLabel2.setToolTipText("Restablece tu contraseña");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         fSButtonMD1.setBackground(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setText("Ingresar");
@@ -411,13 +413,27 @@ public class LogIn extends javax.swing.JFrame {
                 .addComponent(fSButtonMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fSButtonMD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 64, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 380, 510));
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(253, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(247, 247, 247))
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
+        );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/El-negocio-del-futbol-en-la-mira-de-los-fondos-de-inversion.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 690));
+        getContentPane().add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
 
         pack();
         setLocationRelativeTo(null);
@@ -506,7 +522,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -515,6 +530,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     public static javax.swing.JLabel lblFoto;
     public static javax.swing.JLabel lblTitulo;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     public static javax.swing.JRadioButton rdbFemeninoDlg;
     public static javax.swing.JRadioButton rdbMasculinoDlg;
     public static javax.swing.JRadioButton rdbOtroDlg;
