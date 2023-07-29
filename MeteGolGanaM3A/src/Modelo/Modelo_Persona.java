@@ -35,7 +35,7 @@ public class Modelo_Persona extends Clase_Persona {
 
         String sql = "INSERT INTO public.persona( "
                 + "cedula, nombre1, nombre2, apellido1, apellido2, fecha_nac, telefono, email, sexo, direccion, foto) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                + "VALUES (?, INITCAP(?), INITCAP(?), INITCAP(?), INITCAP(?), ?, ?, ?, ?, ?, ?);";
 
         PreparedStatement ps = con.getCon().prepareStatement(sql);
         ps.setString(1, getCedula());
