@@ -105,14 +105,15 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         VistaTemporada.btnRegistrarModificarDlg = btnRegistrarModificarDlg;
     }
 
-    public static FSButtonMD getBtnLimpiarDlg() {
+    public FSButtonMD getBtnLimpiarDlg() {
         return btnLimpiarDlg;
     }
 
-    public static void setBtnLimpiarDlg(FSButtonMD btnLimpiarDlg) {
-        VistaTemporada.btnLimpiarDlg = btnLimpiarDlg;
+    public void setBtnLimpiarDlg(FSButtonMD btnLimpiarDlg) {
+        this.btnLimpiarDlg = btnLimpiarDlg;
     }
-    
+
+
     
 
     public static JDialog getDlgaTemporada() {
@@ -313,8 +314,10 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Temporada");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -572,7 +575,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnLimpiar;
-    public static LIB.FSButtonMD btnLimpiarDlg;
+    private LIB.FSButtonMD btnLimpiarDlg;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificarDlg;
     public static javax.swing.JDialog dlgaTemporada;

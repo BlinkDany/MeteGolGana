@@ -302,7 +302,7 @@ public class Controlador_Campeonato {
         vista.getTxtNombre().setText("");
         vista.getTxtBuscar().setText("");
         vista.getCbxTipoCampeonato().setSelectedIndex(0);
-        vista.getSpnMaxEqipo().setValue(0);
+        vista.getSpnMaxEqipo().setValue(2);
 
     }
 

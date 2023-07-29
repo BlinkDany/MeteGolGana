@@ -65,7 +65,7 @@ public class Controlador_temporada {
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarTemporada());
         vista.getBtnBuscar().addActionListener(l -> buscar());
         vista.getBtnBuscarCampeonato().addActionListener(l -> buscarCampeonato());
-
+        vista.getBtnLimpiarDlg().addActionListener(l -> limpiar());
         // TABLA
         vista.getTblCampeonatoFK().addMouseListener(new MouseAdapter() {
 
@@ -121,10 +121,11 @@ public class Controlador_temporada {
                 vista.getBtnRegistrarModificarDlg().setText("Registrar");
                 
                 vista.getTxtCodigoCampeonatoFK().setEditable(false);
-                
-                llenarCamposDeTextoCampeonato();
+               
                 
                 vista.getDlgaTemporada().setVisible(true);
+                
+                llenarCamposDeTextoCampeonato();
                 llenafecha();               
                 mostrarDatosTabla();
                 mostrarDatosTablaCampeonato();
@@ -175,7 +176,7 @@ public class Controlador_temporada {
                     vista.getDlgaTemporada().dispose();
                     mostrarDatosTabla();
                     limpiaActualizaBusca();
-                    limpiar();
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al guardar la información",
                             "Advertencia", JOptionPane.ERROR_MESSAGE);
@@ -215,10 +216,9 @@ public class Controlador_temporada {
                         JOptionPane.showMessageDialog(vista, "Datos modificados",
                                 "Advertencia", JOptionPane.INFORMATION_MESSAGE);
                         cerrarDialogo();
-                        mostrarDatosTabla();
-                        
+                        mostrarDatosTabla();                       
                         limpiaActualizaBusca();
-                        limpiar();
+                        
                     }
                 } else {
                     JOptionPane.showMessageDialog(vista, "La fecha de inicio debe ser anterior a la fecha de fin",
@@ -438,9 +438,8 @@ public void buscar() {
     public void limpiar() {
 
         
-        vista.getTxtFechaIni().setDateFormatString("");
-        vista.getTxtFechaFin().setDateFormatString("");
-        vista.getTxtCodigoCampeonatoFK().setText("");
+        vista.getTxtFechaIni().setDate(null);
+        vista.getTxtFechaFin().setDate(null);       
         vista.getTxtBuscar().setText("");
 
     }
