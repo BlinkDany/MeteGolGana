@@ -199,7 +199,7 @@
                   <Font name="Yu Gothic Medium" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                  <SpinnerModel initial="2" numberType="java.lang.Integer" stepSize="2" type="number"/>
+                  <SpinnerModel initial="2" maximum="20" minimum="2" numberType="java.lang.Integer" stepSize="1" type="number"/>
                 </Property>
               </Properties>
               <Constraints>

@@ -81,6 +81,7 @@ public class Controlador_temporada {
 
         //-------------
         mostrarDatosTabla();
+        
         mostrarDatosTablaCampeonato();
 
     }
@@ -118,11 +119,13 @@ public class Controlador_temporada {
             } else 
             {
                 vista.getBtnRegistrarModificarDlg().setText("Registrar");
-                vista.getTxtCodigoCampeonatoFK().setEditable(true);
+                
+                vista.getTxtCodigoCampeonatoFK().setEditable(false);
+                
                 llenarCamposDeTextoCampeonato();
+                
                 vista.getDlgaTemporada().setVisible(true);
-                llenafecha();
-                // crearFactura();
+                llenafecha();               
                 mostrarDatosTabla();
                 mostrarDatosTablaCampeonato();
                 vista.getDlgaTemporada().setVisible(true);
@@ -140,30 +143,27 @@ public class Controlador_temporada {
 
 //-------------------------------------------------------------CREAR MODIFICAR ELIMINAR---------------------------------------------------------------//
     private void crearEditarEliminarTemporada() {
-        String title = vista.getDlgaTemporada().getTitle();
+    String title = vista.getDlgaTemporada().getTitle();
 
-        if (title.equals("Crear")) {
-            if (camposVacios()) {
-                JOptionPane.showMessageDialog(null, "Aún existen campos vacíos",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+    if (title.equals("Crear")) {
+        if (camposVacios()) {
+            JOptionPane.showMessageDialog(null, "Aún existen campos vacíos",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            
 
-                // Asignar valores al modelo
-                // modelo.setCodigoPk(Integer.valueOf(vista.getTxtCodigo().getText()));
-                // Convert java.util.Date to java.sql.Date
-                java.util.Date utilDate = vista.getTxtFechaIni().getDate();
-                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            // Convert java.util.Date to java.sql.Date
+            java.util.Date fechaIni = vista.getTxtFechaIni().getDate();
+            java.sql.Date sqlIni = new java.sql.Date(fechaIni.getTime());
 
-// Set the java.sql.Date object in your model
-                modelo.setFechaIni(sqlDate);
+            // Convert java.util.Date to java.sql.Date
+            java.util.Date fechaFin = vista.getTxtFechaFin().getDate();
+            java.sql.Date sqlFin = new java.sql.Date(fechaFin.getTime());
 
-                //modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
-                // Convert java.util.Date to java.sql.Date
-                java.util.Date utilDateFin = vista.getTxtFechaFin().getDate();
-                java.sql.Date sqlDateFin = new java.sql.Date(utilDateFin.getTime());
-
-// Set the java.sql.Date object in your model
-                modelo.setFechaFin(sqlDateFin);
+            if (sqlIni.before(sqlFin)) { // Verificar que fechaIni sea menor que fechaFin
+                // Set the java.sql.Date objects in your model
+                modelo.setFechaIni(sqlIni);
+                modelo.setFechaFin(sqlFin);
 
                 modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
                 modelo.setEstadoEli(false);
@@ -174,58 +174,63 @@ public class Controlador_temporada {
 
                     vista.getDlgaTemporada().dispose();
                     mostrarDatosTabla();
-
+                    limpiaActualizaBusca();
+                    limpiar();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al guardar la información",
                             "Advertencia", JOptionPane.ERROR_MESSAGE);
                 }
-
+            } else {
+                JOptionPane.showMessageDialog(vista, "La fecha de inicio debe ser anterior a la fecha de fin",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }
 
-        } else if (title.equals("Editar")) {
+    } else if (title.equals("Editar")) {
+        int selectedRow = vista.getTblTemporada().getSelectedRow();
+
+        if (selectedRow >= 0) { // Verificar si hay una fila seleccionada
             int confirmacion = JOptionPane.showConfirmDialog(vista, "¿Está seguro de modificar esta información?",
                     "Advertencia", JOptionPane.YES_NO_OPTION);
 
             if (confirmacion == JOptionPane.YES_OPTION) {
+                int codigoTemporada = (int) vista.getTblTemporada().getValueAt(selectedRow, 0);
+                modelo.setCodigoPk(codigoTemporada);
 
-                List<Clase_Temporada> listTempo = modelo.ListaTemporada();
+                // Convert java.util.Date to java.sql.Date
+                java.util.Date fechaIni = vista.getTxtFechaIni().getDate();
+                java.sql.Date sqlIni = new java.sql.Date(fechaIni.getTime());
 
-                listTempo.stream().forEach(p -> {
+                // Convert java.util.Date to java.sql.Date
+                java.util.Date fechaFin = vista.getTxtFechaFin().getDate();
+                java.sql.Date sqlFin = new java.sql.Date(fechaFin.getTime());
 
-                    if (vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0).equals(p.getCodigoPk())) {
-
-                        // Llenar los campos de la vista con los datos de producto seleccionado
-                        modelo.setCodigoPk((int) vista.getTblTemporada().getValueAt(vista.getTblTemporada().getSelectedRow(), 0));
-                    }
-
-                    //modelo.setFechaIni((Date) vista.getTxtFechaIni().getDate());
-                    java.util.Date fechaIni = vista.getTxtFechaIni().getDate();
-                    java.sql.Date sqlIni = new java.sql.Date(fechaIni.getTime());
-
-// Set the java.sql.Date object in your model
+                if (sqlIni.before(sqlFin)) { // Verificar que fechaIni sea menor que fechaFin
                     modelo.setFechaIni(sqlIni);
-
-                    //modelo.setFechaFin((Date) vista.getTxtFechaFin().getDate());
-                    java.util.Date fechaFin = vista.getTxtFechaFin().getDate();
-                    java.sql.Date sqlFin = new java.sql.Date(fechaFin.getTime());
-
-// Set the java.sql.Date object in your model
                     modelo.setFechaFin(sqlFin);
 
                     modelo.setCodCampeonatoFk(Integer.valueOf(vista.getTxtCodigoCampeonatoFK().getText()));
 
                     if (modelo.ModificarTemporada()) {
-                        JOptionPane.showMessageDialog(vista, "Datos modificados ",
+                        JOptionPane.showMessageDialog(vista, "Datos modificados",
                                 "Advertencia", JOptionPane.INFORMATION_MESSAGE);
-
                         cerrarDialogo();
                         mostrarDatosTabla();
+                        
+                        limpiaActualizaBusca();
+                        limpiar();
                     }
-                });
-
+                } else {
+                    JOptionPane.showMessageDialog(vista, "La fecha de inicio debe ser anterior a la fecha de fin",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar una temporada para editar",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+}
 
 //------------------------------------------------ Verifica si hay campos vacíos en el formulario----------------------------------------\\
     private boolean camposVacios() {
@@ -262,14 +267,14 @@ public class Controlador_temporada {
         DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
         tabla.setRowCount(0);
 
-        // Obtener la lista de productos
+        // Obtener la lista 
         List<Clase_Temporada> listCamp = modelo.ListaTemporada();
 
-        // Recorrer la lista de productos
+        // Recorrer la lista 
         listCamp.forEach(p -> {
 
-            // Crear un objeto datos con los valores de los campos correspondientes del producto
-            Object[] datos = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(), p.getCodCampeonatoFk()};
+            // Crear un objeto datos con los valores de los campos correspondientes 
+            Object[] datos = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(),  p.getCodCampeonatoFk()};
 
             // Agregar el objeto como una nueva fila a la tabla
             tabla.addRow(datos);
@@ -282,37 +287,54 @@ public class Controlador_temporada {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------\\
 //--------------------------------------------------------BUSCAR---------------------------------------------------\\
-    public void buscar() {
+public void buscar() {
+    try {
         // Obtener el código ingresado en el campo de búsqueda
-        int codigo = Integer.parseInt(vista.getTxtBuscar().getText());
+        String codigoTexto = vista.getTxtBuscar().getText();
 
-        if (codigo == 0) {
+        if (codigoTexto.isEmpty()) {
             // Mostrar mensaje de error si no se ingresa el código
             JOptionPane.showMessageDialog(null, "Ingrese el código de la temporada que desea buscar",
                     "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            // Obtener el modelo de la tabla
-            DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
-            // Limpiar el modelo de datos de la tabla
-            tabla.setNumRows(0);
+            int codigo = Integer.parseInt(codigoTexto);
 
-            // Obtener la lista de productos
-            List<Clase_Temporada> listTemp = modelo.ListaTemporada();
+            if (codigo == 0) {
+                // Mostrar mensaje de error si el código es igual a cero
+                JOptionPane.showMessageDialog(null, "El código ingresado no existe, ingrese un código diferente",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Obtener el modelo de la tabla
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
+                // Limpiar el modelo de datos de la tabla
+                tabla.setNumRows(0);
 
-            // Utilizar un stream para procesar la lista de productos
-            listTemp.stream()
-                    // Filtrar los productos por el código
-                    .filter(p -> codigo == p.getCodigoPk())
-                    // Mapear cada producto filtrado a un objeto "datos" que contiene los valores deseados
-                    .map(p -> {
-                        // Crear un objeto "datos"
-                        Object[] datos = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(), p.getCodCampeonatoFk()};
-                        return datos;
-                    })
-                    // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
-                    .forEach(tabla::addRow);
+                // Obtener la lista de temporadas
+                List<Clase_Temporada> listTemp = modelo.ListaTemporada();
+
+                // Utilizar un stream para procesar la lista de temporadas
+                listTemp.stream()
+                        // Filtrar las temporadas por el código
+                        .filter(p -> codigo == p.getCodigoPk())
+                        // Mapear cada temporada filtrada a un objeto "datos" que contiene los valores deseados
+                        .map(p -> {
+                            // Obtener el nombre del campeonato correspondiente al código
+                           
+
+                            // Crear un objeto "datos" con el nombre del campeonato en lugar del código
+                            Object[] datos = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(), p.getCodCampeonatoFk()};
+                            return datos;
+                        })
+                        // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
+                        .forEach(tabla::addRow);
+            }
         }
+    } catch (NumberFormatException e) {
+        // Mostrar mensaje de error si el texto ingresado no es un número válido
+        JOptionPane.showMessageDialog(null, "Ingrese un código de temporada válido (número entero)",
+                "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
     //------------------------------------------------CAMPEONATO-------------------------------------------------------\\
     //---------------------------------------------------MOSTRAR DATOS TABLA CAMPEONATO----------------------------------\\
@@ -358,7 +380,10 @@ public class Controlador_temporada {
         });
 
     }
-
+    
+    
+    
+ 
     // ------------------------------------------------------------------------------------------ -----------------------------------\\
     //-------------------------------------------BUSCA CAMPEONATO-------------------------------------------------------\\
     public void buscarCampeonato() {
@@ -375,7 +400,7 @@ public class Controlador_temporada {
 
                 if (codigo == 0) {
                     // Mostrar mensaje de error si el código es igual a cero
-                    JOptionPane.showMessageDialog(null, "Ingrese otro código diferente",
+                    JOptionPane.showMessageDialog(null, "El código ingresado no existe, ingrese un código diferente",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     // Obtener el modelo de la tabla
@@ -491,7 +516,7 @@ public class Controlador_temporada {
 
                     JOptionPane.showMessageDialog(null, "Temporada eliminada con exito ",
                             "Eliminado", JOptionPane.INFORMATION_MESSAGE);
-
+                    
                     mostrarDatosTabla();
 
                 } else {

@@ -268,7 +268,7 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         spnMaxEqipo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        spnMaxEqipo.setModel(new javax.swing.SpinnerNumberModel(2, null, null, 2));
+        spnMaxEqipo.setModel(new javax.swing.SpinnerNumberModel(2, 2, 20, 1));
         jPanel3.add(spnMaxEqipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 90, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/campeonatoremovebg400x390.png"))); // NOI18N

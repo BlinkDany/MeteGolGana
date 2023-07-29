@@ -94,9 +94,14 @@ public class Controlador_Campeonato {
                     "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             abrirDialogo("Editar");
+            spn2();
         }
     }
 
+    private void spn2(){
+        vista.getSpnMaxEqipo().setValue(2);
+    }
+    
         private void abrirDialogo(String ce) {
 
         vista.getDlgCampeonatos().setLocationRelativeTo(vista);
@@ -108,7 +113,7 @@ public class Controlador_Campeonato {
             vista.getBtnRegistrarModificarDlg().setText("Registrar");
             
             limpiar();
-            
+            spn2();
         } else {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
@@ -121,70 +126,65 @@ public class Controlador_Campeonato {
     
 
 //-------------------------------------------------------------CREAR MODIFICAR ELIMINAR---------------------------------------------------------------//
-    private void crearEditarEliminarCampeonato() {
-        String title = vista.getDlgCampeonatos().getTitle();
+ private void crearEditarEliminarCampeonato() {
+    String title = vista.getDlgCampeonatos().getTitle();
 
-        if (title.equals("Crear")) {
-            if (camposVacios()) {
-                JOptionPane.showMessageDialog(null, "Aún existen campos vacíos",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+    if (title.equals("Crear")) {
+        if (camposVacios()) {
+            JOptionPane.showMessageDialog(null, "Aún existen campos vacíos",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            // Asignar valores al modelo
+            modelo.setNombre(vista.getTxtNombre().getText());
+            modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
+            modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
+            modelo.setEstado_elim(false);
+
+            // Transformar de objeto a int
+            int maxEqui = ((Number) vista.getSpnMaxEqipo().getValue()).intValue();
+
+            if (modelo.InsertarCampeonato()) {
+                JOptionPane.showMessageDialog(null, "Datos guardados exitosamente",
+                        "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+
+                cerrarDialogo();
+                mostrarDatosTabla();
+
             } else {
-
-                // Asignar valores al modelo
-               
-                modelo.setNombre(vista.getTxtNombre().getText());
-                modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
-                modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
-                modelo.setEstado_elim(false);
-
-//transformar de objeto a int
-                int stock = ((Number) vista.getSpnMaxEqipo().getValue()).intValue();
-
-                if (modelo.InsertarCampeonato()) {
-                    JOptionPane.showMessageDialog(null, "Datos guardados exitosamente",
-                            "Advertencia", JOptionPane.INFORMATION_MESSAGE);
-
-                   cerrarDialogo();
-                    mostrarDatosTabla();
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error al guardar la información",
-                            "Advertencia", JOptionPane.ERROR_MESSAGE);
-                }
-
+                JOptionPane.showMessageDialog(null, "Error al guardar la información",
+                        "Advertencia", JOptionPane.ERROR_MESSAGE);
             }
 
-        } else if (title.equals("Editar")) {
+        }
+
+    } else if (title.equals("Editar")) {
+        int selectedRow = vista.getTblCampeonato().getSelectedRow();
+
+        if (selectedRow >= 0) { // Verificar si hay una fila seleccionada
             int confirmacion = JOptionPane.showConfirmDialog(vista, "¿Está seguro de modificar esta información?",
                     "Advertencia", JOptionPane.YES_NO_OPTION);
 
             if (confirmacion == JOptionPane.YES_OPTION) {
-
-                List<Clase_Campeonato> listCampeo = modelo.ListaCampeonato();
-
-                listCampeo.stream().forEach(p -> {
-
-                    if (vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0).equals(p.getCod_campeonato())) {
-
-                        // Llenar los campos de la vista con los datos de producto seleccionado
-                        modelo.setCod_campeonato((int) vista.getTblCampeonato().getValueAt(vista.getTblCampeonato().getSelectedRow(), 0));
-                    }
-
+                int codigoCampeonato = (int) vista.getTblCampeonato().getValueAt(selectedRow, 0);
+                modelo.setCod_campeonato(codigoCampeonato);
                 modelo.setNombre(vista.getTxtNombre().getText());
                 modelo.setTipo_campeonato((String) vista.getCbxTipoCampeonato().getSelectedItem());
                 modelo.setMax_equipos((int) vista.getSpnMaxEqipo().getValue());
 
                 if (modelo.ModificarCampeonato()) {
-                    JOptionPane.showMessageDialog(vista, "Datos modificados ",
+                    JOptionPane.showMessageDialog(vista, "Datos modificados",
                             "Advertencia", JOptionPane.INFORMATION_MESSAGE);
-
                     mostrarDatosTabla();
                     cerrarDialogo();
                 }
-                });
             }
-        } 
+        } else {
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar un campeonato para editar",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+}
 
     
 //------------------------------------------------ Verifica si hay campos vacíos en el formulario----------------------------------------\\
@@ -261,7 +261,7 @@ public class Controlador_Campeonato {
 
             if (codigo == 0) {
                 // Mostrar mensaje de error si el código es igual a cero
-                JOptionPane.showMessageDialog(null, "Ingrese otro código diferente",
+                JOptionPane.showMessageDialog(null, "El código ingresado no existe, ingrese un código diferente",
                         "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 // Obtener el modelo de la tabla
