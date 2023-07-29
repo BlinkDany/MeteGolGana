@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import LIB.FSTexFieldMD;
+import com.toedter.calendar.JDateChooser;
+
 /**
  *
  * @author tatip
@@ -16,6 +19,78 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
+    }
+
+    public static FSTexFieldMD getTxt1erApeDLG() {
+        return txt1erApeDLG;
+    }
+
+    public static void setTxt1erApeDLG(FSTexFieldMD txt1erApeDLG) {
+        LogIn.txt1erApeDLG = txt1erApeDLG;
+    }
+
+    public static FSTexFieldMD getTxt1erNomDlg() {
+        return txt1erNomDlg;
+    }
+
+    public static void setTxt1erNomDlg(FSTexFieldMD txt1erNomDlg) {
+        LogIn.txt1erNomDlg = txt1erNomDlg;
+    }
+
+    public static FSTexFieldMD getTxt2doApeDLG() {
+        return txt2doApeDLG;
+    }
+
+    public static void setTxt2doApeDLG(FSTexFieldMD txt2doApeDLG) {
+        LogIn.txt2doApeDLG = txt2doApeDLG;
+    }
+
+    public static FSTexFieldMD getTxt2doNomDLG() {
+        return txt2doNomDLG;
+    }
+
+    public static void setTxt2doNomDLG(FSTexFieldMD txt2doNomDLG) {
+        LogIn.txt2doNomDLG = txt2doNomDLG;
+    }
+
+    public static FSTexFieldMD getTxtCedulaDLG() {
+        return txtCedulaDLG;
+    }
+
+    public static void setTxtCedulaDLG(FSTexFieldMD txtCedulaDLG) {
+        LogIn.txtCedulaDLG = txtCedulaDLG;
+    }
+
+    public static FSTexFieldMD getTxtCorreoDlg() {
+        return txtCorreoDlg;
+    }
+
+    public static void setTxtCorreoDlg(FSTexFieldMD txtCorreoDlg) {
+        LogIn.txtCorreoDlg = txtCorreoDlg;
+    }
+
+    public static FSTexFieldMD getTxtDirecDLG() {
+        return txtDirecDLG;
+    }
+
+    public static void setTxtDirecDLG(FSTexFieldMD txtDirecDLG) {
+        LogIn.txtDirecDLG = txtDirecDLG;
+    }
+
+    public static JDateChooser getTxtFechaDlg() {
+        return txtFechaDlg;
+    }
+
+    public static void setTxtFechaDlg(JDateChooser txtFechaDlg) {
+        LogIn.txtFechaDlg = txtFechaDlg;
+    }
+
+    public static FSTexFieldMD getTxtTelfDLG() {
+        return txtTelfDLG;
+    }
+
+    public static void setTxtTelfDLG(FSTexFieldMD txtTelfDLG) {
+        LogIn.txtTelfDLG = txtTelfDLG;
     }
 
     /**

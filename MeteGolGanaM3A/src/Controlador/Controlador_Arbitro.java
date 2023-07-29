@@ -99,6 +99,23 @@ public class Controlador_Arbitro {
 
             }
         });
+        //////////////////////////////////////////VALIDACIONES////////////////////////////////////////////////
+        Vista_Arbitro.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaAnios(evt);
+            }
+        });
+        Vista_Arbitro.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarSueldo(evt);
+            }
+        });
+        visPer.getTxtCedulaDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarSueldo(evt);
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     public void IniciarDialogPersona(String titulo) {
@@ -202,48 +219,63 @@ public class Controlador_Arbitro {
                 MensajeError("Faltan campos por llenar");
 
             } else {
+                if (validarCedula() == false) {
 
-                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-                modPersona.setSexo(Sexo());
+                    MensajeError("CEDULA INCORRECTA");
 
-                try {
+                } else {
 
-                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                    int largo = (int) jfc.getSelectedFile().length();
-                    modPersona.setImageFile(img);
-                    modPersona.setLength(largo);
+                    if (validacionCorreo() == false) {
 
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        MensajeError("FORMATO DE CORREO ELECTRONICO INCORRECTO");
 
-                try {
-
-                    if (modPersona.InsertarPersona()) {
-
-                        IniciarDialogArbitro("Registrar Arbitro");
                     } else {
 
-                        MensajeError("Ha ocurrido un error al registrar en la base");
+                        modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                        modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                        modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                        modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                        modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                        modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                        modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                        modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                        modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                        modPersona.setSexo(Sexo());
+
+                        try {
+
+                            FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                            int largo = (int) jfc.getSelectedFile().length();
+                            modPersona.setImageFile(img);
+                            modPersona.setLength(largo);
+
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        try {
+
+                            if (modPersona.InsertarPersona()) {
+
+                                IniciarDialogArbitro("Registrar Arbitro");
+                            } else {
+
+                                MensajeError("Ha ocurrido un error al registrar en la base");
+                            }
+
+                        } catch (org.postgresql.util.PSQLException e) {
+
+                            MensajeError("La cedula ya se encuentra registrada");
+
+                        } catch (SQLException ex) {
+
+                            Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
+                            MensajeError(ex.getMessage());
+                        }
                     }
 
-                } catch (org.postgresql.util.PSQLException e) {
-
-                    MensajeError("La cedula ya se encuentra registrada");
-
-                } catch (SQLException ex) {
-
-                    Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                    MensajeError(ex.getMessage());
                 }
+
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
@@ -512,4 +544,159 @@ public class Controlador_Arbitro {
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
 
     }
+
+    //------------------------------------------------------- VALIDAR ENTRADA--------------------------------------------------------------------------------------------
+    ///////////////////////////////////////PERSONA////////////////////////////////
+    public boolean validacionCorreo() {
+        boolean x = false;
+
+        if (visPer.txtCorreoDlg.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$") && visPer.txtCorreoDlg.getText().trim().length() < 100) {
+
+            x = true;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Correo Electronico Incorrecto");
+        }
+        return x;
+    }
+
+    public boolean validarCedula() {
+        String cedula = visPer.txtCedulaDLG.getText();
+        if (cedula.length() != 10) {
+            return false;
+        }
+
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            int digit = Character.getNumericValue(cedula.charAt(i));
+            if (i % 2 == 0) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+            sum += digit;
+        }
+
+        int lastDigit = Character.getNumericValue(cedula.charAt(9));
+        int calculatedDigit = (10 - (sum % 10)) % 10;
+
+        return lastDigit == calculatedDigit;
+    }
+
+    private void validarEntradaCedula(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 9) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
+        }
+    }
+
+    private void validarEntradaTelefono(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 14) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
+        }
+    }
+
+    private void validarEntradaNombreApellido(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar LETRAS");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+    }
+
+    private void validarEntradaDireccion(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+        boolean punto = dato == 46;
+        boolean guion = dato == 45;
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ||punto||guion)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Digito INCORRECTO");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 149) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+    }
+/////////////////////////////ARBITRO/////////////////////////////////////////////////
+
+    private void validarEntradaAnios(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 1) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
+        }
+    }
+
+    private void validarSueldo(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean guion = dato == 45;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros || guion)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 2) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
+    }
+
 }
