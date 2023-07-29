@@ -73,14 +73,17 @@ public class Controlador_Gol {
 
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
             vistagol.getLblReMoGoles().setText("REGISTRO DE GOLES");
+            vistagol.getTxtcodGol().setEnabled(false);
             vistagol.getBtnRegistrarModificar().setText("REGISTRO DE GOLES");
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Editar")) {
+            vistagol.getTxtcodGol().setEnabled(false);
             vistagol.getLblReMoGoles().setText("MODIFICAR GOLES");
             LlenarDatos();
             vistagol.getBtnRegistrarModificar().setText("MODIFICAR GOLES");
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Eliminar")) {
+            vistagol.getTxtcodGol().setEnabled(true);
             LlenarDatos();
             vistagol.getBtnRegistrarModificar().setText("ELIMINAR GOLES");
 

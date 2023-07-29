@@ -123,13 +123,16 @@ public class Controlador_Equipo {
         vistaequi.getJdlgEquipos().setVisible(true);
 
         if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Crear")) {
+            vistaequi.getTxtcodequipo().setEnabled(false);
             vistaequi.getLblReMoEquipos().setText("REGISTRO DE EQUIPOS");
 
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Editar")) {
+            vistaequi.getTxtcodequipo().setEnabled(false);
             vistaequi.getLblReMoEquipos().setText("MODIFICAR EQUIPOS");
             LlenarDatos();
 
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Eliminar")) {
+            vistaequi.getTxtcodequipo().setEnabled(true);
             LlenarDatos();
         }
     }
