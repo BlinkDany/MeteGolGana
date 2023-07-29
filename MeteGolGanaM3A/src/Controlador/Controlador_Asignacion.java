@@ -292,10 +292,10 @@ public class Controlador_Asignacion {
 
         } else if (vistaAsig.getDialogRegistrarModificar().getTitle().contentEquals("Eliminar")) {
 
-            Modelo_Partido model = new Modelo_Partido();
+            Modelo_Asignacion model = new Modelo_Asignacion();
 
-            model.setCod_partido(Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText()));
-            if (model.EliminarPartido()) {
+            model.setCodigo_asignacion(Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText()));
+            if (model.EliminarAsignacion()) {
 
                 limpiar();
                 JOptionPane.showMessageDialog(vistaAsig, "DATOS ELIMINADOS");
