@@ -95,7 +95,7 @@ public class Controlador_Asignacion {
 
     private void abrirDialogo(String ce) {
 
-        vistaAsig.getDialogRegistrarModificar().setSize(515, 535);
+        vistaAsig.getDialogRegistrarModificar().setSize(515, 450);
         vistaAsig.getDialogRegistrarModificar().setTitle(ce);
         vistaAsig.getDialogRegistrarModificar().setVisible(true);
 
@@ -175,19 +175,17 @@ public class Controlador_Asignacion {
 
             Modelo_Asignacion model = new Modelo_Asignacion();
 
-            if (vistaAsig.getTxtCodAsignacion().equals("") || vistaAsig.getDtfecha() == null || vistaAsig.getTxtcodArbitro().equals("") || vistaAsig.getTxtcodPartido().equals("")) {
+            if (vistaAsig.getDtfecha() == null || vistaAsig.getTxtcodArbitro().equals("") || vistaAsig.getTxtcodPartido().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
             } else {
 
-                int codigoAsignacion = Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText());
                 int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
                 int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
 
                 boolean estado = false;
 
-                model.setCodigo_asignacion(codigoAsignacion);
                 model.setCodigo_arbitro_asignacion(codigoArbitro);
                 model.setCodigo_partido_asignacion(CodigoPartido);
                 model.setFecha_asignacion(new java.sql.Date(vistaAsig.getDtfecha().getDate().getTime()));
