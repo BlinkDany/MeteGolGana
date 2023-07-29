@@ -101,6 +101,25 @@ public class Controlador_Asignacion {
     public void fechaLocal() {
         vistaAsig.dtfecha.setText(LocalDate.now().toString());
     }
+
+    //-------------------------------------------------VALIDACION FECHA---------------------------------------------//
+    public boolean validacionFecha() {
+        java.util.Date fechaUtil = null;
+        java.util.Date fechaUtilP = null;
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            String fechaS = vistaAsig.getDtfecha().getText();
+            fechaUtil = formato.parse(fechaS);
+
+            String fechaSP = vistaAsig.getFechaPartido().getText();
+            fechaUtilP = formato.parse(fechaSP);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaUtil.after(fechaUtilP);
+    }
 //-------------------------------------------------------DIALOGO--------------------------------------------------------------------------------------------
 
     private void abrirDialogo(String ce) {
@@ -175,6 +194,8 @@ public class Controlador_Asignacion {
             } else {
                 String selectedId = vistaAsig.getTblbuscar().getValueAt(selectedRow, 0).toString();
                 vistaAsig.getTxtcodPartido().setText(selectedId);
+                String selectedFecha = vistaAsig.getTblbuscar().getValueAt(selectedRow, 2).toString();
+                vistaAsig.getFechaPartido().setText(selectedFecha);
                 salirdialogo1();
             }
         }
@@ -193,33 +214,38 @@ public class Controlador_Asignacion {
 
             } else {
 
-                try {
-                    int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
-                    int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
-                    String fechaS = vistaAsig.getDtfecha().getText();
+                if (validacionFecha()==true) {
+                JOptionPane.showMessageDialog(null, "EL PARTIDO YA A SIDO JUGADO");
+                }else{
+                    try {
+                        int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
+                        int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
+                        String fechaS = vistaAsig.getDtfecha().getText();
 
-                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                    java.util.Date fechaUtil = formato.parse(fechaS);
-                    java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
+                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                        java.util.Date fechaUtil = formato.parse(fechaS);
+                        java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
 
-                    boolean estado = false;
+                        boolean estado = false;
 
-                    model.setCodigo_arbitro_asignacion(codigoArbitro);
-                    model.setCodigo_partido_asignacion(CodigoPartido);
-                    model.setFecha_asignacion(fechaSQL);
-                    model.setEstado_asignacion(estado);
+                        model.setCodigo_arbitro_asignacion(codigoArbitro);
+                        model.setCodigo_partido_asignacion(CodigoPartido);
+                        model.setFecha_asignacion(fechaSQL);
+                        model.setEstado_asignacion(estado);
 
-                    if (model.InsertarAsignacion()) {
-                        limpiar();
-                        JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
-                        vistaAsig.getDialogRegistrarModificar().setVisible(false);
-                        cargaAsignacion();
-                    } else {
-                        JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                        if (model.InsertarAsignacion()) {
+                            limpiar();
+                            JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
+                            vistaAsig.getDialogRegistrarModificar().setVisible(false);
+                            cargaAsignacion();
+                        } else {
+                            JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
 
@@ -238,18 +264,18 @@ public class Controlador_Asignacion {
                     int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
                     int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
                     String fechaS = vistaAsig.getDtfecha().getText();
-                    
+
                     SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
                     java.util.Date fechaUtil = formato.parse(fechaS);
                     java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
                     boolean estado = false;
-                    
+
                     model.setCodigo_asignacion(codigoAsignacion);
                     model.setCodigo_arbitro_asignacion(codigoArbitro);
                     model.setCodigo_partido_asignacion(CodigoPartido);
                     model.setFecha_asignacion(fechaSQL);
                     model.setEstado_asignacion(estado);
-                    
+
                     if (model.ModificarAsignacion()) {
                         limpiar();
                         JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");

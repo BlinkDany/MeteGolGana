@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -27,12 +28,28 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JTextField getFechaPartido() {
+        return fechaPartido;
+    }
+
+    public void setFechaPartido(JTextField fechaPartido) {
+        this.fechaPartido = fechaPartido;
+    }
+
     public static JButton getBtnAgregar() {
         return btnAgregar;
     }
 
     public static void setBtnAgregar(JButton btnAgregar) {
         Vista_Asignacion.btnAgregar = btnAgregar;
+    }
+
+    public FSButtonMD getBtnArbitro() {
+        return btnArbitro;
+    }
+
+    public void setBtnArbitro(FSButtonMD btnArbitro) {
+        this.btnArbitro = btnArbitro;
     }
 
     public FSButtonMD getBtnBuscar() {
@@ -67,14 +84,6 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.btnEliminar = btnEliminar;
     }
 
-    public FSButtonMD getBtnEquipo1() {
-        return btnPartido;
-    }
-
-    public void setBtnEquipo1(FSButtonMD btnEquipo1) {
-        this.btnPartido = btnEquipo1;
-    }
-
     public static FSButtonMD getBtnInicio() {
         return btnInicio;
     }
@@ -91,20 +100,20 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.btnModificar = btnModificar;
     }
 
+    public FSButtonMD getBtnPartido() {
+        return btnPartido;
+    }
+
+    public void setBtnPartido(FSButtonMD btnPartido) {
+        this.btnPartido = btnPartido;
+    }
+
     public static FSButtonMD getBtnRegistrarModificar() {
         return btnRegistrarModificar;
     }
 
     public static void setBtnRegistrarModificar(FSButtonMD btnRegistrarModificar) {
         Vista_Asignacion.btnRegistrarModificar = btnRegistrarModificar;
-    }
-
-    public FSButtonMD getBtnTemporada() {
-        return btnArbitro;
-    }
-
-    public void setBtnTemporada(FSButtonMD btnTemporada) {
-        this.btnArbitro = btnTemporada;
     }
 
     public static FSButtonMD getBtnmandardatos() {
@@ -131,20 +140,36 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.dialogtablas = dialogtablas;
     }
 
-    public JDateChooser getDtfecha() {
+    public FSTexFieldMD getDtfecha() {
         return dtfecha;
     }
 
-    public void setDtfecha(JDateChooser dtfecha) {
+    public void setDtfecha(FSTexFieldMD dtfecha) {
         this.dtfecha = dtfecha;
     }
 
-    public static JTable getTblPartidos() {
+    public JLabel getLblReMoJugadores() {
+        return lblReMoJugadores;
+    }
+
+    public void setLblReMoJugadores(JLabel lblReMoJugadores) {
+        this.lblReMoJugadores = lblReMoJugadores;
+    }
+
+    public JLabel getLblbusqueda() {
+        return lblbusqueda;
+    }
+
+    public void setLblbusqueda(JLabel lblbusqueda) {
+        this.lblbusqueda = lblbusqueda;
+    }
+
+    public static JTable getTblAsignacion() {
         return tblAsignacion;
     }
 
-    public static void setTblPartidos(JTable tblPartidos) {
-        Vista_Asignacion.tblAsignacion = tblPartidos;
+    public static void setTblAsignacion(JTable tblAsignacion) {
+        Vista_Asignacion.tblAsignacion = tblAsignacion;
     }
 
     public static JTable getTblbuscar() {
@@ -195,37 +220,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.txtcodPartido = txtcodPartido;
     }
 
-    public FSButtonMD getBtnArbitro() {
-        return btnArbitro;
-    }
-
-    public void setBtnArbitro(FSButtonMD btnArbitro) {
-        this.btnArbitro = btnArbitro;
-    }
-
-    public FSButtonMD getBtnPartido() {
-        return btnPartido;
-    }
-
-    public void setBtnPartido(FSButtonMD btnPartido) {
-        this.btnPartido = btnPartido;
-    }
-
-    public JLabel getLblReMoJugadores() {
-        return lblReMoJugadores;
-    }
-
-    public void setLblReMoJugadores(JLabel lblReMoJugadores) {
-        this.lblReMoJugadores = lblReMoJugadores;
-    }
-
-    public JLabel getLblbusqueda() {
-        return lblbusqueda;
-    }
-
-    public void setLblbusqueda(JLabel lblbusqueda) {
-        this.lblbusqueda = lblbusqueda;
-    }
+   
     
     
 
@@ -245,12 +240,13 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         txtcodPartido = new LIB.FSTexFieldMD();
         btnCancelar = new LIB.FSButtonMD();
         btnRegistrarModificar = new LIB.FSButtonMD();
-        txtcodArbitro = new LIB.FSTexFieldMD();
+        dtfecha = new LIB.FSTexFieldMD();
         btnPartido = new LIB.FSButtonMD();
         btnArbitro = new LIB.FSButtonMD();
         txtCodAsignacion = new LIB.FSTexFieldMD();
-        dtfecha = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
+        txtcodArbitro = new LIB.FSTexFieldMD();
+        fechaPartido = new javax.swing.JTextField();
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -327,16 +323,16 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 180, -1));
 
-        txtcodArbitro.setEditable(false);
-        txtcodArbitro.setForeground(new java.awt.Color(0, 0, 0));
-        txtcodArbitro.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtcodArbitro.setPlaceholder("Arbitro");
-        txtcodArbitro.addActionListener(new java.awt.event.ActionListener() {
+        dtfecha.setEditable(false);
+        dtfecha.setForeground(new java.awt.Color(0, 0, 0));
+        dtfecha.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        dtfecha.setPlaceholder("FECHA ACTUAL");
+        dtfecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcodArbitroActionPerformed(evt);
+                dtfechaActionPerformed(evt);
             }
         });
-        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, -1));
+        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 140, -1));
 
         btnPartido.setBackground(new java.awt.Color(204, 204, 204));
         btnPartido.setText("Buscar Partido");
@@ -368,14 +364,28 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 txtCodAsignacionActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCodAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 110, 40));
-
-        dtfecha.setDateFormatString("yyyy-MM-dd");
-        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 250, 40));
+        jPanel3.add(txtCodAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 110, 40));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel5.setText("Fecha Asignacion");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        txtcodArbitro.setEditable(false);
+        txtcodArbitro.setForeground(new java.awt.Color(0, 0, 0));
+        txtcodArbitro.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtcodArbitro.setPlaceholder("Arbitro");
+        txtcodArbitro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcodArbitroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, -1));
+
+        fechaPartido.setEditable(false);
+        fechaPartido.setBackground(new java.awt.Color(255, 255, 255));
+        fechaPartido.setForeground(new java.awt.Color(255, 255, 255));
+        fechaPartido.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.add(fechaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -651,10 +661,6 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarModificarActionPerformed
 
-    private void txtcodArbitroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodArbitroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcodArbitroActionPerformed
-
     private void btnArbitroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArbitroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnArbitroActionPerformed
@@ -683,6 +689,14 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodAsignacionActionPerformed
 
+    private void txtcodArbitroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodArbitroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcodArbitroActionPerformed
+
+    private void dtfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dtfechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dtfechaActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -699,7 +713,8 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnmandardatos;
     public static javax.swing.JDialog dialogRegistrarModificar;
     public static javax.swing.JDialog dialogtablas;
-    private com.toedter.calendar.JDateChooser dtfecha;
+    public LIB.FSTexFieldMD dtfecha;
+    private javax.swing.JTextField fechaPartido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
