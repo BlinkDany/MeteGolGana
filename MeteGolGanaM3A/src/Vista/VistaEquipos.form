@@ -351,7 +351,7 @@
           <Image iconType="3" name="/imgs/boton.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Crear nuevo"/>
-        <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo jugador"/>
+        <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo Equipo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
@@ -365,7 +365,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Ingrese el Codigo del Partido"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el Codigo del Equipo"/>
         <Property name="bordeColorFocus" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="33" type="rgb"/>
         </Property>
@@ -420,7 +420,7 @@
           <Image iconType="3" name="/imgs/modificar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar"/>
-        <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo jugador"/>
+        <Property name="toolTipText" type="java.lang.String" value="Modificar un Equipo Previamente Registrado"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -441,7 +441,7 @@
           <Image iconType="3" name="/imgs/contenedor-de-basura.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
-        <Property name="toolTipText" type="java.lang.String" value="Registrar un nuevo jugador"/>
+        <Property name="toolTipText" type="java.lang.String" value="Eliminar un Equipo"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -459,6 +459,7 @@
           <Image iconType="3" name="/imgs/loop.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Actualizar la Tabla de Equipos"/>
       </Properties>
     </Component>
   </SubComponents>

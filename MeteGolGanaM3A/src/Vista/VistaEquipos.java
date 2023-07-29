@@ -42,6 +42,10 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         return btnAgregar;
     }
 
+    public JButton getBtnactualizar() {
+        return btnactualizar;
+    }
+
     public static JButton getBtnEliminar() {
         return btnEliminar;
     }
@@ -252,7 +256,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/boton.png"))); // NOI18N
         btnAgregar.setText("Crear nuevo");
-        btnAgregar.setToolTipText("Registrar un nuevo jugador");
+        btnAgregar.setToolTipText("Registrar un nuevo Equipo");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -260,7 +264,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         });
 
         txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscar.setToolTipText("Ingrese el Codigo del Partido");
+        txtBuscar.setToolTipText("Ingrese el Codigo del Equipo");
         txtBuscar.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtBuscar.setPlaceholder("Buscar Equipo");
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -296,19 +300,20 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modificar.png"))); // NOI18N
         btnModificar.setText("Modificar");
-        btnModificar.setToolTipText("Registrar un nuevo jugador");
+        btnModificar.setToolTipText("Modificar un Equipo Previamente Registrado");
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("Registrar un nuevo jugador");
+        btnEliminar.setToolTipText("Eliminar un Equipo");
 
         btnactualizar.setBackground(new java.awt.Color(0, 153, 0));
         btnactualizar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/loop.png"))); // NOI18N
         btnactualizar.setText("Actualizar");
+        btnactualizar.setToolTipText("Actualizar la Tabla de Equipos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

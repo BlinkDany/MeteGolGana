@@ -34,6 +34,7 @@ public class Controlador_Equipo {
         vistaequi.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
+        vistaequi.getBtnactualizar().addActionListener(l -> salirdialogo());
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
         vistaequi.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
