@@ -57,7 +57,7 @@ public class Modelo_Persona extends Clase_Persona {
     public boolean ActualizarPersona() throws SQLException {
 
         String sql = "UPDATE public.persona "
-                + "SET nombre1=?, nombre2=?, apellido1=?, apellido2=?, fecha_nac=?, telefono=?, email=?, sexo=?, direccion=? "
+                + "SET nombre1=INITCAP(?), nombre2=INITCAP(?), apellido1=INITCAP(?), apellido2=INITCAP(?), fecha_nac=?, telefono=?, email=?, sexo=?, direccion=? "
                 + "WHERE cedula='" + getCedula() + "';";
 
         PreparedStatement ps = con.getCon().prepareStatement(sql);
