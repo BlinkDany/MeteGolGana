@@ -83,14 +83,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         Resumen_Partido.tblEquipos2 = tblEquipos2;
     }
 
-    public static JButton getBtnEliminar() {
-        return btnEliminar;
-    }
-
-    public static void setBtnEliminar(JButton btnEliminar) {
-        Resumen_Partido.btnEliminar = btnEliminar;
-    }
-
     public static JButton getBtnModificar() {
         return btnModificar;
     }
@@ -600,7 +592,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         txtBuscar = new LIB.FSTexFieldMD();
         btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblResuemn = new javax.swing.JTable();
 
@@ -1124,26 +1115,19 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/boton.png"))); // NOI18N
         btnAgregar.setText("Crear nuevo");
-        btnAgregar.setToolTipText("Registrar un nuevo jugador");
+        btnAgregar.setToolTipText("Registrar resumen");
 
         txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscar.setToolTipText("Ingrese una cedula o nombre");
+        txtBuscar.setToolTipText("Ingrese el codigo del resumen");
         txtBuscar.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtBuscar.setPlaceholder("Buscar resumen");
+        txtBuscar.setPlaceholder("Ingrese el codigo");
 
         btnModificar.setBackground(new java.awt.Color(0, 102, 204));
         btnModificar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/tablero.png"))); // NOI18N
         btnModificar.setText("Ver detalles del resumen");
-        btnModificar.setToolTipText("Registrar un nuevo jugador");
-
-        btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("Registrar un nuevo jugador");
+        btnModificar.setToolTipText("Visualizar Resumen seleccionadp");
 
         tblResuemn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1176,9 +1160,7 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnModificar)
                         .addGap(0, 72, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1197,12 +1179,9 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar))
+                    .addComponent(btnModificar)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1223,7 +1202,6 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnCancelar;
-    public static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnRegistrar;
