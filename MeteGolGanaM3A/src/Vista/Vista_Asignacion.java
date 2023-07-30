@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -172,13 +173,31 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.tblAsignacion = tblAsignacion;
     }
 
-    public static JTable getTblbuscar() {
-        return tblbuscar;
+    public static JTable getTblArbitro() {
+        return tblArbitro;
     }
 
-    public static void setTblbuscar(JTable tblbuscar) {
-        Vista_Asignacion.tblbuscar = tblbuscar;
+    public static void setTblArbitro(JTable tblArbitro) {
+        Vista_Asignacion.tblArbitro = tblArbitro;
     }
+
+    public JTable getTblPartido() {
+        return tblPartido;
+    }
+
+    public JPanel getPanelPartido() {
+        return panelPartido;
+    }
+
+    public void setPanelPartido(JPanel panelPartido) {
+        this.panelPartido = panelPartido;
+    }
+
+    public void setTblPartido(JTable tblPartido) {
+        this.tblPartido = tblPartido;
+    }
+
+    
 
     public static FSTexFieldMD getTxtBuscar() {
         return txtBuscar;
@@ -255,8 +274,11 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         btnCancelar1 = new LIB.FSButtonMD();
         btnmandardatos = new LIB.FSButtonMD();
         btnBuscar = new LIB.FSButtonMD();
+        panelPartido = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPartido = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblbuscar = new javax.swing.JTable();
+        tblArbitro = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -435,13 +457,13 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 txtbuscarcodActionPerformed(evt);
             }
         });
-        jPanel5.add(txtbuscarcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 440, -1));
+        jPanel5.add(txtbuscarcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 440, -1));
 
         btnCancelar1.setText("Cancelar");
         btnCancelar1.setColorHover(new java.awt.Color(0, 0, 0));
         btnCancelar1.setColorNormal(new java.awt.Color(255, 0, 0));
         btnCancelar1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel5.add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, -1, -1));
+        jPanel5.add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         btnmandardatos.setText("Guardar");
         btnmandardatos.setColorHover(new java.awt.Color(0, 102, 204));
@@ -452,7 +474,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 btnmandardatosActionPerformed(evt);
             }
         });
-        jPanel5.add(btnmandardatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
+        jPanel5.add(btnmandardatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
         btnBuscar.setBackground(new java.awt.Color(204, 204, 204));
         btnBuscar.setText("Buscar");
@@ -465,41 +487,61 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel5.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, -1, -1));
+        jPanel5.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
-        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
+        panelPartido.setBackground(new java.awt.Color(255, 255, 255));
+        panelPartido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblPartido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Varios"
+                "EQUIPO 1", "EQUIPO 2", "FECHA", "CODIGO"
+            }
+        ));
+        jScrollPane3.setViewportView(tblPartido);
+
+        panelPartido.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 760, 290));
+
+        jPanel5.add(panelPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 780, 320));
+
+        tblArbitro.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        tblArbitro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "CEDULA", "NOMBRE", "APELLIDO", "ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblbuscar);
+        jScrollPane2.setViewportView(tblArbitro);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 760, 290));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 760, 290));
 
         javax.swing.GroupLayout dialogtablasLayout = new javax.swing.GroupLayout(dialogtablas.getContentPane());
         dialogtablas.getContentPane().setLayout(dialogtablasLayout);
         dialogtablasLayout.setHorizontalGroup(
             dialogtablasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dialogtablasLayout.setVerticalGroup(
             dialogtablasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setClosable(true);
@@ -725,10 +767,13 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JLabel lblbusqueda;
+    public javax.swing.JPanel panelPartido;
+    public static javax.swing.JTable tblArbitro;
     public static javax.swing.JTable tblAsignacion;
-    public static javax.swing.JTable tblbuscar;
+    private javax.swing.JTable tblPartido;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCodAsignacion;
     public static LIB.FSTexFieldMD txtbuscarcod;

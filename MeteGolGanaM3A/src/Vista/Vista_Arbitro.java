@@ -453,6 +453,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtCedula;
     public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtSueldo;
-    private javax.swing.JTextField txt_Ruta_Foto;
+    public javax.swing.JTextField txt_Ruta_Foto;
     // End of variables declaration//GEN-END:variables
 }
