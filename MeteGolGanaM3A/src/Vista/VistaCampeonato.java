@@ -31,6 +31,14 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         VistaCampeonato.btnAgregar = btnAgregar;
     }
 
+    public static JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public static void setBtnBuscar(JButton btnBuscar) {
+        VistaCampeonato.btnBuscar = btnBuscar;
+    }
+
     public static FSButtonMD getBtnCancelarDlg() {
         return btnCancelarDlg;
     }
@@ -38,8 +46,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
     public static void setBtnCancelarDlg(FSButtonMD btnCancelarDlg) {
         VistaCampeonato.btnCancelarDlg = btnCancelarDlg;
     }
-    
-    
 
     public static JButton getBtnEliminar() {
         return btnEliminar;
@@ -55,6 +61,22 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
 
     public static void setBtnInicio(FSButtonMD btnInicio) {
         VistaCampeonato.btnInicio = btnInicio;
+    }
+
+    public static JButton getBtnLimpiarBuscar() {
+        return btnLimpiarBuscar;
+    }
+
+    public static void setBtnLimpiarBuscar(JButton btnLimpiarBuscar) {
+        VistaCampeonato.btnLimpiarBuscar = btnLimpiarBuscar;
+    }
+
+    public static FSButtonMD getBtnLimpiarDlg() {
+        return btnLimpiarDlg;
+    }
+
+    public static void setBtnLimpiarDlg(FSButtonMD btnLimpiarDlg) {
+        VistaCampeonato.btnLimpiarDlg = btnLimpiarDlg;
     }
 
     public static JButton getBtnModificar() {
@@ -89,34 +111,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         VistaCampeonato.dlgCampeonatos = dlgCampeonatos;
     }
 
-   
-
-    public JMenu getjMenu1() {
-        return jMenu1;
-    }
-
-    public void setjMenu1(JMenu jMenu1) {
-        this.jMenu1 = jMenu1;
-    }
-
-    public JMenu getjMenu2() {
-        return jMenu2;
-    }
-
-    public void setjMenu2(JMenu jMenu2) {
-        this.jMenu2 = jMenu2;
-    }
-
-    public static JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public static void setBtnBuscar(JButton btnBuscar) {
-        VistaCampeonato.btnBuscar = btnBuscar;
-    }
-
-
-
     public JLabel getLblReMoJugadores() {
         return lblReMoJugadores;
     }
@@ -128,16 +122,6 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
     public JSpinner getSpnMaxEqipo() {
         return spnMaxEqipo;
     }
-
-    public static JButton getBtnLimpiarBuscar() {
-        return btnLimpiarBuscar;
-    }
-
-    public static void setBtnLimpiarBuscar(JButton btnLimpiarBuscar) {
-        VistaCampeonato.btnLimpiarBuscar = btnLimpiarBuscar;
-    }
-    
-    
 
     public void setSpnMaxEqipo(JSpinner spnMaxEqipo) {
         this.spnMaxEqipo = spnMaxEqipo;
@@ -159,22 +143,23 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         VistaCampeonato.txtBuscar = txtBuscar;
     }
 
+    public static FSTexFieldMD getTxtCod() {
+        return txtCod;
+    }
+
+    public static void setTxtCod(FSTexFieldMD txtCod) {
+        VistaCampeonato.txtCod = txtCod;
+    }
 
     public static FSTexFieldMD getTxtNombre() {
         return txtNombre;
     }
 
-    public static FSButtonMD getBtnLimpiarDlg() {
-        return btnLimpiarDlg;
-    }
-
-    public static void setBtnLimpiarDlg(FSButtonMD btnLimpiarDlg) {
-        VistaCampeonato.btnLimpiarDlg = btnLimpiarDlg;
-    }
-
     public static void setTxtNombre(FSTexFieldMD txtNombre) {
         VistaCampeonato.txtNombre = txtNombre;
     }
+
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -193,6 +178,7 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         spnMaxEqipo = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         btnLimpiarDlg = new LIB.FSButtonMD();
+        txtCod = new LIB.FSTexFieldMD();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -241,7 +227,7 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtNombre.setPlaceholder("Nombre del campeonato");
-        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 200, -1));
+        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 210, -1));
 
         btnCancelarDlg.setText("Cancelar");
         btnCancelarDlg.setColorHover(new java.awt.Color(0, 0, 0));
@@ -257,19 +243,19 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel2.setText("Número Máximo de Equipos");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 190, -1));
 
         cbxTipoCampeonato.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         cbxTipoCampeonato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona:", "Fútbol sala", "Fútbol 6 vs 6", "Fúbol 7 vs 7", "Fútball 12 vs 12", " " }));
-        jPanel3.add(cbxTipoCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 40));
+        jPanel3.add(cbxTipoCampeonato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 210, 40));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel3.setText("Tipo de Campeonato");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 140, -1));
 
         spnMaxEqipo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         spnMaxEqipo.setModel(new javax.swing.SpinnerNumberModel(2, 2, 20, 1));
-        jPanel3.add(spnMaxEqipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 90, 40));
+        jPanel3.add(spnMaxEqipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/campeonatoremovebg400x390.png"))); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
@@ -285,15 +271,21 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnLimpiarDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 190, -1));
 
+        txtCod.setForeground(new java.awt.Color(0, 0, 0));
+        txtCod.setToolTipText("Código del campeonato");
+        txtCod.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCod.setPlaceholder("Código del campeonato");
+        jPanel3.add(txtCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, -1));
+
         javax.swing.GroupLayout dlgCampeonatosLayout = new javax.swing.GroupLayout(dlgCampeonatos.getContentPane());
         dlgCampeonatos.getContentPane().setLayout(dlgCampeonatosLayout);
         dlgCampeonatosLayout.setHorizontalGroup(
             dlgCampeonatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         dlgCampeonatosLayout.setVerticalGroup(
             dlgCampeonatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setClosable(true);
@@ -498,6 +490,7 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spnMaxEqipo;
     public static javax.swing.JTable tblCampeonato;
     public static LIB.FSTexFieldMD txtBuscar;
+    public static LIB.FSTexFieldMD txtCod;
     public static LIB.FSTexFieldMD txtNombre;
     // End of variables declaration//GEN-END:variables
 }

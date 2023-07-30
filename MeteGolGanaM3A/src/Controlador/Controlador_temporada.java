@@ -69,15 +69,6 @@ public class Controlador_temporada {
         vista.getBtnLimpiar().addActionListener(l -> limpiarBuscar());
         vista.getBtnLimpiarDlg().addActionListener(l -> limpiarBuscar());
 
-        /* vista.getBtnCancelar().addActionListener(e -> {
-            vista.getTblCampeonatoFK1().clearSelection();
-        });
-        vista.getBtnCancelar().addActionListener(e -> {
-            vista.getTblTemporada().clearSelection();
-        });
-        vista.getBtnRegistrarModificarDlg().addActionListener(e -> {
-            vista.getTblTemporada().clearSelection();
-        });*/
         vista.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
@@ -97,14 +88,15 @@ public class Controlador_temporada {
 
         if (vista.getDlgaTemporada().getTitle().contentEquals("Crear")) {
             vista.getLblReMoJugadores().setText("REGISTRO TEMPORADAS");
-            vista.getBtnRegistrarModificarDlg().setText("REGISTRAR TEMPORADA");
+            vista.getBtnRegistrarModificarDlg().setText("Registrar");
 
         } else if (vista.getDlgaTemporada().getTitle().contentEquals("Editar")) {
             
             vista.getLblReMoJugadores().setText("MODIFICAR TEMPORADAS");
-            vista.getBtnRegistrarModificarDlg().setText("MODIFICAR TEMPORADAS");
+            vista.getBtnRegistrarModificarDlg().setText("Modificar");
             
             llenarDatosTemporada();
+            
         }
     }
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------
@@ -525,6 +517,8 @@ public class Controlador_temporada {
         cargarTemporadas();
 
     }
+    
+   
 
     /* Modelo_Temporada modelo;
 

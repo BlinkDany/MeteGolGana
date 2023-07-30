@@ -16,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -40,8 +41,6 @@ import javax.swing.table.TableRowSorter;
 public class Controlador_Campeonato {
 
     Modelo_Campeonato modelo;
-    
-    Modelo_Temporada modeloTemporada;
 
     VistaCampeonato vista;
 
@@ -73,6 +72,14 @@ public class Controlador_Campeonato {
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarCampeonato());
         vista.getBtnBuscar().addActionListener(l -> buscar());
         vista.getBtnLimpiarBuscar().addActionListener(l -> limpiaBusca());
+        
+               vista.getBtnAgregar().addActionListener(l -> {
+            try {
+                CargarID();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Partido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
         mostrarDatosTabla();
         
@@ -111,15 +118,19 @@ public class Controlador_Campeonato {
         if (vista.getDlgCampeonatos().getTitle().equals("Crear")) {
 
             vista.getBtnRegistrarModificarDlg().setText("Registrar");
+            vista.getLblReMoJugadores().setText("REGISTRO DE CAMPEONATOS");
+            vista.getTxtCod().setEditable(false);
             
             limpiar();
             spn2();
         } else {
 
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
+            vista.getLblReMoJugadores().setText("MODIFICAR CAMPEONATOS");
+            vista.getTxtCod().setEditable(false);
+            
             llenarCamposDeTexto();
            
-
         }
         vista.getDlgCampeonatos().setVisible(true);
     }
@@ -208,6 +219,7 @@ public class Controlador_Campeonato {
 
                 // Llenar los campos de la vista con los datos de producto seleccionado
                
+                vista.getTxtCod().setText(String.valueOf(p.getCod_campeonato()));
                 vista.getTxtNombre().setText(p.getNombre());
                 vista.getCbxTipoCampeonato().setSelectedItem(p.getTipo_campeonato());
                 vista.getSpnMaxEqipo().setValue(p.getMax_equipos());
@@ -385,6 +397,10 @@ public class Controlador_Campeonato {
                 }
             }
         }
+    }
+      
+       private void CargarID() throws SQLException {
+        vista.getTxtCod().setText(String.valueOf(modelo.CargarCodigoID()));
     }
     
 }
