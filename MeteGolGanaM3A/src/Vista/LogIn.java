@@ -323,7 +323,12 @@ public class LogIn extends javax.swing.JFrame {
         btnFoto.setForeground(new java.awt.Color(255, 255, 255));
         btnFoto.setText("Agregar foto");
         jPanel3.add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 260, 140, -1));
-        jPanel3.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 100, -1));
+
+        txtRuta.setEditable(false);
+        txtRuta.setBackground(new java.awt.Color(255, 255, 255));
+        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
+        txtRuta.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 310, 140, -1));
 
         javax.swing.GroupLayout dlgPersonaLayout = new javax.swing.GroupLayout(dlgPersona.getContentPane());
         dlgPersona.getContentPane().setLayout(dlgPersonaLayout);
@@ -374,7 +379,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("¿Olvidaste tu contraseña?");
         jLabel2.setToolTipText("Restablece tu contraseña");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         fSButtonMD1.setBackground(new java.awt.Color(51, 102, 255));
         fSButtonMD1.setText("Ingresar");
