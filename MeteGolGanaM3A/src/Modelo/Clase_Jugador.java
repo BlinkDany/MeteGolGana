@@ -37,8 +37,8 @@ public class Clase_Jugador extends Clase_Persona{
         this.cod_equipo = cod_equipo;
     }
 
-    public Clase_Jugador(int cod_jugador, String posicion, int anios_exp, double sueldo, Date fecha_inicioContrato, Date fecha_finContrato, String cedula_persona, int cod_equipo, String cedula, String nombnre1, String nombnre2, String apellido1, String apellido2, Date fecha_nac, String telefono, String email, String sexo, String direccion, boolean estado_elim, Image foto, FileInputStream imageFile, int length) {
-        super(cedula, nombnre1, nombnre2, apellido1, apellido2, fecha_nac, telefono, email, sexo, direccion, estado_elim, foto, imageFile, length);
+    public Clase_Jugador(int cod_jugador, String posicion, int anios_exp, double sueldo, Date fecha_inicioContrato, Date fecha_finContrato, String cedula_persona, int cod_equipo, String cedula, String nombnre1, String nombnre2, String apellido1, String apellido2, Date fecha_nac, String telefono, String email, String sexo, String direccion, boolean estado_elim, String foto) {
+        super(cedula, nombnre1, nombnre2, apellido1, apellido2, fecha_nac, telefono, email, sexo, direccion, estado_elim, foto);
         this.cod_jugador = cod_jugador;
         this.posicion = posicion;
         this.anios_exp = anios_exp;
