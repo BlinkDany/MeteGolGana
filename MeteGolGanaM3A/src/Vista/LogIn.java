@@ -210,6 +210,8 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtTelfDLG, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
+
+        txtFechaDlg.setDateFormatString("yyyy-MM-dd");
         jPanel3.add(txtFechaDlg, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 250, 42));
 
         txt1erApeDLG.setForeground(new java.awt.Color(0, 0, 0));

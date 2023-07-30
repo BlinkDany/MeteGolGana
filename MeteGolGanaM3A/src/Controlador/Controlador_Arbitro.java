@@ -23,6 +23,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -263,36 +266,44 @@ public class Controlador_Arbitro {
 
                     } else {
 
-                        modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                        modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                        modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                        modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                        modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                        modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                        modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                        modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                        modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-                        modPersona.setSexo(Sexo());
-                        modPersona.setFoto(visPer.getTxtRuta().getText());
+                        if (edad() == false) {
+                            
+                            MensajeError("LA PERSONA DEBE TENER 18 AÑOS O MAS");
 
-                        try {
+                        } else {
+                            
+                            modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                            modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                            modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                            modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                            modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                            modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                            modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                            modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                            modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                            modPersona.setSexo(Sexo());
+                            modPersona.setFoto(visPer.getTxtRuta().getText());
 
-                            if (modPersona.InsertarPersona()) {
+                            try {
 
-                                IniciarDialogArbitro("Registrar Arbitro");
-                            } else {
+                                if (modPersona.InsertarPersona()) {
 
-                                MensajeError("Ha ocurrido un error al registrar en la base");
+                                    IniciarDialogArbitro("Registrar Arbitro");
+                                } else {
+
+                                    MensajeError("Ha ocurrido un error al registrar en la base");
+                                }
+
+                            } catch (org.postgresql.util.PSQLException e) {
+
+                                MensajeError("La cedula ya se encuentra registrada");
+
+                            } catch (SQLException ex) {
+
+                                Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
+                                MensajeError(ex.getMessage());
                             }
-
-                        } catch (org.postgresql.util.PSQLException e) {
-
-                            MensajeError("La cedula ya se encuentra registrada");
-
-                        } catch (SQLException ex) {
-
-                            Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                            MensajeError(ex.getMessage());
+                            
                         }
                     }
                 }
@@ -692,5 +703,22 @@ public class Controlador_Arbitro {
             JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
         }
     }
+//////////////////////////////////////////////////VALIDAR EDAD//////////////////////////////////////
 
+    public boolean edad() {
+
+        Calendar fechaseleccionada = visPer.txtFechaDlg.getCalendar();
+        int dia = fechaseleccionada.get(Calendar.DAY_OF_WEEK);
+        int mes = fechaseleccionada.get(Calendar.MONTH);
+        int año = fechaseleccionada.get(Calendar.YEAR);
+
+        LocalDate fechaDeNacimiento = LocalDate.of(año, mes, dia);
+        LocalDate fechaActual = LocalDate.now();
+        Period edad = Period.between(fechaDeNacimiento, fechaActual);
+
+        int edadstr = edad.getYears();
+
+        return edadstr >= 18;
+
+    }
 }
