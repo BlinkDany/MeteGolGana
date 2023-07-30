@@ -112,7 +112,37 @@ public class Controlador_Arbitro {
         });
         visPer.getTxtCedulaDLG().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                validarSueldo(evt);
+                validarEntradaCedula(evt);
+            }
+        });
+        visPer.getTxt1erNomDlg().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt2doNomDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt1erApeDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt2doApeDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxtDirecDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaDireccion(evt);
+            }
+        });
+        visPer.getTxtTelfDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaTelefono(evt);
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -219,6 +249,7 @@ public class Controlador_Arbitro {
                 MensajeError("Faltan campos por llenar");
 
             } else {
+
                 if (validarCedula() == false) {
 
                     MensajeError("CEDULA INCORRECTA");
@@ -273,9 +304,7 @@ public class Controlador_Arbitro {
                             MensajeError(ex.getMessage());
                         }
                     }
-
                 }
-
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
@@ -593,7 +622,7 @@ public class Controlador_Arbitro {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 9) {
+        if (visPer.getTxtCedulaDLG().getText().trim().length() > 9) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
         }
@@ -608,7 +637,7 @@ public class Controlador_Arbitro {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 14) {
+        if (visPer.getTxtTelfDLG().getText().trim().length() > 14) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
         }
@@ -634,7 +663,19 @@ public class Controlador_Arbitro {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar LETRAS");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 49) {
+        if (visPer.getTxt1erNomDlg().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doNomDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt1erApeDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doApeDLG().getText().trim().length() > 49) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
         }
@@ -657,11 +698,11 @@ public class Controlador_Arbitro {
         boolean guion = dato == 45;
         boolean backspace = dato == 8;
 
-        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ||punto||guion)) {
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ || punto || guion)) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Digito INCORRECTO");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 149) {
+        if (visPer.getTxtDirecDLG().getText().trim().length() > 149) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
         }
@@ -686,17 +727,13 @@ public class Controlador_Arbitro {
     private void validarSueldo(java.awt.event.KeyEvent evt) {
         char dato = evt.getKeyChar();
         boolean numeros = dato >= 48 && dato <= 57;
-        boolean guion = dato == 45;
+        boolean coma = dato == 44;
         boolean backspace = dato == 8;
 
-        if (!(backspace || numeros || guion)) {
+        if (!(backspace || numeros || coma)) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
-        }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 2) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Superior al limite (4)");
-        }
+        }      
     }
 
 }

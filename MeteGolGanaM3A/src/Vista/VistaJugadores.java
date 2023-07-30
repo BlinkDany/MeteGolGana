@@ -1,10 +1,20 @@
 
 package Vista;
 
+import javax.swing.JTextField;
+
 public class VistaJugadores extends javax.swing.JInternalFrame {
 
     public VistaJugadores() {
         initComponents();
+    }
+
+    public JTextField getTxtRuta() {
+        return txtRuta;
+    }
+
+    public void setTxtRuta(JTextField txtRuta) {
+        this.txtRuta = txtRuta;
     }
 
     @SuppressWarnings("unchecked")
@@ -31,6 +41,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
+        txtRuta = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -160,6 +171,9 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         );
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 140, 130));
+
+        txtRuta.setText("jTextField1");
+        jPanel3.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 130, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -355,6 +369,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCedula;
     public static LIB.FSTexFieldMD txtEquipo;
+    private javax.swing.JTextField txtRuta;
     public static LIB.FSTexFieldMD txtSueldo;
     // End of variables declaration//GEN-END:variables
 }

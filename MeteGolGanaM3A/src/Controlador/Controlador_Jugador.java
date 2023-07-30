@@ -19,6 +19,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,6 +34,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -66,6 +68,8 @@ public class Controlador_Jugador {
 
         MostrarDatos();
         MostrarEquipos();
+        visPer.getTxtRuta().setVisible(false);
+        visJugador.getTxtRuta().setVisible(false);
         visJugador.setTitle("Jugadores");
         visJugador.txtEquipo.setEditable(false);
         visJugador.txtCedula.setEnabled(false);
@@ -319,14 +323,10 @@ public class Controlador_Jugador {
             jug.stream().forEach(p -> {
 
                 if (p.getCedula().equals(visJugador.txtCedula.getText())) {
-
-                    Image foto = p.getFoto();
-                    if (foto != null) {
-                        foto = foto.getScaledInstance(VistaJugadores.lblFoto.getWidth(), VistaJugadores.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                        ImageIcon icono = new ImageIcon(foto);
-                        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaJugadores.lblFoto.setIcon(icono);
-                    }
+                    ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
+                    Image foto = miImagen.getImage();
+                    foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
+                    visJugador.lblFoto.setIcon(new ImageIcon(foto));
                 }
             });
         } else {
@@ -358,24 +358,26 @@ public class Controlador_Jugador {
 
     public void Foto() {
 
-        jfc = new JFileChooser();
-        jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int estado = jfc.showOpenDialog(visPer);
-        if (estado == JFileChooser.APPROVE_OPTION) {
-            try {
-                Image imagen = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(
-                        visPer.lblFoto.getWidth(),
-                        visPer.lblFoto.getHeight(),
-                        Image.SCALE_DEFAULT);
+        JFileChooser file = new JFileChooser();
+        file.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP, PNG, & GIF", "jpg", "png", "gif");
+        file.setFileFilter(filtrado);
+        file.setDialogTitle("Abrir Archivo");
 
-                Icon icono = new ImageIcon(imagen);
-                visPer.lblFoto.setIcon(icono);
-                visPer.lblFoto.updateUI();
-            } catch (IOException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                MensajeError(ex.getMessage());
-            }
+        File Ruta = new File("C:\\Users\\blink\\Pictures");
+        file.setCurrentDirectory(Ruta);
+
+        int res = file.showOpenDialog(visPer);
+        if (res == JFileChooser.APPROVE_OPTION) {
+
+            File archivo = file.getSelectedFile();
+            visPer.getTxtRuta().setText(String.valueOf(archivo));
+            ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
+            Image foto = miImagen.getImage();
+            foto = foto.getScaledInstance(visPer.getLblFoto().getWidth(), visPer.getLblFoto().getHeight(), Image.SCALE_SMOOTH);
+            visPer.getLblFoto().setIcon(new ImageIcon(foto));
         }
+
     }
 
     public void RegistrarEditarPersona() {
@@ -385,7 +387,7 @@ public class Controlador_Jugador {
             if (visPer.txtCedulaDLG.getText().isEmpty() || visPer.txt1erApeDLG.getText().isEmpty() || visPer.txt1erNomDlg.getText().isEmpty()
                     || visPer.txt2doApeDLG.getText().isEmpty() || visPer.txt2doNomDLG.getText().isEmpty() || visPer.txtCorreoDlg.getText().isEmpty()
                     || visPer.txtDirecDLG.getText().isEmpty() || visPer.txtFechaDlg.getDate() == null || visPer.txtTelfDLG.getText().isEmpty()
-                    || Sexo().equals("") || visPer.lblFoto.getIcon() == null) {
+                    || Sexo().equals("") || visPer.lblFoto.getIcon() == null || visPer.getTxtRuta().getText().isEmpty()) {
 
                 MensajeError("Faltan campos por llenar");
 
@@ -402,17 +404,7 @@ public class Controlador_Jugador {
                     modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
                     modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
                     modPersona.setSexo(Sexo());
-
-                    try {
-
-                        FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                        int largo = (int) jfc.getSelectedFile().length();
-                        modPersona.setImageFile(img);
-                        modPersona.setLength(largo);
-
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    modPersona.setFoto(visPer.getTxtRuta().getText());
 
                     if (modPersona.InsertarPersona()) {
 
@@ -449,6 +441,7 @@ public class Controlador_Jugador {
                 modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
                 modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
                 modPersona.setSexo(Sexo());
+                modPersona.setFoto(visPer.getTxtRuta().getText());
 
                 if (modPersona.ActualizarPersona()) {
 
@@ -468,36 +461,6 @@ public class Controlador_Jugador {
                 MensajeError("Ingrese una fecha correcta");
             }
         }
-    }
-
-    public void ModificarFoto() {
-
-        if (visPer.dlgPersona.getTitle().equals("Editar")) {
-
-            try {
-
-                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                int largo = (int) jfc.getSelectedFile().length();
-                modPersona.setImageFile(img);
-                modPersona.setLength(largo);
-
-                if (modPersona.ActualizarPersona()) {
-
-                    MensajeSucces("Se modifico con exito la foto de la persona");
-                    MostrarDatos();
-                } else {
-
-                    MensajeError("Ha ocurrido un error al actualizar en la base");
-                    MostrarDatos();
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
     }
 
     public void RegistrarEditarJugador() {
@@ -537,9 +500,9 @@ public class Controlador_Jugador {
                                 MensajeError("No se ha podido registrar debido a un error en la base de datos");
                                 MostrarDatos();
                             }
-                            
+
                         } else {
-                            
+
                             MensajeError("El equipo no puede tener mas de 12 jugadores");
                         }
 
@@ -629,7 +592,14 @@ public class Controlador_Jugador {
                 visPer.txtCorreoDlg.setText(p.getEmail());
                 visPer.txt2doNomDLG.setText(p.getNombnre2());
                 visPer.txtTelfDLG.setText(p.getTelefono());
+                visPer.getTxtRuta().setText(p.getFoto());
                 visPer.txtFechaDlg.setDate(p.getFecha_nac());
+
+                ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
+                Image foto = miImagen.getImage();
+                foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
+                visPer.getLblFoto().setIcon(new ImageIcon(foto));
+
                 if (p.getSexo().equals("Femenino")) {
 
                     visPer.rdbFemeninoDlg.setSelected(true);
@@ -641,14 +611,6 @@ public class Controlador_Jugador {
                 if (p.getSexo().equals("Otro")) {
 
                     visPer.rdbOtroDlg.setSelected(true);
-                }
-
-                Image foto = p.getFoto();
-                if (foto != null) {
-                    foto = foto.getScaledInstance(visPer.lblFoto.getWidth(), visPer.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                    ImageIcon icono = new ImageIcon(foto);
-                    DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                    visPer.lblFoto.setIcon(icono);
                 }
             }
         });
@@ -671,16 +633,15 @@ public class Controlador_Jugador {
                     visJugador.cbxPosicion.setSelectedItem(p.getPosicion());
                     visJugador.txtSueldo.setText(String.valueOf(p.getSueldo()));
                     visJugador.txtEquipo.setText(String.valueOf(p.getCod_equipo()));
+                    visJugador.getTxtRuta().setText(p.getFoto());
                     visJugador.dateFechaFin.setDate(p.getFecha_finContrato());
                     visJugador.dateFechaInicio.setDate(p.getFecha_inicioContrato());
 
-                    Image foto = p.getFoto();
-                    if (foto != null) {
-                        foto = foto.getScaledInstance(VistaJugadores.lblFoto.getWidth(), VistaJugadores.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                        ImageIcon icono = new ImageIcon(foto);
-                        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaJugadores.lblFoto.setIcon(icono);
-                    }
+                    ImageIcon miImagen = new ImageIcon(visJugador.getTxtRuta().getText());
+                    Image foto = miImagen.getImage();
+                    foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
+                    visJugador.lblFoto.setIcon(new ImageIcon(foto));
+
                 }
             });
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
