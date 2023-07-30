@@ -267,11 +267,11 @@ public class Controlador_Arbitro {
                     } else {
 
                         if (edad() == false) {
-                            
+
                             MensajeError("LA PERSONA DEBE TENER 18 AÑOS O MAS");
 
                         } else {
-                            
+
                             modPersona.setApellido1(visPer.txt1erApeDLG.getText());
                             modPersona.setApellido2(visPer.txt2doApeDLG.getText());
                             modPersona.setCedula(visPer.txtCedulaDLG.getText());
@@ -303,7 +303,7 @@ public class Controlador_Arbitro {
                                 Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
                                 MensajeError(ex.getMessage());
                             }
-                            
+
                         }
                     }
                 }
@@ -379,6 +379,8 @@ public class Controlador_Arbitro {
                 MostrarDatos();
                 visArbi.dialogRegistrarModificar.dispose();
                 visPer.txtCedulaDLG.setEnabled(true);
+                visArbi.tblArbitros.setEnabled(true);
+
             } else {
 
                 MensajeError("No se ha podido modificar debido a un error en la base de datos");
