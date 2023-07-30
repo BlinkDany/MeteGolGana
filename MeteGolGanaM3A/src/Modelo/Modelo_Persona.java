@@ -48,7 +48,7 @@ public class Modelo_Persona extends Clase_Persona {
         ps.setString(8, getEmail());
         ps.setString(9, getSexo());
         ps.setString(10, getDireccion());
-        ps.setBinaryStream(11, getImageFile(), getLength());
+        ps.setString(11, getFoto());
         ps.executeUpdate();
         return true;
 
@@ -57,7 +57,7 @@ public class Modelo_Persona extends Clase_Persona {
     public boolean ActualizarPersona() throws SQLException {
 
         String sql = "UPDATE public.persona "
-                + "SET nombre1=INITCAP(?), nombre2=INITCAP(?), apellido1=INITCAP(?), apellido2=INITCAP(?), fecha_nac=?, telefono=?, email=?, sexo=?, direccion=? "
+                + "SET nombre1=INITCAP(?), nombre2=INITCAP(?), apellido1=INITCAP(?), apellido2=INITCAP(?), fecha_nac=?, telefono=?, email=?, sexo=?, direccion=?, foto=? "
                 + "WHERE cedula='" + getCedula() + "';";
 
         PreparedStatement ps = con.getCon().prepareStatement(sql);
@@ -70,19 +70,9 @@ public class Modelo_Persona extends Clase_Persona {
         ps.setString(7, getEmail());
         ps.setString(8, getSexo());
         ps.setString(9, getDireccion());
+        ps.setString(10, getFoto());
         ps.executeUpdate();
         return true;
-    }
-    
-    public void ModificarImagen() throws SQLException{
-        
-        String sql = "UPDATE public.persona "
-                + "SET foto=? "
-                + "WHERE cedula='" + getCedula() + "';";
-        
-        PreparedStatement ps = con.getCon().prepareStatement(sql);
-        ps.setBinaryStream(1, getImageFile(), getLength());
-        ps.executeUpdate();
     }
 
     public boolean OcultarPersona() {
@@ -99,7 +89,6 @@ public class Modelo_Persona extends Clase_Persona {
             String sql = "SELECT * FROM persona ORDER BY cedula";
             ResultSet res = con.Consultas(sql);
             List<Clase_Persona> per = new ArrayList<>();
-            byte[] bytea;
 
             while (res.next()) {
                 Clase_Persona mipersona = new Clase_Jugador();
@@ -113,15 +102,8 @@ public class Modelo_Persona extends Clase_Persona {
                 mipersona.setNombnre2(res.getString("nombre2"));
                 mipersona.setSexo(res.getString("sexo"));
                 mipersona.setTelefono(res.getString("telefono"));
+                mipersona.setFoto(res.getString("foto"));
                 mipersona.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-                    mipersona.setFoto(getImage(bytea));
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
                 per.add(mipersona);
             }
@@ -132,19 +114,5 @@ public class Modelo_Persona extends Clase_Persona {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             return null;
         }
-    }
-
-    private Image getImage(byte[] bytes) throws IOException {
-
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
-        ImageReader imageReader = (ImageReader) it.next();
-        Object source = bais;
-        ImageInputStream iis = ImageIO.createImageInputStream(source);
-        imageReader.setInput(iis, true);
-        ImageReadParam param = imageReader.getDefaultReadParam();
-        param.setSourceSubsampling(1, 1, 0, 0);
-
-        return imageReader.read(0, param);
     }
 }

@@ -7,6 +7,8 @@ package Vista;
 
 import LIB.FSTexFieldMD;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +21,22 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
+    }
+
+    public JTextField getTxtRuta() {
+        return txtRuta;
+    }
+
+    public void setTxtRuta(JTextField txtRuta) {
+        this.txtRuta = txtRuta;
+    }
+
+    public static JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public static void setLblFoto(JLabel lblFoto) {
+        LogIn.lblFoto = lblFoto;
     }
 
     public static FSTexFieldMD getTxt1erApeDLG() {
@@ -124,6 +142,7 @@ public class LogIn extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
         btnFoto = new javax.swing.JButton();
+        txtRuta = new javax.swing.JTextField();
         btnGrupo1 = new javax.swing.ButtonGroup();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jPanel2 = new javax.swing.JPanel();
@@ -304,6 +323,7 @@ public class LogIn extends javax.swing.JFrame {
         btnFoto.setForeground(new java.awt.Color(255, 255, 255));
         btnFoto.setText("Agregar foto");
         jPanel3.add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 260, 140, -1));
+        jPanel3.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 100, -1));
 
         javax.swing.GroupLayout dlgPersonaLayout = new javax.swing.GroupLayout(dlgPersona.getContentPane());
         dlgPersona.getContentPane().setLayout(dlgPersonaLayout);
@@ -542,6 +562,7 @@ public class LogIn extends javax.swing.JFrame {
     public static LIB.FSTexFieldMD txtCorreoDlg;
     public static LIB.FSTexFieldMD txtDirecDLG;
     public static com.toedter.calendar.JDateChooser txtFechaDlg;
+    private javax.swing.JTextField txtRuta;
     public static LIB.FSTexFieldMD txtTelfDLG;
     // End of variables declaration//GEN-END:variables
 }

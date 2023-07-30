@@ -89,7 +89,6 @@ public class Modelo_Jugador extends Clase_Jugador {
                     + "ORDER BY j.codigo";
             ResultSet res = con.Consultas(sql);
             List<Clase_Jugador> jug = new ArrayList<>();
-            byte[] bytea;
 
             while (res.next()) {
 
@@ -115,19 +114,11 @@ public class Modelo_Jugador extends Clase_Jugador {
                 mijugador.setNombnre1(res.getString("nombre1"));
                 mijugador.setNombnre2(res.getString("nombre2"));
                 mijugador.setSexo(res.getString("sexo"));
+                mijugador.setFoto(res.getString("foto"));
                 mijugador.setTelefono(res.getString("telefono"));
                 mijugador.setEstado_elim(res.getBoolean("estado_elim"));
 
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    mijugador.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+                
                 jug.add(mijugador);
             }
 
@@ -153,7 +144,6 @@ public class Modelo_Jugador extends Clase_Jugador {
                     + "ORDER BY j.codigo";
             ResultSet res = con.Consultas(sql);
             List<Clase_Jugador> jug = new ArrayList<>();
-            byte[] bytea;
 
             while (res.next()) {
 
@@ -176,19 +166,10 @@ public class Modelo_Jugador extends Clase_Jugador {
                 mijugador.setNombnre1(res.getString("nombre1"));
                 mijugador.setNombnre2(res.getString("nombre2"));
                 mijugador.setSexo(res.getString("sexo"));
+                mijugador.setFoto(res.getString("foto"));
                 mijugador.setTelefono(res.getString("telefono"));
                 mijugador.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    mijugador.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+                
                 jug.add(mijugador);
             }
 
@@ -201,19 +182,5 @@ public class Modelo_Jugador extends Clase_Jugador {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             return null;
         }
-    }
-
-    private Image getImage(byte[] bytes) throws IOException {
-
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
-        ImageReader imageReader = (ImageReader) it.next();
-        Object source = bais;
-        ImageInputStream iis = ImageIO.createImageInputStream(source);
-        imageReader.setInput(iis, true);
-        ImageReadParam param = imageReader.getDefaultReadParam();
-        param.setSourceSubsampling(1, 1, 0, 0);
-
-        return imageReader.read(0, param);
     }
 }
