@@ -134,6 +134,24 @@ public class Controlador_Asignacion {
         }
         return fechaUtil.after(fechaUtilP);
     }
+
+    public boolean validacionFechaModificar() {
+        java.util.Date fechaUtil = null;
+        java.util.Date fechaUtilP = null;
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            String fechaS = vistaAsig.getFechaPartido().getText();
+            fechaUtil = formato.parse(fechaS);
+
+            String fechaSP = LocalDate.now().toString();
+            fechaUtilP = formato.parse(fechaSP);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaUtil.before(fechaUtilP);
+    }
 //-------------------------------------------------------DIALOGO--------------------------------------------------------------------------------------------
 
     private void abrirDialogo(String ce) {
@@ -233,6 +251,7 @@ public class Controlador_Asignacion {
                 if (validacionFecha() == true) {
                     JOptionPane.showMessageDialog(null, "EL PARTIDO YA A SIDO JUGADO");
                 } else {
+
                     try {
                         int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
                         int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
@@ -261,7 +280,6 @@ public class Controlador_Asignacion {
                         Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
             }
 //-------------------------------------------------------MODIFICAR--------------------------------------------------------------------------------------------
 
@@ -275,33 +293,38 @@ public class Controlador_Asignacion {
 
             } else {
 
-                try {
-                    int codigoAsignacion = Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText());
-                    int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
-                    int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
-                    String fechaS = vistaAsig.getDtfecha().getText();
+                if(validacionFechaModificar()==true) {
+                JOptionPane.showMessageDialog(null, "EL PARTIDO YA SE LLEVO JUGO");
 
-                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                    java.util.Date fechaUtil = formato.parse(fechaS);
-                    java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
-                    boolean estado = false;
+                } else {
+                    try {
+                        int codigoAsignacion = Integer.valueOf(vistaAsig.getTxtCodAsignacion().getText());
+                        int codigoArbitro = Integer.valueOf(vistaAsig.getTxtcodArbitro().getText());
+                        int CodigoPartido = Integer.valueOf(vistaAsig.getTxtcodPartido().getText());
+                        String fechaS = vistaAsig.getDtfecha().getText();
 
-                    model.setCodigo_asignacion(codigoAsignacion);
-                    model.setCodigo_arbitro_asignacion(codigoArbitro);
-                    model.setCodigo_partido_asignacion(CodigoPartido);
-                    model.setFecha_asignacion(fechaSQL);
-                    model.setEstado_asignacion(estado);
+                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                        java.util.Date fechaUtil = formato.parse(fechaS);
+                        java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
+                        boolean estado = false;
 
-                    if (model.ModificarAsignacion()) {
-                        limpiar();
-                        JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
-                        vistaAsig.getDialogRegistrarModificar().setVisible(false);
-                        cargaAsignacion();
-                    } else {
-                        JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                        model.setCodigo_asignacion(codigoAsignacion);
+                        model.setCodigo_arbitro_asignacion(codigoArbitro);
+                        model.setCodigo_partido_asignacion(CodigoPartido);
+                        model.setFecha_asignacion(fechaSQL);
+                        model.setEstado_asignacion(estado);
+
+                        if (model.ModificarAsignacion()) {
+                            limpiar();
+                            JOptionPane.showMessageDialog(vistaAsig, "DATOS CREADOS");
+                            vistaAsig.getDialogRegistrarModificar().setVisible(false);
+                            cargaAsignacion();
+                        } else {
+                            JOptionPane.showMessageDialog(vistaAsig, "ERROR AL GRABAR DATOS");
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 //-------------------------------------------------------ELIMINAR--------------------------------------------------------------------------------------------
