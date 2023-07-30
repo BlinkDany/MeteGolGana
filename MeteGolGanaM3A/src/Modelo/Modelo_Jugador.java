@@ -32,8 +32,8 @@ public class Modelo_Jugador extends Clase_Jugador {
 
     public boolean InsertarJugador() {
 
-        String sql = "INSERT INTO jugador(posicion, anios_exp, sueldo, fecha_inicio_contrato, fecha_fin_contrato, cedula_personafk, cod_equipofk) "
-                + "VALUES ('" + getPosicion() + "','" + getAnios_exp() + "'," + getSueldo() + ",'" + getFecha_inicioContrato()
+        String sql = "INSERT INTO jugador(codigo, posicion, anios_exp, sueldo, fecha_inicio_contrato, fecha_fin_contrato, cedula_personafk, cod_equipofk) "
+                + "VALUES ('" + getCod_jugador() + "','" + getPosicion() + "','" + getAnios_exp() + "'," + getSueldo() + ",'" + getFecha_inicioContrato()
                 + "','" + getFecha_finContrato() + "','" + getCedula_persona() + "'," + getCod_equipo() + ");";
 
         return con.CRUD(sql);
@@ -49,6 +49,20 @@ public class Modelo_Jugador extends Clase_Jugador {
         return con.CRUD(sql);
     }
 
+    public int CargarCodigo() throws SQLException {
+
+        int codigo = 0;
+        String sql = "Select max(codigo) from jugador";
+        ResultSet res = con.Consultas(sql);
+
+        while (res.next()) {
+
+            codigo = res.getInt("max") + 1;
+        }
+        res.close();
+        return codigo;
+    }
+
     public boolean OcultarJugador() {
 
         String sql = "UPDATE jugador SET estado_elim=true "
@@ -57,26 +71,20 @@ public class Modelo_Jugador extends Clase_Jugador {
         return con.CRUD(sql);
     }
 
-    public int ValidarNumJugadorEquipo() {
+    public int ValidarNumJugadorEquipo() throws SQLException {
 
         int count = 0;
-        try {
 
-            String sql = "select count(cod_equipofk) from jugador\n"
-                    + "where cod_equipofk = " + getCod_equipo() + ";";
+        String sql = "select count(cod_equipofk) from jugador\n"
+                + "where cod_equipofk = " + getCod_equipo() + ";";
 
-            ResultSet res = con.Consultas(sql);
+        ResultSet res = con.Consultas(sql);
 
-            while (res.next()) {
+        while (res.next()) {
 
-                count = res.getInt("count");
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Jugador.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            count = res.getInt("count");
         }
-
+        res.close();
         return count;
     }
 
@@ -103,6 +111,7 @@ public class Modelo_Jugador extends Clase_Jugador {
                 mijugador.setFecha_finContrato(res.getDate("fecha_fin_contrato"));
                 mijugador.setFecha_inicioContrato(res.getDate("fecha_inicio_contrato"));
                 mijugador.setAnios_exp(res.getInt("anios_exp"));
+                mijugador.setCod_jugador(res.getInt("codigo"));
 
                 //persona
                 mijugador.setApellido1(res.getString("apellido1"));
@@ -118,7 +127,6 @@ public class Modelo_Jugador extends Clase_Jugador {
                 mijugador.setTelefono(res.getString("telefono"));
                 mijugador.setEstado_elim(res.getBoolean("estado_elim"));
 
-                
                 jug.add(mijugador);
             }
 
@@ -169,7 +177,7 @@ public class Modelo_Jugador extends Clase_Jugador {
                 mijugador.setFoto(res.getString("foto"));
                 mijugador.setTelefono(res.getString("telefono"));
                 mijugador.setEstado_elim(res.getBoolean("estado_elim"));
-                
+
                 jug.add(mijugador);
             }
 

@@ -69,13 +69,22 @@ public class Controlador_Jugador {
         MostrarDatos();
         MostrarEquipos();
         visPer.getTxtRuta().setVisible(false);
+        //visJugador.getTxtCod().setVisible(false);
+        try {
+            visJugador.getTxtCod().setText(String.valueOf(modJugador.CargarCodigo()));
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         visJugador.getTxtRuta().setVisible(false);
         visJugador.setTitle("Jugadores");
         visJugador.txtEquipo.setEditable(false);
         visJugador.txtCedula.setEnabled(false);
+        visJugador.getBtnRegresar().addActionListener(l -> {
+            visPer.dlgPersona.setVisible(true);
+            visJugador.dialogRegistrarModificar.setVisible(false);
+        });
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
-        visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
-        visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarJugador());
+        visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarPersona());
         visPer.btnFoto.addActionListener(l -> Foto());
         visJugador.btnEliminar.addActionListener(l -> EliminarJugador());
         visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
@@ -83,52 +92,42 @@ public class Controlador_Jugador {
         visJugador.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-
                 BuscarJugador();
             }
         });
         visJugador.btnModificar.addActionListener(l -> {
             if (visJugador.tblJugadores.getSelectedRow() == -1) {
-
                 MensajeError("Seleccione al jugador que desea edita");
-
             } else {
-
                 IniciarDialogPersona("Editar");
             }
         });
         visJugador.tblEquipo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 visJugador.txtEquipo.setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
             }
         });
         visPer.txtCedulaDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 int codigo1 = e.getKeyChar();
                 boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
                 boolean retroceso = codigo1 == 8;
-
                 if (!(numeros1 || retroceso)) {
                     e.consume();
                     JOptionPane.showMessageDialog(null, "Sólo se permiten números para la cedula");
                 }
-
                 if (visPer.txtCedulaDLG.getText().length() == 10) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
                 }
-
             }
         });
 
         visPer.txt1erNomDlg.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 char nombre = e.getKeyChar();
                 boolean mayusculas = nombre >= 65 && nombre <= 90;
                 boolean minusculas = nombre >= 97 && nombre <= 122;
@@ -141,14 +140,12 @@ public class Controlador_Jugador {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
                 }
-
             }
         });
 
         visPer.txt2doNomDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 char nombre = e.getKeyChar();
                 boolean mayusculas = nombre >= 65 && nombre <= 90;
                 boolean minusculas = nombre >= 97 && nombre <= 122;
@@ -161,14 +158,12 @@ public class Controlador_Jugador {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
                 }
-
             }
         });
 
         visPer.txt1erApeDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 char nombre = e.getKeyChar();
                 boolean mayusculas = nombre >= 65 && nombre <= 90;
                 boolean minusculas = nombre >= 97 && nombre <= 122;
@@ -181,14 +176,12 @@ public class Controlador_Jugador {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
                 }
-
             }
         });
 
         visPer.txt2doApeDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 char nombre = e.getKeyChar();
                 boolean mayusculas = nombre >= 65 && nombre <= 90;
                 boolean minusculas = nombre >= 97 && nombre <= 122;
@@ -196,19 +189,16 @@ public class Controlador_Jugador {
                 boolean reto = nombre == 8;
                 boolean especial = nombre == 164;
                 boolean especial1 = nombre == 165;
-
                 if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
                 }
-
             }
         });
 
         visPer.txtDirecDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 char nombre = e.getKeyChar();
                 boolean mayusculas = nombre >= 65 && nombre <= 90;
                 boolean minusculas = nombre >= 97 && nombre <= 122;
@@ -216,7 +206,6 @@ public class Controlador_Jugador {
                 boolean reto = nombre == 8;
                 boolean especial = nombre == 164;
                 boolean especial1 = nombre == 165;
-
                 if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
@@ -228,16 +217,13 @@ public class Controlador_Jugador {
         visPer.txtTelfDLG.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 int codigo1 = e.getKeyChar();
                 boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
                 boolean retroceso = codigo1 == 8;
-
                 if (!(numeros1 || retroceso)) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
                 }
-
                 if (visPer.txtTelfDLG.getText().trim().length() == 15) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
@@ -248,34 +234,28 @@ public class Controlador_Jugador {
         visJugador.txtAñosExperiencia.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 int codigo1 = e.getKeyChar();
                 boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
                 boolean retroceso = codigo1 == 8;
-
                 if (!(numeros1 || retroceso)) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
                 }
-
                 if (visJugador.txtAñosExperiencia.getText().trim().length() == 2) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
                 }
-
             }
         });
 
         visJugador.txtSueldo.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
                 int codigo1 = e.getKeyChar();
                 boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
                 boolean punto = codigo1 == 46;
                 boolean coma = codigo1 == 44;
                 boolean retroceso = codigo1 == 8;
-
                 if (!(numeros1 || retroceso || punto || coma)) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números o numeros con decimales");
@@ -299,9 +279,12 @@ public class Controlador_Jugador {
             visJugador.btnRegistrarModificar.setText("Registrar");
             visPer.lblTitulo.setText("Registrar Persona");
             LimpiarDatos();
+            visPer.btnSiguienteDlgUsu.addActionListener(l -> IniciarDialogJugador("Registrar Jugador"));
+
         } else {
 
             LlenarDatosPersona();
+            visPer.btnSiguienteDlgUsu.addActionListener(l -> IniciarDialogJugador("Modificar Jugador"));
             visJugador.btnRegistrarModificar.setText("Aceptar");
             visPer.lblTitulo.setText("Modficar Persona");
         }
@@ -315,24 +298,12 @@ public class Controlador_Jugador {
         visJugador.dialogRegistrarModificar.setTitle(titulo);
         visJugador.dialogRegistrarModificar.setSize(850, 676);
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
-
             visJugador.lblReMoJugadores.setText("Registrar Jugador");
-
-            visJugador.txtCedula.setText(visPer.txtCedulaDLG.getText());
-            List<Clase_Persona> jug = modPersona.ListaPersona();
-            jug.stream().forEach(p -> {
-
-                if (p.getCedula().equals(visJugador.txtCedula.getText())) {
-                    ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
-                    Image foto = miImagen.getImage();
-                    foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
-                    visJugador.lblFoto.setIcon(new ImageIcon(foto));
-                }
-            });
-        } else {
-
-            visJugador.lblReMoJugadores.setText("Modificar Jugador");
+            LimpiarDatos();
+            
+        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
             LlenarDatosJugador();
+            visJugador.getLblReMoJugadores().setText("Modificar Jugador");
         }
     }
 
@@ -376,6 +347,7 @@ public class Controlador_Jugador {
             Image foto = miImagen.getImage();
             foto = foto.getScaledInstance(visPer.getLblFoto().getWidth(), visPer.getLblFoto().getHeight(), Image.SCALE_SMOOTH);
             visPer.getLblFoto().setIcon(new ImageIcon(foto));
+            visJugador.lblFoto.setIcon(new ImageIcon(foto));
         }
 
     }
@@ -408,10 +380,11 @@ public class Controlador_Jugador {
 
                     if (modPersona.InsertarPersona()) {
 
-                        IniciarDialogJugador("Registrar Jugador");
+                        RegistrarEditarJugador();
+
                     } else {
 
-                        MensajeError("Ha ocurrido un error al registrar en la base");
+                        MensajeError("Ha ocurrido un error al registrar en la base a la persona");
                     }
 
                 } catch (org.postgresql.util.PSQLException e) {
@@ -445,7 +418,7 @@ public class Controlador_Jugador {
 
                 if (modPersona.ActualizarPersona()) {
 
-                    IniciarDialogJugador("Editar");
+                    RegistrarEditarJugador();
                 } else {
 
                     MensajeError("Ha ocurrido un error al actualizar en la base");
@@ -483,6 +456,7 @@ public class Controlador_Jugador {
                         modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
                         modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
                         modJugador.setCedula_persona(visJugador.txtCedula.getText());
+                        modJugador.setCod_jugador(Integer.valueOf(visJugador.getTxtCod().getText()));
                         modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
                         modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
                         modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
@@ -509,10 +483,12 @@ public class Controlador_Jugador {
                     } catch (java.lang.NullPointerException e) {
 
                         MensajeError("Ingrese una fecha correcta");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
-        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Editar")) {
+        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
 
             if (VistaJugadores.txtEquipo.getText().isEmpty()) {
 
@@ -629,6 +605,7 @@ public class Controlador_Jugador {
 
                     //Jugador
                     visJugador.txtAñosExperiencia.setText(String.valueOf(p.getAnios_exp()));
+                    visJugador.getTxtCod().setText(String.valueOf(p.getCod_jugador()));
                     visJugador.txtCedula.setText(String.valueOf(p.getCedula()));
                     visJugador.cbxPosicion.setSelectedItem(p.getPosicion());
                     visJugador.txtSueldo.setText(String.valueOf(p.getSueldo()));
@@ -663,7 +640,6 @@ public class Controlador_Jugador {
         visPer.txtTelfDLG.setText("");
         visPer.btnGrupo1.clearSelection();
         visPer.lblFoto.setIcon(null);
-
         visJugador.txtAñosExperiencia.setText("");
         visJugador.txtCedula.setText("");
         visJugador.txtEquipo.setText("");
@@ -672,6 +648,12 @@ public class Controlador_Jugador {
         visJugador.dateFechaInicio.setDate(null);
         visJugador.cbxPosicion.setSelectedIndex(0);
         visJugador.lblFoto.setIcon(null);
+
+        try {
+            visJugador.getTxtCod().setText(String.valueOf(modJugador.CargarCodigo()));
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

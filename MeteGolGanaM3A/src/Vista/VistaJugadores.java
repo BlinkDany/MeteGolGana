@@ -1,6 +1,8 @@
 
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class VistaJugadores extends javax.swing.JInternalFrame {
@@ -15,6 +17,30 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
 
     public void setTxtRuta(JTextField txtRuta) {
         this.txtRuta = txtRuta;
+    }
+
+    public JTextField getTxtCod() {
+        return txtCod;
+    }
+
+    public void setTxtCod(JTextField txtCod) {
+        this.txtCod = txtCod;
+    }
+
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
+    public void setBtnRegresar(JButton btnRegresar) {
+        this.btnRegresar = btnRegresar;
+    }
+
+    public static JLabel getLblReMoJugadores() {
+        return lblReMoJugadores;
+    }
+
+    public static void setLblReMoJugadores(JLabel lblReMoJugadores) {
+        VistaJugadores.lblReMoJugadores = lblReMoJugadores;
     }
 
     @SuppressWarnings("unchecked")
@@ -42,6 +68,8 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
         txtRuta = new javax.swing.JTextField();
+        txtCod = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -174,16 +202,22 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
 
         txtRuta.setText("jTextField1");
         jPanel3.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 130, -1));
+        jPanel3.add(txtCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 50, -1));
+
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/flecha-hacia-la-izquierda.png"))); // NOI18N
+        btnRegresar.setText("Regresar");
+        jPanel3.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 570, -1, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setClosable(true);
@@ -343,6 +377,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
+    private javax.swing.JButton btnRegresar;
     public static javax.swing.JComboBox<String> cbxPosicion;
     public static com.toedter.calendar.JDateChooser dateFechaFin;
     public static com.toedter.calendar.JDateChooser dateFechaInicio;
@@ -368,6 +403,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtAñosExperiencia;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCedula;
+    private javax.swing.JTextField txtCod;
     public static LIB.FSTexFieldMD txtEquipo;
     private javax.swing.JTextField txtRuta;
     public static LIB.FSTexFieldMD txtSueldo;
