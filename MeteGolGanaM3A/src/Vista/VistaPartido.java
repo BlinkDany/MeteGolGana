@@ -255,7 +255,7 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -507,10 +507,6 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampeonatoActionPerformed
 
-    private void btnTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemporadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTemporadaActionPerformed
-
     private void cmestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmestadoActionPerformed
@@ -538,6 +534,10 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     private void txtCodPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPartidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodPartidoActionPerformed
+
+    private void btnTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemporadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTemporadaActionPerformed
 
   public static JButton getBtnAgregar() {
         return btnAgregar;
