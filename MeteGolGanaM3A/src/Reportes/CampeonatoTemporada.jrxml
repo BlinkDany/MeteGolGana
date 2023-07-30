@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2023-07-30T17:43:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CampeonatoTemporada" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f358db45-8ec1-428c-b2fd-bb3e5cb924d0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Proyecto"/>
+	<queryString>
+		<![CDATA[SELECT campeonato.codigo, campeonato.nombre, campeonato.tipo_campeonato, campeonato.max_equipos, temporada.fecha_inicio, temporada.fecha_fin
+	FROM public.campeonato, public.temporada
+	where campeonato.codigo = temporada.codigo]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="tipo_campeonato" class="java.lang.String"/>
+	<field name="max_equipos" class="java.lang.Integer"/>
+	<field name="fecha_inicio" class="java.sql.Date"/>
+	<field name="fecha_fin" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="180" y="0" width="190" height="60" uuid="bdec5032-fd16-45f9-88cc-8c04ace10f49"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic Medium" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Campeonatos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="0" y="0" width="100" height="30" forecolor="#FA0714" uuid="e0a9b7a4-d589-4d82-b750-c62b4ddc6094"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Campeonato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="100" y="0" width="160" height="30" forecolor="#FA0714" uuid="7c40105a-58ff-4b05-9fc7-00cef1f6cf18"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Campeonato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="260" y="0" width="130" height="30" forecolor="#FA0714" uuid="237bd60a-9ddf-4106-9f13-bf26442a9238"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="390" y="0" width="160" height="30" forecolor="#FA0714" uuid="0536f30f-d788-4384-8f3e-ca7dc5a4ccd6"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Finalización]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" forecolor="#056DFF" uuid="014f76f8-ef98-4adb-aa23-ad33e0765e70"/>
+				<box>
+					<topPen lineWidth="1.5" lineColor="#000205"/>
+					<leftPen lineWidth="1.5" lineColor="#000205"/>
+					<bottomPen lineWidth="1.5" lineColor="#000205"/>
+					<rightPen lineWidth="1.5" lineColor="#000205"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic Medium" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="160" height="30" forecolor="#056DFF" uuid="a0200798-6fc8-4a6b-b991-156c28baf874"/>
+				<box>
+					<topPen lineWidth="1.5" lineColor="#000205"/>
+					<leftPen lineWidth="1.5" lineColor="#000205"/>
+					<bottomPen lineWidth="1.5" lineColor="#000205"/>
+					<rightPen lineWidth="1.5" lineColor="#000205"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic Medium" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_campeonato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="130" height="30" forecolor="#056DFF" uuid="d6d3775f-031f-4c67-a5b0-7a20b9eee127"/>
+				<box>
+					<topPen lineWidth="1.5" lineColor="#000205"/>
+					<leftPen lineWidth="1.5" lineColor="#000205"/>
+					<bottomPen lineWidth="1.5" lineColor="#000205"/>
+					<rightPen lineWidth="1.5" lineColor="#000205"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic Medium" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="160" height="30" forecolor="#056DFF" uuid="7cad691e-88e3-4b74-82cf-80e4f6238bc5"/>
+				<box>
+					<topPen lineWidth="1.5" lineColor="#000205"/>
+					<leftPen lineWidth="1.5" lineColor="#000205"/>
+					<bottomPen lineWidth="1.5" lineColor="#000205"/>
+					<rightPen lineWidth="1.5" lineColor="#000205"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic Medium" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_fin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="39" width="100" height="30" uuid="147afcee-cfda-4222-8761-23daca62f408"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="50" width="100" height="30" uuid="189fce35-a9b7-4e9c-974a-01041672ea7e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="0" y="0" width="100" height="30" forecolor="#FA0714" uuid="43e4e620-4276-4b4f-9700-d207d4161dbd"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Campeonato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="100" y="0" width="160" height="30" forecolor="#FA0714" uuid="f846009e-7d04-4464-8ac2-9514de5127a6"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Campeonato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="260" y="0" width="130" height="30" forecolor="#FA0714" uuid="45c4e5c7-3bc3-4bdc-926d-b23d471aa818"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="390" y="0" width="160" height="30" forecolor="#FA0714" uuid="9a11786d-c580-4dbd-a486-92a78c0bb8d9"/>
+				<box>
+					<topPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid" lineColor="#020303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Yu Gothic Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Finalización]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
