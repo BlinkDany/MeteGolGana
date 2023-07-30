@@ -33,8 +33,8 @@ public class Modelo_Arbitro extends Clase_Arbitro {
     public boolean InsertarArbitro() {
 
         String sql = "INSERT INTO arbitro(posicion, anios_exp, salario, estado_elim, cedula_personafk) "
-           + "VALUES ('" + getPosicion_arbitro() + "'," + getAnios_esperiencia_arbitro() + ",'" + getSalario_arbitro()
-           + "','" + isEstado_eliminado_arbitro() + "','" + getCedula_persona_arbitro() + "');";
+                + "VALUES ('" + getPosicion_arbitro() + "'," + getAnios_esperiencia_arbitro() + ",'" + getSalario_arbitro()
+                + "','" + isEstado_eliminado_arbitro() + "','" + getCedula_persona_arbitro() + "');";
 
         return con.CRUD(sql);
     }
@@ -89,18 +89,9 @@ public class Modelo_Arbitro extends Clase_Arbitro {
                 miarbitro.setNombnre1(res.getString("nombre1"));
                 miarbitro.setNombnre2(res.getString("nombre2"));
                 miarbitro.setSexo(res.getString("sexo"));
+                miarbitro.setFoto(res.getString("foto"));
                 miarbitro.setTelefono(res.getString("telefono"));
                 miarbitro.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    miarbitro.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
                 arb.add(miarbitro);
             }
@@ -151,18 +142,9 @@ public class Modelo_Arbitro extends Clase_Arbitro {
                 miarbitro.setNombnre1(res.getString("nombre1"));
                 miarbitro.setNombnre2(res.getString("nombre2"));
                 miarbitro.setSexo(res.getString("sexo"));
+                miarbitro.setFoto(res.getString("foto"));
                 miarbitro.setTelefono(res.getString("telefono"));
                 miarbitro.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    miarbitro.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
                 arb.add(miarbitro);
             }

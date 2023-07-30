@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +24,14 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
      */
     public Vista_Arbitro() {
         initComponents();
+    }
+
+    public JTextField getTxt_Ruta_Foto() {
+        return txt_Ruta_Foto;
+    }
+
+    public void setTxt_Ruta_Foto(JTextField txt_Ruta_Foto) {
+        this.txt_Ruta_Foto = txt_Ruta_Foto;
     }
 
     public static FSTexFieldMD getTxtCodigo() {
@@ -162,8 +171,8 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         btnRegistrarModificar = new LIB.FSButtonMD();
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         txtCodigo = new LIB.FSTexFieldMD();
+        txt_Ruta_Foto = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -253,18 +262,18 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 140, 130));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar foto");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 140, -1));
-
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setBorder(null);
         txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
         txtCodigo.setBordeColorFocus(new java.awt.Color(255, 255, 255));
         txtCodigo.setPlaceholder("CODIGO");
         jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 70, -1));
+
+        txt_Ruta_Foto.setEditable(false);
+        txt_Ruta_Foto.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Ruta_Foto.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Ruta_Foto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.add(txt_Ruta_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 140, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -428,7 +437,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnRegistrarModificar;
     public static javax.swing.JComboBox<String> cbxPosicion;
     public static javax.swing.JDialog dialogRegistrarModificar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -445,5 +453,6 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtCedula;
     public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtSueldo;
+    private javax.swing.JTextField txt_Ruta_Foto;
     // End of variables declaration//GEN-END:variables
 }
