@@ -80,6 +80,14 @@ public class Controlador_Gol {
             vistagol.getTblGoles().clearSelection();
         });
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
+        
+        vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                buscar();
+            }
+        });
+        
         vistagol.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
@@ -163,7 +171,7 @@ public class Controlador_Gol {
 
     public void buscar() {
 
-        DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
+        /*DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
         tabla.setNumRows(0);
         if (vistagol.getTxtBuscar().equals(null)) {
             System.out.println("pudo");
@@ -175,6 +183,34 @@ public class Controlador_Gol {
                 Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
                 tabla.addRow(datos);
             });
+        }*/
+        
+        int codigo = Integer.parseInt(vistagol.getTxtBuscar().getText());
+        if (codigo == 0) {
+            // Mostrar mensaje de error si no se ingresa el código
+            JOptionPane.showMessageDialog(null, "Ingrese el código de la temporada que desea buscar",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Obtener el modelo de la tabla
+            DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
+            // Limpiar el modelo de datos de la tabla
+            tabla.setNumRows(0);
+
+            // Obtener la lista de productos
+            List<Clase_Gol> listTemp = modeloGol.listarGoles();
+
+            // Utilizar un stream para procesar la lista de productos
+            listTemp.stream()
+                    // Filtrar los productos por el código
+                    .filter(p -> codigo == p.getCod_gol())
+                    // Mapear cada producto filtrado a un objeto "datos" que contiene los valores deseados
+                    .map(p -> {
+                        // Crear un objeto "datos"
+                        Object[] datos = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(),p.getCod_partido(),p.getCod_equipo()};
+                        return datos;
+                    })
+                    // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
+                    .forEach(tabla::addRow);
         }
     }
     //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
