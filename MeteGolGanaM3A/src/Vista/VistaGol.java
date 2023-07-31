@@ -330,17 +330,17 @@ public class VistaGol extends javax.swing.JInternalFrame {
         tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
         tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre"
+                "Codigo", "Nombre", "Equipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -429,7 +429,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo Del Gol", "Descipcion", "Minuto", "Jugador", "Partido", "Equipo"
+                "Codigo Del Gol", "Descripcion", "Minuto", "Jugador", "Partido", "Equipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -308,8 +308,10 @@ public class Controlador_Gol {
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
         listaP.stream().forEach(p -> {
+            if (p.getCod_partido() == p.getCod_partido()) {
             String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2()), String.valueOf(p.getCod_estadio())};
             mJtable.addRow(rowData);
+            }
         }
         );
     }
@@ -321,8 +323,10 @@ public class Controlador_Gol {
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
+            if (p.getCod_equipo() == p.getCod_equipo()) {
             String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
             mJtable.addRow(rowData);
+            }
         }
         );
     }
@@ -332,8 +336,10 @@ public class Controlador_Gol {
         mJtable.setNumRows(0);
         List<Clase_Jugador> listaC = modeloJug.ListaJugador();
         listaC.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1())};
+            if (p.getCod_jugador() == p.getCod_jugador()) {
+            String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()),String.valueOf(p.getCod_equipo())};
             mJtable.addRow(rowData);
+            }
         }
         );
     }
