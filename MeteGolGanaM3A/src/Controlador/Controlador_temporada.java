@@ -291,7 +291,7 @@ public class Controlador_temporada {
     }
 
     //-------------------------------------------------------CARGAR PARTIDOS EN LA TABLA--------------------------------------------------------------------------------------------
-    public void cargarTemporadas() {
+   /* public void cargarTemporadas() {
 
         DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
         tabla.setRowCount(0);
@@ -316,6 +316,25 @@ public class Controlador_temporada {
         // Agregar ordenamiento y filtrado a la tabla
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
         vista.getTblTemporada().setRowSorter(sorter);
+    }*/
+    
+    public void cargarTemporadas() {
+
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
+        tabla.setNumRows(0);
+
+        List<Clase_Temporada> listTemporada = modeloTemporada.ListaTemporada();
+        List<Clase_Campeonato> listCampeonato = modeloCam.ListaCampeonato();
+        listTemporada.stream().forEach(p -> {
+            listCampeonato.stream().forEach(l -> {
+
+                if (p.getCodCampeonatoFk()== l.getCod_campeonato()) {
+
+                    Object datos[] = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(), l.getNombre()};
+                    tabla.addRow(datos);
+                }
+            });
+        });
     }
 
     public void cargarCampeonato() {

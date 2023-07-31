@@ -6,6 +6,7 @@
 package Vista;
 
 import LIB.FSButtonMD;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -28,6 +29,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        
+                setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imgs/pelota1.png")));
+
+        
     }
 
     public JButton getBtnEstadios() {
