@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3667030-b043-400b-9ddb-f31e835e1b14">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="CodigoCampeonato" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -40,12 +40,16 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="802" height="79" forecolor="#000000" uuid="ec4d0227-ea51-4918-8bbe-5e093c41be42"/>
+				<reportElement x="0" y="0" width="802" height="51" forecolor="#000000" uuid="ec4d0227-ea51-4918-8bbe-5e093c41be42"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans Mono" size="24" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
-				<text><![CDATA[Tabla de posiciones]]></text>
+				<text><![CDATA[Fechas del Campeonato]]></text>
 			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="249" height="79" uuid="eeed6784-e584-4921-a8b9-733d31e71e3b"/>
+				<imageExpression><![CDATA["C:\\Users\\tatip\\Documents\\GitHub\\MeteGolGana\\MeteGolGanaM3A\\src\\imgs\\iconoMeteGolGanaJPG.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -57,120 +61,268 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 				</textElement>
 				<text><![CDATA[Mete Gol Gana]]></text>
 			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="684" y="21" width="100" height="20" uuid="7916ed03-01d1-47fa-9315-72fd54622bd6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="67" height="20" uuid="42bd2a6b-ce56-4682-bf79-b1fbb2e7fb0b"/>
+				<reportElement x="0" y="0" width="84" height="20" forecolor="#CC0033" uuid="42bd2a6b-ce56-4682-bf79-b1fbb2e7fb0b"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Campeonato]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="67" y="0" width="118" height="20" uuid="59fff227-0664-4a98-b727-625dbacd1dee"/>
+				<reportElement x="84" y="0" width="118" height="20" forecolor="#CC0033" uuid="59fff227-0664-4a98-b727-625dbacd1dee"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Tipo de Campeonato]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="185" y="0" width="77" height="20" uuid="7424f5da-689a-48c3-a0b8-8395956d61af"/>
+				<reportElement x="202" y="0" width="71" height="20" forecolor="#CC0033" uuid="7424f5da-689a-48c3-a0b8-8395956d61af"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
-				<text><![CDATA[Temporada Inicia]]></text>
+				<text><![CDATA[Inicio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="262" y="0" width="100" height="20" uuid="e2ccbbbd-3848-40a8-9659-b3d56b461ff7"/>
+				<reportElement x="273" y="0" width="73" height="20" forecolor="#CC0033" uuid="e2ccbbbd-3848-40a8-9659-b3d56b461ff7"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
-				<text><![CDATA[Temporada Finaliza]]></text>
+				<text><![CDATA[Finalización]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="362" y="0" width="79" height="20" uuid="4899cc41-0375-4fca-ba0b-2b1c7b79befa"/>
+				<reportElement x="346" y="0" width="90" height="20" forecolor="#CC0033" uuid="4899cc41-0375-4fca-ba0b-2b1c7b79befa"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Codigo partido]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="441" y="0" width="100" height="20" uuid="1e9f0620-619a-473b-8ff7-690ee0ae655e"/>
+				<reportElement x="436" y="0" width="95" height="20" forecolor="#CC0033" uuid="1e9f0620-619a-473b-8ff7-690ee0ae655e"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
-				<text><![CDATA[Fecha del Partido]]></text>
+				<text><![CDATA[Fecha Partido]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="541" y="0" width="100" height="20" uuid="cca6f46a-b4c8-46c3-940a-bfa9a817df37"/>
+				<reportElement x="533" y="0" width="100" height="20" forecolor="#CC0033" uuid="cca6f46a-b4c8-46c3-940a-bfa9a817df37"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Equipo 1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="641" y="0" width="100" height="20" uuid="257514a9-ac81-4f37-8c13-aaf948d5430f"/>
+				<reportElement x="633" y="0" width="100" height="20" forecolor="#CC0033" uuid="257514a9-ac81-4f37-8c13-aaf948d5430f"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Equipo 2]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="741" y="0" width="61" height="20" uuid="8dde6ad9-3d28-4115-b092-d2aa5b1bd76d"/>
+				<reportElement x="733" y="0" width="51" height="20" forecolor="#CC0033" uuid="8dde6ad9-3d28-4115-b092-d2aa5b1bd76d"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
+					<font fontName="Yu Gothic UI Semibold" size="11"/>
 				</textElement>
 				<text><![CDATA[Grupo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="170" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="15" width="67" height="20" uuid="0295581a-cb04-4176-a478-08defce2c517"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="0" y="0" width="84" height="20" uuid="0295581a-cb04-4176-a478-08defce2c517"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Campeonato}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="67" y="15" width="106" height="20" uuid="a2f22259-15a7-4566-8a91-bb6c868f3da1"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="84" y="0" width="118" height="20" uuid="a2f22259-15a7-4566-8a91-bb6c868f3da1"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Tipo de Campeonato}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="173" y="15" width="89" height="20" uuid="a7da9205-743a-4e66-a173-cff758ea8f11"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="202" y="0" width="71" height="20" uuid="a7da9205-743a-4e66-a173-cff758ea8f11"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Temporada Inicia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="262" y="15" width="100" height="20" uuid="84b21ef8-c3b0-4ad4-8d2a-7c85b21f1e43"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="273" y="0" width="73" height="20" uuid="84b21ef8-c3b0-4ad4-8d2a-7c85b21f1e43"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Temporada Finaliza}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="362" y="15" width="79" height="20" uuid="159a3797-1038-4005-866f-fc1ff3816f43"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="346" y="0" width="90" height="20" uuid="159a3797-1038-4005-866f-fc1ff3816f43"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Codigo partido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="441" y="15" width="100" height="20" uuid="3bdf95c0-94c1-4d17-a717-a12472eab9ce"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="436" y="0" width="95" height="20" uuid="3bdf95c0-94c1-4d17-a717-a12472eab9ce"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Fecha del Partido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="541" y="15" width="100" height="20" uuid="3fedd5a2-b6c1-49e9-8cf2-a8a14cab0124"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="531" y="0" width="102" height="20" uuid="3fedd5a2-b6c1-49e9-8cf2-a8a14cab0124"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Equipo 1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="641" y="15" width="100" height="20" uuid="8df45826-cc6d-42a3-ba2c-d19db7eb4056"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="633" y="0" width="100" height="20" uuid="8df45826-cc6d-42a3-ba2c-d19db7eb4056"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Equipo 2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="741" y="15" width="61" height="20" uuid="29b36f82-96fa-457d-92b3-75a79d8c30bc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="733" y="0" width="51" height="20" uuid="29b36f82-96fa-457d-92b3-75a79d8c30bc"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Yu Gothic UI Semibold" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Grupo}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -179,9 +331,14 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="702" y="28" width="100" height="20" uuid="c9f59303-1da6-4598-a294-5f1471d79f87"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="21" splitType="Stretch"/>
 	</summary>
 </jasperReport>
