@@ -57,7 +57,7 @@ public class Controlador_Gol {
                 Logger.getLogger(Controlador_Gol.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        vistagol.getBtnCancelar1().addActionListener(l -> salirdialogo());
+        vistagol.getBtnCancelar1().addActionListener(l -> salirdialogo1());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
         vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
         vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
@@ -352,10 +352,8 @@ public class Controlador_Gol {
         listaP.stream().forEach(p -> {
             listaE.stream().forEach(e -> {
                 listaEs.stream().forEach(es -> {
-                    if (p.getCod_partido() == p.getCod_partido()) {
-                        String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(e.getNombre_equi()), String.valueOf(e.getNombre_equi()), es.getNombre()};
-                        mJtable.addRow(rowData);
-                    }
+                    String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(e.getNombre_equi()), String.valueOf(e.getNombre_equi()), es.getNombre()};
+                    mJtable.addRow(rowData);
                 });
             });
         }
@@ -369,10 +367,9 @@ public class Controlador_Gol {
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
-            if (p.getCod_equipo() == p.getCod_equipo()) {
-                String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
-                mJtable.addRow(rowData);
-            }
+            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+            mJtable.addRow(rowData);
+
         }
         );
     }
@@ -385,10 +382,9 @@ public class Controlador_Gol {
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaC.stream().forEach(p -> {
             listaE.stream().forEach(e -> {
-                if (p.getCod_jugador() == p.getCod_jugador()) {
-                    String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()), e.getNombre_equi()};
-                    mJtable.addRow(rowData);
-                }
+                String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()), e.getNombre_equi()};
+                mJtable.addRow(rowData);
+
             });
         }
         );
