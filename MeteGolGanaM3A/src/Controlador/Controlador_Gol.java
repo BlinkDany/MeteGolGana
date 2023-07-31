@@ -13,8 +13,11 @@ import Modelo.Modelo_Partido;
 import Vista.VistaGol;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -70,6 +73,13 @@ public class Controlador_Gol {
             vistagol.getTblGoles().clearSelection();
         });
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
+        vistagol.getBtnAgregar().addActionListener(l -> {
+            try {
+                CargarID();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     private void abrirDialogo(String ce) {
@@ -388,6 +398,10 @@ public class Controlador_Gol {
                 });
             });
         });
+    }
+
+    private void CargarID() throws SQLException {
+        vistagol.getTxtcodGol().setText(String.valueOf(modeloGol.CargarCodigoID()));
     }
 
     private void buscarFK() {
