@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a38b8894-674f-4b28-85cb-7bf959fd99c2">
-	<property name="ireport.zoom" value="2.143588810000013"/>
+	<property name="ireport.zoom" value="1.331000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Subtitulos" forecolor="#0099CC"/>
@@ -32,9 +32,9 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="36" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="36" forecolor="#006699" uuid="8af31a89-78cf-490d-8e38-72973f278ceb"/>
+				<reportElement x="0" y="0" width="555" height="51" forecolor="#006699" uuid="8af31a89-78cf-490d-8e38-72973f278ceb"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Monospaced" size="20" isBold="true" isUnderline="true"/>
 				</textElement>
