@@ -34,8 +34,8 @@ public class Clase_Entrenador extends Clase_Persona {
         this.nombreEquipo = nombreEquipo;
     }
 
-    public Clase_Entrenador(int codigo, int aniosexp, double sueldo, String cedula_personafk, String codigo_equipofk, String nombreEquipo, String cedula, String nombnre1, String nombnre2, String apellido1, String apellido2, Date fecha_nac, String telefono, String email, String sexo, String direccion, boolean estado_elim, Image foto, FileInputStream imageFile, int length) {
-        super(cedula, nombnre1, nombnre2, apellido1, apellido2, fecha_nac, telefono, email, sexo, direccion, estado_elim, foto, imageFile, length);
+    public Clase_Entrenador(int codigo, int aniosexp, double sueldo, String cedula_personafk, String codigo_equipofk, String nombreEquipo, String cedula, String nombnre1, String nombnre2, String apellido1, String apellido2, Date fecha_nac, String telefono, String email, String sexo, String direccion, boolean estado_elim, String foto) {
+        super(cedula, nombnre1, nombnre2, apellido1, apellido2, fecha_nac, telefono, email, sexo, direccion, estado_elim, foto);
         this.codigo = codigo;
         this.aniosexp = aniosexp;
         this.sueldo = sueldo;
@@ -44,6 +44,8 @@ public class Clase_Entrenador extends Clase_Persona {
         this.nombreEquipo = nombreEquipo;
     }
 
+ 
+  
     public String getCodigo_equipofk() {
         return codigo_equipofk;
     }

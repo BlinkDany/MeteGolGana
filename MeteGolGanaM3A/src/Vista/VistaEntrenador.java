@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -160,6 +161,22 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         VistaEntrenador.txtSueldo = txtSueldo;
     }
 
+    public static JTable getTblEntrenador() {
+        return tblEntrenador;
+    }
+
+    public static void setTblEntrenador(JTable tblEntrenador) {
+        VistaEntrenador.tblEntrenador = tblEntrenador;
+    }
+
+    public JTextField getTxt_Ruta_Foto() {
+        return txt_Ruta_Foto;
+    }
+
+    public void setTxt_Ruta_Foto(JTextField txt_Ruta_Foto) {
+        this.txt_Ruta_Foto = txt_Ruta_Foto;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,10 +194,10 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         btnRegistrarModificar = new LIB.FSButtonMD();
         jPanel5 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         txtEquipo = new LIB.FSTexFieldMD();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEquipo = new javax.swing.JTable();
+        txt_Ruta_Foto = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -280,11 +297,6 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 160, 140, 130));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar foto");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 140, -1));
-
         txtEquipo.setEditable(false);
         txtEquipo.setForeground(new java.awt.Color(0, 0, 0));
         txtEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -312,7 +324,18 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblEquipo);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 450, 170));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 450, 170));
+
+        txt_Ruta_Foto.setEditable(false);
+        txt_Ruta_Foto.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Ruta_Foto.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Ruta_Foto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txt_Ruta_Foto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Ruta_FotoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_Ruta_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 140, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -475,6 +498,10 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_Ruta_FotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Ruta_FotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Ruta_FotoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
@@ -484,7 +511,6 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
     public static javax.swing.JDialog dialogRegistrarModificar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
@@ -507,5 +533,6 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
     public static LIB.FSTexFieldMD txtCodigo;
     public static LIB.FSTexFieldMD txtEquipo;
     public static LIB.FSTexFieldMD txtSueldo;
+    public javax.swing.JTextField txt_Ruta_Foto;
     // End of variables declaration//GEN-END:variables
 }
