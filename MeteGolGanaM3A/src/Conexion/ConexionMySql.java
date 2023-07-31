@@ -42,6 +42,22 @@ public class ConexionMySql {
         }
     }
     
+    public Connection getConnection() {
+        con = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConexionMySql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionMySql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return con;
+    }
+    
     public boolean CRUD(String sql) {
         st = null;
         try {
