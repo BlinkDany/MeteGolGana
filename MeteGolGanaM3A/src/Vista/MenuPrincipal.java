@@ -98,21 +98,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.btnJugadores = btnJugadores;
     }
 
-    public JMenu getBtnReporteFac() {
-        return btnReporteFac;
-    }
-
-    public void setBtnReporteFac(JMenu btnReporteFac) {
-        this.btnReporteFac = btnReporteFac;
-    }
-    
-    public JMenuBar getjMenuBar1() {
-        return jMenuBar1;
-    }
-
-    public void setjMenuBar1(JMenuBar jMenuBar1) {
-        this.jMenuBar1 = jMenuBar1;
-    }
 
     public JMenuItem getjMenuItem1() {
         return jMenuItem1;
@@ -122,76 +107,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.jMenuItem1 = jMenuItem1;
     }
 
-    public JMenuItem getjMenuItem2() {
-        return jMenuItem2;
-    }
-
-    public void setjMenuItem2(JMenuItem jMenuItem2) {
-        this.jMenuItem2 = jMenuItem2;
-    }
-
-    public JMenuItem getjMenuItem3() {
-        return jMenuItem3;
-    }
-
-    public void setjMenuItem3(JMenuItem jMenuItem3) {
-        this.jMenuItem3 = jMenuItem3;
-    }
-
-    public JMenuItem getjMenuItem4() {
-        return jMenuItem4;
-    }
-
-    public void setjMenuItem4(JMenuItem jMenuItem4) {
-        this.jMenuItem4 = jMenuItem4;
-    }
-
     public JPanel getjPanel1() {
         return jPanel1;
     }
 
     public void setjPanel1(JPanel jPanel1) {
         this.jPanel1 = jPanel1;
-    }
-
-    public JMenu getMnClientes() {
-        return mnClientes;
-    }
-
-    public void setMnClientes(JMenu mnClientes) {
-        this.mnClientes = mnClientes;
-    }
-
-    public JMenu getMniAyudaMP() {
-        return mniAyudaMP;
-    }
-
-    public void setMniAyudaMP(JMenu mniAyudaMP) {
-        this.mniAyudaMP = mniAyudaMP;
-    }
-
-    public JMenu getMniProductosMP() {
-        return mniProductosMP;
-    }
-
-    public void setMniProductosMP(JMenu mniProductosMP) {
-        this.mniProductosMP = mniProductosMP;
-    }
-
-    public JMenu getMniReportesMP() {
-        return mniReportesMP;
-    }
-
-    public void setMniReportesMP(JMenu mniReportesMP) {
-        this.mniReportesMP = mniReportesMP;
-    }
-
-    public JMenu getMniReportesMP1() {
-        return mniReportesMP1;
-    }
-
-    public void setMniReportesMP1(JMenu mniReportesMP1) {
-        this.mniReportesMP1 = mniReportesMP1;
     }
 
     public JToolBar getToolBar() {
@@ -259,16 +180,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator21 = new javax.swing.JToolBar.Separator();
         desctopPrincipal = new javax.swing.JDesktopPane();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mnClientes = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        mniProductosMP = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        mniReportesMP = new javax.swing.JMenu();
-        btnReporteFac = new javax.swing.JMenu();
-        mniReportesMP1 = new javax.swing.JMenu();
-        mniAyudaMP = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -416,7 +327,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1196, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +348,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         desctopPrincipal.setLayer(panelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -452,43 +363,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             desctopPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        mnClientes.setText("Clientes");
-
-        jMenuItem2.setText("Mantenimiento");
-        mnClientes.add(jMenuItem2);
-
-        jMenuItem3.setText("Salir");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        mnClientes.add(jMenuItem3);
-
-        jMenuBar1.add(mnClientes);
-
-        mniProductosMP.setText("Productos");
-
-        jMenuItem4.setText("jMenuItem4");
-        mniProductosMP.add(jMenuItem4);
-
-        jMenuBar1.add(mniProductosMP);
-
-        mniReportesMP.setText("Reportes");
-
-        btnReporteFac.setText("Reporte Factura");
-        mniReportesMP.add(btnReporteFac);
-
-        jMenuBar1.add(mniReportesMP);
-
-        mniReportesMP1.setText("Imprimir");
-        jMenuBar1.add(mniReportesMP1);
-
-        mniAyudaMP.setText("Ayuda");
-        jMenuBar1.add(mniAyudaMP);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -507,10 +381,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void BtnPatidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPatidosActionPerformed
         // TODO add your handling code here:
@@ -534,15 +404,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrenador;
     private javax.swing.JButton btnEstadios;
     private javax.swing.JButton btnJugadores;
-    private javax.swing.JMenu btnReporteFac;
     private javax.swing.JButton btnResumen;
     private javax.swing.JButton btnTemporada;
     private javax.swing.JDesktopPane desctopPrincipal;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator12;
@@ -555,11 +420,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator19;
     private javax.swing.JToolBar.Separator jSeparator20;
     private javax.swing.JToolBar.Separator jSeparator21;
-    private javax.swing.JMenu mnClientes;
-    private javax.swing.JMenu mniAyudaMP;
-    private javax.swing.JMenu mniProductosMP;
-    private javax.swing.JMenu mniReportesMP;
-    private javax.swing.JMenu mniReportesMP1;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
