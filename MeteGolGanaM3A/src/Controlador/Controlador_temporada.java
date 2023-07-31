@@ -14,15 +14,25 @@ import Modelo.Clase_Temporada;
 import Vista.VistaTemporada;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -32,9 +42,12 @@ public class Controlador_temporada {
 
     // -------------------------------------------------------------------------------------------------------------------\\
     private Modelo_Campeonato modeloCam;
+
     private Modelo_Temporada modeloTemporada;
 
     private VistaTemporada vista;
+
+    private ConexionMySql con = new ConexionMySql();
 
     public Controlador_temporada(Modelo_Temporada modelo, VistaTemporada vista, Modelo_Campeonato modeloCamp) {
 
@@ -68,6 +81,7 @@ public class Controlador_temporada {
         vista.getBtnBuscar().addActionListener(l -> buscar());
         vista.getBtnLimpiar().addActionListener(l -> limpiarBuscar());
         vista.getBtnLimpiarDlg().addActionListener(l -> limpiarBuscar());
+        vista.getBtnReporte().addActionListener(l -> reporte());
 
         vista.getBtnAgregar().addActionListener(l -> {
             try {
@@ -91,12 +105,12 @@ public class Controlador_temporada {
             vista.getBtnRegistrarModificarDlg().setText("Registrar");
 
         } else if (vista.getDlgaTemporada().getTitle().contentEquals("Editar")) {
-            
+
             vista.getLblReMoJugadores().setText("MODIFICAR TEMPORADAS");
             vista.getBtnRegistrarModificarDlg().setText("Modificar");
-            
+
             llenarDatosTemporada();
-            
+
         }
     }
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------
@@ -158,7 +172,7 @@ public class Controlador_temporada {
         String title = vista.getDlgaTemporada().getTitle();
 
         if (title.equals("Crear")) {
-            
+
             if (camposVacios()) {
                 JOptionPane.showMessageDialog(null, "Aún existen campos vacíos",
                         "Error", JOptionPane.ERROR_MESSAGE);
@@ -227,7 +241,7 @@ public class Controlador_temporada {
                         if (modeloTemporada.ModificarTemporada()) {
                             JOptionPane.showMessageDialog(vista, "Datos modificados",
                                     "Advertencia", JOptionPane.INFORMATION_MESSAGE);
-                            
+
                             cerrarDialogo();
                             cargarTemporadas();
                             limpiar();
@@ -517,8 +531,71 @@ public class Controlador_temporada {
         cargarTemporadas();
 
     }
+
+    //--------------------------------------------------REPORTE--------------------------------------------------\\
     
-   
+    private void reporte() {
+        
+        try {
+
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("src\\Reportes\\CampeonatoTemporada.jasper"));
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperPrint jasPrint = JasperFillManager.fillReport(jr, params, con.getCon());
+            JasperViewer jasview = new JasperViewer(jasPrint, false);
+            jasview.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            jasview.setVisible(true);
+            
+        } 
+        
+        catch (JRException ex) {
+            
+            Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }
+    
+      public void reporteTemporada() {
+
+       
+          //int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese la cantidad mínima referente para el stock")) ;
+          
+         //String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
+          
+        try {
+                        ConexionMySql con = new ConexionMySql();
+                        Connection conn = con.getCon();
+
+                        JasperReport reporte = null;
+                        String path = "src\\Reportes\\CampeonatoTemporada.jasper";
+
+                        Map parametro = new HashMap();
+                        //parametro.put("cantidad", rta);
+                       // parametro.put("titulo", rta2);
+
+                        reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+                        JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
+
+                        JasperViewer vista = new JasperViewer(jprint, false);
+
+                        vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+                        vista.setVisible(true);
+                    } catch (JRException ex) {
+                        Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+ }
+    }
+    
+     //---------------------------------------------------------------------------------------------------------------------------\\   
+     
+     public void llenafecha() {
+        vista.getTxtFechaIni().setDate(new java.sql.Date(System.currentTimeMillis()));
+    }
+
+}
+
+
 
     /* Modelo_Temporada modelo;
 
@@ -983,52 +1060,7 @@ public void buscar() {
         mostrarDatosTablaCampeonato();
     }
 
-    /* private void reporte(){
-    try{
-        
-        JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteProductos.jasper"));
-        Map<String,Object> params = new HashMap<String, Object>();
-        JasperPrint jasPrint =JasperFillManager.fillReport(jr, params, conSql.getCon());
-        JasperViewer jasview = new JasperViewer(jasPrint,false);
-        jasview.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        jasview.setVisible(true);
-    }catch(JRException ex){
-        Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-
-}
-}
-     
-      public void reporteProducto() {
-
-       
-          int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese la cantidad mínima referente para el stock")) ;
-          
-         String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
-          
-        try {
-                        ConeccionPG con = new ConeccionPG();
-                        Connection conn = con.getConnection();
-
-                        JasperReport reporte = null;
-                        String path = "src\\reportes\\reporteProductos.jasper";
-
-                        Map parametro = new HashMap();
-                        parametro.put("cantidad", rta);
-                        parametro.put("titulo", rta2);
-
-                        reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-
-                        JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
-
-                        JasperViewer vista = new JasperViewer(jprint, false);
-
-                        vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-                        vista.setVisible(true);
-                    } catch (JRException ex) {
-                        Logger.getLogger(ControladorPersonas.class.getName()).log(Level.SEVERE, null, ex);
- }
-    }*/
+    /* 
  /*    public void EliminarTemmporada() {
 
         if (vista.getTblTemporada().getSelectedRow() == -1) {
@@ -1058,8 +1090,4 @@ public void buscar() {
         }
     }
      */
-    public void llenafecha() {
-        vista.getTxtFechaIni().setDate(new java.sql.Date(System.currentTimeMillis()));
-    }
-
-}
+   

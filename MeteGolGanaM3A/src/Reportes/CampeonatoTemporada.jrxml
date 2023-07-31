@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2023-07-30T17:43:15 -->
+<!-- 2023-07-30T19:15:04 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CampeonatoTemporada" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f358db45-8ec1-428c-b2fd-bb3e5cb924d0">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Proyecto"/>
@@ -21,7 +21,7 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" x="180" y="0" width="190" height="60" uuid="bdec5032-fd16-45f9-88cc-8c04ace10f49"/>
+				<reportElement positionType="FixRelativeToBottom" x="182" y="-10" width="190" height="60" uuid="bdec5032-fd16-45f9-88cc-8c04ace10f49"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>

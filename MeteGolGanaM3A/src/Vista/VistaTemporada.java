@@ -29,6 +29,15 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public static JButton getBtnReporte() {
+        return btnReporte;
+    }
+
+    public static void setBtnReporte(JButton btnReporte) {
+        VistaTemporada.btnReporte = btnReporte;
+    }
+    
+
     public static JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -276,6 +285,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnBuscar = new LIB.FSButtonMD();
         jLabel4 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
 
         dlgaTemporada.setResizable(false);
 
@@ -599,6 +609,8 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Primero elija la temporada ha eliminar de la tabla");
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/buscar40x40.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.setToolTipText("Ingrese el código de la temporada");
@@ -617,6 +629,12 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/limpiar32.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setToolTipText("Limpiar campos de texto y actualizar tablas");
+
+        btnReporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnReporte.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnReporte.setText("Reporte");
+        btnReporte.setToolTipText("Ver reporte de las temporadas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -643,7 +661,8 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnModificar)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -655,16 +674,18 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnLimpiar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar))
+                        .addComponent(btnReporte))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -721,6 +742,7 @@ public class VistaTemporada extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnLimpiarDlg;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificarDlg;
+    public static javax.swing.JButton btnReporte;
     public static LIB.FSButtonMD btnmandardatos;
     private javax.swing.JDialog dlgCampeonato;
     public static javax.swing.JDialog dlgaTemporada;
