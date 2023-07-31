@@ -438,10 +438,8 @@ public class Controlador_Gol {
             listaE.stream().forEach(e -> {
                 listaJ.stream().forEach(j -> {
                     listaP.stream().forEach(p -> {
-                        if (g.getCod_gol() == g.getCod_gol()) {
                             String[] rowData = {String.valueOf(g.getCod_gol()), g.getDescripcion(), g.getMinuto(), j.getNombnre1(), String.valueOf(p.getCod_partido()), e.getNombre_equi()};
-                            mJtable.addRow(rowData);
-                        }
+                            mJtable.addRow(rowData);      
                     });
                 });
             });
