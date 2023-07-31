@@ -34,7 +34,13 @@ public class Controlador_Equipo {
         vistaequi.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
-        vistaequi.getBtnactualizar().addActionListener(l -> salirdialogo());
+        vistaequi.getBtnactualizar().addActionListener(l -> {
+            try {
+                limpiarBuscar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Equipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
         vistaequi.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
@@ -65,10 +71,16 @@ public class Controlador_Equipo {
         });
 
     }
+     private void limpiarBuscar() throws SQLException {
+
+        vistaequi.getTxtBuscar().setText("");
+        cargarEquipos();
+        CargarID();
+
+    }
     public void buscar() {
         // Obtener el código ingresado en el campo de búsqueda
         int codigo = Integer.parseInt(vistaequi.getTxtBuscar().getText());
-
         if (codigo == 0) {
             // Mostrar mensaje de error si no se ingresa el código
             JOptionPane.showMessageDialog(null, "Ingrese el código de la temporada que desea buscar",
@@ -95,6 +107,7 @@ public class Controlador_Equipo {
                     // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
                     .forEach(tabla::addRow);
         }
+        
     }
 
     private void validarEntrada(java.awt.event.KeyEvent evt) {

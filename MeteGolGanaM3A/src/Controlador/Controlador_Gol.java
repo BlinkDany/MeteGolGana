@@ -50,6 +50,13 @@ public class Controlador_Gol {
         vistagol.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
+        vistagol.getBtnactualizar().addActionListener(l -> {
+            try {
+                limpiarBuscar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Gol.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistagol.getBtnCancelar1().addActionListener(l -> salirdialogo());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
         vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
@@ -178,7 +185,11 @@ public class Controlador_Gol {
     }
 
     public void salirdialogo1() {
-        limpiartablas();
+        try {
+            limpiarBuscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador_Gol.class.getName()).log(Level.SEVERE, null, ex);
+        }
         vistagol.getJdggolestabla().setVisible(false);
     }
 
@@ -195,9 +206,14 @@ public class Controlador_Gol {
     }
 //------------------------------------------------------- LIMPIAR--------------------------------------------------------------------------------------------
 
-    private void limpiartablas() {
+    private void limpiarBuscar() throws SQLException {
 
         vistagol.getTxtBuscar().setText("");
+        cargaGoles();
+        cargaPartidos();
+        cargaequipos();
+        cargajugadores();
+        CargarID();
 
     }
 
