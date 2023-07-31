@@ -13,17 +13,22 @@ import Modelo.Modelo_Persona;
 import Vista.LogIn;
 import Vista.VistaEntrenador;
 import Vista.VistaJugadores;
+import Vista.Vista_Arbitro;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +38,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +73,7 @@ public class Controlador_Entrenador {
 
         MostrarDatos();
         MostrarEquipos();
+        visEnt.getTxt_Ruta_Foto().setVisible(false);
         visEnt.btnCancelar.addActionListener(l -> visEnt.dialogRegistrarModificar.dispose());
         visPer.btnRetrocederDlgRegistro.addActionListener(l -> visPer.dlgPersona.dispose());
         VistaEntrenador.btnAgregar.addActionListener(l -> {
@@ -109,6 +116,51 @@ public class Controlador_Entrenador {
                 VistaEntrenador.txtEquipo.setText(VistaEntrenador.tblEquipo.getValueAt(VistaEntrenador.tblEquipo.getSelectedRow(), 0).toString());
             }
         });
+        VistaEntrenador.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaAnios(evt);
+            }
+        });
+        VistaEntrenador.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarSueldo(evt);
+            }
+        });
+        visPer.getTxtCedulaDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaCedula(evt);
+            }
+        });
+        visPer.getTxt1erNomDlg().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt2doNomDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt1erApeDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxt2doApeDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
+            }
+        });
+        visPer.getTxtDirecDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaDireccion(evt);
+            }
+        });
+        visPer.getTxtTelfDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaTelefono(evt);
+            }
+        });
     }
 
     public void IniciarDialogPersona(String titulo) throws SQLException {
@@ -144,13 +196,10 @@ public class Controlador_Entrenador {
 
                 if (p.getCedula().equals(VistaEntrenador.txtCedula.getText())) {
 
-                    Image foto = p.getFoto();
-                    if (foto != null) {
-                        foto = foto.getScaledInstance(VistaEntrenador.lblFoto.getWidth(), VistaEntrenador.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                        ImageIcon icono = new ImageIcon(foto);
-                        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaEntrenador.lblFoto.setIcon(icono);
-                    }
+                    ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
+                    Image foto = miImagen.getImage();
+                    foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
+                    visEnt.lblFoto.setIcon(new ImageIcon(foto));
                 }
             });
         } else {
@@ -180,23 +229,24 @@ public class Controlador_Entrenador {
 
     public void Foto() {
 
-        jfc = new JFileChooser();
-        jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int estado = jfc.showOpenDialog(visPer);
-        if (estado == JFileChooser.APPROVE_OPTION) {
-            try {
-                Image imagen = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(
-                        visPer.lblFoto.getWidth(),
-                        visPer.lblFoto.getHeight(),
-                        Image.SCALE_DEFAULT);
+        JFileChooser file = new JFileChooser();
+        file.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP, PNG, & GIF", "jpg", "png", "gif");
+        file.setFileFilter(filtrado);
+        file.setDialogTitle("Abrir Archivo");
 
-                Icon icono = new ImageIcon(imagen);
-                visPer.lblFoto.setIcon(icono);
-                visPer.lblFoto.updateUI();
-            } catch (IOException ex) {
-                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
-                MensajeError(ex.getMessage());
-            }
+        File Ruta = new File("C:\\Users\\blink\\Pictures");
+        file.setCurrentDirectory(Ruta);
+
+        int res = file.showOpenDialog(visPer);
+        if (res == JFileChooser.APPROVE_OPTION) {
+
+            File archivo = file.getSelectedFile();
+            visPer.getTxtRuta().setText(String.valueOf(archivo));
+            ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
+            Image foto = miImagen.getImage();
+            foto = foto.getScaledInstance(visPer.getLblFoto().getWidth(), visPer.getLblFoto().getHeight(), Image.SCALE_SMOOTH);
+            visPer.getLblFoto().setIcon(new ImageIcon(foto));
         }
     }
 
@@ -213,46 +263,58 @@ public class Controlador_Entrenador {
 
             } else {
 
-                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
-                modPersona.setSexo(Sexo());
+                if (validarCedula() == false) {
 
-                try {
+                    MensajeError("CEDULA INCORRECTA");
 
-                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                    int largo = (int) jfc.getSelectedFile().length();
-                    modPersona.setImageFile(img);
-                    modPersona.setLength(largo);
+                } else {
 
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    if (validacionCorreo() == false) {
 
-                try {
+                        MensajeError("FORMATO DE CORREO ELECTRONICO INCORRECTO");
 
-                    if (modPersona.InsertarPersona()) {
-
-                        IniciarDialogEntrenador("Registrar Entrenador");
                     } else {
 
-                        MensajeError("Ha ocurrido un error al registrar en la base");
+                        if (edad() == false) {
+
+                            MensajeError("LA PERSONA DEBE TENER 18 AÑOS O MAS");
+
+                        } else {
+
+                            modPersona.setApellido1(visPer.txt1erApeDLG.getText());
+                            modPersona.setApellido2(visPer.txt2doApeDLG.getText());
+                            modPersona.setCedula(visPer.txtCedulaDLG.getText());
+                            modPersona.setDireccion(visPer.txtDirecDLG.getText());
+                            modPersona.setTelefono(visPer.txtTelfDLG.getText());
+                            modPersona.setEmail(visPer.txtCorreoDlg.getText());
+                            modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
+                            modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
+                            modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                            modPersona.setSexo(Sexo());
+                            modPersona.setFoto(visPer.getTxtRuta().getText());
+
+                            try {
+
+                                if (modPersona.InsertarPersona()) {
+
+                                    IniciarDialogEntrenador("Registrar Entrenador");
+                                } else {
+
+                                    MensajeError("Ha ocurrido un error al registrar en la base");
+                                }
+
+                            } catch (org.postgresql.util.PSQLException e) {
+
+                                MensajeError("La cedula ya se encuentra registrada");
+
+                            } catch (SQLException ex) {
+
+                                Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
+                                MensajeError(ex.getMessage());
+                            }
+
+                        }
                     }
-
-                } catch (org.postgresql.util.PSQLException e) {
-
-                    MensajeError("La cedula ya se encuentra registrada");
-
-                } catch (SQLException ex) {
-
-                    Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
-                    MensajeError(ex.getMessage());
                 }
             }
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
@@ -267,6 +329,7 @@ public class Controlador_Entrenador {
             modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
             modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
             modPersona.setSexo(Sexo());
+            modPersona.setFoto(visPer.getTxtRuta().getText());
 
             try {
 
@@ -281,43 +344,13 @@ public class Controlador_Entrenador {
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
     private void CargarID() throws SQLException {
         VistaEntrenador.txtCodigo.setText(String.valueOf(modEnt.CargarCodigoID()));
-    }
-
-    public void ModificarFoto() {
-
-        if (visPer.dlgPersona.getTitle().equals("Editar")) {
-
-            try {
-
-                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                int largo = (int) jfc.getSelectedFile().length();
-                modPersona.setImageFile(img);
-                modPersona.setLength(largo);
-
-                if (modPersona.ActualizarPersona()) {
-
-                    MensajeSucces("Se modifico con exito la foto de la persona");
-                    MostrarDatos();
-                } else {
-
-                    MensajeError("Ha ocurrido un error al actualizar en la base");
-                    MostrarDatos();
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Controlador_Entrenador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
     }
 
     public void RegistrarEditarEntrenador() {
@@ -420,6 +453,7 @@ public class Controlador_Entrenador {
                 visPer.txt2doNomDLG.setText(p.getNombnre2());
                 visPer.txtTelfDLG.setText(p.getTelefono());
                 visPer.txtFechaDlg.setDate(p.getFecha_nac());
+
                 if (p.getSexo().equals("Femenino")) {
 
                     visPer.rdbFemeninoDlg.setSelected(true);
@@ -432,17 +466,8 @@ public class Controlador_Entrenador {
 
                     visPer.rdbOtroDlg.setSelected(true);
                 }
-
-                Image foto = p.getFoto();
-                if (foto != null) {
-                    foto = foto.getScaledInstance(visPer.lblFoto.getWidth(), visPer.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                    ImageIcon icono = new ImageIcon(foto);
-                    DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                    visPer.lblFoto.setIcon(icono);
-                }
             }
         });
-
     }
 
     public void LlenarDatosEntrenador() {
@@ -461,13 +486,11 @@ public class Controlador_Entrenador {
                     VistaEntrenador.txtCodigo.setText(String.valueOf(p.getCodigo()));
                     VistaEntrenador.txtSueldo.setText(String.valueOf(p.getSueldo()));
 
-                    Image foto = p.getFoto();
-                    if (foto != null) {
-                        foto = foto.getScaledInstance(VistaEntrenador.lblFoto.getWidth(), VistaEntrenador.lblFoto.getHeight(), Image.SCALE_SMOOTH);
-                        ImageIcon icono = new ImageIcon(foto);
-                        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-                        VistaEntrenador.lblFoto.setIcon(icono);
-                    }
+                    ImageIcon miImagen = new ImageIcon(visEnt.getTxt_Ruta_Foto().getText());
+                    Image foto = miImagen.getImage();
+                    foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
+                    visEnt.lblFoto.setIcon(new ImageIcon(foto));
+
                 }
             });
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
@@ -547,4 +570,183 @@ public class Controlador_Entrenador {
 
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+    public boolean validacionCorreo() {
+        boolean x = false;
+
+        if (visPer.txtCorreoDlg.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$") && visPer.txtCorreoDlg.getText().trim().length() < 100) {
+
+            x = true;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Correo Electronico Incorrecto");
+        }
+        return x;
+    }
+
+    public boolean validarCedula() {
+        String cedula = visPer.txtCedulaDLG.getText();
+        if (cedula.length() != 10) {
+            return false;
+        }
+
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            int digit = Character.getNumericValue(cedula.charAt(i));
+            if (i % 2 == 0) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+            sum += digit;
+        }
+
+        int lastDigit = Character.getNumericValue(cedula.charAt(9));
+        int calculatedDigit = (10 - (sum % 10)) % 10;
+
+        return lastDigit == calculatedDigit;
+    }
+
+    private void validarEntradaCedula(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (visPer.getTxtCedulaDLG().getText().trim().length() > 9) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
+        }
+    }
+
+    private void validarEntradaTelefono(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (visPer.getTxtTelfDLG().getText().trim().length() > 14) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
+        }
+    }
+
+    private void validarEntradaNombreApellido(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar LETRAS");
+        }
+        if (visPer.getTxt1erNomDlg().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doNomDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt1erApeDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doApeDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+    }
+
+    private void validarEntradaDireccion(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+        boolean punto = dato == 46;
+        boolean guion = dato == 45;
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ || punto || guion)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Digito INCORRECTO");
+        }
+        if (visPer.getTxtDirecDLG().getText().trim().length() > 149) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+    }
+/////////////////////////////ARBITRO/////////////////////////////////////////////////
+
+    private void validarEntradaAnios(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 1) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
+        }
+    }
+
+    private void validarSueldo(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean coma = dato == 44;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros || coma)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
+        }
+    }
+//////////////////////////////////////////////////VALIDAR EDAD//////////////////////////////////////
+
+    public boolean edad() {
+
+        Calendar fechaseleccionada = visPer.txtFechaDlg.getCalendar();
+        int dia = fechaseleccionada.get(Calendar.DAY_OF_WEEK);
+        int mes = fechaseleccionada.get(Calendar.MONTH);
+        int año = fechaseleccionada.get(Calendar.YEAR);
+
+        LocalDate fechaDeNacimiento = LocalDate.of(año, mes, dia);
+        LocalDate fechaActual = LocalDate.now();
+        Period edad = Period.between(fechaDeNacimiento, fechaActual);
+
+        int edadstr = edad.getYears();
+
+        return edadstr >= 18;
+
+    }
+
 }
