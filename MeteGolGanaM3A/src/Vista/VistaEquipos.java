@@ -66,10 +66,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         return txtBuscar;
     }
 
-    public FSButtonMD getBtnEquipo() {
-        return btnEquipo;
-    }
-
     public JDateChooser getJdcaniofundacion() {
         return jdcaniofundacion;
     }
@@ -111,7 +107,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new LIB.FSButtonMD();
-        btnEquipo = new LIB.FSButtonMD();
         btnAgregar = new javax.swing.JButton();
         txtBuscar = new LIB.FSTexFieldMD();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -248,9 +243,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
             .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
 
-        btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
-        btnEquipo.setText("Buscar Equipo");
-
         btnAgregar.setBackground(new java.awt.Color(0, 153, 0));
         btnAgregar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,9 +319,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(51, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                         .addGap(26, 26, 26)
@@ -347,9 +337,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAgregar)
-                        .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAgregar))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
@@ -388,7 +376,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btnAgregar;
     public static LIB.FSButtonMD btnCancelar;
     public static javax.swing.JButton btnEliminar;
-    private LIB.FSButtonMD btnEquipo;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;

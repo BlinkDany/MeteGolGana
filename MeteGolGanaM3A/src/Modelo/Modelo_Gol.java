@@ -99,4 +99,22 @@ public class Modelo_Gol extends Clase_Gol{
         return CPG.CRUD(sql);
 
     }
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from gol;";
+        ResultSet res = CPG.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Gol.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
+    }
 }
