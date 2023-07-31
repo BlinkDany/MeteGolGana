@@ -1,6 +1,7 @@
 package Modelo;
 
 import Conexion.ConexionMySql;
+import Vista.VistaGol;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -98,6 +100,31 @@ public class Modelo_Gol extends Clase_Gol{
         sql = "update gol set estado_elim = true where codigo='" + getCod_gol() + "';";
         return CPG.CRUD(sql);
 
+    }
+    public void listarGC(){
+        try {
+            DefaultTableModel mJtable;
+            mJtable = new DefaultTableModel(null, new Object[]{"Codigo", "Descripcion", "Minuto", "Jugador", "Codigo Partido", "Equipo"});
+            ConexionMySql c = new Conexion.ConexionMySql();
+            c.getConnection();
+            ResultSet rs = c.Consultas("SELECT g.descripcion, g.minuto, g.codigo_partidofk, e.nombre, p.nombre1, g.codigo\n"
+                    + "	FROM gol g \n"
+                    + "	join equipo e on (g.cod_equipofk = e.codigo) \n"
+                    + "	join jugador j on (g.codigo_jugadorfk = j.codigo) \n"
+                    + "	join persona p on (j.cedula_personafk = p.cedula);");
+            while(rs.next()){
+                try {
+                    mJtable.addRow(new Object[]{rs.getInt(6),rs.getString(1),rs.getString(2),rs.getString(5),rs.getInt(3),rs.getString(4)});
+                } catch (SQLException ex) {
+                    Logger.getLogger(Modelo_Gol.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            };
+            VistaGol.tblGoles.setModel(mJtable);
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Gol.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
     }
     public int CargarCodigoID() throws SQLException {
 

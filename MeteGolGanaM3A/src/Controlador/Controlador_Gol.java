@@ -1,5 +1,6 @@
 package Controlador;
 
+import Conexion.ConexionMySql;
 import Modelo.Clase_Equipo;
 import Modelo.Clase_Estadio;
 import Modelo.Clase_Gol;
@@ -13,6 +14,9 @@ import Modelo.Modelo_Partido;
 import Vista.VistaGol;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.security.interfaces.RSAKey;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -80,14 +84,14 @@ public class Controlador_Gol {
             vistagol.getTblGoles().clearSelection();
         });
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
-        
+
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 buscar();
             }
         });
-        
+
         vistagol.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
@@ -184,7 +188,6 @@ public class Controlador_Gol {
                 tabla.addRow(datos);
             });
         }*/
-        
         int codigo = Integer.parseInt(vistagol.getTxtBuscar().getText());
         if (codigo == 0) {
             // Mostrar mensaje de error si no se ingresa el código
@@ -206,7 +209,7 @@ public class Controlador_Gol {
                     // Mapear cada producto filtrado a un objeto "datos" que contiene los valores deseados
                     .map(p -> {
                         // Crear un objeto "datos"
-                        Object[] datos = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(),p.getCod_partido(),p.getCod_equipo()};
+                        Object[] datos = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
                         return datos;
                     })
                     // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
@@ -246,11 +249,7 @@ public class Controlador_Gol {
 
         vistagol.getTxtBuscar().setText("");
         cargaGoles();
-        cargaPartidos();
-        cargaequipos();
-        cargajugadores();
         CargarID();
-
     }
 
     private void mandardatos() {
@@ -427,23 +426,20 @@ public class Controlador_Gol {
     }
 
     private void cargaGoles() {
-        DefaultTableModel mJtable;
-        mJtable = (DefaultTableModel) vistagol.getTblGoles().getModel();
-        mJtable.setNumRows(0);
-        List<Clase_Gol> listaG = modeloGol.listarGoles();
+        modeloGol.listarGC();
+        
+        /*List<Clase_Gol> listaG = modeloGol.listarGoles();
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         List<Clase_Jugador> listaJ = modeloJug.ListaJugador();
-        List<Clase_Partido> listaP = modeloPar.listarPartidos();
         listaG.stream().forEach(g -> {
-            listaE.stream().forEach(e -> {
-                listaJ.stream().forEach(j -> {
-                    listaP.stream().forEach(p -> {
-                            String[] rowData = {String.valueOf(g.getCod_gol()), g.getDescripcion(), g.getMinuto(), j.getNombnre1(), String.valueOf(p.getCod_partido()), e.getNombre_equi()};
-                            mJtable.addRow(rowData);      
-                    });
-                });
-            });
+        listaE.stream().forEach(e -> {
+        listaJ.stream().forEach(j -> {
+        mJtable.addRow(new Object[]{String.valueOf(g.getCod_gol()), g.getDescripcion(), g.getMinuto(), j.getNombnre1(), String.valueOf(g.getCod_partido()), e.getNombre_equi()});
         });
+        });
+        });
+        System.out.println("hola");*/
+        
     }
 
     private void CargarID() throws SQLException {
