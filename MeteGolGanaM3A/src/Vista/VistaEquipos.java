@@ -265,7 +265,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
             }
         });
 
-        tblEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblEquipos.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

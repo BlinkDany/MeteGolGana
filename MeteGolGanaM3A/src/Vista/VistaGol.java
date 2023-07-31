@@ -327,7 +327,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
             }
         });
 
-        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -420,7 +420,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
             }
         });
 
-        tblGoles.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        tblGoles.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblGoles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
