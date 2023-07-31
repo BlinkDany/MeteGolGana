@@ -81,7 +81,7 @@ public class Controlador_temporada {
         vista.getBtnBuscar().addActionListener(l -> buscar());
         vista.getBtnLimpiar().addActionListener(l -> limpiarBuscar());
         vista.getBtnLimpiarDlg().addActionListener(l -> limpiarBuscar());
-        vista.getBtnReporte().addActionListener(l -> reporte());
+        vista.getBtnReporte().addActionListener(l -> reporteTemporada());
 
         vista.getBtnAgregar().addActionListener(l -> {
             try {
@@ -533,9 +533,8 @@ public class Controlador_temporada {
     }
 
     //--------------------------------------------------REPORTE--------------------------------------------------\\
-    
     private void reporte() {
-        
+
         try {
 
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("src\\Reportes\\CampeonatoTemporada.jasper"));
@@ -544,60 +543,52 @@ public class Controlador_temporada {
             JasperViewer jasview = new JasperViewer(jasPrint, false);
             jasview.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             jasview.setVisible(true);
-            
-        } 
-        
-        catch (JRException ex) {
-            
+
+        } catch (JRException ex) {
+
             Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
     }
-    
-      public void reporteTemporada() {
 
-       
-          //int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese la cantidad mínima referente para el stock")) ;
-          
-         //String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
-          
+    public void reporteTemporada() {
+
+        //int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese la cantidad mínima referente para el stock")) ;
+        //String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
         try {
-                        ConexionMySql con = new ConexionMySql();
-                        Connection conn = con.getCon();
+            ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
 
-                        JasperReport reporte = null;
-                        String path = "src\\Reportes\\CampeonatoTemporada.jasper";
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\CampeonatoTemporada.jasper";
 
-                        Map parametro = new HashMap();
-                        //parametro.put("cantidad", rta);
-                       // parametro.put("titulo", rta2);
+            Map parametro = new HashMap();
+            //parametro.put("cantidad", rta);
+            // parametro.put("titulo", rta2);
 
-                        reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
 
-                        JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
 
-                        JasperViewer vista = new JasperViewer(jprint, false);
+            JasperViewer vista = new JasperViewer(jprint, false);
 
-                        vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-                        vista.setVisible(true);
-                    } catch (JRException ex) {
-                        Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
- }
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-     //---------------------------------------------------------------------------------------------------------------------------\\   
-     
-     public void llenafecha() {
+
+    //---------------------------------------------------------------------------------------------------------------------------\\   
+    public void llenafecha() {
         vista.getTxtFechaIni().setDate(new java.sql.Date(System.currentTimeMillis()));
     }
 
 }
 
-
-
-    /* Modelo_Temporada modelo;
+/* Modelo_Temporada modelo;
 
     Modelo_Campeonato modeloCamp;
 
@@ -729,9 +720,9 @@ public class Controlador_temporada {
             vistapar.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
         }
     }
-     */
+ */
 //-------------------------------------------------------------CREAR MODIFICAR ELIMINAR---------------------------------------------------------------//
-    /*  private void crearEditarEliminarTemporada() {
+/*  private void crearEditarEliminarTemporada() {
     String title = vista.getDlgaTemporada().getTitle();
 
     if (title.equals("Crear")) {
@@ -1089,5 +1080,4 @@ public void buscar() {
             }
         }
     }
-     */
-   
+ */
