@@ -40,6 +40,10 @@
 				</textElement>
 				<text><![CDATA[Mete Gol Gana]]></text>
 			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="456" y="31" width="100" height="20" uuid="5202d041-7859-45f6-909c-4da398311307"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
