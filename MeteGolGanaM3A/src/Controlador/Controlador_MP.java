@@ -201,9 +201,10 @@ public class Controlador_MP {
         Modelo.Modelo_Partido moPart = new Modelo_Partido();
         Modelo.Modelo_Jugador moJug = new Modelo_Jugador();
         Modelo.ModeloEquipos moequ = new ModeloEquipos();
+        Modelo.Modelo_Estadio moesta = new Modelo_Estadio();
         Vista.VistaGol visequi = new VistaGol();
         vistaPrincipal.getDesctopPrincipal().add(visequi);
-        Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol);
+        Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol,moesta);
         controlEqui.iniciaControl();
         abrirNuevoEscritorio(visequi);
 

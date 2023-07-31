@@ -1,10 +1,12 @@
 package Controlador;
 
 import Modelo.Clase_Equipo;
+import Modelo.Clase_Estadio;
 import Modelo.Clase_Gol;
 import Modelo.Clase_Jugador;
 import Modelo.Clase_Partido;
 import Modelo.ModeloEquipos;
+import Modelo.Modelo_Estadio;
 import Modelo.Modelo_Gol;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Partido;
@@ -21,26 +23,31 @@ import javax.swing.table.DefaultTableModel;
  * @author Derek
  */
 public class Controlador_Gol {
+
     private Modelo_Partido modeloPar;
     private Modelo_Jugador modeloJug;
     private ModeloEquipos modeloEqu;
+    private Modelo_Estadio modeloEsta;
     private Modelo_Gol modeloGol;
     private VistaGol vistagol;
 
-    public Controlador_Gol(Modelo_Partido modeloPar, Modelo_Jugador modeloJug, ModeloEquipos modeloEqu, VistaGol vistagol, Modelo_Gol modeloGol) {
+    public Controlador_Gol(Modelo_Partido modeloPar, Modelo_Jugador modeloJug, ModeloEquipos modeloEqu, VistaGol vistagol, Modelo_Gol modeloGol, Modelo_Estadio modeloEsta) {
         this.modeloPar = modeloPar;
         this.modeloJug = modeloJug;
         this.modeloEqu = modeloEqu;
+        this.modeloEsta = modeloEsta;
         this.modeloGol = modeloGol;
         this.vistagol = vistagol;
         vistagol.setVisible(true);
         cargaGoles();
     }
-     public void iniciaControl() {
+
+    public void iniciaControl() {
         vistagol.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vistagol.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistagol.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistagol.getBtnCancelar().addActionListener(l -> salirdialogo());
+        vistagol.getBtnCancelar1().addActionListener(l -> salirdialogo());
         vistagol.getBtnRegistrarModificar().addActionListener(l -> crearEditarGoles());
         vistagol.getBtnEquipo().addActionListener(l -> abrirDialogobusqueda("EQUIPO"));
         vistagol.getBtnJugador().addActionListener(l -> abrirDialogobusqueda("JUGADOR"));
@@ -50,7 +57,7 @@ public class Controlador_Gol {
         vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-             
+
             }
         });
         vistagol.getBtnCancelar().addActionListener(e -> {
@@ -64,7 +71,8 @@ public class Controlador_Gol {
         });
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
     }
-     private void abrirDialogo(String ce) {
+
+    private void abrirDialogo(String ce) {
 
         vistagol.getJdgGoles().setLocationRelativeTo(null);
         vistagol.getJdgGoles().setSize(900, 500);
@@ -89,7 +97,8 @@ public class Controlador_Gol {
 
         }
     }
-     private void abrirDialogobusqueda(String ce) {
+
+    private void abrirDialogobusqueda(String ce) {
 
         vistagol.getJdggolestabla().setSize(810, 680);
         vistagol.getJdggolestabla().setTitle(ce);
@@ -106,7 +115,8 @@ public class Controlador_Gol {
             cargaequipos();
         }
     }
-     public void LlenarDatos() {
+
+    public void LlenarDatos() {
         List<Clase_Gol> Listgol = modeloGol.listarGoles();
         int selectedRow = vistagol.getTblGoles().getSelectedRow();
 
@@ -133,7 +143,8 @@ public class Controlador_Gol {
             }
         }
     }
-     public void buscar() {
+
+    public void buscar() {
 
         DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
         tabla.setNumRows(0);
@@ -144,7 +155,7 @@ public class Controlador_Gol {
             List<Clase_Gol> gol = modeloGol.BuscarGoles(Integer.parseInt(vistagol.txtBuscar.getText()));
             gol.stream().forEach(p -> {
 
-                Object datos[] = {p.getCod_gol(), p.getDescripcion(),p.getMinuto(),p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
+                Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getCod_partido(), p.getCod_equipo()};
                 tabla.addRow(datos);
             });
         }
@@ -155,10 +166,12 @@ public class Controlador_Gol {
         limpiar();
         vistagol.getJdgGoles().setVisible(false);
     }
+
     public void salirdialogo1() {
         limpiartablas();
         vistagol.getJdggolestabla().setVisible(false);
     }
+
     private void limpiar() {
 
         vistagol.getTxtCodPartido().setText("");
@@ -177,7 +190,8 @@ public class Controlador_Gol {
         vistagol.getTxtBuscar().setText("");
 
     }
-     private void mandardatos() {
+
+    private void mandardatos() {
 
         String set = vistagol.getTxtbuscarcod().getText();
 
@@ -210,7 +224,7 @@ public class Controlador_Gol {
                 vistagol.getTxtCodEquipo().setText(selectedId);
                 salirdialogo1();
             }
-        } 
+        }
     }
     //--------------------------------------------------------CRUD--------------------------------------------------------------------------------------------
     //-------------------------------------------------------AGREGAR--------------------------------------------------------------------------------------------
@@ -307,11 +321,17 @@ public class Controlador_Gol {
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
+        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
+        List<Clase_Estadio> listaEs = modeloEsta.ListaEstadios();
         listaP.stream().forEach(p -> {
-            if (p.getCod_partido() == p.getCod_partido()) {
-            String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(p.getCod_equipo1()), String.valueOf(p.getCod_equipo2()), String.valueOf(p.getCod_estadio())};
-            mJtable.addRow(rowData);
-            }
+            listaE.stream().forEach(e -> {
+                listaEs.stream().forEach(es -> {
+                    if (p.getCod_partido() == p.getCod_partido()) {
+                        String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(e.getNombre_equi()), String.valueOf(e.getNombre_equi()), es.getNombre()};
+                        mJtable.addRow(rowData);
+                    }
+                });
+            });
         }
         );
     }
@@ -324,36 +344,52 @@ public class Controlador_Gol {
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
             if (p.getCod_equipo() == p.getCod_equipo()) {
-            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
-            mJtable.addRow(rowData);
+                String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+                mJtable.addRow(rowData);
             }
         }
         );
     }
+
     private void cargajugadores() {
         DefaultTableModel mJtable;
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Jugador> listaC = modeloJug.ListaJugador();
+        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaC.stream().forEach(p -> {
-            if (p.getCod_jugador() == p.getCod_jugador()) {
-            String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()),String.valueOf(p.getCod_equipo())};
-            mJtable.addRow(rowData);
-            }
+            listaE.stream().forEach(e -> {
+                if (p.getCod_jugador() == p.getCod_jugador()) {
+                    String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()), e.getNombre_equi()};
+                    mJtable.addRow(rowData);
+                }
+            });
         }
         );
     }
+
     private void cargaGoles() {
         DefaultTableModel mJtable;
         mJtable = (DefaultTableModel) vistagol.getTblGoles().getModel();
         mJtable.setNumRows(0);
         List<Clase_Gol> listaG = modeloGol.listarGoles();
-        listaG.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_gol()),p.getDescripcion(),p.getMinuto(),String.valueOf(p.getCod_jugador()),String.valueOf(p.getCod_partido()),String.valueOf(p.getCod_equipo())};
-            mJtable.addRow(rowData);
-        }
-        );
+        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
+        List<Clase_Jugador> listaJ = modeloJug.ListaJugador();
+        List<Clase_Partido> listaP = modeloPar.listarPartidos();
+        listaG.stream().forEach(g -> {
+            listaE.stream().forEach(e -> {
+                listaJ.stream().forEach(j -> {
+                    listaP.stream().forEach(p -> {
+                        if (g.getCod_gol() == g.getCod_gol()) {
+                            String[] rowData = {String.valueOf(g.getCod_gol()), g.getDescripcion(), g.getMinuto(), j.getNombnre1(), String.valueOf(p.getCod_partido()), e.getNombre_equi()};
+                            mJtable.addRow(rowData);
+                        }
+                    });
+                });
+            });
+        });
     }
+
     private void buscarFK() {
         if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
             List<Clase_Jugador> listajugador = modeloJug.ListaJugador();
@@ -409,7 +445,7 @@ public class Controlador_Gol {
             DefaultTableModel modeloTabla = new DefaultTableModel();
             modeloTabla.addColumn("Codigo Estadio");
             modeloTabla.addColumn("Nombre Estadio");
-            modeloTabla.addColumn("nose Estadio");
+            modeloTabla.addColumn("Nombre Ciudad");
 
             for (Clase_Equipo e : listaequipos) {
 
@@ -424,6 +460,6 @@ public class Controlador_Gol {
 
             }
             vistagol.getTblbuscar().setModel(modeloTabla);
-        } 
+        }
     }
 }
