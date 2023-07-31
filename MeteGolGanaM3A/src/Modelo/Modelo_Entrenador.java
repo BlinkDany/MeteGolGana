@@ -86,18 +86,9 @@ public class Modelo_Entrenador extends Clase_Entrenador {
                 mientrenador.setNombnre1(res.getString("nombre1"));
                 mientrenador.setNombnre2(res.getString("nombre2"));
                 mientrenador.setSexo(res.getString("sexo"));
+                mientrenador.setFoto(res.getString("foto"));
                 mientrenador.setTelefono(res.getString("telefono"));
                 mientrenador.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    mientrenador.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
                 ent.add(mientrenador);
             }
@@ -168,18 +159,9 @@ public class Modelo_Entrenador extends Clase_Entrenador {
                 mientrenador.setNombnre1(res.getString("nombre1"));
                 mientrenador.setNombnre2(res.getString("nombre2"));
                 mientrenador.setSexo(res.getString("sexo"));
+                mientrenador.setFoto(res.getString("foto"));
                 mientrenador.setTelefono(res.getString("telefono"));
                 mientrenador.setEstado_elim(res.getBoolean("estado_elim"));
-
-                bytea = res.getBytes("foto");
-
-                if (bytea != null) try {
-
-                    mientrenador.setFoto(getImage(bytea));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Modelo_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
                 ent.add(mientrenador);
             }
