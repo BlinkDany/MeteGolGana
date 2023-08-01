@@ -63,8 +63,8 @@ public class Controlador_Arbitro {
 
         visArbi.setTitle("Arbitros");
         MostrarDatos();
-        Vista_Arbitro.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
-        Vista_Arbitro.btnCancelar.addActionListener(l -> {
+        Vista_Arbitro.getBtnAgregar().addActionListener(l -> IniciarDialogPersona("Registrar"));
+        Vista_Arbitro.getBtnCancelar().addActionListener(l -> {
             Vista_Arbitro.dialogRegistrarModificar.dispose();
             visArbi.tblArbitros.setEnabled(true);
             visPer.txtCedulaDLG.setEnabled(true);
@@ -76,7 +76,7 @@ public class Controlador_Arbitro {
             visPer.txtCedulaDLG.setEnabled(true);
         });
         Vista_Arbitro.btnModificar.addActionListener(l -> {
-            if (visArbi.tblArbitros.getSelectedRow() == -1) {
+            if (visArbi.getTblArbitros().getSelectedRow() == -1) {
 
                 MensajeError("Seleccione al Arbitro que desea editar");
 
