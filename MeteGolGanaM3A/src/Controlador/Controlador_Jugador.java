@@ -77,18 +77,18 @@ public class Controlador_Jugador {
         }
         visJugador.getTxtRuta().setVisible(false);
         visJugador.setTitle("Jugadores");
-        visJugador.txtEquipo.setEditable(false);
-        visJugador.txtCedula.setEnabled(false);
+        visJugador.getTxtEquipo().setEditable(false);
+        visJugador.getTxtCedula().setEnabled(false);
         visJugador.getBtnRegresar().addActionListener(l -> {
             visPer.dlgPersona.setVisible(true);
-            visJugador.dialogRegistrarModificar.setVisible(false);
+            visJugador.getDialogRegistrarModificar().setVisible(false);
         });
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
         visJugador.btnAgregar.addActionListener(l -> LimpiarDatos());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarPersona());
         visPer.btnFoto.addActionListener(l -> Foto());
         visJugador.btnEliminar.addActionListener(l -> EliminarJugador());
-        visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
+        visJugador.btnCancelar.addActionListener(l -> visJugador.getDialogRegistrarModificar().dispose());
         visPer.btnRetrocederDlgRegistro.addActionListener(l -> visPer.dlgPersona.dispose());
         visJugador.txtBuscar.addKeyListener(new KeyAdapter() {
             @Override
@@ -97,7 +97,7 @@ public class Controlador_Jugador {
             }
         });
         visJugador.btnModificar.addActionListener(l -> {
-            if (visJugador.tblJugadores.getSelectedRow() == -1) {
+            if (visJugador.getTblJugadores().getSelectedRow() == -1) {
                 MensajeError("Seleccione al jugador que desea edita");
             } else {
                 IniciarDialogPersona("Editar");
@@ -106,10 +106,10 @@ public class Controlador_Jugador {
         visJugador.tblEquipo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                visJugador.txtEquipo.setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
+                visJugador.getTxtEquipo().setText(visJugador.tblEquipo.getValueAt(visJugador.tblEquipo.getSelectedRow(), 0).toString());
             }
         });
-        visPer.txtCedulaDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxtCedulaDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 int codigo1 = e.getKeyChar();
@@ -119,14 +119,14 @@ public class Controlador_Jugador {
                     e.consume();
                     JOptionPane.showMessageDialog(null, "Sólo se permiten números para la cedula");
                 }
-                if (visPer.txtCedulaDLG.getText().length() == 10) {
+                if (visPer.getTxtCedulaDLG().getText().length() == 10) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
                 }
             }
         });
 
-        visPer.txt1erNomDlg.addKeyListener(new KeyAdapter() {
+        visPer.getTxt1erNomDlg().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char nombre = e.getKeyChar();
@@ -144,7 +144,7 @@ public class Controlador_Jugador {
             }
         });
 
-        visPer.txt2doNomDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxt2doNomDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char nombre = e.getKeyChar();
@@ -162,7 +162,7 @@ public class Controlador_Jugador {
             }
         });
 
-        visPer.txt1erApeDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxt1erApeDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char nombre = e.getKeyChar();
@@ -180,7 +180,7 @@ public class Controlador_Jugador {
             }
         });
 
-        visPer.txt2doApeDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxt2doApeDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char nombre = e.getKeyChar();
@@ -197,7 +197,7 @@ public class Controlador_Jugador {
             }
         });
 
-        visPer.txtDirecDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxtDirecDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char nombre = e.getKeyChar();
@@ -215,7 +215,7 @@ public class Controlador_Jugador {
             }
         });
 
-        visPer.txtTelfDLG.addKeyListener(new KeyAdapter() {
+        visPer.getTxtTelfDLG().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 int codigo1 = e.getKeyChar();
@@ -225,14 +225,14 @@ public class Controlador_Jugador {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
                 }
-                if (visPer.txtTelfDLG.getText().trim().length() == 15) {
+                if (visPer.getTxtTelfDLG().getText().trim().length() == 15) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
                 }
             }
         });
 
-        visJugador.txtAñosExperiencia.addKeyListener(new KeyAdapter() {
+        visJugador.getTxtAñosExperiencia().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 int codigo1 = e.getKeyChar();
@@ -242,14 +242,14 @@ public class Controlador_Jugador {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
                 }
-                if (visJugador.txtAñosExperiencia.getText().trim().length() == 2) {
+                if (visJugador.getTxtAñosExperiencia().getText().trim().length() == 2) {
                     e.consume();
                     //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
                 }
             }
         });
 
-        visJugador.txtSueldo.addKeyListener(new KeyAdapter() {
+        visJugador.getTxtSueldo().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 int codigo1 = e.getKeyChar();
@@ -262,7 +262,7 @@ public class Controlador_Jugador {
                     //JOptionPane.showMessageDialog(null, "Sólo se permiten números o numeros con decimales");
                 }
 
-                /*if (visJugador.txtSueldo.getText().trim().length() == 6) {
+                /*if (visJugador.getTxtSueldo().getText().trim().length() == 6) {
                     e.consume();
                     JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 7 caracteres");
                 }*/
@@ -294,13 +294,13 @@ public class Controlador_Jugador {
     public void IniciarDialogJugador(String titulo) {
 
         visPer.dlgPersona.dispose();
-        visJugador.dialogRegistrarModificar.setVisible(true);
-        visJugador.dialogRegistrarModificar.setTitle(titulo);
-        visJugador.dialogRegistrarModificar.setSize(850, 676);
-        visJugador.dialogRegistrarModificar.setLocationRelativeTo(null);
-        if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
+        visJugador.getDialogRegistrarModificar().setVisible(true);
+        visJugador.getDialogRegistrarModificar().setTitle(titulo);
+        visJugador.getDialogRegistrarModificar().setSize(850, 676);
+        visJugador.getDialogRegistrarModificar().setLocationRelativeTo(null);
+        if (visJugador.getDialogRegistrarModificar().getTitle().equals("Registrar Jugador")) {
             visJugador.lblReMoJugadores.setText("Registrar Jugador");
-            visJugador.txtCedula.setText(visPer.getTxtCedulaDLG().getText());
+            visJugador.getTxtCedula().setText(visPer.getTxtCedulaDLG().getText());
             
         } else {
             visJugador.getLblReMoJugadores().setText("Modificar Jugador");
@@ -312,7 +312,7 @@ public class Controlador_Jugador {
 
         String x = "";
 
-        if (visPer.rdbFemeninoDlg.isSelected()) {
+        if (visPer.getRdbFemeninoDlg().isSelected()) {
 
             x = "Femenino";
         }
@@ -357,25 +357,25 @@ public class Controlador_Jugador {
 
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
-            if (visPer.txtCedulaDLG.getText().isEmpty() || visPer.txt1erApeDLG.getText().isEmpty() || visPer.txt1erNomDlg.getText().isEmpty()
-                    || visPer.txt2doApeDLG.getText().isEmpty() || visPer.txt2doNomDLG.getText().isEmpty() || visPer.txtCorreoDlg.getText().isEmpty()
-                    || visPer.txtDirecDLG.getText().isEmpty() || visPer.txtFechaDlg.getDate() == null || visPer.txtTelfDLG.getText().isEmpty()
-                    || Sexo().equals("") || visPer.lblFoto.getIcon() == null || visPer.getTxtRuta().getText().isEmpty()) {
+            if (visPer.getTxtCedulaDLG().getText().isEmpty() || visPer.getTxt1erApeDLG().getText().isEmpty() || visPer.getTxt1erNomDlg().getText().isEmpty()
+                    || visPer.getTxt2doApeDLG().getText().isEmpty() || visPer.getTxt2doNomDLG().getText().isEmpty() || visPer.getTxtCorreoDlg().getText().isEmpty()
+                    || visPer.getTxtDirecDLG().getText().isEmpty() || visPer.getTxtFechaDlg().getDate() == null || visPer.getTxtTelfDLG().getText().isEmpty()
+                    || Sexo().equals("") || visPer.getLblFoto().getIcon() == null || visPer.getTxtRuta().getText().isEmpty()) {
 
                 MensajeError("Faltan campos por llenar");
 
             } else {
 
                 try {
-                    modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                    modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                    modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                    modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                    modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                    modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                    modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                    modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                    modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                    modPersona.setApellido1(visPer.getTxt1erApeDLG().getText());
+                    modPersona.setApellido2(visPer.getTxt2doApeDLG().getText());
+                    modPersona.setCedula(visPer.getTxtCedulaDLG().getText());
+                    modPersona.setDireccion(visPer.getTxtDirecDLG().getText());
+                    modPersona.setTelefono(visPer.getTxtTelfDLG().getText());
+                    modPersona.setEmail(visPer.getTxtCorreoDlg().getText());
+                    modPersona.setFecha_nac(new java.sql.Date(visPer.getTxtFechaDlg().getDate().getTime()));
+                    modPersona.setNombnre1(visPer.getTxt1erNomDlg().getText());
+                    modPersona.setNombnre2(visPer.getTxt2doNomDLG().getText());
                     modPersona.setSexo(Sexo());
                     modPersona.setFoto(visPer.getTxtRuta().getText());
 
@@ -405,15 +405,15 @@ public class Controlador_Jugador {
         } else if (visPer.dlgPersona.getTitle().equals("Editar")) {
 
             try {
-                modPersona.setApellido1(visPer.txt1erApeDLG.getText());
-                modPersona.setApellido2(visPer.txt2doApeDLG.getText());
-                modPersona.setCedula(visPer.txtCedulaDLG.getText());
-                modPersona.setDireccion(visPer.txtDirecDLG.getText());
-                modPersona.setTelefono(visPer.txtTelfDLG.getText());
-                modPersona.setEmail(visPer.txtCorreoDlg.getText());
-                modPersona.setFecha_nac(new java.sql.Date(visPer.txtFechaDlg.getDate().getTime()));
-                modPersona.setNombnre1(visPer.txt1erNomDlg.getText());
-                modPersona.setNombnre2(visPer.txt2doNomDLG.getText());
+                modPersona.setApellido1(visPer.getTxt1erApeDLG().getText());
+                modPersona.setApellido2(visPer.getTxt2doApeDLG().getText());
+                modPersona.setCedula(visPer.getTxtCedulaDLG().getText());
+                modPersona.setDireccion(visPer.getTxtDirecDLG().getText());
+                modPersona.setTelefono(visPer.getTxtTelfDLG().getText());
+                modPersona.setEmail(visPer.getTxtCorreoDlg().getText());
+                modPersona.setFecha_nac(new java.sql.Date(visPer.getTxtFechaDlg().getDate().getTime()));
+                modPersona.setNombnre1(visPer.getTxt1erNomDlg().getText());
+                modPersona.setNombnre2(visPer.getTxt2doNomDLG().getText());
                 modPersona.setSexo(Sexo());
                 modPersona.setFoto(visPer.getTxtRuta().getText());
 
@@ -439,29 +439,29 @@ public class Controlador_Jugador {
 
     public void RegistrarEditarJugador() {
 
-        if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
+        if (visJugador.getDialogRegistrarModificar().getTitle().equals("Registrar Jugador")) {
 
-            if (visJugador.txtAñosExperiencia.getText().isEmpty() || visJugador.txtCedula.getText().isEmpty() || visJugador.txtEquipo.getText().isEmpty()
-                    || VistaJugadores.txtSueldo.getText().isEmpty() || VistaJugadores.dateFechaFin.getDate() == null || visJugador.dateFechaInicio.getDate() == null
-                    || visJugador.cbxPosicion.getSelectedIndex() == 0) {
+            if (visJugador.getTxtAñosExperiencia().getText().isEmpty() || visJugador.getTxtCedula().getText().isEmpty() || visJugador.getTxtEquipo().getText().isEmpty()
+                    || VistaJugadores.txtSueldo.getText().isEmpty() || VistaJugadores.dateFechaFin.getDate() == null || visJugador.getDateFechaInicio().getDate() == null
+                    || visJugador.getCbxPosicion().getSelectedIndex() == 0) {
 
                 MensajeError("Faltan campos por llenar");
             } else {
 
-                if (VistaJugadores.txtEquipo.getText().isEmpty()) {
+                if (VistaJugadores.getTxtEquipo().getText().isEmpty()) {
 
                     MensajeError("Seleccione un equipo");
                 } else {
 
                     try {
-                        modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                        modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                        modJugador.setCedula_persona(visJugador.txtCedula.getText());
+                        modJugador.setAnios_exp(Integer.valueOf(visJugador.getTxtAñosExperiencia().getText()));
+                        modJugador.setPosicion(visJugador.getCbxPosicion().getSelectedItem().toString());
+                        modJugador.setCedula_persona(visJugador.getTxtCedula().getText());
                         modJugador.setCod_jugador(Integer.valueOf(visJugador.getTxtCod().getText()));
-                        modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
-                        modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                        modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                        modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
+                        modJugador.setCod_equipo(Integer.valueOf(visJugador.getTxtEquipo().getText()));
+                        modJugador.setSueldo(Double.valueOf(visJugador.getTxtSueldo().getText()));
+                        modJugador.setFecha_finContrato(new java.sql.Date(visJugador.getDateFechaFin().getDate().getTime()));
+                        modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.getDateFechaInicio().getDate().getTime()));
 
                         if (modJugador.ValidarNumJugadorEquipo() <= 12) {
 
@@ -469,7 +469,7 @@ public class Controlador_Jugador {
 
                                 MensajeSucces("Se ha registrado con exito ");
                                 MostrarDatos();
-                                visJugador.dialogRegistrarModificar.dispose();
+                                visJugador.getDialogRegistrarModificar().dispose();
                                 LimpiarDatos();
                             } else {
 
@@ -490,27 +490,27 @@ public class Controlador_Jugador {
                     }
                 }
             }
-        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
+        } else if (visJugador.getDialogRegistrarModificar().getTitle().equals("Modificar Jugador")) {
 
-            if (VistaJugadores.txtEquipo.getText().isEmpty()) {
+            if (VistaJugadores.getTxtEquipo().getText().isEmpty()) {
 
                 MensajeError("Seleccione un equipo");
             } else {
 
                 try {
-                    modJugador.setAnios_exp(Integer.valueOf(visJugador.txtAñosExperiencia.getText()));
-                    modJugador.setPosicion(visJugador.cbxPosicion.getSelectedItem().toString());
-                    modJugador.setCod_equipo(Integer.valueOf(visJugador.txtEquipo.getText()));
-                    modJugador.setSueldo(Double.valueOf(visJugador.txtSueldo.getText()));
-                    modJugador.setFecha_finContrato(new java.sql.Date(visJugador.dateFechaFin.getDate().getTime()));
-                    modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.dateFechaInicio.getDate().getTime()));
-                    modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                    modJugador.setAnios_exp(Integer.valueOf(visJugador.getTxtAñosExperiencia().getText()));
+                    modJugador.setPosicion(visJugador.getCbxPosicion().getSelectedItem().toString());
+                    modJugador.setCod_equipo(Integer.valueOf(visJugador.getTxtEquipo().getText()));
+                    modJugador.setSueldo(Double.valueOf(visJugador.getTxtSueldo().getText()));
+                    modJugador.setFecha_finContrato(new java.sql.Date(visJugador.getDateFechaFin().getDate().getTime()));
+                    modJugador.setFecha_inicioContrato(new java.sql.Date(visJugador.getDateFechaInicio().getDate().getTime()));
+                    modJugador.setCod_jugador(visJugador.getTblJugadores().getValueAt(visJugador.getTblJugadores().getSelectedRow(), 0).hashCode());
 
                     if (modJugador.ModificarJugador()) {
 
                         MensajeSucces("Se ha modifcado con exito ");
                         MostrarDatos();
-                        visJugador.dialogRegistrarModificar.dispose();
+                        visJugador.getDialogRegistrarModificar().dispose();
                     } else {
 
                         MensajeError("No se ha podido modificar debido a un error en la base de datos");
@@ -528,7 +528,7 @@ public class Controlador_Jugador {
 
     public void EliminarJugador() {
 
-        if (VistaJugadores.tblJugadores.getSelectedRow() == -1) {
+        if (visJugador.getTblJugadores().getSelectedRow() == -1) {
 
             MensajeError("Seleccione al jugador que desea eliminar");
         } else {
@@ -537,7 +537,7 @@ public class Controlador_Jugador {
 
             if (x == 0) {
 
-                modJugador.setCod_jugador(VistaJugadores.tblJugadores.getValueAt(VistaJugadores.tblJugadores.getSelectedRow(), 0).hashCode());
+                modJugador.setCod_jugador(visJugador.getTblJugadores().getValueAt(visJugador.getTblJugadores().getSelectedRow(), 0).hashCode());
 
                 if (modJugador.OcultarJugador()) {
 
@@ -554,7 +554,7 @@ public class Controlador_Jugador {
 
     public void LlenarDatosPersona() {
 
-        String ced = visJugador.tblJugadores.getValueAt(visJugador.tblJugadores.getSelectedRow(), 1).toString();
+        String ced = visJugador.getTblJugadores().getValueAt(visJugador.getTblJugadores().getSelectedRow(), 1).toString();
 
         List<Clase_Jugador> per = modJugador.ListaJugador();
         per.stream().forEach(p -> {
@@ -562,16 +562,16 @@ public class Controlador_Jugador {
             if (p.getCedula().equals(ced) && p.getCedula().equals(ced)) {
 
                 //Persona
-                visPer.txt1erApeDLG.setText(p.getApellido1());
-                visPer.txt1erNomDlg.setText(p.getNombnre1());
-                visPer.txt2doApeDLG.setText(p.getApellido2());
-                visPer.txtCedulaDLG.setText(p.getCedula());
-                visPer.txtDirecDLG.setText(p.getDireccion());
-                visPer.txtCorreoDlg.setText(p.getEmail());
-                visPer.txt2doNomDLG.setText(p.getNombnre2());
-                visPer.txtTelfDLG.setText(p.getTelefono());
+                visPer.getTxt1erApeDLG().setText(p.getApellido1());
+                visPer.getTxt1erNomDlg().setText(p.getNombnre1());
+                visPer.getTxt2doApeDLG().setText(p.getApellido2());
+                visPer.getTxtCedulaDLG().setText(p.getCedula());
+                visPer.getTxtDirecDLG().setText(p.getDireccion());
+                visPer.getTxtCorreoDlg().setText(p.getEmail());
+                visPer.getTxt2doNomDLG().setText(p.getNombnre2());
+                visPer.getTxtTelfDLG().setText(p.getTelefono());
                 visPer.getTxtRuta().setText(p.getFoto());
-                visPer.txtFechaDlg.setDate(p.getFecha_nac());
+                visPer.getTxtFechaDlg().setDate(p.getFecha_nac());
 
                 ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
                 Image foto = miImagen.getImage();
@@ -580,15 +580,15 @@ public class Controlador_Jugador {
 
                 if (p.getSexo().equals("Femenino")) {
 
-                    visPer.rdbFemeninoDlg.setSelected(true);
+                    visPer.getRdbFemeninoDlg().setSelected(true);
                 }
                 if (p.getSexo().equals("Masculino")) {
 
-                    visPer.rdbMasculinoDlg.setSelected(true);
+                    visPer.getRdbMasculinoDlg().setSelected(true);
                 }
                 if (p.getSexo().equals("Otro")) {
 
-                    visPer.rdbOtroDlg.setSelected(true);
+                    visPer.getRdbOtroDlg().setSelected(true);
                 }
             }
         });
@@ -598,7 +598,7 @@ public class Controlador_Jugador {
     public void LlenarDatosJugador() {
 
         try {
-            String ced = visJugador.tblJugadores.getValueAt(visJugador.tblJugadores.getSelectedRow(), 1).toString();
+            String ced = visJugador.getTblJugadores().getValueAt(visJugador.getTblJugadores().getSelectedRow(), 1).toString();
 
             List<Clase_Jugador> jug = modJugador.ListaJugador();
             jug.stream().forEach(p -> {
@@ -606,15 +606,15 @@ public class Controlador_Jugador {
                 if (p.getCedula_persona().equals(ced)) {
 
                     //Jugador
-                    visJugador.txtAñosExperiencia.setText(String.valueOf(p.getAnios_exp()));
+                    visJugador.getTxtAñosExperiencia().setText(String.valueOf(p.getAnios_exp()));
                     visJugador.getTxtCod().setText(String.valueOf(p.getCod_jugador()));
-                    visJugador.txtCedula.setText(String.valueOf(p.getCedula()));
-                    visJugador.cbxPosicion.setSelectedItem(p.getPosicion());
-                    visJugador.txtSueldo.setText(String.valueOf(p.getSueldo()));
-                    visJugador.txtEquipo.setText(String.valueOf(p.getCod_equipo()));
+                    visJugador.getTxtCedula().setText(String.valueOf(p.getCedula()));
+                    visJugador.getCbxPosicion().setSelectedItem(p.getPosicion());
+                    visJugador.getTxtSueldo().setText(String.valueOf(p.getSueldo()));
+                    visJugador.getTxtEquipo().setText(String.valueOf(p.getCod_equipo()));
                     visJugador.getTxtRuta().setText(p.getFoto());
-                    visJugador.dateFechaFin.setDate(p.getFecha_finContrato());
-                    visJugador.dateFechaInicio.setDate(p.getFecha_inicioContrato());
+                    visJugador.getDateFechaFin().setDate(p.getFecha_finContrato());
+                    visJugador.getDateFechaInicio().setDate(p.getFecha_inicioContrato());
 
                     ImageIcon miImagen = new ImageIcon(visJugador.getTxtRuta().getText());
                     Image foto = miImagen.getImage();
@@ -642,17 +642,17 @@ public class Controlador_Jugador {
         visJugador.getTblJugadores().clearSelection();
         visJugador.getTblEquipo().clearSelection();
         
-        visPer.txt1erApeDLG.setText("");
-        visPer.txt1erNomDlg.setText("");
-        visPer.txt2doApeDLG.setText("");
-        visPer.txt2doNomDLG.setText("");
-        visPer.txtCedulaDLG.setText("");
-        visPer.txtCorreoDlg.setText("");
-        visPer.txtDirecDLG.setText("");
-        visPer.txtFechaDlg.setDate(null);
-        visPer.txtTelfDLG.setText("");
-        visPer.btnGrupo1.clearSelection();
-        visPer.lblFoto.setIcon(null);
+        visPer.getTxt1erApeDLG().setText("");
+        visPer.getTxt1erNomDlg().setText("");
+        visPer.getTxt2doApeDLG().setText("");
+        visPer.getTxt2doNomDLG().setText("");
+        visPer.getTxtCedulaDLG().setText("");
+        visPer.getTxtCorreoDlg().setText("");
+        visPer.getTxtDirecDLG().setText("");
+        visPer.getTxtFechaDlg().setDate(null);
+        visPer.getTxtTelfDLG().setText("");
+        visPer.getBtnGrupo1().clearSelection();
+        visPer.getLblFoto().setIcon(null);
 
         try {
             visJugador.getTxtCod().setText(String.valueOf(modJugador.CargarCodigo()));
@@ -664,7 +664,7 @@ public class Controlador_Jugador {
 
     public void MostrarDatos() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblJugadores.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) visJugador.getTblJugadores().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Jugador> jug = modJugador.ListaJugador();
@@ -697,7 +697,7 @@ public class Controlador_Jugador {
 
     public void BuscarJugador() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaJugadores.tblJugadores.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) visJugador.getTblJugadores().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Jugador> jug = modJugador.BuscarJugador(visJugador.txtBuscar.getText());
