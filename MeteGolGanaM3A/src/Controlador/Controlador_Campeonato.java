@@ -32,6 +32,12 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -72,6 +78,7 @@ public class Controlador_Campeonato {
         vista.getBtnRegistrarModificarDlg().addActionListener(l -> crearEditarEliminarCampeonato());
         vista.getBtnBuscar().addActionListener(l -> buscar());
         vista.getBtnLimpiarBuscar().addActionListener(l -> limpiaBusca());
+        vista.getBtnReporte().addActionListener(l -> reporteHorario());
         
                vista.getBtnAgregar().addActionListener(l -> {
             try {
@@ -322,53 +329,38 @@ public class Controlador_Campeonato {
         vista.getTxtBuscar().setText("");
         mostrarDatosTabla();
     }
+//------------------------------------REPORTE------------------------------------------------------------------------------//
+    
+     public void reporteHorario() {
 
-    /* private void reporte(){
-    try{
-        
-        JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteProductos.jasper"));
-        Map<String,Object> params = new HashMap<String, Object>();
-        JasperPrint jasPrint =JasperFillManager.fillReport(jr, params, conSql.getCon());
-        JasperViewer jasview = new JasperViewer(jasPrint,false);
-        jasview.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        jasview.setVisible(true);
-    }catch(JRException ex){
-        Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-
-}
-}
-     
-      public void reporteProducto() {
-
-       
-          int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese la cantidad mínima referente para el stock")) ;
-          
-         String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
-          
+        int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese el código del campeonato ")) ;
+        //String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
         try {
-                        ConeccionPG con = new ConeccionPG();
-                        Connection conn = con.getConnection();
+            ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
 
-                        JasperReport reporte = null;
-                        String path = "src\\reportes\\reporteProductos.jasper";
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\HorariosCamepeonato.jasper";
 
-                        Map parametro = new HashMap();
-                        parametro.put("cantidad", rta);
-                        parametro.put("titulo", rta2);
+            Map parametro = new HashMap();
+           parametro.put("CodigoCampeonato", rta);
+            // parametro.put("titulo", rta2);
 
-                        reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
 
-                        JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
 
-                        JasperViewer vista = new JasperViewer(jprint, false);
+            JasperViewer vista = new JasperViewer(jprint, false);
 
-                        vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-                        vista.setVisible(true);
-                    } catch (JRException ex) {
-                        Logger.getLogger(ControladorPersonas.class.getName()).log(Level.SEVERE, null, ex);
- }
-    }*/
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+   //---------------------------------------------------------------------------------------------------------------------------------\\
     
       public void EliminarCampeonato() {
 

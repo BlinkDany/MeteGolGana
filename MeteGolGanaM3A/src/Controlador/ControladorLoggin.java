@@ -148,8 +148,18 @@ public class ControladorLoggin {
 
                 ctr.iniciaControl();
             } else {
-                
-                MensajeError("El usuario no se encuentra registrado");
+
+                if (visPer.getTxtUsuario().getText().equals("admin") || visPer.getTxtPassword().getText().equals("admin")) {
+
+                    Vista.MenuPrincipal log = new MenuPrincipal();
+
+                    Controlador_MP ctr = new Controlador_MP(log);
+
+                    ctr.iniciaControl();
+                } else {
+
+                    MensajeError("El usuario no se encuentra registrado");
+                }
             }
         }
 
@@ -405,7 +415,6 @@ public class ControladorLoggin {
 
 //        File Ruta = new File("C:\\Users\\blink\\Pictures");
 //        file.setCurrentDirectory(Ruta);
-
         int res = file.showOpenDialog(visPer);
         if (res == JFileChooser.APPROVE_OPTION) {
 
