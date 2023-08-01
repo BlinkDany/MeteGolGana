@@ -55,6 +55,11 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         dtfecha = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         cmestado = new javax.swing.JComboBox<>();
+        equocu = new javax.swing.JLabel();
+        equocu2 = new javax.swing.JLabel();
+        estocu = new javax.swing.JLabel();
+        fechaantes = new javax.swing.JLabel();
+        fechadespues = new javax.swing.JLabel();
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -199,19 +204,19 @@ public class VistaPartido extends javax.swing.JInternalFrame {
                 txtCodPartidoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, -1));
+        jPanel3.add(txtCodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 300, -1));
 
         txtgrupo.setForeground(new java.awt.Color(0, 0, 0));
         txtgrupo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtgrupo.setPlaceholder("Grupo");
-        jPanel3.add(txtgrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 300, -1));
+        jPanel3.add(txtgrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, -1));
 
         dtfecha.setDateFormatString("yyyy-MM-dd");
-        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 310, 40));
+        jPanel3.add(dtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 310, 40));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel5.setText("Fecha Partido");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         cmestado.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         cmestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Activo", "Finalizado", "Suspendido", "En Espera" }));
@@ -220,7 +225,22 @@ public class VistaPartido extends javax.swing.JInternalFrame {
                 cmestadoActionPerformed(evt);
             }
         });
-        jPanel3.add(cmestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 300, 40));
+        jPanel3.add(cmestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 300, 40));
+
+        equocu.setText("jLabel2");
+        jPanel3.add(equocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 660, -1, -1));
+
+        equocu2.setText("jLabel3");
+        jPanel3.add(equocu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 660, -1, -1));
+
+        estocu.setText("jLabel4");
+        jPanel3.add(estocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 660, -1, -1));
+
+        fechaantes.setText("jLabel2");
+        jPanel3.add(fechaantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 660, -1, -1));
+
+        fechadespues.setText("jLabel3");
+        jPanel3.add(fechadespues, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 660, -1, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -559,6 +579,47 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         return btnCancelar;
     }
 
+   
+    public JLabel getFechaantes() {
+        return fechaantes;
+    }
+
+    public void setFechaantes(JLabel fechaantes) {
+        this.fechaantes = fechaantes;
+    }
+
+    public JLabel getFechadespues() {
+        return fechadespues;
+    }
+
+    public void setFechadespues(JLabel fechadespues) {
+        this.fechadespues = fechadespues;
+    }
+
+    public JLabel getEquocu() {
+        return equocu;
+    }
+
+    public void setEquocu(JLabel equocu) {
+        this.equocu = equocu;
+    }
+
+    public JLabel getEquocu2() {
+        return equocu2;
+    }
+
+    public void setEquocu2(JLabel equocu2) {
+        this.equocu2 = equocu2;
+    }
+
+    public JLabel getEstocu() {
+        return estocu;
+    }
+
+    public void setEstocu(JLabel estocu) {
+        this.estocu = estocu;
+    }
+
     public static void setBtnCancelar(FSButtonMD btnCancelar) {
         VistaPartido.btnCancelar = btnCancelar;
     }
@@ -790,6 +851,11 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     public static javax.swing.JDialog dialogRegistrarModificar;
     public static javax.swing.JDialog dialogtablas;
     private com.toedter.calendar.JDateChooser dtfecha;
+    private javax.swing.JLabel equocu;
+    private javax.swing.JLabel equocu2;
+    private javax.swing.JLabel estocu;
+    private javax.swing.JLabel fechaantes;
+    private javax.swing.JLabel fechadespues;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;

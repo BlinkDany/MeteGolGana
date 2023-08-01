@@ -10,7 +10,13 @@ import Modelo.*;
 import Vista.VistaPartido;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -39,18 +45,46 @@ public class Controlador_Partido {
         this.vistapar = vistapar;
         vistapar.setVisible(true);
         vistapar.getTxtCodPartido().setEnabled(false);
+        vistapar.getTxtCodPartido().setVisible(false);
         vistapar.getTxtEquipo1().setEnabled(false);
         vistapar.getTxtEquipo2().setEnabled(false);
         vistapar.getTxtCampeonato().setEnabled(false);
         vistapar.getTxtEstadio().setEnabled(false);
+        vistapar.getEquocu().setVisible(false);
+        vistapar.getEquocu2().setVisible(false);
+        vistapar.getEstocu().setVisible(false);
+        vistapar.getFechaantes().setVisible(false);
+        vistapar.getFechadespues().setVisible(false);
+
         cargaPartidos();
     }
 
 //-------------------------------------------------------CONTROL--------------------------------------------------------------------------------------------
     public void iniciaControl() {
         vistapar.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
-        vistapar.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
-        vistapar.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
+        vistapar.getBtnModificar().addActionListener(l -> {
+            if (vistapar.getTblPartidos().getSelectedRow() == -1) {
+
+                JOptionPane.showMessageDialog(null, "Seleccione el partido que desea editar");
+
+            } else {
+
+                abrirDialogo("Editar");
+
+            }
+        });
+        vistapar.getBtnEliminar().addActionListener(l -> {
+            if (vistapar.getTblPartidos().getSelectedRow() == -1) {
+
+                JOptionPane.showMessageDialog(null, "Seleccione el partido que desea eliminar");
+
+            } else {
+
+                abrirDialogo("Eliminar");
+
+            }
+        });
+
         vistapar.getBtnCancelar().addActionListener(l -> salirdialogo());
         vistapar.getBtnCancelar1().addActionListener(l -> salirdialogo1());
         vistapar.getBtnRegistrarModificar().addActionListener(l -> crearEditarPartido());
@@ -69,6 +103,11 @@ public class Controlador_Partido {
         vistapar.getTxtBuscar().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 validarEntrada(evt);
+            }
+        });
+        vistapar.getTxtgrupo().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarGrupo(evt);
             }
         });
         vistapar.getBtnCancelar1().addActionListener(e -> {
@@ -113,7 +152,45 @@ public class Controlador_Partido {
             vistapar.getBtnRegistrarModificar().setText("ELIMINAR PARTIDOS");
         }
     }
+
     //-------------------------------------------------------DIALOGO 2--------------------------------------------------------------------------------------------
+    public boolean validacionFechaantes() {
+        java.util.Date fechaUtil = null;
+        java.util.Date fechaUtilP = null;
+
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            String fechaS = formato.format(vistapar.getDtfecha().getDate());
+            fechaUtil = formato.parse(fechaS);
+
+            String fechaSP = vistapar.getFechaantes().getText();
+            fechaUtilP = formato.parse(fechaSP);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaUtil.before(fechaUtilP);
+    }
+
+    public boolean validacionFechadespues() {
+        java.util.Date fechaUtil = null;
+        java.util.Date fechaUtilP = null;
+
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            String fechaS = formato.format(vistapar.getDtfecha().getDate());
+            fechaUtil = formato.parse(fechaS);
+
+            String fechaSP = vistapar.getFechadespues().getText();
+            fechaUtilP = formato.parse(fechaSP);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechaUtil.after(fechaUtilP);
+    }
 
     private void abrirDialogobusqueda(String ce) {
 
@@ -155,7 +232,9 @@ public class Controlador_Partido {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
             } else {
                 String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
-                vistapar.getTxtEquipo1().setText(selectedId);
+                String nombre = vistapar.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                vistapar.getEquocu().setText(selectedId);
+                vistapar.getTxtEquipo1().setText(nombre);
                 salirdialogo1();
             }
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 2")) {
@@ -164,7 +243,9 @@ public class Controlador_Partido {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
             } else {
                 String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
-                vistapar.getTxtEquipo2().setText(selectedId);
+                String nombre = vistapar.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                vistapar.getEquocu2().setText(selectedId);
+                vistapar.getTxtEquipo2().setText(nombre);
                 salirdialogo1();
             }
 
@@ -174,7 +255,9 @@ public class Controlador_Partido {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
             } else {
                 String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
-                vistapar.getTxtEstadio().setText(selectedId);
+                String nombre = vistapar.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                vistapar.getTxtEstadio().setText(nombre);
+                vistapar.getEstocu().setText(selectedId);
                 salirdialogo1();
             }
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("TEMPORADA")) {
@@ -184,6 +267,10 @@ public class Controlador_Partido {
             } else {
                 String selectedId = vistapar.getTblbuscar().getValueAt(selectedRow, 0).toString();
                 vistapar.getTxtCampeonato().setText(selectedId);
+                String selectedFecha = vistapar.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                String selectedFecha1 = vistapar.getTblbuscar().getValueAt(selectedRow, 2).toString();
+                vistapar.getFechaantes().setText(selectedFecha);
+                vistapar.getFechadespues().setText(selectedFecha1);
                 salirdialogo1();
             }
 
@@ -198,7 +285,7 @@ public class Controlador_Partido {
 
             Modelo_Partido model = new Modelo_Partido();
 
-            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+            if (vistapar.getTxtCodPartido().getText().equals("") || vistapar.getTxtgrupo().getText().equals("") || vistapar.getTxtCampeonato().getText().equals("") || vistapar.getTxtEquipo1().getText().equals("") || vistapar.getTxtEquipo2().getText().equals("") || vistapar.getTxtEstadio().getText().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
@@ -206,40 +293,49 @@ public class Controlador_Partido {
                 if (vistapar.getTxtEquipo1().getText().equals(vistapar.getTxtEquipo2().getText())) {
                     JOptionPane.showMessageDialog(null, "NO PUEDEN SER LOS MISMOS EQUIPOS");
                 } else {
-                    int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                    int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                    int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                    int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                    int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
-                    String grupo = vistapar.getTxtgrupo().getText();
-
-                    boolean estado = false;
-
-                    model.setCod_partido(codigopartido);
-                    model.setCod_temporadafk(codtemporada);
-                    model.setCod_equipo1(equipo1);
-                    model.setCod_equipo2(equipo2);
-                    model.setCod_estadio(estadio);
-                    model.setGrupo(grupo);
-                    model.setFecha(new java.sql.Date(vistapar.getDtfecha().getDate().getTime()));
-
-                    if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
-                        model.setEstado("Finalizado");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
-                        model.setEstado("Activo");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
-                        model.setEstado("Suspendido");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
-                        model.setEstado("En Espera");
-                    }
-                    model.setEstado_elim(estado);
-                    if (model.InsertarPartido()) {
-                        limpiar();
-                        JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
-                        vistapar.getDialogRegistrarModificar().setVisible(false);
-                        cargaPartidos();
+                    if (validacionFechaantes() == true) {
+                        JOptionPane.showMessageDialog(null, "EL PARTIDO NO PUEDE SER UNA FECHA ANTES DE LA TEMPORADA");
                     } else {
-                        JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                        if (validacionFechadespues() == true) {
+                            JOptionPane.showMessageDialog(null, "EL PARTIDO NO PUEDE SER UNA FECHA DESPUES DE LA TEMPORADA");
+                        } else {
+
+                            int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
+                            int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
+                            int equipo1 = Integer.valueOf(vistapar.getEquocu().getText());
+                            int equipo2 = Integer.valueOf(vistapar.getEquocu2().getText());
+                            int estadio = Integer.valueOf(vistapar.getEstocu().getText());
+                            String grupo = vistapar.getTxtgrupo().getText();
+
+                            boolean estado = false;
+
+                            model.setCod_partido(codigopartido);
+                            model.setCod_temporadafk(codtemporada);
+                            model.setCod_equipo1(equipo1);
+                            model.setCod_equipo2(equipo2);
+                            model.setCod_estadio(estadio);
+                            model.setGrupo(grupo);
+                            model.setFecha(new java.sql.Date(vistapar.getDtfecha().getDate().getTime()));
+
+                            if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
+                                model.setEstado("Finalizado");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
+                                model.setEstado("Activo");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
+                                model.setEstado("Suspendido");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
+                                model.setEstado("En Espera");
+                            }
+                            model.setEstado_elim(estado);
+                            if (model.InsertarPartido()) {
+                                limpiar();
+                                JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
+                                vistapar.getDialogRegistrarModificar().setVisible(false);
+                                cargaPartidos();
+                            } else {
+                                JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                            }
+                        }
                     }
                 }
             }
@@ -249,7 +345,7 @@ public class Controlador_Partido {
 
             Modelo_Partido model = new Modelo_Partido();
 
-            if (vistapar.getTxtCodPartido().equals("") || vistapar.getTxtCampeonato().equals("") || vistapar.getTxtEquipo1().equals("") || vistapar.getTxtEquipo2().equals("") || vistapar.getTxtEstadio().equals("") || vistapar.getTxtgrupo().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
+            if (vistapar.getTxtCodPartido().getText().equals("") || vistapar.getTxtgrupo().getText().equals("") || vistapar.getTxtCampeonato().getText().equals("") || vistapar.getTxtEquipo1().getText().equals("") || vistapar.getTxtEquipo2().getText().equals("") || vistapar.getTxtEstadio().getText().equals("") || vistapar.getCmestado().getSelectedItem().equals("Ninguno") || vistapar.getDtfecha().getDate() == null) {
 
                 JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS DATOS");
 
@@ -257,42 +353,50 @@ public class Controlador_Partido {
                 if (vistapar.getTxtEquipo1().getText().equals(vistapar.getTxtEquipo2().getText())) {
                     JOptionPane.showMessageDialog(null, "NO PUEDEN SER LOS MISMOS EQUIPOS");
                 } else {
-                    int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
-                    int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
-                    int equipo1 = Integer.valueOf(vistapar.getTxtEquipo1().getText());
-                    int equipo2 = Integer.valueOf(vistapar.getTxtEquipo2().getText());
-                    int estadio = Integer.valueOf(vistapar.getTxtEstadio().getText());
-                    String grupo = vistapar.getTxtgrupo().getText();
-                    vistapar.getDtfecha().getDate();
-                    boolean estado = false;
-
-                    model.setCod_partido(codigopartido);
-                    model.setCod_temporadafk(codtemporada);
-                    model.setCod_equipo1(equipo1);
-                    model.setCod_equipo2(equipo2);
-                    model.setCod_estadio(estadio);
-                    model.setGrupo(grupo);
-                    model.setFecha(new java.sql.Date(vistapar.getDtfecha().getDate().getTime()));
-
-                    if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
-                        model.setEstado("Finalizado");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
-                        model.setEstado("Activo");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
-                        model.setEstado("Suspendido");
-                    } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
-                        model.setEstado("En Espera");
-                    }
-                    model.setEstado_elim(estado);
-                    if (model.ModificarPartido()) {
-                        limpiar();
-                        JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
-                        vistapar.getDialogRegistrarModificar().setVisible(false);
-                        cargaPartidos();
+                    if (validacionFechaantes() == true) {
+                        JOptionPane.showMessageDialog(null, "EL PARTIDO NO PUEDE SER UNA FECHA ANTES DE LA TEMPORADA");
                     } else {
-                        JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
-                    }
+                        if (validacionFechadespues() == true) {
+                            JOptionPane.showMessageDialog(null, "EL PARTIDO NO PUEDE SER UNA FECHA DESPUES DE LA TEMPORADA");
+                        } else {
+                            int codigopartido = Integer.valueOf(vistapar.getTxtCodPartido().getText());
+                            int codtemporada = Integer.valueOf(vistapar.getTxtCampeonato().getText());
+                            int equipo1 = Integer.valueOf(vistapar.getEquocu().getText());
+                            int equipo2 = Integer.valueOf(vistapar.getEquocu2().getText());
+                            int estadio = Integer.valueOf(vistapar.getEstocu().getText());
+                            String grupo = vistapar.getTxtgrupo().getText();
+                            vistapar.getDtfecha().getDate();
+                            boolean estado = false;
 
+                            model.setCod_partido(codigopartido);
+                            model.setCod_temporadafk(codtemporada);
+                            model.setCod_equipo1(equipo1);
+                            model.setCod_equipo2(equipo2);
+                            model.setCod_estadio(estadio);
+                            model.setGrupo(grupo);
+                            model.setFecha(new java.sql.Date(vistapar.getDtfecha().getDate().getTime()));
+
+                            if (vistapar.getCmestado().getSelectedItem().equals("Finalizado")) {
+                                model.setEstado("Finalizado");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("Activo")) {
+                                model.setEstado("Activo");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("Suspendido")) {
+                                model.setEstado("Suspendido");
+                            } else if (vistapar.getCmestado().getSelectedItem().equals("En Espera")) {
+                                model.setEstado("En Espera");
+                            }
+                            model.setEstado_elim(estado);
+                            if (model.ModificarPartido()) {
+                                limpiar();
+                                JOptionPane.showMessageDialog(vistapar, "DATOS CREADOS");
+                                vistapar.getDialogRegistrarModificar().setVisible(false);
+                                cargaPartidos();
+                            } else {
+                                JOptionPane.showMessageDialog(vistapar, "ERROR AL GRABAR DATOS");
+                            }
+
+                        }
+                    }
                 }
             }
 //-------------------------------------------------------ELIMINAR--------------------------------------------------------------------------------------------
@@ -324,7 +428,7 @@ public class Controlador_Partido {
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
         listaP.stream().forEach(p -> {
-            Object[] rowData = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
+            Object[] rowData = {p.getCod_partido(), p.getNombre_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getNombreequipo1(), p.getNombreequipo2()};
             mJtable.addRow(rowData);
         }
         );
@@ -389,9 +493,14 @@ public class Controlador_Partido {
                 vistapar.getTxtgrupo().setText(String.valueOf(p.getGrupo()));
                 vistapar.getCmestado().setSelectedItem(String.valueOf(p.getEstado()));
                 vistapar.getDtfecha().setDate((p.getFecha()));
-                vistapar.getTxtEquipo1().setText(String.valueOf(p.getCod_equipo1()));
-                vistapar.getTxtEquipo2().setText(String.valueOf(p.getCod_equipo2()));
-                vistapar.getTxtEstadio().setText(String.valueOf(p.getCod_estadio()));
+                vistapar.getTxtEquipo1().setText(String.valueOf(p.getNombreequipo1()));
+                vistapar.getTxtEquipo2().setText(String.valueOf(p.getNombreequipo2()));
+                vistapar.getTxtEstadio().setText(String.valueOf(p.getNombre_estadio()));
+                vistapar.getEstocu().setText(String.valueOf(p.getCod_estadio()));
+                vistapar.getEquocu().setText(String.valueOf(p.getCod_equipo1()));
+                vistapar.getEquocu2().setText(String.valueOf(p.getCod_equipo2()));
+                vistapar.getFechaantes().setText(String.valueOf(p.getFechaantes()));
+                vistapar.getFechadespues().setText(String.valueOf(p.getFechadespues()));
 
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");
@@ -509,7 +618,7 @@ public class Controlador_Partido {
             List<Clase_Partido> par = modeloPar.BuscarPartidos(vistapar.txtBuscar.getText());
             par.stream().forEach(p -> {
 
-                Object datos[] = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(),p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
+                Object datos[] = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
                 tabla.addRow(datos);
             });
         }
@@ -528,6 +637,22 @@ public class Controlador_Partido {
         if (vistapar.getTxtBuscar().getText().trim().length() > 3) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
+    }
+
+    private void validarGrupo(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+        boolean mayusculas = dato >= 65 && dato <= 90;
+
+        if (!(mayusculas || backspace)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar letras en MAYUSCULA");
+        }
+        if (vistapar.getTxtgrupo().getText().trim().length() > 0) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (1)");
         }
     }
 
