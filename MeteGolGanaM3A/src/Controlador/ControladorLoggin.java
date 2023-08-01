@@ -4,18 +4,24 @@
  */
 package Controlador;
 
+import Modelo.Clase_Equipo;
 import Modelo.Clase_Persona;
+import Modelo.ModeloEquipos;
+import Modelo.ModeloLoggin;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Entrenador;
 import Modelo.Modelo_Jugador;
 import Modelo.Modelo_Persona;
 import Vista.LogIn;
+import Vista.MenuPrincipal;
 import Vista.VistaEntrenador;
 import Vista.VistaJugadores;
 import Vista.Vista_Arbitro;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,6 +31,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,12 +47,13 @@ public class ControladorLoggin {
     private Modelo.Modelo_Jugador modJugador;
     private Modelo.Modelo_Entrenador modEnt;
     private Modelo.Modelo_Arbitro modArb;
-    Validaciones val;
+    private Modelo.ModeloEquipos modEquipo;
+    private Modelo.ModeloLoggin modlog;
 
     public ControladorLoggin() {
     }
 
-    public ControladorLoggin(LogIn visPer, VistaJugadores visJugador, Vista_Arbitro visArbitro, VistaEntrenador visEntrenador, Modelo_Persona modPersona, Modelo_Jugador modJugador, Modelo_Entrenador modEnt, Modelo_Arbitro modArb) {
+    public ControladorLoggin(LogIn visPer, VistaJugadores visJugador, Vista_Arbitro visArbitro, VistaEntrenador visEntrenador, Modelo_Persona modPersona, Modelo_Jugador modJugador, Modelo_Entrenador modEnt, Modelo_Arbitro modArb, ModeloEquipos modEquipo, ModeloLoggin modlog) {
         this.visPer = visPer;
         this.visJugador = visJugador;
         this.visArbitro = visArbitro;
@@ -54,12 +62,20 @@ public class ControladorLoggin {
         this.modJugador = modJugador;
         this.modEnt = modEnt;
         this.modArb = modArb;
+        this.modEquipo = modEquipo;
+        this.modlog = modlog;
         visPer.setVisible(true);
     }
 
-
     public void InicarLoggin() {
 
+        MostrarEquipos();
+        visJugador.getTxtRuta().setVisible(false);
+        visJugador.getTxtCod().setVisible(false);
+        visJugador.getTxtCedula().setEditable(false);
+        visJugador.getTxtEquipo().setEditable(false);
+        visEntrenador.getTxtCedula().setEditable(false);
+        visPer.getBtnIngresar().addActionListener(l -> IniciarSesion());
         visPer.getBtnCrearCuenta().addActionListener(l -> EscogerTipoUsuario());
         visPer.getBtnCrearCuenta().addActionListener(l -> LimpiarDatos());
         visPer.getBtnFoto().addActionListener(l -> Foto());
@@ -74,7 +90,25 @@ public class ControladorLoggin {
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
         visEntrenador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
         visArbitro.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
-
+        visJugador.getTblEquipo().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                visJugador.getTxtEquipo().setText(visJugador.getTblEquipo().getValueAt(visJugador.getTblEquipo().getSelectedRow(), 0).toString());
+            }
+        });
+        visEntrenador.getTblEquipo().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                visEntrenador.getTxtEquipo().setText(visEntrenador.getTblEquipo().getValueAt(visEntrenador.getTblEquipo().getSelectedRow(), 0).toString());
+            }
+        });
+        try {
+            visJugador.getTxtCod().setText(String.valueOf(modJugador.CargarCodigo()));
+            visEntrenador.getTxtCodigo().setText(String.valueOf(modEnt.CargarCodigoID()));
+            visArbitro.getTxtCodigo().setText(String.valueOf(modArb.CargarCodigoID()));
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void IniciarDialogPersona(String titulo) {
@@ -97,6 +131,28 @@ public class ControladorLoggin {
             }
 
         });
+    }
+
+    public void IniciarSesion() {
+
+        if (visPer.getTxtUsuario().getText().isEmpty() || visPer.getTxtPassword().getText().isEmpty()) {
+
+            MensajeError("Ingrese sus datos por favor");
+        } else {
+
+            if (modlog.IniciarSesion(visPer.getTxtUsuario().getText(), visPer.getTxtPassword().getText())) {
+
+                Vista.MenuPrincipal log = new MenuPrincipal();
+
+                Controlador_MP ctr = new Controlador_MP(log);
+
+                ctr.iniciaControl();
+            } else {
+                
+                MensajeError("El usuario no se encuentra registrado");
+            }
+        }
+
     }
 
     public void EscogerTipoUsuario() {
@@ -364,7 +420,7 @@ public class ControladorLoggin {
             visArbitro.lblFoto.setIcon(new ImageIcon(foto));
         }
 
-    }    
+    }
 
     public void LimpiarDatos() {
 
@@ -380,7 +436,7 @@ public class ControladorLoggin {
         visPer.btnGrupo1.clearSelection();
         visPer.lblFoto.setIcon(null);
         visPer.getCbxRegistrarComo().setSelectedIndex(0);
-        
+
         visJugador.getTxtAñosExperiencia().setText("");
         //visJugador.getTxtCedula().setText("");
         visJugador.getTxtEquipo().setText("");
@@ -412,7 +468,25 @@ public class ControladorLoggin {
         Vista_Arbitro.cbxPosicion.setSelectedIndex(0);
         Vista_Arbitro.lblFoto.setIcon(null);
         Vista_Arbitro.tblArbitros.clearSelection();
-        
+
+    }
+
+    ///// Metodos para las tablas con claves foraneas 
+    public void MostrarEquipos() {
+
+        DefaultTableModel tabla = (DefaultTableModel) visJugador.getTblEquipo().getModel();
+        DefaultTableModel tabla2 = (DefaultTableModel) visEntrenador.getTblEquipo().getModel();
+        tabla.setNumRows(0);
+        tabla2.setNumRows(0);
+
+        List<Clase_Equipo> jug = modEquipo.listarEquipos();
+        jug.stream().forEach(p -> {
+
+            Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
+            tabla.addRow(datos);
+            tabla2.addRow(datos);
+        });
+
     }
 
     public void MensajeSucces(String mensaje) {

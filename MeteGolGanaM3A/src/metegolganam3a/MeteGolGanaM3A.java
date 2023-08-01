@@ -9,6 +9,8 @@ import Controlador.ControladorLoggin;
 import Controlador.Controlador_Arbitro;
 import Controlador.Controlador_Jugador;
 import Controlador.Controlador_MP;
+import Modelo.ModeloEquipos;
+import Modelo.ModeloLoggin;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Entrenador;
 import Modelo.Modelo_Jugador;
@@ -30,7 +32,7 @@ public class MeteGolGanaM3A {
      */
     public static void main(String[] args) {
 
-        Vista.MenuPrincipal log = new MenuPrincipal();
+        Vista.LogIn visPer = new LogIn();
         Vista.VistaJugadores ju = new VistaJugadores();
         Vista.VistaEntrenador entr = new VistaEntrenador();
         Vista.Vista_Arbitro arb = new Vista_Arbitro();
@@ -38,10 +40,12 @@ public class MeteGolGanaM3A {
         Modelo.Modelo_Jugador modjug = new Modelo_Jugador();
         Modelo.Modelo_Entrenador moden = new Modelo_Entrenador();
         Modelo.Modelo_Arbitro modar = new Modelo_Arbitro();
+        Modelo.ModeloEquipos mode = new ModeloEquipos();
+        Modelo.ModeloLoggin log = new ModeloLoggin();
         
-        Controlador_MP ctr = new Controlador_MP(log);
+        ControladorLoggin ctr = new ControladorLoggin(visPer, ju, arb, entr, modper, modjug, moden, modar, mode, log);
         
-        ctr.iniciaControl();
+        ctr.InicarLoggin();
     
     }
 
