@@ -151,6 +151,8 @@ public class ControladorLoggin {
                 Controlador_MP ctr = new Controlador_MP(log);
 
                 ctr.iniciaControl();
+                
+                visPer.dispose();
             } else {
 
                 if (visPer.getTxtUsuario().getText().equals("admin") || visPer.getTxtPassword().getText().equals("admin")) {
@@ -160,6 +162,7 @@ public class ControladorLoggin {
                     Controlador_MP ctr = new Controlador_MP(log);
 
                     ctr.iniciaControl();
+                    visPer.dispose();
                 } else {
 
                     MensajeError("El usuario no se encuentra registrado");
