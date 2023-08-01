@@ -63,19 +63,19 @@ public class Controlador_Arbitro {
 
         visArbi.setTitle("Arbitros");
         MostrarDatos();
-        Vista_Arbitro.getBtnAgregar().addActionListener(l -> IniciarDialogPersona("Registrar"));
-        Vista_Arbitro.getBtnCancelar().addActionListener(l -> {
-            Vista_Arbitro.dialogRegistrarModificar.dispose();
-            visArbi.tblArbitros.setEnabled(true);
+        visArbi.getBtnAgregar().addActionListener(l -> IniciarDialogPersona("Registrar"));
+        visArbi.getBtnCancelar().addActionListener(l -> {
+            visArbi.dialogRegistrarModificar.dispose();
+            visArbi.getTblArbitros().setEnabled(true);
             visPer.txtCedulaDLG.setEnabled(true);
 
         });
         visPer.btnRetrocederDlgRegistro.addActionListener(l -> {
             visPer.dlgPersona.dispose();
-            visArbi.tblArbitros.setEnabled(true);
+            visArbi.getTblArbitros().setEnabled(true);
             visPer.txtCedulaDLG.setEnabled(true);
         });
-        Vista_Arbitro.btnModificar.addActionListener(l -> {
+        visArbi.getBtnModificar().addActionListener(l -> {
             if (visArbi.getTblArbitros().getSelectedRow() == -1) {
 
                 MensajeError("Seleccione al Arbitro que desea editar");
@@ -84,15 +84,15 @@ public class Controlador_Arbitro {
 
                 IniciarDialogPersona("Editar");
                 visPer.txtCedulaDLG.setEnabled(false);
-                visArbi.tblArbitros.setEnabled(false);
+                visArbi.getTblArbitros().setEnabled(false);
 
             }
         });
         visPer.btnSiguienteDlgUsu.addActionListener(l -> RegistrarEditarPersona());
-        Vista_Arbitro.btnRegistrarModificar.addActionListener(l -> RegistrarEditarArbitro());
+        visArbi.getBtnRegistrarModificar().addActionListener(l -> RegistrarEditarArbitro());
         visPer.btnFoto.addActionListener(l -> Foto());
-        Vista_Arbitro.btnEliminar.addActionListener(l -> EliminarArbitro());
-        Vista_Arbitro.txtBuscar.addKeyListener(new KeyAdapter() {
+        visArbi.getBtnEliminar().addActionListener(l -> EliminarArbitro());
+        visArbi.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -101,12 +101,12 @@ public class Controlador_Arbitro {
             }
         });
         //////////////////////////////////////////VALIDACIONES////////////////////////////////////////////////
-        Vista_Arbitro.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
+        visArbi.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 validarEntradaAnios(evt);
             }
         });
-        Vista_Arbitro.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
+        visArbi.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 validarSueldo(evt);
             }
@@ -157,12 +157,13 @@ public class Controlador_Arbitro {
 
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
-            Vista_Arbitro.btnRegistrarModificar.setText("Registrar");
+            visArbi.getBtnRegistrarModificar().setText("Registrar");
             LimpiarDatos();
         } else {
 
             LlenarDatosPersona();
-            Vista_Arbitro.btnRegistrarModificar.setText("Aceptar");
+            visArbi.getBtnRegistrarModificar().setText("Aceptar");
+
         }
 
     }
@@ -176,16 +177,16 @@ public class Controlador_Arbitro {
 
         if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
 
-            Vista_Arbitro.txtCedula.setText(visPer.txtCedulaDLG.getText());
+            visArbi.getTxtCedula().setText(visPer.txtCedulaDLG.getText());
             List<Clase_Persona> jug = modPersona.ListaPersona();
             jug.stream().forEach(p -> {
 
-                if (p.getCedula().equals(Vista_Arbitro.txtCedula.getText())) {
+                if (p.getCedula().equals(visArbi.getTxtCedula().getText())) {
 
                     ImageIcon miImagen = new ImageIcon(visPer.getTxtRuta().getText());
                     Image foto = miImagen.getImage();
                     foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
-                    visArbi.lblFoto.setIcon(new ImageIcon(foto));
+                    visArbi.getLblFoto().setIcon(new ImageIcon(foto));
                 }
             });
         } else {
@@ -340,16 +341,16 @@ public class Controlador_Arbitro {
 
         if (visArbi.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
 
-            if (Vista_Arbitro.txtCedula.getText().isEmpty()
-                    || Vista_Arbitro.txtAñosExperiencia.getText().isEmpty() || Vista_Arbitro.getTxtSueldo().getText().isEmpty() || Vista_Arbitro.cbxPosicion.getSelectedIndex() == 0) {
+            if (visArbi.getTxtCedula().getText().isEmpty()
+                    || visArbi.getTxtAñosExperiencia().getText().isEmpty() || visArbi.getTxtSueldo().getText().isEmpty() || visArbi.getCbxPosicion().getSelectedIndex() == 0) {
 
                 MensajeError("Faltan campos por llenar");
             } else {
 
-                modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
-                modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
-                modArbi.setCedula_persona_arbitro(Vista_Arbitro.txtCedula.getText());
-                modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
+                modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(visArbi.getTxtAñosExperiencia().getText()));
+                modArbi.setPosicion_arbitro(visArbi.getCbxPosicion().getSelectedItem().toString());
+                modArbi.setCedula_persona_arbitro(visArbi.getTxtCedula().getText());
+                modArbi.setSalario_arbitro(Double.valueOf(visArbi.getTxtSueldo().getText()));
 
                 if (modArbi.InsertarArbitro()) {
 
@@ -364,10 +365,10 @@ public class Controlador_Arbitro {
             }
         } else if (Vista_Arbitro.dialogRegistrarModificar.getTitle().equals("Editar")) {
 
-            modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(Vista_Arbitro.txtAñosExperiencia.getText()));
-            modArbi.setPosicion_arbitro(Vista_Arbitro.cbxPosicion.getSelectedItem().toString());
-            modArbi.setSalario_arbitro(Double.valueOf(Vista_Arbitro.txtSueldo.getText()));
-            modArbi.setCodigo_arbitro(Integer.valueOf(Vista_Arbitro.txtCodigo.getText()));
+            modArbi.setAnios_esperiencia_arbitro(Integer.valueOf(visArbi.getTxtAñosExperiencia().getText()));
+            modArbi.setPosicion_arbitro(visArbi.getCbxPosicion().getSelectedItem().toString());
+            modArbi.setSalario_arbitro(Double.valueOf(visArbi.getTxtSueldo().getText()));
+            modArbi.setCodigo_arbitro(Integer.valueOf(visArbi.txtCodigo.getText()));
 
             if (modArbi.ModificarArbitro()) {
 
@@ -375,7 +376,7 @@ public class Controlador_Arbitro {
                 MostrarDatos();
                 visArbi.dialogRegistrarModificar.dispose();
                 visPer.txtCedulaDLG.setEnabled(true);
-                visArbi.tblArbitros.setEnabled(true);
+                visArbi.getTblArbitros().setEnabled(true);
 
             } else {
 
@@ -387,7 +388,7 @@ public class Controlador_Arbitro {
 
     public void EliminarArbitro() {
 
-        if (Vista_Arbitro.tblArbitros.getSelectedRow() == -1) {
+        if (visArbi.getTblArbitros().getSelectedRow() == -1) {
 
             MensajeError("Seleccione al Arbitro que desea eliminar");
         } else {
@@ -396,7 +397,7 @@ public class Controlador_Arbitro {
 
             if (x == 0) {
 
-                modArbi.setCodigo_arbitro(Vista_Arbitro.tblArbitros.getValueAt(Vista_Arbitro.tblArbitros.getSelectedRow(), 0).hashCode());
+                modArbi.setCodigo_arbitro(visArbi.getTblArbitros().getValueAt(visArbi.getTblArbitros().getSelectedRow(), 0).hashCode());
 
                 if (modArbi.OcultarArbitro()) {
 
@@ -413,7 +414,7 @@ public class Controlador_Arbitro {
 
     public void LlenarDatosPersona() {
 
-        String ced = Vista_Arbitro.tblArbitros.getValueAt(Vista_Arbitro.tblArbitros.getSelectedRow(), 1).toString();
+        String ced = visArbi.getTblArbitros().getValueAt(visArbi.getTblArbitros().getSelectedRow(), 1).toString();
 
         List<Clase_Arbitro> per = modArbi.ListaArbitro();
         per.stream().forEach(p -> {
@@ -456,7 +457,7 @@ public class Controlador_Arbitro {
     public void LlenarDatosArbitro() {
 
         try {
-            String ced = Vista_Arbitro.tblArbitros.getValueAt(Vista_Arbitro.tblArbitros.getSelectedRow(), 1).toString();
+            String ced = visArbi.getTblArbitros().getValueAt(visArbi.getTblArbitros().getSelectedRow(), 1).toString();
 
             List<Clase_Arbitro> jug = modArbi.ListaArbitro();
             jug.stream().forEach(p -> {
@@ -464,15 +465,15 @@ public class Controlador_Arbitro {
                 if (p.getCedula_persona_arbitro().equals(ced)) {
 
                     //Arbitro
-                    Vista_Arbitro.txtAñosExperiencia.setText(String.valueOf(p.getAnios_esperiencia_arbitro()));
-                    Vista_Arbitro.txtCedula.setText(String.valueOf(p.getCedula_persona_arbitro()));
-                    Vista_Arbitro.cbxPosicion.setSelectedItem(p.getPosicion_arbitro());
-                    Vista_Arbitro.txtSueldo.setText(String.valueOf(p.getSalario_arbitro()));
-                    Vista_Arbitro.txtCodigo.setText(String.valueOf(p.getCodigo_arbitro()));
+                    visArbi.getTxtAñosExperiencia().setText(String.valueOf(p.getAnios_esperiencia_arbitro()));
+                    visArbi.getTxtCedula().setText(String.valueOf(p.getCedula_persona_arbitro()));
+                    visArbi.getCbxPosicion().setSelectedItem(p.getPosicion_arbitro());
+                    visArbi.getTxtSueldo().setText(String.valueOf(p.getSalario_arbitro()));
+                    visArbi.txtCodigo.setText(String.valueOf(p.getCodigo_arbitro()));
                     ImageIcon miImagen = new ImageIcon(visArbi.getTxt_Ruta_Foto().getText());
                     Image foto = miImagen.getImage();
                     foto = foto.getScaledInstance(145, 145, Image.SCALE_SMOOTH);
-                    visArbi.lblFoto.setIcon(new ImageIcon(foto));
+                    visArbi.getLblFoto().setIcon(new ImageIcon(foto));
                 }
             });
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
@@ -495,17 +496,17 @@ public class Controlador_Arbitro {
         visPer.btnGrupo1.clearSelection();
         visPer.lblFoto.setIcon(null);
 
-        Vista_Arbitro.txtAñosExperiencia.setText("");
-        Vista_Arbitro.txtCedula.setText("");
-        Vista_Arbitro.txtSueldo.setText("");
-        Vista_Arbitro.cbxPosicion.setSelectedIndex(0);
-        Vista_Arbitro.lblFoto.setIcon(null);
+        visArbi.getTxtAñosExperiencia().setText("");
+        visArbi.getTxtCedula().setText("");
+        visArbi.getTxtSueldo().setText("");
+        visArbi.getCbxPosicion().setSelectedIndex(0);
+        visArbi.getLblFoto().setIcon(null);
 
     }
 
     public void MostrarDatos() {
 
-        DefaultTableModel tabla = (DefaultTableModel) Vista_Arbitro.tblArbitros.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) visArbi.getTblArbitros().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Arbitro> jug = modArbi.ListaArbitro();
@@ -524,7 +525,7 @@ public class Controlador_Arbitro {
             DefaultTableModel tabla = (DefaultTableModel) visArbi.getTblArbitros().getModel();
             tabla.setNumRows(0);
 
-            List<Clase_Arbitro> par = modArbi.BuscarArbitro(visArbi.txtBuscar.getText());
+            List<Clase_Arbitro> par = modArbi.BuscarArbitro(visArbi.getTxtBuscar().getText());
             par.stream().forEach(p -> {
 
                 Object datos[] = {p.getCodigo_arbitro(), p.getCedula_persona_arbitro(), p.getNombnre1(), p.getApellido1(), p.getPosicion_arbitro(), p.getSalario_arbitro()};
@@ -688,7 +689,7 @@ public class Controlador_Arbitro {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 1) {
+        if (visArbi.getTxtAñosExperiencia().getText().trim().length() > 1) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
         }
