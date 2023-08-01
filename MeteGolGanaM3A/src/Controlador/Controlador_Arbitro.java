@@ -719,4 +719,9 @@ public class Controlador_Arbitro {
         return edadstr >= 18;
 
     }
+    //-------------------------------------------------------CODIGO --------------------------------------------------------------------------------------------
+
+    private void CargarID() throws SQLException {
+        visArbi.getTxtCodigo().setText(String.valueOf(modArbi.CargarCodigoID()));
+    }
 }

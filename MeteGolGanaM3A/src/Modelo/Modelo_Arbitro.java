@@ -173,4 +173,23 @@ public class Modelo_Arbitro extends Clase_Arbitro {
 
         return imageReader.read(0, param);
     }
+
+    public int CargarCodigoID() throws SQLException {
+
+        int codigo = 0;
+        String sql = "select max(codigo) from arbitro;";
+        ResultSet res = con.Consultas(sql);
+
+        try {
+            while (res.next()) {
+
+                codigo = res.getInt("max") + 1;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Clase_Partido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        res.close();
+        return codigo;
+    }
 }
