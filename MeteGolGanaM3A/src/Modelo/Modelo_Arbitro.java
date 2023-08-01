@@ -116,6 +116,7 @@ public class Modelo_Arbitro extends Clase_Arbitro {
                     + "WHERE p.cedula = j.cedula_personafk "
                     + "AND (j.cedula_personafk LIKE '%" + aux + "%' OR CONCAT(p.nombre1, ' ', p.apellido1) LIKE '%" + aux + "%') "
                     + "ORDER BY j.codigo";
+
             ResultSet res = con.Consultas(sql);
             List<Clase_Arbitro> arb = new ArrayList<>();
             byte[] bytea;
@@ -131,7 +132,6 @@ public class Modelo_Arbitro extends Clase_Arbitro {
                 miarbitro.setSalario_arbitro(res.getDouble("salario"));
                 miarbitro.setEstado_elim(res.getBoolean("estado_elim"));
                 miarbitro.setCedula_persona_arbitro(res.getString("cedula_personafk"));
-
                 //persona
                 miarbitro.setApellido1(res.getString("apellido1"));
                 miarbitro.setApellido2(res.getString("apellido2"));

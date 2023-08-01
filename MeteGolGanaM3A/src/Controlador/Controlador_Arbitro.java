@@ -96,7 +96,7 @@ public class Controlador_Arbitro {
             @Override
             public void keyReleased(KeyEvent e) {
 
-                BuscarArbitros();
+                buscarArbitros();
 
             }
         });
@@ -516,17 +516,21 @@ public class Controlador_Arbitro {
         });
     }
 
-    public void BuscarArbitros() {
+    //------------------------------------------------------- BUSCADOR PRINCIPAL--------------------------------------------------------------------------------------------
+    public void buscarArbitros() {
+        if (visArbi.getTxtBuscar().getText().equals("")) {
+            MostrarDatos();
+        } else {
+            DefaultTableModel tabla = (DefaultTableModel) visArbi.getTblArbitros().getModel();
+            tabla.setNumRows(0);
 
-        DefaultTableModel tabla = (DefaultTableModel) Vista_Arbitro.tblArbitros.getModel();
-        tabla.setNumRows(0);
+            List<Clase_Arbitro> par = modArbi.BuscarArbitro(visArbi.txtBuscar.getText());
+            par.stream().forEach(p -> {
 
-        List<Clase_Arbitro> jug = modArbi.BuscarArbitro(Vista_Arbitro.txtBuscar.getText());
-        jug.stream().forEach(p -> {
-
-            Object datos[] = {p.getCodigo_arbitro(), p.getCedula_persona_arbitro(), p.getNombnre1(), p.getApellido1(), p.getPosicion_arbitro(), p.getSalario_arbitro()};
-            tabla.addRow(datos);
-        });
+                Object datos[] = {p.getCodigo_arbitro(), p.getCedula_persona_arbitro(), p.getNombnre1(), p.getApellido1(), p.getPosicion_arbitro(), p.getSalario_arbitro()};
+                tabla.addRow(datos);
+            });
+        }
     }
 
     public void MensajeSucces(String mensaje) {
@@ -719,6 +723,7 @@ public class Controlador_Arbitro {
         return edadstr >= 18;
 
     }
+
     //-------------------------------------------------------CODIGO --------------------------------------------------------------------------------------------
     private void CargarID() throws SQLException {
         visArbi.getTxtCodigo().setText(String.valueOf(modArbi.CargarCodigoID()));
