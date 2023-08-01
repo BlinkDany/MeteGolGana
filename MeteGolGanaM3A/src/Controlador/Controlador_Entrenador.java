@@ -549,16 +549,20 @@ public class Controlador_Entrenador {
     }
 
     public void BuscarEntrenador() {
+        if (VistaEntrenador.getTxtBuscar().getText().equals("")) {
+            MostrarDatos();
+        } else {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
-        tabla.setNumRows(0);
+            DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
+            tabla.setNumRows(0);
 
-        List<Clase_Entrenador> jug = modEnt.BuscarEntrenador(VistaEntrenador.txtBuscar.getText());
-        jug.stream().forEach(p -> {
+            List<Clase_Entrenador> jug = modEnt.BuscarEntrenador(VistaEntrenador.txtBuscar.getText());
+            jug.stream().forEach(p -> {
 
-            Object datos[] = {p.getCodigo(), p.getCedula_personafk(), p.getNombnre1(), p.getApellido1(), p.getCodigo_equipofk(), p.getSueldo()};
-            tabla.addRow(datos);
-        });
+                Object datos[] = {p.getCodigo(), p.getCedula_personafk(), p.getNombnre1(), p.getApellido1(), p.getCodigo_equipofk(), p.getSueldo()};
+                tabla.addRow(datos);
+            });
+        }
     }
 
     public void MensajeSucces(String mensaje) {
@@ -713,7 +717,7 @@ public class Controlador_Entrenador {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
         }
-        if (Vista_Arbitro.getTxtAñosExperiencia().getText().trim().length() > 1) {
+        if (visEnt.getTxtAñosExperiencia().getText().trim().length() > 1) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
         }
