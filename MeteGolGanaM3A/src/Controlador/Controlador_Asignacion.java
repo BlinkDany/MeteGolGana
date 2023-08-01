@@ -413,7 +413,11 @@ public class Controlador_Asignacion {
                 vistaAsig.getTxtCodAsignacion().setText(String.valueOf(p.getCodigo_asignacion()));
                 vistaAsig.getDtfecha().setText(String.valueOf(p.getFecha_asignacion()));
                 vistaAsig.getTxtcodArbitro().setText(String.valueOf(p.getCodigo_arbitro_asignacion()));
+                vistaAsig.getTxt_nombre_arb().setText(String.valueOf(p.getNombre_Arbitro()));
+                vistaAsig.getTxt_apellido_arb().setText(String.valueOf(p.getApellido_Arbitro()));
                 vistaAsig.getTxtcodPartido().setText(String.valueOf(p.getCodigo_partido_asignacion()));
+                vistaAsig.getTxt_equipo_1().setText(String.valueOf(p.getEquipo_1()));
+                vistaAsig.getTxt_equipo_2().setText(String.valueOf(p.getEquipo_2()));
 
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");

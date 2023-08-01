@@ -69,12 +69,12 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         this.fechaPartido = fechaPartido;
     }
 
-    public static JButton getBtnAgregar() {
+    public JButton getBtnAgregar() {
         return btnAgregar;
     }
 
-    public static void setBtnAgregar(JButton btnAgregar) {
-        Vista_Asignacion.btnAgregar = btnAgregar;
+    public void setBtnAgregar(JButton btnAgregar) {
+        this.btnAgregar = btnAgregar;
     }
 
     public FSButtonMD getBtnArbitro() {
@@ -197,12 +197,12 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         this.lblbusqueda = lblbusqueda;
     }
 
-    public static JTable getTblAsignacion() {
+    public JTable getTblAsignacion() {
         return tblAsignacion;
     }
 
-    public static void setTblAsignacion(JTable tblAsignacion) {
-        Vista_Asignacion.tblAsignacion = tblAsignacion;
+    public void setTblAsignacion(JTable tblAsignacion) {
+        this.tblAsignacion = tblAsignacion;
     }
 
     public static JTable getTblArbitro() {
@@ -443,18 +443,21 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         fechaPartido.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(fechaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, -1));
 
+        txt_equipo_2.setEditable(false);
         txt_equipo_2.setBackground(new java.awt.Color(255, 255, 255));
         txt_equipo_2.setForeground(new java.awt.Color(0, 0, 0));
         txt_equipo_2.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txt_equipo_2.setPlaceholder("EQUIPO 2");
         jPanel3.add(txt_equipo_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 80, -1));
 
+        txt_nombre_arb.setEditable(false);
         txt_nombre_arb.setBackground(new java.awt.Color(255, 255, 255));
         txt_nombre_arb.setForeground(new java.awt.Color(0, 0, 0));
         txt_nombre_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txt_nombre_arb.setPlaceholder("NOMBRE");
         jPanel3.add(txt_nombre_arb, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 110, -1));
 
+        txt_apellido_arb.setEditable(false);
         txt_apellido_arb.setBackground(new java.awt.Color(255, 255, 255));
         txt_apellido_arb.setForeground(new java.awt.Color(0, 0, 0));
         txt_apellido_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -467,6 +470,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jLabel2.setText("VS");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
+        txt_equipo_1.setEditable(false);
         txt_equipo_1.setBackground(new java.awt.Color(255, 255, 255));
         txt_equipo_1.setForeground(new java.awt.Color(0, 0, 0));
         txt_equipo_1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -521,7 +525,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                 txtbuscarcodActionPerformed(evt);
             }
         });
-        jPanel5.add(txtbuscarcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 440, -1));
+        jPanel5.add(txtbuscarcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 130, -1));
 
         btnCancelar1.setText("Cancelar");
         btnCancelar1.setColorHover(new java.awt.Color(0, 0, 0));
@@ -594,7 +598,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -724,9 +728,9 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAgregar)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 587, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -813,12 +817,12 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnArbitro;
     private LIB.FSButtonMD btnBuscar;
     public static LIB.FSButtonMD btnCancelar;
     public static LIB.FSButtonMD btnCancelar1;
-    public static javax.swing.JButton btnEliminar;
+    private static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnPartido;
@@ -843,16 +847,16 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JLabel lblbusqueda;
     public javax.swing.JPanel panelPartido;
-    public static javax.swing.JTable tblArbitro;
-    public static javax.swing.JTable tblAsignacion;
+    private static javax.swing.JTable tblArbitro;
+    private javax.swing.JTable tblAsignacion;
     private javax.swing.JTable tblPartido;
-    public static LIB.FSTexFieldMD txtBuscar;
+    private static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCodAsignacion;
     private LIB.FSTexFieldMD txt_apellido_arb;
     private LIB.FSTexFieldMD txt_equipo_1;
     private LIB.FSTexFieldMD txt_equipo_2;
     private LIB.FSTexFieldMD txt_nombre_arb;
-    public static LIB.FSTexFieldMD txtbuscarcod;
+    private static LIB.FSTexFieldMD txtbuscarcod;
     public static LIB.FSTexFieldMD txtcodArbitro;
     public static LIB.FSTexFieldMD txtcodPartido;
     // End of variables declaration//GEN-END:variables
