@@ -90,9 +90,13 @@ public class Modelo_Partido extends Clase_Partido {
 
         try {
 
-            String sql = "SELECT * "
-                    + "from partido "
-                    + "WHERE codigo = '" + aux + "'and estado_elim = false";
+            String sql = "SELECT e.codigo, e.cod_estadiofk, e.cod_temporadafk, e.fecha, e.grupo, e.estado, e.cod_equipo1fk, e.cod_equipo2fk, e.estado_elim, p.codigo, p.nombre, e1.codigo, e1.nombre, e2.codigo, e2.nombre, t.fecha_inicio, t.fecha_fin "
+                    + "from partido e "
+                    + "INNER JOIN estadio p ON e.cod_estadiofk = p.codigo "
+                    + "INNER JOIN equipo e1 ON e.cod_equipo1fk = e1.codigo "
+                    + "INNER JOIN equipo e2 ON e.cod_equipo2fk = e2.codigo "
+                    + "INNER JOIN temporada t ON e.cod_temporadafk = t.codigo "
+                    + "WHERE e.codigo = '" + aux + "'and e.estado_elim = false";
 
             ResultSet rs = CPG.Consultas(sql);
             List<Clase_Partido> par = new ArrayList<>();
@@ -101,15 +105,20 @@ public class Modelo_Partido extends Clase_Partido {
 
                 Clase_Partido partido = new Clase_Partido();
 
-                partido.setCod_partido(rs.getInt("codigo"));
-                partido.setCod_estadio(rs.getInt("cod_estadiofk"));
-                partido.setCod_temporadafk(rs.getInt("cod_temporadafk"));
-                partido.setFecha(rs.getDate("fecha"));
-                partido.setGrupo(rs.getString("grupo"));
-                partido.setEstado(rs.getString("estado"));
-                partido.setCod_equipo1(rs.getInt("cod_equipo1fk"));
-                partido.setCod_equipo2(rs.getInt("cod_equipo2fk"));
-                partido.setEstado_elim(rs.getBoolean("estado_elim"));
+                partido.setCod_partido(rs.getInt(1));
+                partido.setCod_estadio(rs.getInt(2));
+                partido.setCod_temporadafk(rs.getInt(3));
+                partido.setFecha(rs.getDate(4));
+                partido.setGrupo(rs.getString(5));
+                partido.setEstado(rs.getString(6));
+                partido.setCod_equipo1(rs.getInt(7));
+                partido.setCod_equipo2(rs.getInt(8));
+                partido.setEstado_elim(rs.getBoolean(9));
+                partido.setNombre_estadio(rs.getString(11));
+                partido.setNombreequipo1(rs.getString(13));
+                partido.setNombreequipo2(rs.getString(15));
+                partido.setFechaantes(rs.getDate(16));
+                partido.setFechadespues(rs.getDate(17));
 
                 par.add(partido);
             }

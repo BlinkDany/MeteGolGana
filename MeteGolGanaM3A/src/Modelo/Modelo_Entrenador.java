@@ -57,7 +57,7 @@ public class Modelo_Entrenador extends Clase_Entrenador {
 
             String sql = "SELECT * "
                     + "FROM entrenador j, persona p, equipo f "
-                    + "WHERE p.cedula = j.cedula_personafk and p.estado_elim = false and j.codigo_equipofk=f.codigo "
+                    + "WHERE p.cedula = j.cedula_personafk and j.estado_elim = false and j.codigo_equipofk=f.codigo "
                     + "AND (j.cedula_personafk LIKE '%" + aux + "%' OR CONCAT(p.nombre1, ' ', p.apellido1) LIKE '%" + aux + "%') "
                     + "ORDER BY j.codigo ";
             ResultSet res = con.Consultas(sql);

@@ -618,8 +618,8 @@ public class Controlador_Partido {
             List<Clase_Partido> par = modeloPar.BuscarPartidos(vistapar.txtBuscar.getText());
             par.stream().forEach(p -> {
 
-                Object datos[] = {p.getCod_partido(), p.getCod_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getCod_equipo1(), p.getCod_equipo2()};
-                tabla.addRow(datos);
+                 Object[] rowData = {p.getCod_partido(), p.getNombre_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getNombreequipo1(), p.getNombreequipo2()};
+            tabla.addRow(rowData);
             });
         }
     }
