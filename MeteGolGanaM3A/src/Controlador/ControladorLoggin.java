@@ -75,6 +75,10 @@ public class ControladorLoggin {
         visJugador.getTxtCedula().setEditable(false);
         visJugador.getTxtEquipo().setEditable(false);
         visEntrenador.getTxtCedula().setEditable(false);
+        visJugador.getBtnRegresar().addActionListener(l -> {
+            visPer.dlgPersona.setVisible(true);
+            visJugador.getDialogRegistrarModificar().setVisible(false);
+        });
         visPer.getBtnIngresar().addActionListener(l -> IniciarSesion());
         visPer.getBtnCrearCuenta().addActionListener(l -> EscogerTipoUsuario());
         visPer.getBtnCrearCuenta().addActionListener(l -> LimpiarDatos());

@@ -120,14 +120,6 @@ public class LogIn extends javax.swing.JFrame {
         LogIn.btnSiguienteDlgUsu = btnSiguienteDlgUsu;
     }
 
-    public JComboBox<String> getCbxIngresarcomo() {
-        return cbxIngresarcomo;
-    }
-
-    public void setCbxIngresarcomo(JComboBox<String> cbxIngresarcomo) {
-        this.cbxIngresarcomo = cbxIngresarcomo;
-    }
-
     public static JDialog getDlgPersona() {
         return dlgPersona;
     }
@@ -199,15 +191,7 @@ public class LogIn extends javax.swing.JFrame {
     public static void setLblFoto(JLabel lblFoto) {
         LogIn.lblFoto = lblFoto;
     }
-
-    public JLabel getLblOlvidasteContrasenia() {
-        return lblOlvidasteContrasenia;
-    }
-
-    public void setLblOlvidasteContrasenia(JLabel lblOlvidasteContrasenia) {
-        this.lblOlvidasteContrasenia = lblOlvidasteContrasenia;
-    }
-
+    
     public static JLabel getLblTitulo() {
         return lblTitulo;
     }
@@ -406,8 +390,6 @@ public class LogIn extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtUsuario = new LIB.FSTexFieldMD();
         txtPassword = new LIB.FSPasswordFieldMD();
-        cbxIngresarcomo = new javax.swing.JComboBox<>();
-        lblOlvidasteContrasenia = new javax.swing.JLabel();
         btnIngresar = new LIB.FSButtonMD();
         btnCrearCuenta = new LIB.FSButtonMD();
 
@@ -705,18 +687,6 @@ public class LogIn extends javax.swing.JFrame {
         txtPassword.setBordeColorFocus(new java.awt.Color(51, 102, 255));
         txtPassword.setPlaceholder("Contraseña ");
 
-        cbxIngresarcomo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        cbxIngresarcomo.setForeground(new java.awt.Color(51, 102, 255));
-        cbxIngresarcomo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Jugador", "Entrenador", "Arbitro" }));
-        cbxIngresarcomo.setToolTipText("Tipo de usuario");
-
-        lblOlvidasteContrasenia.setFont(new java.awt.Font("Yu Gothic Medium", 1, 16)); // NOI18N
-        lblOlvidasteContrasenia.setForeground(new java.awt.Color(102, 102, 102));
-        lblOlvidasteContrasenia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOlvidasteContrasenia.setText("¿Olvidaste tu contraseña?");
-        lblOlvidasteContrasenia.setToolTipText("Restablece tu contraseña");
-        lblOlvidasteContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         btnIngresar.setBackground(new java.awt.Color(51, 102, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.setToolTipText("Inicia Sesión");
@@ -749,8 +719,6 @@ public class LogIn extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxIngresarcomo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOlvidasteContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -766,15 +734,11 @@ public class LogIn extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cbxIngresarcomo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblOlvidasteContrasenia)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 64, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
@@ -782,16 +746,16 @@ public class LogIn extends javax.swing.JFrame {
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
+                .addContainerGap(251, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
+                .addGap(249, 249, 249))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
@@ -883,7 +847,6 @@ public class LogIn extends javax.swing.JFrame {
     public static LIB.FSButtonMD btnRetrocederDlgRegistro;
     private javax.swing.JButton btnSiguienteCombo;
     public static LIB.FSButtonMD btnSiguienteDlgUsu;
-    private javax.swing.JComboBox<String> cbxIngresarcomo;
     private javax.swing.JComboBox<String> cbxRegistrarComo;
     private javax.swing.JDialog dlgCombo;
     public static javax.swing.JDialog dlgPersona;
@@ -898,7 +861,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     public static javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblOlvidasteContrasenia;
     public static javax.swing.JLabel lblTitulo;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     public static javax.swing.JRadioButton rdbFemeninoDlg;
