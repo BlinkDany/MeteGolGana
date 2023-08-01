@@ -27,6 +27,16 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         return btnAgregar;
     }
 
+    public static JButton getBtnReporte() {
+        return btnReporte;
+    }
+
+    public static void setBtnReporte(JButton btnReporte) {
+        VistaCampeonato.btnReporte = btnReporte;
+    }
+    
+    
+
     public static void setBtnAgregar(JButton btnAgregar) {
         VistaCampeonato.btnAgregar = btnAgregar;
     }
@@ -191,6 +201,8 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnLimpiarBuscar = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         dlgCampeonatos.setResizable(false);
 
@@ -381,6 +393,16 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
         btnLimpiarBuscar.setText("Limpiar");
         btnLimpiarBuscar.setToolTipText("Limpiar campos de texto y actualizar tablas");
 
+        btnReporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnReporte.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnReporte.setText("Reporte");
+        btnReporte.setToolTipText("Ver reporte de las temporadas");
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel5.setText("Tabla de Campeonatos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -390,23 +412,27 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLimpiarBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAgregar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnLimpiarBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnModificar)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -419,16 +445,20 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAgregar))
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnLimpiarBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
-                        .addGap(0, 155, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReporte)
+                        .addGap(0, 123, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -461,12 +491,14 @@ public class VistaCampeonato extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnLimpiarDlg;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificarDlg;
+    public static javax.swing.JButton btnReporte;
     private javax.swing.JComboBox<String> cbxTipoCampeonato;
     public static javax.swing.JDialog dlgCampeonatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
