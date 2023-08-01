@@ -403,8 +403,8 @@ public class ControladorLoggin {
         file.setFileFilter(filtrado);
         file.setDialogTitle("Abrir Archivo");
 
-        File Ruta = new File("C:\\Users\\blink\\Pictures");
-        file.setCurrentDirectory(Ruta);
+//        File Ruta = new File("C:\\Users\\blink\\Pictures");
+//        file.setCurrentDirectory(Ruta);
 
         int res = file.showOpenDialog(visPer);
         if (res == JFileChooser.APPROVE_OPTION) {
