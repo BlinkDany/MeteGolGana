@@ -29,6 +29,8 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     public JTextField getTxt_Ruta_Foto() {
         return txt_Ruta_Foto;
     }
+    
+    
 
     public void setTxt_Ruta_Foto(JTextField txt_Ruta_Foto) {
         this.txt_Ruta_Foto = txt_Ruta_Foto;
