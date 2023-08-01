@@ -30,7 +30,7 @@ public class MeteGolGanaM3A {
      */
     public static void main(String[] args) {
 
-        Vista.LogIn log = new LogIn();
+        Vista.MenuPrincipal log = new MenuPrincipal();
         Vista.VistaJugadores ju = new VistaJugadores();
         Vista.VistaEntrenador entr = new VistaEntrenador();
         Vista.Vista_Arbitro arb = new Vista_Arbitro();
@@ -39,9 +39,9 @@ public class MeteGolGanaM3A {
         Modelo.Modelo_Entrenador moden = new Modelo_Entrenador();
         Modelo.Modelo_Arbitro modar = new Modelo_Arbitro();
         
-        ControladorLoggin ctr = new ControladorLoggin(log, ju, arb, entr, modper, modjug, moden, modar);
+        Controlador_MP ctr = new Controlador_MP(log);
         
-        ctr.InicarLoggin();
+        ctr.iniciaControl();
     
     }
 
