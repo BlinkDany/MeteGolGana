@@ -523,7 +523,7 @@ public class Controlador_Entrenador {
 
     public void MostrarDatos() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.getTblEntrenador().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Entrenador> jug = modEnt.ListaEntrenador();
@@ -536,7 +536,7 @@ public class Controlador_Entrenador {
 
     public void MostrarEquipos() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEquipo.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.getTblEquipo().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Equipo> jug = modequipo.listarEquipos();
@@ -553,7 +553,7 @@ public class Controlador_Entrenador {
             MostrarDatos();
         } else {
 
-            DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.tblEntrenador.getModel();
+            DefaultTableModel tabla = (DefaultTableModel) VistaEntrenador.getTblEntrenador().getModel();
             tabla.setNumRows(0);
 
             List<Clase_Entrenador> jug = modEnt.BuscarEntrenador(VistaEntrenador.getTxtBuscar().getText());
