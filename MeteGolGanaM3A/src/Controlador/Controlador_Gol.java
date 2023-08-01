@@ -107,6 +107,9 @@ public class Controlador_Gol {
         vistagol.getJdgGoles().setSize(900, 500);
         vistagol.getJdgGoles().setTitle(ce);
         vistagol.getJdgGoles().setVisible(true);
+        vistagol.getCodigo().setVisible(false);
+        vistagol.getCodigo2().setVisible(false);
+        
 
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
             vistagol.getLblReMoGoles().setText("REGISTRO DE GOLES");
@@ -263,7 +266,9 @@ public class Controlador_Gol {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
             } else {
                 String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
-                vistagol.getTxtCodJugador().setText(selectedId);
+                vistagol.getCodigo().setText(selectedId);
+                String nombre = vistagol.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                vistagol.getTxtCodJugador().setText(nombre);
                 salirdialogo1();
             }
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
@@ -282,7 +287,9 @@ public class Controlador_Gol {
                 JOptionPane.showMessageDialog(null, "Para que los datos se llenen, debe seleccionar un elemento de la tabla");
             } else {
                 String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
-                vistagol.getTxtCodEquipo().setText(selectedId);
+                String nombre = vistagol.getTblbuscar().getValueAt(selectedRow, 1).toString();
+                vistagol.getTxtCodEquipo().setText(nombre);
+                vistagol.getCodigo2().setText(selectedId);
                 salirdialogo1();
             }
         }
@@ -303,9 +310,9 @@ public class Controlador_Gol {
                 int codigogol = Integer.valueOf(vistagol.getTxtcodGol().getText());
                 String descrip = vistagol.getTxtdescripcion().getText();
                 String minut = vistagol.getTxtMinuto().getText();
-                int codjugador = Integer.valueOf(vistagol.getTxtCodJugador().getText());
+                int codjugador = Integer.valueOf(vistagol.getCodigo().getText());
                 int codpartido = Integer.valueOf(vistagol.getTxtCodPartido().getText());
-                int codequipo = Integer.valueOf(vistagol.getTxtCodEquipo().getText());
+                int codequipo = Integer.valueOf(vistagol.getCodigo2().getText());
 
                 model.setCod_gol(codigogol);
                 model.setDescripcion(descrip);
@@ -404,7 +411,6 @@ public class Controlador_Gol {
         listaE.stream().forEach(p -> {
             String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
             mJtable.addRow(rowData);
-
         }
         );
     }
@@ -419,7 +425,6 @@ public class Controlador_Gol {
             listaE.stream().forEach(e -> {
                 String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()), e.getNombre_equi()};
                 mJtable.addRow(rowData);
-
             });
         }
         );
