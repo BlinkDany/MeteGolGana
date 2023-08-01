@@ -720,7 +720,6 @@ public class Controlador_Arbitro {
 
     }
     //-------------------------------------------------------CODIGO --------------------------------------------------------------------------------------------
-
     private void CargarID() throws SQLException {
         visArbi.getTxtCodigo().setText(String.valueOf(modArbi.CargarCodigoID()));
     }
