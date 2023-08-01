@@ -16,15 +16,23 @@
                               <Component id="txtcodGol" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="txtMinuto" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCodPartido" pref="199" max="32767" attributes="0"/>
-                                  <Component id="txtCodJugador" pref="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtCodEquipo" min="-2" pref="203" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="codigo2" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtCodEquipo" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtCodPartido" min="-2" pref="199" max="-2" attributes="0"/>
+                                      <Component id="txtCodJugador" min="-2" pref="199" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="codigo" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnJugador" pref="143" max="32767" attributes="0"/>
                               <Component id="btnPartido" pref="0" max="32767" attributes="0"/>
@@ -38,7 +46,7 @@
                           <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
               </Group>
               <Component id="lblReMoGoles" max="32767" attributes="0"/>
           </Group>
@@ -52,6 +60,7 @@
                       <Component id="txtcodGol" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodJugador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnJugador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigo" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -64,6 +73,7 @@
                       <Component id="txtMinuto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodEquipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEquipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigo2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -244,6 +254,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar Equipo"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="codigo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="codigo2">
         </Component>
       </SubComponents>
     </Container>
