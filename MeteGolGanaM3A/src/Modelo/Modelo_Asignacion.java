@@ -116,7 +116,7 @@ public class Modelo_Asignacion extends Clase_Asignacion {
 
     public boolean ModificarAsignacion() {
         String sql;
-        sql = "update asignacion set fecha='" + getFecha_asignacion()+ "' ,codigo_arbitrofk='" + getCodigo_arbitro_asignacion()+ "' ,codigo_partidofk='" + getCodigo_partido_asignacion() + "'where codigo='" + getCodigo_asignacion()+ "';";
+        sql = "update asignacion set fecha='" + getFecha_asignacion() + "' ,codigo_arbitrofk='" + getCodigo_arbitro_asignacion() + "' ,codigo_partidofk='" + getCodigo_partido_asignacion() + "'where codigo='" + getCodigo_asignacion() + "';";
         return CPG.CRUD(sql);
 
     }
@@ -124,9 +124,8 @@ public class Modelo_Asignacion extends Clase_Asignacion {
     public boolean EliminarAsignacion() {
 
         String sql = "UPDATE asignacion SET estado_elim=true "
-                + "WHERE codigo=" + getCodigo_asignacion()+ ";";
+                + "WHERE codigo=" + getCodigo_asignacion() + ";";
 
         return CPG.CRUD(sql);
     }
-
 }
