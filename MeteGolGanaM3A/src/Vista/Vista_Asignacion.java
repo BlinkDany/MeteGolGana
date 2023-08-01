@@ -29,6 +29,38 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public FSTexFieldMD getTxt_apellido_arb() {
+        return txt_apellido_arb;
+    }
+
+    public void setTxt_apellido_arb(FSTexFieldMD txt_apellido_arb) {
+        this.txt_apellido_arb = txt_apellido_arb;
+    }
+
+    public FSTexFieldMD getTxt_equipo_1() {
+        return txt_equipo_1;
+    }
+
+    public void setTxt_equipo_1(FSTexFieldMD txt_equipo_1) {
+        this.txt_equipo_1 = txt_equipo_1;
+    }
+
+    public FSTexFieldMD getTxt_equipo_2() {
+        return txt_equipo_2;
+    }
+
+    public void setTxt_equipo_2(FSTexFieldMD txt_equipo_2) {
+        this.txt_equipo_2 = txt_equipo_2;
+    }
+
+    public FSTexFieldMD getTxt_nombre_arb() {
+        return txt_nombre_arb;
+    }
+
+    public void setTxt_nombre_arb(FSTexFieldMD txt_nombre_arb) {
+        this.txt_nombre_arb = txt_nombre_arb;
+    }
+
     public JTextField getFechaPartido() {
         return fechaPartido;
     }
@@ -197,8 +229,6 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         this.tblPartido = tblPartido;
     }
 
-    
-
     public static FSTexFieldMD getTxtBuscar() {
         return txtBuscar;
     }
@@ -239,10 +269,6 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         Vista_Asignacion.txtcodPartido = txtcodPartido;
     }
 
-   
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -266,6 +292,11 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtcodArbitro = new LIB.FSTexFieldMD();
         fechaPartido = new javax.swing.JTextField();
+        txt_equipo_2 = new LIB.FSTexFieldMD();
+        txt_nombre_arb = new LIB.FSTexFieldMD();
+        txt_apellido_arb = new LIB.FSTexFieldMD();
+        jLabel2 = new javax.swing.JLabel();
+        txt_equipo_1 = new LIB.FSTexFieldMD();
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -318,10 +349,11 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         txtcodPartido.setEditable(false);
-        txtcodPartido.setForeground(new java.awt.Color(0, 0, 0));
-        txtcodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtcodPartido.setPlaceholder("Partido");
-        jPanel3.add(txtcodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 250, -1));
+        txtcodPartido.setBackground(new java.awt.Color(255, 255, 255));
+        txtcodPartido.setForeground(new java.awt.Color(255, 255, 255));
+        txtcodPartido.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        txtcodPartido.setPlaceholder("PARTIDO");
+        jPanel3.add(txtcodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 70, 30));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
@@ -346,6 +378,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 180, -1));
 
         dtfecha.setEditable(false);
+        dtfecha.setBackground(new java.awt.Color(255, 255, 255));
         dtfecha.setForeground(new java.awt.Color(0, 0, 0));
         dtfecha.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         dtfecha.setPlaceholder("FECHA ACTUAL");
@@ -393,21 +426,52 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         txtcodArbitro.setEditable(false);
-        txtcodArbitro.setForeground(new java.awt.Color(0, 0, 0));
-        txtcodArbitro.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtcodArbitro.setPlaceholder("Arbitro");
+        txtcodArbitro.setBackground(new java.awt.Color(255, 255, 255));
+        txtcodArbitro.setForeground(new java.awt.Color(255, 255, 255));
+        txtcodArbitro.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        txtcodArbitro.setPlaceholder("ARBITRO");
         txtcodArbitro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodArbitroActionPerformed(evt);
             }
         });
-        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, -1));
+        jPanel3.add(txtcodArbitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 70, 30));
 
         fechaPartido.setEditable(false);
         fechaPartido.setBackground(new java.awt.Color(255, 255, 255));
         fechaPartido.setForeground(new java.awt.Color(255, 255, 255));
         fechaPartido.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(fechaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, -1));
+
+        txt_equipo_2.setBackground(new java.awt.Color(255, 255, 255));
+        txt_equipo_2.setForeground(new java.awt.Color(0, 0, 0));
+        txt_equipo_2.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txt_equipo_2.setPlaceholder("EQUIPO 2");
+        jPanel3.add(txt_equipo_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 80, -1));
+
+        txt_nombre_arb.setBackground(new java.awt.Color(255, 255, 255));
+        txt_nombre_arb.setForeground(new java.awt.Color(0, 0, 0));
+        txt_nombre_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txt_nombre_arb.setPlaceholder("NOMBRE");
+        jPanel3.add(txt_nombre_arb, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 110, -1));
+
+        txt_apellido_arb.setBackground(new java.awt.Color(255, 255, 255));
+        txt_apellido_arb.setForeground(new java.awt.Color(0, 0, 0));
+        txt_apellido_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txt_apellido_arb.setPlaceholder("APELLIDO");
+        jPanel3.add(txt_apellido_arb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 110, -1));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("VS");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
+
+        txt_equipo_1.setBackground(new java.awt.Color(255, 255, 255));
+        txt_equipo_1.setForeground(new java.awt.Color(0, 0, 0));
+        txt_equipo_1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txt_equipo_1.setPlaceholder("EQUIPO 1");
+        jPanel3.add(txt_equipo_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 80, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -502,7 +566,15 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
             new String [] {
                 "EQUIPO 1", "EQUIPO 2", "FECHA", "CODIGO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblPartido);
 
         panelPartido.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 760, 290));
@@ -567,17 +639,17 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         tblAsignacion.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblAsignacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "CODIGO", "FECHA", "ARBITRO", "PARTIDO"
+                "CODIGO", "FECHA", "ID ARBITRO", "NOMBRE", "APELLIDO", "PARTIDO", "EQUIPO 1", "EQUIPO 2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -739,7 +811,6 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dtfechaActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
@@ -758,6 +829,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     public LIB.FSTexFieldMD dtfecha;
     private javax.swing.JTextField fechaPartido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -776,6 +848,10 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblPartido;
     public static LIB.FSTexFieldMD txtBuscar;
     public static LIB.FSTexFieldMD txtCodAsignacion;
+    private LIB.FSTexFieldMD txt_apellido_arb;
+    private LIB.FSTexFieldMD txt_equipo_1;
+    private LIB.FSTexFieldMD txt_equipo_2;
+    private LIB.FSTexFieldMD txt_nombre_arb;
     public static LIB.FSTexFieldMD txtbuscarcod;
     public static LIB.FSTexFieldMD txtcodArbitro;
     public static LIB.FSTexFieldMD txtcodPartido;

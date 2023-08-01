@@ -31,16 +31,26 @@ public class Modelo_Asignacion extends Clase_Asignacion {
         List<Clase_Asignacion> listaAsignacion = new ArrayList<Clase_Asignacion>();
 
         try {
-            String sql = "select * from asignacion where estado_elim = false";
+            String sql = "SELECT A.codigo, A.fecha, A.codigo_arbitrofk, P.nombre1, P.apellido1, A.codigo_partidofk, E1.nombre as nombre_equipo1, E2.nombre as nombre_equipo2, A.estado_elim "
+                    + "FROM asignacion A "
+                    + "INNER JOIN arbitro B ON A.codigo_arbitrofk = B.codigo "
+                    + "INNER JOIN persona P ON B.cedula_personafk = P.cedula "
+                    + "INNER JOIN partido Pd ON A.codigo_partidofk = Pd.codigo "
+                    + "INNER JOIN equipo E1 ON Pd.cod_equipo1fk = E1.codigo "
+                    + "INNER JOIN equipo E2 ON Pd.cod_equipo2fk = E2.codigo "
+                    + "ORDER BY A.codigo ";
             ResultSet rs = CPG.Consultas(sql);
             while (rs.next()) {
                 Clase_Asignacion asignacion = new Clase_Asignacion();
-                asignacion.setCodigo_asignacion(rs.getInt("codigo"));
-                asignacion.setFecha_asignacion(rs.getDate("fecha"));
-                asignacion.setCodigo_arbitro_asignacion(rs.getInt("codigo_arbitrofk"));
-                asignacion.setCodigo_partido_asignacion(rs.getInt("codigo_partidofk"));
-                asignacion.setEstado_asignacion(rs.getBoolean("estado_elim"));
-
+                asignacion.setCodigo_asignacion(rs.getInt(1));
+                asignacion.setFecha_asignacion(rs.getDate(2));
+                asignacion.setCodigo_arbitro_asignacion(rs.getInt(3));
+                asignacion.setNombre_Arbitro(rs.getString(4));
+                asignacion.setApellido_Arbitro(rs.getString(5));
+                asignacion.setCodigo_partido_asignacion(rs.getInt(6));
+                asignacion.setEquipo_1(rs.getString(7));
+                asignacion.setEquipo_2(rs.getString(8));
+                asignacion.setEstado_asignacion(rs.getBoolean(9));
                 listaAsignacion.add(asignacion);
 
             }
@@ -48,6 +58,7 @@ public class Modelo_Asignacion extends Clase_Asignacion {
             return listaAsignacion;
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Asignacion.class.getName()).log(Level.SEVERE, null, ex);
+
             return null;
         }
     }

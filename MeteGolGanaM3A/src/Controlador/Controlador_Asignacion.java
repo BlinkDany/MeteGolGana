@@ -27,6 +27,8 @@ public class Controlador_Asignacion {
     private Modelo_Asignacion modeloAsig;
     private Modelo_Arbitro modeloArb;
     private Modelo_Partido modeloPart;
+    private ModeloEquipos modeloEquip;
+
     private Vista_Asignacion vistaAsig;
 
     public Controlador_Asignacion(Modelo_Asignacion modeloAsig, Modelo_Arbitro modeloArb, Modelo_Partido modeloPart, Vista_Asignacion vistaAsig) {
@@ -209,7 +211,13 @@ public class Controlador_Asignacion {
             } else {
 
                 String selectedId = vistaAsig.getTblArbitro().getValueAt(selectedRow, 3).toString();
+                String nombre = vistaAsig.getTblArbitro().getValueAt(selectedRow, 1).toString();
+                String apellido = vistaAsig.getTblArbitro().getValueAt(selectedRow, 2).toString();
+
                 vistaAsig.getTxtcodArbitro().setText(selectedId);
+                vistaAsig.getTxt_nombre_arb().setText(nombre);
+                vistaAsig.getTxt_apellido_arb().setText(apellido);
+
                 salirdialogo1();
 
             }
@@ -225,6 +233,10 @@ public class Controlador_Asignacion {
                 vistaAsig.getTxtcodPartido().setText(selectedId);
                 String selectedFecha = vistaAsig.getTblPartido().getValueAt(selectedRow, 2).toString();
                 vistaAsig.getFechaPartido().setText(selectedFecha);
+                String selectNombre1 = vistaAsig.getTblPartido().getValueAt(selectedRow, 0).toString();
+                vistaAsig.getTxt_equipo_1().setText(selectNombre1);
+                String selectNombre2 = vistaAsig.getTblPartido().getValueAt(selectedRow, 1).toString();
+                vistaAsig.getTxt_equipo_2().setText(selectNombre1);
                 salirdialogo1();
             }
         }
@@ -288,8 +300,8 @@ public class Controlador_Asignacion {
 
             } else {
 
-                if(validacionFechaModificar()==true) {
-                JOptionPane.showMessageDialog(null, "EL PARTIDO YA SE LLEVO JUGO");
+                if (validacionFechaModificar() == true) {
+                    JOptionPane.showMessageDialog(null, "EL PARTIDO YA SE LLEVO JUGO");
 
                 } else {
                     try {
@@ -351,7 +363,7 @@ public class Controlador_Asignacion {
         mJtable.setNumRows(0);
         List<Clase_Asignacion> listaP = modeloAsig.listarAsignacion();
         listaP.stream().forEach(p -> {
-            Object[] rowData = {p.getCodigo_asignacion(), p.getFecha_asignacion(), p.getCodigo_arbitro_asignacion(), p.getCodigo_partido_asignacion()};
+            Object[] rowData = {p.getCodigo_asignacion(), p.getFecha_asignacion(), p.getCodigo_arbitro_asignacion(), p.getNombre_Arbitro(), p.getApellido_Arbitro(), p.getCodigo_partido_asignacion(), p.getEquipo_1(), p.getEquipo_2()};
             mJtable.addRow(rowData);
         }
         );
@@ -375,8 +387,9 @@ public class Controlador_Asignacion {
         mJtable = (DefaultTableModel) vistaAsig.getTblPartido().getModel();
         mJtable.setNumRows(0);
         List<Clase_Partido> listaC = modeloPart.listarPartidos();
+
         listaC.stream().forEach(p -> {
-            Object[] rowData = {p.getCod_equipo1(), p.getCod_equipo2(), p.getFecha(), p.getCod_partido()};
+            Object[] rowData = {p.getNombreequipo1(), p.getNombreequipo2(), p.getFecha(), p.getCod_partido()};
             mJtable.addRow(rowData);
         }
         );
