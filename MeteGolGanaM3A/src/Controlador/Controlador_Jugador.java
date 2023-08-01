@@ -84,6 +84,7 @@ public class Controlador_Jugador {
             visJugador.dialogRegistrarModificar.setVisible(false);
         });
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
+        visJugador.btnAgregar.addActionListener(l -> LimpiarDatos());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarPersona());
         visPer.btnFoto.addActionListener(l -> Foto());
         visJugador.btnEliminar.addActionListener(l -> EliminarJugador());
@@ -274,13 +275,12 @@ public class Controlador_Jugador {
         visPer.dlgPersona.setVisible(true);
         visPer.dlgPersona.setTitle(titulo);
         visPer.dlgPersona.setSize(1020, 568);
+        visPer.dlgPersona.setLocationRelativeTo(null);
         if (visPer.dlgPersona.getTitle().equals("Registrar")) {
 
             visJugador.btnRegistrarModificar.setText("Registrar");
             visPer.lblTitulo.setText("Registrar Persona");
-            LimpiarDatos();
             visPer.btnSiguienteDlgUsu.addActionListener(l -> IniciarDialogJugador("Registrar Jugador"));
-
         } else {
 
             LlenarDatosPersona();
@@ -297,13 +297,14 @@ public class Controlador_Jugador {
         visJugador.dialogRegistrarModificar.setVisible(true);
         visJugador.dialogRegistrarModificar.setTitle(titulo);
         visJugador.dialogRegistrarModificar.setSize(850, 676);
+        visJugador.dialogRegistrarModificar.setLocationRelativeTo(null);
         if (visJugador.dialogRegistrarModificar.getTitle().equals("Registrar Jugador")) {
             visJugador.lblReMoJugadores.setText("Registrar Jugador");
-            LimpiarDatos();
+            visJugador.txtCedula.setText(visPer.getTxtCedulaDLG().getText());
             
-        } else if (visJugador.dialogRegistrarModificar.getTitle().equals("Modificar Jugador")) {
-            LlenarDatosJugador();
+        } else {
             visJugador.getLblReMoJugadores().setText("Modificar Jugador");
+            LlenarDatosJugador();
         }
     }
 
@@ -469,6 +470,7 @@ public class Controlador_Jugador {
                                 MensajeSucces("Se ha registrado con exito ");
                                 MostrarDatos();
                                 visJugador.dialogRegistrarModificar.dispose();
+                                LimpiarDatos();
                             } else {
 
                                 MensajeError("No se ha podido registrar debido a un error en la base de datos");
@@ -629,6 +631,17 @@ public class Controlador_Jugador {
 
     public void LimpiarDatos() {
 
+        visJugador.getTxtAñosExperiencia().setText("");
+        //visJugador.getTxtCedula().setText("");
+        visJugador.getTxtEquipo().setText("");
+        visJugador.getTxtSueldo().setText("");
+        visJugador.getDateFechaFin().setDate(null);
+        visJugador.getDateFechaInicio().setDate(null);
+        visJugador.getCbxPosicion().setSelectedIndex(0);
+        visJugador.getLblFoto().setIcon(null);
+        visJugador.getTblJugadores().clearSelection();
+        visJugador.getTblEquipo().clearSelection();
+        
         visPer.txt1erApeDLG.setText("");
         visPer.txt1erNomDlg.setText("");
         visPer.txt2doApeDLG.setText("");
@@ -640,14 +653,6 @@ public class Controlador_Jugador {
         visPer.txtTelfDLG.setText("");
         visPer.btnGrupo1.clearSelection();
         visPer.lblFoto.setIcon(null);
-        visJugador.txtAñosExperiencia.setText("");
-        visJugador.txtCedula.setText("");
-        visJugador.txtEquipo.setText("");
-        visJugador.txtSueldo.setText("");
-        visJugador.dateFechaFin.setDate(null);
-        visJugador.dateFechaInicio.setDate(null);
-        visJugador.cbxPosicion.setSelectedIndex(0);
-        visJugador.lblFoto.setIcon(null);
 
         try {
             visJugador.getTxtCod().setText(String.valueOf(modJugador.CargarCodigo()));

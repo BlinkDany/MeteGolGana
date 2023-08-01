@@ -1,8 +1,18 @@
 
 package Vista;
 
+import LIB.FSButtonMD;
+import LIB.FSTexFieldMD;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class VistaJugadores extends javax.swing.JInternalFrame {
@@ -41,6 +51,262 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
 
     public static void setLblReMoJugadores(JLabel lblReMoJugadores) {
         VistaJugadores.lblReMoJugadores = lblReMoJugadores;
+    }
+
+    public static JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public static void setBtnAgregar(JButton btnAgregar) {
+        VistaJugadores.btnAgregar = btnAgregar;
+    }
+
+    public static FSButtonMD getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public static void setBtnCancelar(FSButtonMD btnCancelar) {
+        VistaJugadores.btnCancelar = btnCancelar;
+    }
+
+    public static JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public static void setBtnEliminar(JButton btnEliminar) {
+        VistaJugadores.btnEliminar = btnEliminar;
+    }
+
+    public static FSButtonMD getBtnInicio() {
+        return btnInicio;
+    }
+
+    public static void setBtnInicio(FSButtonMD btnInicio) {
+        VistaJugadores.btnInicio = btnInicio;
+    }
+
+    public static JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public static void setBtnModificar(JButton btnModificar) {
+        VistaJugadores.btnModificar = btnModificar;
+    }
+
+    public static FSButtonMD getBtnRegistrarModificar() {
+        return btnRegistrarModificar;
+    }
+
+    public static void setBtnRegistrarModificar(FSButtonMD btnRegistrarModificar) {
+        VistaJugadores.btnRegistrarModificar = btnRegistrarModificar;
+    }
+
+    public static JComboBox<String> getCbxPosicion() {
+        return cbxPosicion;
+    }
+
+    public static void setCbxPosicion(JComboBox<String> cbxPosicion) {
+        VistaJugadores.cbxPosicion = cbxPosicion;
+    }
+
+    public static JDateChooser getDateFechaFin() {
+        return dateFechaFin;
+    }
+
+    public static void setDateFechaFin(JDateChooser dateFechaFin) {
+        VistaJugadores.dateFechaFin = dateFechaFin;
+    }
+
+    public static JDateChooser getDateFechaInicio() {
+        return dateFechaInicio;
+    }
+
+    public static void setDateFechaInicio(JDateChooser dateFechaInicio) {
+        VistaJugadores.dateFechaInicio = dateFechaInicio;
+    }
+
+    public static JDialog getDialogRegistrarModificar() {
+        return dialogRegistrarModificar;
+    }
+
+    public static void setDialogRegistrarModificar(JDialog dialogRegistrarModificar) {
+        VistaJugadores.dialogRegistrarModificar = dialogRegistrarModificar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public void setjMenu1(JMenu jMenu1) {
+        this.jMenu1 = jMenu1;
+    }
+
+    public JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    public void setjMenu2(JMenu jMenu2) {
+        this.jMenu2 = jMenu2;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public static JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public static void setLblFoto(JLabel lblFoto) {
+        VistaJugadores.lblFoto = lblFoto;
+    }
+
+    public static JTable getTblEquipo() {
+        return tblEquipo;
+    }
+
+    public static void setTblEquipo(JTable tblEquipo) {
+        VistaJugadores.tblEquipo = tblEquipo;
+    }
+
+    public static JTable getTblJugadores() {
+        return tblJugadores;
+    }
+
+    public static void setTblJugadores(JTable tblJugadores) {
+        VistaJugadores.tblJugadores = tblJugadores;
+    }
+
+    public static FSTexFieldMD getTxtAñosExperiencia() {
+        return txtAñosExperiencia;
+    }
+
+    public static void setTxtAñosExperiencia(FSTexFieldMD txtAñosExperiencia) {
+        VistaJugadores.txtAñosExperiencia = txtAñosExperiencia;
+    }
+
+    public static FSTexFieldMD getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public static void setTxtBuscar(FSTexFieldMD txtBuscar) {
+        VistaJugadores.txtBuscar = txtBuscar;
+    }
+
+    public static FSTexFieldMD getTxtCedula() {
+        return txtCedula;
+    }
+
+    public static void setTxtCedula(FSTexFieldMD txtCedula) {
+        VistaJugadores.txtCedula = txtCedula;
+    }
+
+    public static FSTexFieldMD getTxtEquipo() {
+        return txtEquipo;
+    }
+
+    public static void setTxtEquipo(FSTexFieldMD txtEquipo) {
+        VistaJugadores.txtEquipo = txtEquipo;
+    }
+
+    public static FSTexFieldMD getTxtSueldo() {
+        return txtSueldo;
+    }
+
+    public static void setTxtSueldo(FSTexFieldMD txtSueldo) {
+        VistaJugadores.txtSueldo = txtSueldo;
     }
 
     @SuppressWarnings("unchecked")

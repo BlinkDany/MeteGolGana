@@ -5,10 +5,19 @@
  */
 package Vista;
 
+import LIB.FSButtonMD;
+import LIB.FSPasswordFieldMD;
 import LIB.FSTexFieldMD;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import org.edisoncor.gui.panel.PanelImage;
 
 /**
  *
@@ -23,12 +32,164 @@ public class LogIn extends javax.swing.JFrame {
         initComponents();
     }
 
-    public JTextField getTxtRuta() {
-        return txtRuta;
+    public JComboBox<String> getCbxRegistrarComo() {
+        return cbxRegistrarComo;
     }
 
-    public void setTxtRuta(JTextField txtRuta) {
-        this.txtRuta = txtRuta;
+    public void setCbxRegistrarComo(JComboBox<String> cbxRegistrarComo) {
+        this.cbxRegistrarComo = cbxRegistrarComo;
+    }
+
+    public JDialog getDlgCombo() {
+        return dlgCombo;
+    }
+
+    public void setDlgCombo(JDialog dlgCombo) {
+        this.dlgCombo = dlgCombo;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel6() {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6) {
+        this.jPanel6 = jPanel6;
+    }
+
+    public FSButtonMD getBtnCrearCuenta() {
+        return btnCrearCuenta;
+    }
+
+    public void setBtnCrearCuenta(FSButtonMD btnCrearCuenta) {
+        this.btnCrearCuenta = btnCrearCuenta;
+    }
+
+    public static JButton getBtnFoto() {
+        return btnFoto;
+    }
+
+    public static void setBtnFoto(JButton btnFoto) {
+        LogIn.btnFoto = btnFoto;
+    }
+
+    public static ButtonGroup getBtnGrupo1() {
+        return btnGrupo1;
+    }
+
+    public static void setBtnGrupo1(ButtonGroup btnGrupo1) {
+        LogIn.btnGrupo1 = btnGrupo1;
+    }
+
+    public FSButtonMD getBtnIngresar() {
+        return btnIngresar;
+    }
+
+    public void setBtnIngresar(FSButtonMD btnIngresar) {
+        this.btnIngresar = btnIngresar;
+    }
+
+    public static FSButtonMD getBtnRetrocederDlgRegistro() {
+        return btnRetrocederDlgRegistro;
+    }
+
+    public static void setBtnRetrocederDlgRegistro(FSButtonMD btnRetrocederDlgRegistro) {
+        LogIn.btnRetrocederDlgRegistro = btnRetrocederDlgRegistro;
+    }
+
+    public static FSButtonMD getBtnSiguienteDlgUsu() {
+        return btnSiguienteDlgUsu;
+    }
+
+    public static void setBtnSiguienteDlgUsu(FSButtonMD btnSiguienteDlgUsu) {
+        LogIn.btnSiguienteDlgUsu = btnSiguienteDlgUsu;
+    }
+
+    public JComboBox<String> getCbxIngresarcomo() {
+        return cbxIngresarcomo;
+    }
+
+    public void setCbxIngresarcomo(JComboBox<String> cbxIngresarcomo) {
+        this.cbxIngresarcomo = cbxIngresarcomo;
+    }
+
+    public static JDialog getDlgPersona() {
+        return dlgPersona;
+    }
+
+    public static void setDlgPersona(JDialog dlgPersona) {
+        LogIn.dlgPersona = dlgPersona;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public static JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public static void setjLabel6(JLabel jLabel6) {
+        LogIn.jLabel6 = jLabel6;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
     }
 
     public static JLabel getLblFoto() {
@@ -37,6 +198,54 @@ public class LogIn extends javax.swing.JFrame {
 
     public static void setLblFoto(JLabel lblFoto) {
         LogIn.lblFoto = lblFoto;
+    }
+
+    public JLabel getLblOlvidasteContrasenia() {
+        return lblOlvidasteContrasenia;
+    }
+
+    public void setLblOlvidasteContrasenia(JLabel lblOlvidasteContrasenia) {
+        this.lblOlvidasteContrasenia = lblOlvidasteContrasenia;
+    }
+
+    public static JLabel getLblTitulo() {
+        return lblTitulo;
+    }
+
+    public static void setLblTitulo(JLabel lblTitulo) {
+        LogIn.lblTitulo = lblTitulo;
+    }
+
+    public PanelImage getPanelImage1() {
+        return panelImage1;
+    }
+
+    public void setPanelImage1(PanelImage panelImage1) {
+        this.panelImage1 = panelImage1;
+    }
+
+    public static JRadioButton getRdbFemeninoDlg() {
+        return rdbFemeninoDlg;
+    }
+
+    public static void setRdbFemeninoDlg(JRadioButton rdbFemeninoDlg) {
+        LogIn.rdbFemeninoDlg = rdbFemeninoDlg;
+    }
+
+    public static JRadioButton getRdbMasculinoDlg() {
+        return rdbMasculinoDlg;
+    }
+
+    public static void setRdbMasculinoDlg(JRadioButton rdbMasculinoDlg) {
+        LogIn.rdbMasculinoDlg = rdbMasculinoDlg;
+    }
+
+    public static JRadioButton getRdbOtroDlg() {
+        return rdbOtroDlg;
+    }
+
+    public static void setRdbOtroDlg(JRadioButton rdbOtroDlg) {
+        LogIn.rdbOtroDlg = rdbOtroDlg;
     }
 
     public static FSTexFieldMD getTxt1erApeDLG() {
@@ -103,12 +312,52 @@ public class LogIn extends javax.swing.JFrame {
         LogIn.txtFechaDlg = txtFechaDlg;
     }
 
+    public FSPasswordFieldMD getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(FSPasswordFieldMD txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+    public JTextField getTxtRuta() {
+        return txtRuta;
+    }
+
+    public void setTxtRuta(JTextField txtRuta) {
+        this.txtRuta = txtRuta;
+    }
+
     public static FSTexFieldMD getTxtTelfDLG() {
         return txtTelfDLG;
     }
 
     public static void setTxtTelfDLG(FSTexFieldMD txtTelfDLG) {
         LogIn.txtTelfDLG = txtTelfDLG;
+    }
+
+    public FSTexFieldMD getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(FSTexFieldMD txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
+    public JButton getBtnSiguienteCombo() {
+        return btnSiguienteCombo;
+    }
+
+    public void setBtnSiguienteCombo(JButton btnSiguienteCombo) {
+        this.btnSiguienteCombo = btnSiguienteCombo;
+    }
+
+    public JButton getBtnCancelarCombo() {
+        return btnCancelarCombo;
+    }
+
+    public void setBtnCancelarCombo(JButton btnCancelarCombo) {
+        this.btnCancelarCombo = btnCancelarCombo;
     }
 
     /**
@@ -144,16 +393,23 @@ public class LogIn extends javax.swing.JFrame {
         btnFoto = new javax.swing.JButton();
         txtRuta = new javax.swing.JTextField();
         btnGrupo1 = new javax.swing.ButtonGroup();
+        dlgCombo = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        cbxRegistrarComo = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnSiguienteCombo = new javax.swing.JButton();
+        btnCancelarCombo = new javax.swing.JButton();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        fSTexFieldMD1 = new LIB.FSTexFieldMD();
-        fSPasswordFieldMD1 = new LIB.FSPasswordFieldMD();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        fSButtonMD1 = new LIB.FSButtonMD();
-        fSButtonMD2 = new LIB.FSButtonMD();
+        txtUsuario = new LIB.FSTexFieldMD();
+        txtPassword = new LIB.FSPasswordFieldMD();
+        cbxIngresarcomo = new javax.swing.JComboBox<>();
+        lblOlvidasteContrasenia = new javax.swing.JLabel();
+        btnIngresar = new LIB.FSButtonMD();
+        btnCrearCuenta = new LIB.FSButtonMD();
 
         dlgPersona.setResizable(false);
 
@@ -343,6 +599,84 @@ public class LogIn extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
         );
 
+        dlgCombo.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        cbxRegistrarComo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Registrarse Como", "Jugador", "Entrenador", "Arbitro" }));
+
+        jPanel4.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Tipo de usuario");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+        );
+
+        btnSiguienteCombo.setBackground(new java.awt.Color(0, 153, 204));
+        btnSiguienteCombo.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteCombo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/adelante.png"))); // NOI18N
+        btnSiguienteCombo.setText("Siguiente");
+        btnSiguienteCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteComboActionPerformed(evt);
+            }
+        });
+
+        btnCancelarCombo.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancelarCombo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarCombo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/cancelar.png"))); // NOI18N
+        btnCancelarCombo.setText("Cancelar");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnSiguienteCombo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelarCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbxRegistrarComo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(cbxRegistrarComo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSiguienteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dlgComboLayout = new javax.swing.GroupLayout(dlgCombo.getContentPane());
+        dlgCombo.getContentPane().setLayout(dlgComboLayout);
+        dlgComboLayout.setHorizontalGroup(
+            dlgComboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dlgComboLayout.setVerticalGroup(
+            dlgComboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -361,43 +695,43 @@ public class LogIn extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Inicio de Sesión");
 
-        fSTexFieldMD1.setForeground(new java.awt.Color(0, 0, 0));
-        fSTexFieldMD1.setToolTipText("Ingresa tu cédula");
-        fSTexFieldMD1.setBordeColorFocus(new java.awt.Color(51, 102, 255));
-        fSTexFieldMD1.setPlaceholder("Usuario");
+        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsuario.setToolTipText("Ingrese su email");
+        txtUsuario.setBordeColorFocus(new java.awt.Color(51, 102, 255));
+        txtUsuario.setPlaceholder("Ingrese su email");
 
-        fSPasswordFieldMD1.setForeground(new java.awt.Color(0, 0, 0));
-        fSPasswordFieldMD1.setToolTipText("Ingresa tu contraseña");
-        fSPasswordFieldMD1.setBordeColorFocus(new java.awt.Color(51, 102, 255));
-        fSPasswordFieldMD1.setPlaceholder("Contraseña ");
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.setToolTipText("Ingrese su cedula");
+        txtPassword.setBordeColorFocus(new java.awt.Color(51, 102, 255));
+        txtPassword.setPlaceholder("Contraseña ");
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(51, 102, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Jugador", "Entrenador", "Arbitro" }));
-        jComboBox1.setToolTipText("Tipo de usuario");
+        cbxIngresarcomo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        cbxIngresarcomo.setForeground(new java.awt.Color(51, 102, 255));
+        cbxIngresarcomo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingresar Como:", "Jugador", "Entrenador", "Arbitro" }));
+        cbxIngresarcomo.setToolTipText("Tipo de usuario");
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("¿Olvidaste tu contraseña?");
-        jLabel2.setToolTipText("Restablece tu contraseña");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblOlvidasteContrasenia.setFont(new java.awt.Font("Yu Gothic Medium", 1, 16)); // NOI18N
+        lblOlvidasteContrasenia.setForeground(new java.awt.Color(102, 102, 102));
+        lblOlvidasteContrasenia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOlvidasteContrasenia.setText("¿Olvidaste tu contraseña?");
+        lblOlvidasteContrasenia.setToolTipText("Restablece tu contraseña");
+        lblOlvidasteContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        fSButtonMD1.setBackground(new java.awt.Color(51, 102, 255));
-        fSButtonMD1.setText("Ingresar");
-        fSButtonMD1.setToolTipText("Inicia Sesión");
-        fSButtonMD1.setColorNormal(new java.awt.Color(51, 102, 255));
-        fSButtonMD1.setColorPressed(new java.awt.Color(51, 102, 255));
-        fSButtonMD1.setColorTextHover(new java.awt.Color(51, 102, 255));
-        fSButtonMD1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnIngresar.setBackground(new java.awt.Color(51, 102, 255));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.setToolTipText("Inicia Sesión");
+        btnIngresar.setColorNormal(new java.awt.Color(51, 102, 255));
+        btnIngresar.setColorPressed(new java.awt.Color(51, 102, 255));
+        btnIngresar.setColorTextHover(new java.awt.Color(51, 102, 255));
+        btnIngresar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
 
-        fSButtonMD2.setText("Crear Cuenta");
-        fSButtonMD2.setToolTipText("Inicia Sesión");
-        fSButtonMD2.setColorHover(new java.awt.Color(102, 102, 102));
-        fSButtonMD2.setColorNormal(new java.awt.Color(51, 204, 0));
-        fSButtonMD2.setColorPressed(new java.awt.Color(51, 204, 0));
-        fSButtonMD2.setColorTextHover(new java.awt.Color(255, 255, 255));
-        fSButtonMD2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnCrearCuenta.setText("Crear Cuenta");
+        btnCrearCuenta.setToolTipText("Inicia Sesión");
+        btnCrearCuenta.setColorHover(new java.awt.Color(102, 102, 102));
+        btnCrearCuenta.setColorNormal(new java.awt.Color(51, 204, 0));
+        btnCrearCuenta.setColorPressed(new java.awt.Color(51, 204, 0));
+        btnCrearCuenta.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnCrearCuenta.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -413,12 +747,12 @@ public class LogIn extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fSTexFieldMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fSPasswordFieldMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fSButtonMD1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fSButtonMD2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxIngresarcomo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOlvidasteContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -429,17 +763,17 @@ public class LogIn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(fSTexFieldMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fSPasswordFieldMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxIngresarcomo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(lblOlvidasteContrasenia)
                 .addGap(18, 18, 18)
-                .addComponent(fSButtonMD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fSButtonMD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 64, Short.MAX_VALUE))
         );
 
@@ -494,6 +828,10 @@ public class LogIn extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt1erApeDLGActionPerformed
 
+    private void btnSiguienteComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteComboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -537,16 +875,18 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelarCombo;
+    private LIB.FSButtonMD btnCrearCuenta;
     public static javax.swing.JButton btnFoto;
     public static javax.swing.ButtonGroup btnGrupo1;
+    private LIB.FSButtonMD btnIngresar;
     public static LIB.FSButtonMD btnRetrocederDlgRegistro;
+    private javax.swing.JButton btnSiguienteCombo;
     public static LIB.FSButtonMD btnSiguienteDlgUsu;
+    private javax.swing.JComboBox<String> cbxIngresarcomo;
+    private javax.swing.JComboBox<String> cbxRegistrarComo;
+    private javax.swing.JDialog dlgCombo;
     public static javax.swing.JDialog dlgPersona;
-    private LIB.FSButtonMD fSButtonMD1;
-    private LIB.FSButtonMD fSButtonMD2;
-    private LIB.FSPasswordFieldMD fSPasswordFieldMD1;
-    private LIB.FSTexFieldMD fSTexFieldMD1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -554,8 +894,11 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     public static javax.swing.JLabel lblFoto;
+    private javax.swing.JLabel lblOlvidasteContrasenia;
     public static javax.swing.JLabel lblTitulo;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     public static javax.swing.JRadioButton rdbFemeninoDlg;
@@ -569,7 +912,9 @@ public class LogIn extends javax.swing.JFrame {
     public static LIB.FSTexFieldMD txtCorreoDlg;
     public static LIB.FSTexFieldMD txtDirecDLG;
     public static com.toedter.calendar.JDateChooser txtFechaDlg;
+    private LIB.FSPasswordFieldMD txtPassword;
     private javax.swing.JTextField txtRuta;
     public static LIB.FSTexFieldMD txtTelfDLG;
+    private LIB.FSTexFieldMD txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
