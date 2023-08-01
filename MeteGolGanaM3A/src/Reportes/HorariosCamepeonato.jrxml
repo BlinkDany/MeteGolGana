@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3667030-b043-400b-9ddb-f31e835e1b14">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="79"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="CodigoCampeonato" class="java.lang.Integer"/>
 	<queryString>
@@ -42,7 +42,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 			<staticText>
 				<reportElement x="0" y="0" width="802" height="51" forecolor="#000000" uuid="ec4d0227-ea51-4918-8bbe-5e093c41be42"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans Mono" size="24" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					<font fontName="Arial" size="24" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[Fechas del Campeonato]]></text>
 			</staticText>
@@ -79,7 +79,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Campeonato]]></text>
 			</staticText>
@@ -93,7 +93,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo de Campeonato]]></text>
 			</staticText>
@@ -107,7 +107,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Inicio]]></text>
 			</staticText>
@@ -121,7 +121,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Finalización]]></text>
 			</staticText>
@@ -135,7 +135,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo partido]]></text>
 			</staticText>
@@ -149,7 +149,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Partido]]></text>
 			</staticText>
@@ -163,7 +163,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Equipo 1]]></text>
 			</staticText>
@@ -177,7 +177,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Equipo 2]]></text>
 			</staticText>
@@ -191,7 +191,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="2.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="11"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Grupo]]></text>
 			</staticText>
@@ -209,7 +209,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Campeonato}]]></textFieldExpression>
 			</textField>
@@ -223,7 +223,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Tipo de Campeonato}]]></textFieldExpression>
 			</textField>
@@ -237,7 +237,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Temporada Inicia}]]></textFieldExpression>
 			</textField>
@@ -251,7 +251,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Temporada Finaliza}]]></textFieldExpression>
 			</textField>
@@ -265,7 +265,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Codigo partido}]]></textFieldExpression>
 			</textField>
@@ -279,7 +279,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Fecha del Partido}]]></textFieldExpression>
 			</textField>
@@ -293,7 +293,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Equipo 1}]]></textFieldExpression>
 			</textField>
@@ -307,7 +307,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Equipo 2}]]></textFieldExpression>
 			</textField>
@@ -321,7 +321,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Yu Gothic UI Semibold" size="8"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Grupo}]]></textFieldExpression>
 			</textField>
