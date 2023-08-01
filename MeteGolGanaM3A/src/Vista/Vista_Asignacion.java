@@ -443,18 +443,21 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         fechaPartido.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(fechaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, -1));
 
+        txt_equipo_2.setEditable(false);
         txt_equipo_2.setBackground(new java.awt.Color(255, 255, 255));
         txt_equipo_2.setForeground(new java.awt.Color(0, 0, 0));
         txt_equipo_2.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txt_equipo_2.setPlaceholder("EQUIPO 2");
         jPanel3.add(txt_equipo_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 80, -1));
 
+        txt_nombre_arb.setEditable(false);
         txt_nombre_arb.setBackground(new java.awt.Color(255, 255, 255));
         txt_nombre_arb.setForeground(new java.awt.Color(0, 0, 0));
         txt_nombre_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txt_nombre_arb.setPlaceholder("NOMBRE");
         jPanel3.add(txt_nombre_arb, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 110, -1));
 
+        txt_apellido_arb.setEditable(false);
         txt_apellido_arb.setBackground(new java.awt.Color(255, 255, 255));
         txt_apellido_arb.setForeground(new java.awt.Color(0, 0, 0));
         txt_apellido_arb.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -467,6 +470,7 @@ public class Vista_Asignacion extends javax.swing.JInternalFrame {
         jLabel2.setText("VS");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
+        txt_equipo_1.setEditable(false);
         txt_equipo_1.setBackground(new java.awt.Color(255, 255, 255));
         txt_equipo_1.setForeground(new java.awt.Color(0, 0, 0));
         txt_equipo_1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
