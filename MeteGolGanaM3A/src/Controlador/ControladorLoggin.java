@@ -417,7 +417,7 @@ public class ControladorLoggin {
             visPer.getLblFoto().setIcon(new ImageIcon(foto));
             visJugador.lblFoto.setIcon(new ImageIcon(foto));
             visEntrenador.lblFoto.setIcon(new ImageIcon(foto));
-            //visArbitro.lblFoto.setIcon(new ImageIcon(foto));
+            visArbitro.getLblFoto().setIcon(new ImageIcon(foto));
         }
 
     }
@@ -462,11 +462,11 @@ public class ControladorLoggin {
         visEntrenador.tblEntrenador.clearSelection();
         visEntrenador.tblEquipo.clearSelection();
 
-        Vista_Arbitro.getTxtAñosExperiencia().setText("");
-        Vista_Arbitro.getTxtCedula().setText("");
-        Vista_Arbitro.getTxtSueldo().setText("");
-        Vista_Arbitro.getCbxPosicion().setSelectedIndex(0);
-        //Vista_Arbitro.getLblFoto().setIcon(null);
+        visArbitro.getTxtAñosExperiencia().setText("");
+        visArbitro.getTxtCedula().setText("");
+        visArbitro.getTxtSueldo().setText("");
+        visArbitro.getCbxPosicion().setSelectedIndex(0);
+        visArbitro.getLblFoto().setIcon(null);
 
     }
 
