@@ -86,10 +86,10 @@ public class ControladorLoggin {
         });
         visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
         visEntrenador.btnCancelar.addActionListener(l -> visEntrenador.dialogRegistrarModificar.dispose());
-        visArbitro.btnCancelar.addActionListener(l -> Vista_Arbitro.dialogRegistrarModificar.dispose());
+        visArbitro.getBtnCancelar().addActionListener(l -> Vista_Arbitro.dialogRegistrarModificar.dispose());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
         visEntrenador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
-        visArbitro.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
+        visArbitro.getBtnRegistrarModificar().addActionListener(l -> RegistrarPersona());
         visJugador.getTblEquipo().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -209,7 +209,7 @@ public class ControladorLoggin {
         visArbitro.dialogRegistrarModificar.setSize(500, 500);
         visArbitro.dialogRegistrarModificar.setLocationRelativeTo(null);
         if (visArbitro.dialogRegistrarModificar.getTitle().equals("Registrar Arbitro")) {
-            visArbitro.txtCedula.setText(visPer.getTxtCedulaDLG().getText());
+            visArbitro.getTxtCedula().setText(visPer.getTxtCedulaDLG().getText());
         }
     }
 
@@ -353,16 +353,16 @@ public class ControladorLoggin {
     }
 
     public void RegistrarArbitro() {
-        if (visArbitro.txtCedula.getText().isEmpty()
-                || visArbitro.txtAñosExperiencia.getText().isEmpty() || visArbitro.getTxtSueldo().getText().isEmpty() || visArbitro.cbxPosicion.getSelectedIndex() == 0) {
+        if (visArbitro.getTxtCedula().getText().isEmpty()
+                || visArbitro.getTxtAñosExperiencia().getText().isEmpty() || visArbitro.getTxtSueldo().getText().isEmpty() || visArbitro.getCbxPosicion().getSelectedIndex() == 0) {
 
             MensajeError("Faltan campos por llenar");
         } else {
 
-            modArb.setAnios_esperiencia_arbitro(Integer.valueOf(visArbitro.txtAñosExperiencia.getText()));
-            modArb.setPosicion_arbitro(visArbitro.cbxPosicion.getSelectedItem().toString());
-            modArb.setCedula_persona_arbitro(visArbitro.txtCedula.getText());
-            modArb.setSalario_arbitro(Double.valueOf(visArbitro.txtSueldo.getText()));
+            modArb.setAnios_esperiencia_arbitro(Integer.valueOf(visArbitro.getTxtAñosExperiencia().getText()));
+            modArb.setPosicion_arbitro(visArbitro.getCbxPosicion().getSelectedItem().toString());
+            modArb.setCedula_persona_arbitro(visArbitro.getTxtCedula().getText());
+            modArb.setSalario_arbitro(Double.valueOf(visArbitro.getTxtSueldo().getText()));
 
             if (modArb.InsertarArbitro()) {
 
@@ -417,7 +417,7 @@ public class ControladorLoggin {
             visPer.getLblFoto().setIcon(new ImageIcon(foto));
             visJugador.lblFoto.setIcon(new ImageIcon(foto));
             visEntrenador.lblFoto.setIcon(new ImageIcon(foto));
-            visArbitro.lblFoto.setIcon(new ImageIcon(foto));
+            //visArbitro.lblFoto.setIcon(new ImageIcon(foto));
         }
 
     }
@@ -454,20 +454,19 @@ public class ControladorLoggin {
             Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        VistaEntrenador.txtAñosExperiencia.setText("");
-        VistaEntrenador.txtCedula.setText("");
-        VistaEntrenador.txtSueldo.setText("");
-        VistaEntrenador.txtEquipo.setText("");
-        VistaEntrenador.lblFoto.setIcon(null);
-        VistaEntrenador.tblEntrenador.clearSelection();
-        VistaEntrenador.tblEquipo.clearSelection();
+        visEntrenador.txtAñosExperiencia.setText("");
+        visEntrenador.txtCedula.setText("");
+        visEntrenador.txtSueldo.setText("");
+        visEntrenador.txtEquipo.setText("");
+        visEntrenador.lblFoto.setIcon(null);
+        visEntrenador.tblEntrenador.clearSelection();
+        visEntrenador.tblEquipo.clearSelection();
 
-        Vista_Arbitro.txtAñosExperiencia.setText("");
-        Vista_Arbitro.txtCedula.setText("");
-        Vista_Arbitro.txtSueldo.setText("");
-        Vista_Arbitro.cbxPosicion.setSelectedIndex(0);
-        Vista_Arbitro.lblFoto.setIcon(null);
-        Vista_Arbitro.tblArbitros.clearSelection();
+        Vista_Arbitro.getTxtAñosExperiencia().setText("");
+        Vista_Arbitro.getTxtCedula().setText("");
+        Vista_Arbitro.getTxtSueldo().setText("");
+        Vista_Arbitro.getCbxPosicion().setSelectedIndex(0);
+        //Vista_Arbitro.getLblFoto().setIcon(null);
 
     }
 
