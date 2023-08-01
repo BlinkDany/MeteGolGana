@@ -10,6 +10,7 @@ import LIB.FSTexFieldMD;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -50,12 +51,12 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         this.btnAgregar = btnAgregar;
     }
 
-    public static FSButtonMD getBtnCancelar() {
+    public FSButtonMD getBtnCancelar() {
         return btnCancelar;
     }
 
-    public static void setBtnCancelar(FSButtonMD btnCancelar) {
-        Vista_Arbitro.btnCancelar = btnCancelar;
+    public void setBtnCancelar(FSButtonMD btnCancelar) {
+        this.btnCancelar = btnCancelar;
     }
 
     public JButton getBtnEliminar() {
@@ -82,21 +83,21 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         this.btnModificar = btnModificar;
     }
 
-    public static FSButtonMD getBtnRegistrarModificar() {
+    public FSButtonMD getBtnRegistrarModificar() {
         return btnRegistrarModificar;
     }
 
-    public static void setBtnRegistrarModificar(FSButtonMD btnRegistrarModificar) {
-        Vista_Arbitro.btnRegistrarModificar = btnRegistrarModificar;
+    public void setBtnRegistrarModificar(FSButtonMD btnRegistrarModificar) {
+        this.btnRegistrarModificar = btnRegistrarModificar;
     }
 
-    public static JComboBox<String> getCbxPosicion() {
+    public JComboBox<String> getCbxPosicion() {
         return cbxPosicion;
     }
 
-    public static void setCbxPosicion(JComboBox<String> cbxPosicion) {
-        Vista_Arbitro.cbxPosicion = cbxPosicion;
-    }
+    public void setCbxPosicion(JComboBox<String> cbxPosicion) {
+        this.cbxPosicion = cbxPosicion;
+    }  
 
     public static JDialog getDialogRegistrarModificar() {
         return dialogRegistrarModificar;
@@ -114,12 +115,12 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         this.tblArbitros = tblArbitros;
     }
 
-    public static FSTexFieldMD getTxtAñosExperiencia() {
+    public FSTexFieldMD getTxtAñosExperiencia() {
         return txtAñosExperiencia;
     }
 
-    public static void setTxtAñosExperiencia(FSTexFieldMD txtAñosExperiencia) {
-        Vista_Arbitro.txtAñosExperiencia = txtAñosExperiencia;
+    public void setTxtAñosExperiencia(FSTexFieldMD txtAñosExperiencia) {
+        this.txtAñosExperiencia = txtAñosExperiencia;
     }
 
     public FSTexFieldMD getTxtBuscar() {
@@ -130,20 +131,36 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         this.txtBuscar = txtBuscar;
     }
 
-    public static FSTexFieldMD getTxtCedula() {
+    public FSTexFieldMD getTxtCedula() {
         return txtCedula;
     }
 
-    public static void setTxtCedula(FSTexFieldMD txtCedula) {
-        Vista_Arbitro.txtCedula = txtCedula;
+    public void setTxtCedula(FSTexFieldMD txtCedula) {
+        this.txtCedula = txtCedula;
     }
 
-    public static FSTexFieldMD getTxtSueldo() {
+    public FSTexFieldMD getTxtSueldo() {
         return txtSueldo;
     }
 
-    public static void setTxtSueldo(FSTexFieldMD txtSueldo) {
-        Vista_Arbitro.txtSueldo = txtSueldo;
+    public void setTxtSueldo(FSTexFieldMD txtSueldo) {
+        this.txtSueldo = txtSueldo;
+    }
+
+    public JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public void setLblFoto(JLabel lblFoto) {
+        this.lblFoto = lblFoto;
+    }
+
+    public JLabel getLblReMoJugadores() {
+        return lblReMoJugadores;
+    }
+
+    public void setLblReMoJugadores(JLabel lblReMoJugadores) {
+        this.lblReMoJugadores = lblReMoJugadores;
     }
 
     /**
@@ -427,12 +444,12 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private static LIB.FSButtonMD btnCancelar;
+    private LIB.FSButtonMD btnCancelar;
     private javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
     private javax.swing.JButton btnModificar;
-    private static LIB.FSButtonMD btnRegistrarModificar;
-    private static javax.swing.JComboBox<String> cbxPosicion;
+    private LIB.FSButtonMD btnRegistrarModificar;
+    private javax.swing.JComboBox<String> cbxPosicion;
     public static javax.swing.JDialog dialogRegistrarModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -442,14 +459,14 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JLabel lblFoto;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JTable tblArbitros;
-    private static LIB.FSTexFieldMD txtAñosExperiencia;
+    private LIB.FSTexFieldMD txtAñosExperiencia;
     private LIB.FSTexFieldMD txtBuscar;
-    private static LIB.FSTexFieldMD txtCedula;
+    private LIB.FSTexFieldMD txtCedula;
     public static LIB.FSTexFieldMD txtCodigo;
-    private static LIB.FSTexFieldMD txtSueldo;
+    private LIB.FSTexFieldMD txtSueldo;
     public javax.swing.JTextField txt_Ruta_Foto;
     // End of variables declaration//GEN-END:variables
 }

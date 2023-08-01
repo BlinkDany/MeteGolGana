@@ -46,7 +46,7 @@ public class Controlador_Asignacion {
         vistaAsig.getBtnAgregar().addActionListener(l -> abrirDialogo("Crear"));
         vistaAsig.getBtnAgregar().addActionListener(l -> fechaLocal());
         vistaAsig.btnModificar.addActionListener(l -> {
-            if (vistaAsig.tblAsignacion.getSelectedRow() == -1) {
+            if (vistaAsig.getTblAsignacion().getSelectedRow() == -1) {
 
                 JOptionPane.showMessageDialog(null, "Seleccione una asignacion", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -77,7 +77,7 @@ public class Controlador_Asignacion {
 
         vistaAsig.getBtnmandardatos().addActionListener(l -> mandardatos());
         vistaAsig.getBtnBuscar().addActionListener(l -> buscarFK());
-        vistaAsig.txtBuscar.addKeyListener(new KeyAdapter() {
+        vistaAsig.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 buscar();
@@ -485,7 +485,7 @@ public class Controlador_Asignacion {
             DefaultTableModel tabla = (DefaultTableModel) vistaAsig.getTblAsignacion().getModel();
             tabla.setNumRows(0);
 
-            List<Clase_Asignacion> par = modeloAsig.BuscarAsignacion(vistaAsig.txtBuscar.getText());
+            List<Clase_Asignacion> par = modeloAsig.BuscarAsignacion(vistaAsig.getTxtBuscar().getText());
             par.stream().forEach(p -> {
 
                 Object datos[] = {p.getCodigo_asignacion(), p.getFecha_asignacion(), p.getCodigo_arbitro_asignacion(), p.getCodigo_partido_asignacion()};
