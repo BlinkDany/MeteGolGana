@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Conexion.ConexionMySql;
 import Modelo.Clase_Equipo;
 import Modelo.Clase_Partido;
 import Modelo.Clase_Resumen_Partido;
@@ -14,12 +15,22 @@ import Vista.Resumen_Partido;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -51,6 +62,8 @@ public class Controlador_Resumen_Partido {
         visRes.getBtnAgregar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Registrar"));
         visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipos());
         visRes.getBtnGoles().addActionListener(l -> BotonGoles());
+        visRes.getBtnGoleadores().addActionListener(l -> ReporteGoleador());
+        visRes.getBtnPosiciones().addActionListener(l -> ReportePosiciones());
         visRes.getBtnCancelar().addActionListener(l -> visRes.getDlgRegistrarConsultar().dispose());
         visRes.getBtnModificar().addActionListener(l -> {
 
@@ -452,6 +465,64 @@ public class Controlador_Resumen_Partido {
 
     }
 
+    public void ReporteGoleador() {
+
+        String x = JOptionPane.showInputDialog(null,
+                "Ingrese el codigo del campeonato que desea ver el goleador", "Realizar Reporte", JOptionPane.QUESTION_MESSAGE);
+
+        try {
+            Conexion.ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\TablaGoleadoresCampeonato.jasper";
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            Map parametro = new HashMap();
+            parametro.put("camp", Integer.valueOf(x));
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
+
+            JasperViewer vista = new JasperViewer(jprint, false);
+
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+     public void ReportePosiciones() {
+
+//        String x = JOptionPane.showInputDialog(null,
+//                "Ingrese el codigo del campeonato que desea ver el goleador", "Realizar Reporte", JOptionPane.QUESTION_MESSAGE);
+
+        try {
+            Conexion.ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\TablaPosiciones.jasper";
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+//            Map parametro = new HashMap();
+//            parametro.put("hola", Integer.valueOf(x));
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer vista = new JasperViewer(jprint, false);
+
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Resumen_Partido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     public void Limpiar() {
 
         visRes.getTxtFaltas().setText("");
