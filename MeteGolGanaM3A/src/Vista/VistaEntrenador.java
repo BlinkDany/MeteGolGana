@@ -229,9 +229,9 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(lblReMoJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblReMoJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,41 +242,43 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodigo.setEditable(false);
+        txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setBordeColorFocus(new java.awt.Color(255, 255, 255));
         txtCodigo.setPlaceholder("Codigo");
-        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, -1));
+        jPanel3.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 40, -1));
 
         txtCedula.setForeground(new java.awt.Color(0, 0, 0));
         txtCedula.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCedula.setPlaceholder("Cedula");
-        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, -1));
+        jPanel3.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
 
         txtAñosExperiencia.setForeground(new java.awt.Color(0, 0, 0));
         txtAñosExperiencia.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtAñosExperiencia.setPlaceholder("Años de experiencia");
-        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, -1));
+        jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setText("Foto");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         txtSueldo.setForeground(new java.awt.Color(0, 0, 0));
         txtSueldo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtSueldo.setPlaceholder("Sueldo");
-        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
+        jPanel3.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 210, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
         btnCancelar.setColorNormal(new java.awt.Color(255, 0, 0));
         btnCancelar.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, -1, -1));
 
         btnRegistrarModificar.setText("Registrar");
         btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
         btnRegistrarModificar.setColorPressed(new java.awt.Color(0, 204, 51));
         btnRegistrarModificar.setColorTextHover(new java.awt.Color(255, 255, 255));
-        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, -1, -1));
+        jPanel3.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -284,24 +286,20 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lblFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 160, 140, 130));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 140, 130));
 
         txtEquipo.setEditable(false);
         txtEquipo.setForeground(new java.awt.Color(0, 0, 0));
         txtEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtEquipo.setPlaceholder("Equipo");
-        jPanel3.add(txtEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 210, -1));
+        jPanel3.add(txtEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 210, -1));
 
         tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -324,7 +322,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblEquipo);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 450, 170));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 330, 130));
 
         txt_Ruta_Foto.setEditable(false);
         txt_Ruta_Foto.setBackground(new java.awt.Color(255, 255, 255));
@@ -341,7 +339,7 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
