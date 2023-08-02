@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="577f71d1-e4fd-4c81-95f2-3d05383b0568">
-	<queryString language="SQL">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="camp" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT q.nombre1, q.apellido1, x.nombre as "Campeonato" ,count(*) AS "total goles"
 FROM gol l
 JOIN jugador j ON l.codigo_jugadorfk = j.codigo
@@ -8,7 +14,7 @@ JOIN persona q on j.cedula_personafk = q.cedula
 JOIN partido n ON l.codigo_partidofk = n.codigo
 JOIN temporada f ON n.cod_temporadafk = f.codigo
 JOIN campeonato x ON f.codigo_campeonato = x.codigo
-WHERE x.codigo = 1
+WHERE x.codigo = $P{camp}
 group by q.nombre1, q.apellido1, x.nombre
 ORDER BY "total goles" DESC;]]>
 	</queryString>
@@ -20,16 +26,82 @@ ORDER BY "total goles" DESC;]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#003366" uuid="9363906b-35d2-4b31-8a37-c57867aeec39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Goleadores]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" forecolor="#006699" uuid="124b6ded-6848-49e7-a257-69033542961d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Mete gol gana]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="72" y="10" width="100" height="20" forecolor="#0066CC" uuid="38bfa024-75a8-4839-af8d-40e2ea37e34b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[nombre1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="10" width="100" height="20" forecolor="#0066CC" uuid="30ee6606-f90f-4233-9bfb-252f05c582ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[apellido1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="10" width="100" height="20" forecolor="#0066CC" uuid="40ad5697-f18f-4f55-a9b6-d4cbc7bfe3aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Campeonato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="10" width="100" height="20" forecolor="#0066CC" uuid="bdc67683-3b5d-413a-a676-63093aaa1861"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[total goles]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="72" y="15" width="100" height="20" uuid="63bf1bc8-174f-49bd-82ac-808d9a51850c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="15" width="100" height="20" uuid="ea320014-de10-47ea-b174-8f839bf055fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{apellido1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="15" width="100" height="20" uuid="293abe89-e98c-4e05-b9e6-a3ce2b0d8fe2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Campeonato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="15" width="100" height="20" uuid="e9278e45-8a64-4339-a76d-e3e40632c381"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total goles}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
