@@ -61,7 +61,7 @@ public class Controlador_Gol {
         vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
         vistagol.getBtnmandardatos().addActionListener(l -> mandardatos());
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
-        vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
+        vistagol.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -77,7 +77,7 @@ public class Controlador_Gol {
             vistagol.getTblGoles().clearSelection();
         });
 
-        vistagol.txtBuscar.addKeyListener(new KeyAdapter() {
+        vistagol.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 //      buscar();
@@ -393,26 +393,13 @@ public class Controlador_Gol {
 
     private void cargaGoles() {
 
-        DefaultTableModel tabla = (DefaultTableModel) VistaGol.getTblGoles().getModel();
+        DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
         tabla.setNumRows(0);
 
         List<Clase_Gol> jug = modeloGol.listarGoles();
         jug.stream().forEach(p -> {
 
             Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getNombre_equipo(), p.getNombre_jugador()};
-            tabla.addRow(datos);
-        });
-    }
-
-    public void MostrarDatos() {
-
-        DefaultTableModel tabla = (DefaultTableModel) VistaGol.getTblGoles().getModel();
-        tabla.setNumRows(0);
-
-        List<Clase_Gol> jug = modeloGol.listarGoles();
-        jug.stream().forEach(p -> {
-
-            Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getPosicion_arbitro(), p.getSalario_arbitro()};
             tabla.addRow(datos);
         });
     }
