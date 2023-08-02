@@ -26,30 +26,34 @@ public class Modelo_Gol extends Clase_Gol {
     public List<Clase_Gol> BuscarGoles(int aux) {
 
         try {
-
-            String sql = "SELECT * "
-                    + "from gol "
-                    + "WHERE codigo = '" + aux + "'";
+            String sql = "SELECT g.codigo, g.descripcion, g.minuto, g.codigo_partidofk, g.cod_equipofk, g.codigo_jugadorfk, e.nombre, p.nombre1, g.estado_elim "
+                    + "FROM gol g "
+                    + "JOIN equipo e ON (g.cod_equipofk = e.codigo) "
+                    + "JOIN jugador j ON (g.codigo_jugadorfk = j.codigo) "
+                    + "JOIN persona p ON (j.cedula_personafk = p.cedula) "
+                    + "WHERE g.estado_elim = false and g.codigo = '" + aux + "'"
+                    + " ORDER BY g.codigo ";
 
             ResultSet rs = CPG.Consultas(sql);
-            List<Clase_Gol> gol = new ArrayList<>();
-            byte[] bytea;
+            List<Clase_Gol> listita = new ArrayList<>();
 
             while (rs.next()) {
+                Clase_Gol gol = new Clase_Gol();
+                gol.setCod_gol(rs.getInt(1));
+                gol.setDescripcion(rs.getString(2));
+                gol.setMinuto(rs.getString(3));
+                gol.setCod_partido(rs.getInt(4));
+                gol.setCod_equipo(rs.getInt(5));
+                gol.setCod_jugador(rs.getInt(6));
+                gol.setNombre_equipo(rs.getString(7));
+                gol.setNombre_jugador(rs.getString(8));
+                gol.setEstado_elim(rs.getBoolean(9));
+                listita.add(gol);
 
-                Clase_Gol goles = new Clase_Gol();
-                goles.setCod_gol(rs.getInt("codigo"));
-                goles.setDescripcion(rs.getString("descripcion"));
-                goles.setMinuto(rs.getString("minuto"));
-                goles.setCod_partido(rs.getInt("codigo_partidofk"));
-                goles.setCod_equipo(rs.getInt("cod_equipofk"));
-                goles.setCod_jugador(rs.getInt("codigo_jugadorfk"));
-
-                gol.add(goles);
             }
 
             rs.close();
-            return gol;
+            return listita;
 
         } catch (SQLException ex) {
 
