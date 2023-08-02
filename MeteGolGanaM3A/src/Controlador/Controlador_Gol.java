@@ -72,6 +72,11 @@ public class Controlador_Gol {
                 validarEntrada(evt);
             }
         });
+        vistagol.getTxtMinuto().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaMinutos(evt);
+            }
+        });
         vistagol.getBtnCancelar().addActionListener(e -> {
             vistagol.getTblbuscar().clearSelection();
         });
@@ -542,6 +547,21 @@ public class Controlador_Gol {
         if (vistagol.getTxtBuscar().getText().trim().length() > 3) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
+    }
+    
+        private void validarEntradaMinutos(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (vistagol.getTxtMinuto().getText().trim().length() > 1) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
         }
     }
     //--

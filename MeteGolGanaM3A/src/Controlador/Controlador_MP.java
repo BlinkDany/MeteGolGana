@@ -5,12 +5,11 @@ package Controlador;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import Modelo.Clase_Arbitro;
 import Modelo.Clase_Campeonato;
 import Modelo.Clase_Temporada;
 import Modelo.ModeloEquipos;
+import Modelo.ModeloLoggin;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Arbitro;
 import Modelo.Modelo_Asignacion;
@@ -70,6 +69,7 @@ public class Controlador_MP {
         vistaPrincipal.getBtnEstadios().addActionListener(l -> MenuEstadios());
         vistaPrincipal.getBtnEntrenador().addActionListener(l -> MenuEntrenador());
         vistaPrincipal.getBtnAsignacion().addActionListener(l -> MenuAsignacion());
+        vistaPrincipal.getBtncerrarsesion().addActionListener(l -> CerrarSesion());
 
     }
 
@@ -106,6 +106,25 @@ public class Controlador_MP {
         Controlador.Controlador_Campeonato controlPer = new Controlador_Campeonato(model, vista);
         controlPer.iniciaControl();
         abrirNuevoEscritorio(vista);
+
+    }
+
+    private void CerrarSesion() {
+        Vista.LogIn visPer = new LogIn();
+        Vista.VistaJugadores ju = new VistaJugadores();
+        Vista.VistaEntrenador entr = new VistaEntrenador();
+        Vista.Vista_Arbitro arb = new Vista_Arbitro();
+        Modelo.Modelo_Persona modper = new Modelo_Persona();
+        Modelo.Modelo_Jugador modjug = new Modelo_Jugador();
+        Modelo.Modelo_Entrenador moden = new Modelo_Entrenador();
+        Modelo.Modelo_Arbitro modar = new Modelo_Arbitro();
+        Modelo.ModeloEquipos mode = new ModeloEquipos();
+        Modelo.ModeloLoggin log = new ModeloLoggin();
+        
+        ControladorLoggin ctr = new ControladorLoggin(visPer, ju, arb, entr, modper, modjug, moden, modar, mode, log);
+        
+        ctr.InicarLoggin();
+        vistaPrincipal.dispose();
 
     }
 
@@ -207,7 +226,7 @@ public class Controlador_MP {
         Modelo.Modelo_Estadio moesta = new Modelo_Estadio();
         Vista.VistaGol visequi = new VistaGol();
         vistaPrincipal.getDesctopPrincipal().add(visequi);
-        Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol,moesta);
+        Controlador_Gol controlEqui = new Controlador_Gol(moPart, moJug, moequ, visequi, moGol, moesta);
         controlEqui.iniciaControl();
         abrirNuevoEscritorio(visequi);
 

@@ -44,6 +44,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnEntrenador;
     }
 
+    public JButton getBtncerrarsesion() {
+        return btncerrarsesion;
+    }
+
     public void setBtnEntrenador(JButton btnEntrenador) {
         this.btnEntrenador = btnEntrenador;
     }
@@ -179,6 +183,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator21 = new javax.swing.JToolBar.Separator();
         desctopPrincipal = new javax.swing.JDesktopPane();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        btncerrarsesion = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -339,15 +344,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/wallhaven-96gro1.jpg"))); // NOI18N
 
+        btncerrarsesion.setBackground(new java.awt.Color(255, 255, 255));
+        btncerrarsesion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btncerrarsesion.setForeground(new java.awt.Color(0, 102, 153));
+        btncerrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/flecha-hacia-la-izquierda.png"))); // NOI18N
+        btncerrarsesion.setText("Cerrar Sesion");
+
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btncerrarsesion)
+                .addContainerGap())
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(510, Short.MAX_VALUE)
+                .addComponent(btncerrarsesion)
+                .addContainerGap())
         );
 
         desctopPrincipal.setLayer(panelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -402,6 +419,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnJugadores;
     private javax.swing.JButton btnResumen;
     private javax.swing.JButton btnTemporada;
+    private javax.swing.JButton btncerrarsesion;
     private javax.swing.JDesktopPane desctopPrincipal;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
