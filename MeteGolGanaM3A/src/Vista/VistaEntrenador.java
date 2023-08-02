@@ -198,6 +198,8 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEquipo = new javax.swing.JTable();
         txt_Ruta_Foto = new javax.swing.JTextField();
+        txtCodigo1 = new LIB.FSTexFieldMD();
+        txtCedula1 = new LIB.FSTexFieldMD();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -336,6 +338,16 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
             }
         });
         jPanel3.add(txt_Ruta_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 140, -1));
+
+        txtCodigo1.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigo1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodigo1.setPlaceholder("Codigo");
+        jPanel3.add(txtCodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, -1));
+
+        txtCedula1.setForeground(new java.awt.Color(0, 0, 0));
+        txtCedula1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCedula1.setPlaceholder("Cedula");
+        jPanel3.add(txtCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, -1));
 
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
@@ -504,15 +516,15 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnAgregar;
-    public static LIB.FSButtonMD btnCancelar;
-    public static javax.swing.JButton btnEliminar;
+    private static javax.swing.JButton btnAgregar;
+    private static LIB.FSButtonMD btnCancelar;
+    private static javax.swing.JButton btnEliminar;
     public static LIB.FSButtonMD btnInicio;
-    public static javax.swing.JButton btnModificar;
-    public static LIB.FSButtonMD btnRegistrarModificar;
-    public static javax.swing.JDialog dialogRegistrarModificar;
+    private static javax.swing.JButton btnModificar;
+    private static LIB.FSButtonMD btnRegistrarModificar;
+    private static javax.swing.JDialog dialogRegistrarModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private static javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -525,14 +537,16 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReMoJugadores;
-    public static javax.swing.JTable tblEntrenador;
+    private static javax.swing.JTable tblEntrenador;
     public static javax.swing.JTable tblEquipo;
-    public static LIB.FSTexFieldMD txtAñosExperiencia;
-    public static LIB.FSTexFieldMD txtBuscar;
-    public static LIB.FSTexFieldMD txtCedula;
-    public static LIB.FSTexFieldMD txtCodigo;
-    public static LIB.FSTexFieldMD txtEquipo;
-    public static LIB.FSTexFieldMD txtSueldo;
-    public javax.swing.JTextField txt_Ruta_Foto;
+    private static LIB.FSTexFieldMD txtAñosExperiencia;
+    private static LIB.FSTexFieldMD txtBuscar;
+    private static LIB.FSTexFieldMD txtCedula;
+    private static LIB.FSTexFieldMD txtCedula1;
+    private static LIB.FSTexFieldMD txtCodigo;
+    private static LIB.FSTexFieldMD txtCodigo1;
+    private static LIB.FSTexFieldMD txtEquipo;
+    private static LIB.FSTexFieldMD txtSueldo;
+    private static javax.swing.JTextField txt_Ruta_Foto;
     // End of variables declaration//GEN-END:variables
 }

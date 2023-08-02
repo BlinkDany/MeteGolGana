@@ -94,7 +94,7 @@ public class Controlador_Partido {
         vistapar.getBtnTemporada().addActionListener(l -> abrirDialogobusqueda("TEMPORADA"));
         vistapar.getBtnmandardatos().addActionListener(l -> mandardatos());
         vistapar.getBtnBuscar().addActionListener(l -> buscarFK());
-        vistapar.txtBuscar.addKeyListener(new KeyAdapter() {
+        vistapar.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 buscar();
@@ -615,7 +615,7 @@ public class Controlador_Partido {
             DefaultTableModel tabla = (DefaultTableModel) vistapar.getTblPartidos().getModel();
             tabla.setNumRows(0);
 
-            List<Clase_Partido> par = modeloPar.BuscarPartidos(vistapar.txtBuscar.getText());
+            List<Clase_Partido> par = modeloPar.BuscarPartidos(vistapar.getTxtBuscar().getText());
             par.stream().forEach(p -> {
 
                  Object[] rowData = {p.getCod_partido(), p.getNombre_estadio(), p.getCod_temporadafk(), p.getFecha(), p.getGrupo(), p.getEstado(), p.getNombreequipo1(), p.getNombreequipo2()};

@@ -89,10 +89,10 @@ public class ControladorLoggin {
             LimpiarDatos();
         });
         visJugador.btnCancelar.addActionListener(l -> visJugador.dialogRegistrarModificar.dispose());
-        visEntrenador.btnCancelar.addActionListener(l -> visEntrenador.dialogRegistrarModificar.dispose());
+        visEntrenador.getBtnCancelar().addActionListener(l -> visEntrenador.getDialogRegistrarModificar().dispose());
         visArbitro.getBtnCancelar().addActionListener(l -> Vista_Arbitro.dialogRegistrarModificar.dispose());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
-        visEntrenador.btnRegistrarModificar.addActionListener(l -> RegistrarPersona());
+        visEntrenador.getBtnRegistrarModificar().addActionListener(l -> RegistrarPersona());
         visArbitro.getBtnRegistrarModificar().addActionListener(l -> RegistrarPersona());
         visJugador.getTblEquipo().addMouseListener(new MouseAdapter() {
             @Override
@@ -151,7 +151,7 @@ public class ControladorLoggin {
                 Controlador_MP ctr = new Controlador_MP(log);
 
                 ctr.iniciaControl();
-                
+
                 visPer.dispose();
             } else {
 
@@ -209,12 +209,12 @@ public class ControladorLoggin {
     public void IniciarDialogEntrenador(String titulo) {
 
         visPer.dlgPersona.dispose();
-        VistaEntrenador.dialogRegistrarModificar.setVisible(true);
-        VistaEntrenador.dialogRegistrarModificar.setTitle(titulo);
-        VistaEntrenador.dialogRegistrarModificar.setSize(1025, 500);
-        visEntrenador.dialogRegistrarModificar.setLocationRelativeTo(null);
-        if (VistaEntrenador.dialogRegistrarModificar.getTitle().equals("Registrar Entrenador")) {
-            visEntrenador.txtCedula.setText(visPer.getTxtCedulaDLG().getText());
+        VistaEntrenador.getDialogRegistrarModificar().setVisible(true);
+        VistaEntrenador.getDialogRegistrarModificar().setTitle(titulo);
+        VistaEntrenador.getDialogRegistrarModificar().setSize(1025, 500);
+        visEntrenador.getDialogRegistrarModificar().setLocationRelativeTo(null);
+        if (VistaEntrenador.getDialogRegistrarModificar().getTitle().equals("Registrar Entrenador")) {
+            visEntrenador.getTxtCedula().setText(visPer.getTxtCedulaDLG().getText());
         }
     }
 
@@ -344,22 +344,22 @@ public class ControladorLoggin {
 
     public void RegistrarEntrenador() {
 
-        if (VistaEntrenador.txtCodigo.getText().isEmpty() || VistaEntrenador.txtCedula.getText().isEmpty()
-                || VistaEntrenador.txtAñosExperiencia.getText().isEmpty() || VistaEntrenador.getTxtSueldo().getText().isEmpty() || VistaEntrenador.txtEquipo.getText().isEmpty()) {
+        if (VistaEntrenador.getTxtCodigo().getText().isEmpty() || VistaEntrenador.getTxtCedula().getText().isEmpty()
+                || VistaEntrenador.getTxtAñosExperiencia().getText().isEmpty() || VistaEntrenador.getTxtSueldo().getText().isEmpty() || VistaEntrenador.getTxtEquipo().getText().isEmpty()) {
 
             MensajeError("Faltan campos por llenar");
         } else {
 
-            modEnt.setAniosexp(Integer.valueOf(VistaEntrenador.txtAñosExperiencia.getText()));
-            modEnt.setCodigo_equipofk(VistaEntrenador.txtEquipo.getText());
-            modEnt.setCedula_personafk(VistaEntrenador.txtCedula.getText());
-            modEnt.setCodigo(Integer.valueOf(VistaEntrenador.txtCodigo.getText()));
-            modEnt.setSueldo(Double.valueOf(VistaEntrenador.txtSueldo.getText()));
+            modEnt.setAniosexp(Integer.valueOf(VistaEntrenador.getTxtAñosExperiencia().getText()));
+            modEnt.setCodigo_equipofk(VistaEntrenador.getTxtEquipo().getText());
+            modEnt.setCedula_personafk(VistaEntrenador.getTxtCedula().getText());
+            modEnt.setCodigo(Integer.valueOf(VistaEntrenador.getTxtCodigo().getText()));
+            modEnt.setSueldo(Double.valueOf(VistaEntrenador.getTxtSueldo().getText()));
 
             if (modEnt.InsertarEntrenador()) {
 
                 MensajeSucces("Se ha registrado con exito ");
-                VistaEntrenador.dialogRegistrarModificar.dispose();
+                VistaEntrenador.getDialogRegistrarModificar().dispose();
 
             } else {
 
@@ -470,12 +470,12 @@ public class ControladorLoggin {
             Logger.getLogger(Controlador_Jugador.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        visEntrenador.txtAñosExperiencia.setText("");
-        visEntrenador.txtCedula.setText("");
-        visEntrenador.txtSueldo.setText("");
-        visEntrenador.txtEquipo.setText("");
+        visEntrenador.getTxtAñosExperiencia().setText("");
+        visEntrenador.getTxtCedula().setText("");
+        visEntrenador.getTxtSueldo().setText("");
+        visEntrenador.getTxtEquipo().setText("");
         visEntrenador.lblFoto.setIcon(null);
-        visEntrenador.tblEntrenador.clearSelection();
+        visEntrenador.getTblEntrenador().clearSelection();
         visEntrenador.tblEquipo.clearSelection();
 
         visArbitro.getTxtAñosExperiencia().setText("");
