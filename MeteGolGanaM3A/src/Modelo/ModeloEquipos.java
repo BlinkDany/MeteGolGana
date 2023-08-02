@@ -49,9 +49,9 @@ public class ModeloEquipos extends Clase_Equipo {
 
         try {
 
-            String sql = "SELECT * "
-                    + "from equipo "
-                    + "WHERE codigo = '" + aux + "'and estado_elim = false";
+            String sql = "SELECT * from equipo "
+                    + "WHERE nombre like '%" + aux + "%' and estado_elim = false "
+                    + "order by codigo";
 
             ResultSet rs = CPG.Consultas(sql);
             List<Clase_Equipo> par = new ArrayList<>();
@@ -63,7 +63,6 @@ public class ModeloEquipos extends Clase_Equipo {
                 equipo.setNombre_equi(rs.getString("nombre"));
                 equipo.setAnio_fundacion(rs.getDate("anio_fundacion"));
                 equipo.setCiudad(rs.getString("ciudad"));
-                equipo.setEstado_elim(rs.getInt("estado_elim"));
 
                 par.add(equipo);
             }

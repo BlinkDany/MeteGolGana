@@ -18,8 +18,11 @@ import Vista.VistaEntrenador;
 import Vista.VistaJugadores;
 import Vista.Vista_Arbitro;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -100,10 +103,211 @@ public class ControladorLoggin {
                 visJugador.getTxtEquipo().setText(visJugador.getTblEquipo().getValueAt(visJugador.getTblEquipo().getSelectedRow(), 0).toString());
             }
         });
+        VistaEntrenador.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaAnios(evt);
+            }
+        });
+        VistaEntrenador.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarSueldo(evt);
+            }
+        });
         visEntrenador.getTblEquipo().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 visEntrenador.getTxtEquipo().setText(visEntrenador.getTblEquipo().getValueAt(visEntrenador.getTblEquipo().getSelectedRow(), 0).toString());
+            }
+        });
+        visPer.getTxtPassword().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IniciarSesion();
+            }
+        });
+        visPer.getTxtUsuario().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IniciarSesion();
+            }
+        });
+        visPer.getTxtCedulaDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Sólo se permiten números para la cedula");
+                }
+                if (visPer.getTxtCedulaDLG().getText().length() == 10) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "La cedula no debe exceder de los 10 caracteres");
+                }
+            }
+        });
+
+        visPer.getTxt1erNomDlg().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+            }
+        });
+
+        visPer.getTxt2doNomDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+            }
+        });
+
+        visPer.getTxt1erApeDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+            }
+        });
+
+        visPer.getTxt2doApeDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+            }
+        });
+
+        visPer.getTxtDirecDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char nombre = e.getKeyChar();
+                boolean mayusculas = nombre >= 65 && nombre <= 90;
+                boolean minusculas = nombre >= 97 && nombre <= 122;
+                boolean espacio = nombre == 32;
+                boolean reto = nombre == 8;
+                boolean especial = nombre == 164;
+                boolean especial1 = nombre == 165;
+                if (!(mayusculas || minusculas || espacio || reto || especial || especial1)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten letras para este campo");
+                }
+
+            }
+        });
+
+        visPer.getTxtTelfDLG().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
+                }
+                if (visPer.getTxtTelfDLG().getText().trim().length() == 15) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
+                }
+            }
+        });
+
+        visJugador.getTxtAñosExperiencia().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean retroceso = codigo1 == 8;
+                if (!(numeros1 || retroceso)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números");
+                }
+                if (visJugador.getTxtAñosExperiencia().getText().trim().length() == 2) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "El numero de telefono no debe exceder de los 15 caracteres");
+                }
+            }
+        });
+
+        visJugador.getTxtSueldo().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                int codigo1 = e.getKeyChar();
+                boolean numeros1 = codigo1 >= 48 && codigo1 <= 57;
+                boolean punto = codigo1 == 46;
+                boolean coma = codigo1 == 44;
+                boolean retroceso = codigo1 == 8;
+                if (!(numeros1 || retroceso || punto || coma)) {
+                    e.consume();
+                    //JOptionPane.showMessageDialog(null, "Sólo se permiten números o numeros con decimales");
+                }
+
+                /*if (visJugador.getTxtSueldo().getText().trim().length() == 6) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "El codigo numerico no debe exceder de los 7 caracteres");
+                }*/
+            }
+        });
+        visArbitro.getTxtAñosExperiencia().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaAnios(evt);
+            }
+        });
+        visArbitro.getTxtSueldo().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarSueldo(evt);
+            }
+        });
+        visPer.getTxtCedulaDLG().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaCedula(evt);
+            }
+        });
+        visPer.getTxt1erNomDlg().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntradaNombreApellido(evt);
             }
         });
         try {
@@ -512,5 +716,114 @@ public class ControladorLoggin {
     public void MensajeError(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    //////////////validaciones////////////
+    private void validarEntradaDireccion(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+        boolean punto = dato == 46;
+        boolean guion = dato == 45;
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ || punto || guion)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Digito INCORRECTO");
+        }
+        if (visPer.getTxtDirecDLG().getText().trim().length() > 149) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+    }
+/////////////////////////////ARBITRO/////////////////////////////////////////////////
+
+    private void validarEntradaAnios(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (visArbitro.getTxtAñosExperiencia().getText().trim().length() > 1) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (2) digitos");
+        }
+    }
+
+    private void validarSueldo(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean punto = dato == 46;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros || punto)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO");
+        }
+    }
+
+    private void validarEntradaCedula(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (visPer.getTxtCedulaDLG().getText().trim().length() > 9) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (10) digitos");
+        }
+    }
+    
+    private void validarEntradaNombreApellido(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean mayusculas = dato >= 65 && dato <= 90;
+        boolean minusculas = dato >= 97 && dato <= 122;
+        boolean tildesMinusculas = dato >= 160 && dato <= 163;
+        boolean tildeE = dato == 130;
+        boolean ñ = dato == 164;
+        boolean Ñ = dato == 165;
+        boolean ETILDE = dato == 144;
+        boolean ATILDE = dato == 181;
+        boolean ITILDE = dato == 214;
+        boolean OTILDE = dato == 224;
+        boolean UTILDE = dato == 233;
+
+        boolean backspace = dato == 8;
+
+        if (!(mayusculas || backspace || ETILDE || ATILDE || ITILDE || OTILDE || UTILDE || Ñ || minusculas || ñ || Ñ)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar LETRAS");
+        }
+        if (visPer.getTxt1erNomDlg().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doNomDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt1erApeDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
+        if (visPer.getTxt2doApeDLG().getText().trim().length() > 49) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (50) digitos");
+        }
     }
 }

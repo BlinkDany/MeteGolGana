@@ -51,6 +51,7 @@ public class Controlador_Resumen_Partido {
         visRes.getBtnAgregar().addActionListener(l -> IniciarDialogRegisrarVisualizar("Registrar"));
         visRes.getBtnRegistrar().addActionListener(l -> RegistrarEquipos());
         visRes.getBtnGoles().addActionListener(l -> BotonGoles());
+        visRes.getBtnCancelar().addActionListener(l -> visRes.getDlgRegistrarConsultar().dispose());
         visRes.getBtnModificar().addActionListener(l -> {
 
             if (!(visRes.getTblResuemn().getSelectedRow() == -1)) {

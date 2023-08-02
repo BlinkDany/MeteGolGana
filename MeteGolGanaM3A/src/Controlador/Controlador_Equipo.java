@@ -42,15 +42,10 @@ public class Controlador_Equipo {
             }
         });
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
-        vistaequi.txtBuscar.addKeyListener(new KeyAdapter() {
+        vistaequi.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 buscar();
-            }
-        });
-        vistaequi.getTxtBuscar().addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                validarEntrada(evt);
             }
         });
         vistaequi.getBtnCancelar().addActionListener(e -> {
@@ -62,6 +57,7 @@ public class Controlador_Equipo {
         vistaequi.getBtnRegistrarModificar().addActionListener(e -> {
             vistaequi.getTblEquipos().clearSelection();
         });
+        
         vistaequi.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
@@ -79,34 +75,16 @@ public class Controlador_Equipo {
 
     }
     public void buscar() {
-        // Obtener el código ingresado en el campo de búsqueda
-        int codigo = Integer.parseInt(vistaequi.getTxtBuscar().getText());
-        if (codigo == 0) {
-            // Mostrar mensaje de error si no se ingresa el código
-            JOptionPane.showMessageDialog(null, "Ingrese el código de la temporada que desea buscar",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            // Obtener el modelo de la tabla
-            DefaultTableModel tabla = (DefaultTableModel) vistaequi.getTblEquipos().getModel();
-            // Limpiar el modelo de datos de la tabla
-            tabla.setNumRows(0);
-
-            // Obtener la lista de productos
-            List<Clase_Equipo> listTemp = modeloEqui.listarEquipos();
-
-            // Utilizar un stream para procesar la lista de productos
-            listTemp.stream()
-                    // Filtrar los productos por el código
-                    .filter(p -> codigo == p.getCod_equipo())
-                    // Mapear cada producto filtrado a un objeto "datos" que contiene los valores deseados
-                    .map(p -> {
-                        // Crear un objeto "datos"
-                        Object[] datos = {p.getCod_equipo(), p.getNombre_equi(), p.getAnio_fundacion(), p.getCiudad()};
-                        return datos;
-                    })
-                    // Agregar cada objeto "datos" como una nueva fila al modelo de la tabla
-                    .forEach(tabla::addRow);
-        }
+        
+        DefaultTableModel tabla = (DefaultTableModel) vistaequi.getTblEquipos().getModel();
+        tabla.setNumRows(0);
+        
+        List<Clase_Equipo> equi = modeloEqui.BuscarEquipo(vistaequi.getTxtBuscar().getText());
+        equi.stream().forEach(p ->{
+            
+            Object datos[] = {p.getCod_equipo(), p.getNombre_equi(), p.getAnio_fundacion(), p.getCiudad()};
+            tabla.addRow(datos);
+        });
         
     }
 
@@ -130,23 +108,26 @@ public class Controlador_Equipo {
     }
 
     private void abrirDialogo(String ce) {
-
-        vistaequi.getJdlgEquipos().setLocationRelativeTo(null);
+        
         vistaequi.getJdlgEquipos().setSize(900, 500);
         vistaequi.getJdlgEquipos().setTitle(ce);
         vistaequi.getJdlgEquipos().setVisible(true);
+        vistaequi.getJdlgEquipos().setLocationRelativeTo(null);
 
         if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Crear")) {
             vistaequi.getTxtcodequipo().setEnabled(false);
             vistaequi.getLblReMoEquipos().setText("REGISTRO DE EQUIPOS");
+            vistaequi.getBtnRegistrarModificar().setText("Registrar");
 
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Editar")) {
             vistaequi.getTxtcodequipo().setEnabled(false);
             vistaequi.getLblReMoEquipos().setText("MODIFICAR EQUIPOS");
+            vistaequi.getBtnRegistrarModificar().setText("Modificar");
             LlenarDatos();
 
         } else if (vistaequi.getJdlgEquipos().getTitle().contentEquals("Eliminar")) {
             vistaequi.getTxtcodequipo().setEnabled(true);
+            vistaequi.getBtnRegistrarModificar().setText("Eliminar");
             LlenarDatos();
         }
     }
@@ -281,6 +262,7 @@ public class Controlador_Equipo {
         vistaequi.getJdcaniofundacion().setDate(null);
         vistaequi.getTxtCiudadequipo().setText("");
         vistaequi.getTxtcodequipo().setEnabled(true);
+        vistaequi.getTblEquipos().clearSelection();
 
     }
 }
