@@ -703,7 +703,7 @@ public class Controlador_Arbitro {
 
         if (!(backspace || numeros || punto)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
+            JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO");
         }
     }
 //////////////////////////////////////////////////VALIDAR EDAD//////////////////////////////////////
