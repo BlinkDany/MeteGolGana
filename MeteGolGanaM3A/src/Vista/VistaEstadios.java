@@ -16,6 +16,14 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public static JButton getBtnReporte() {
+        return btnReporte;
+    }
+
+    public static void setBtnReporte(JButton btnReporte) {
+        VistaEstadios.btnReporte = btnReporte;
+    }
+
     public static JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -193,6 +201,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         tblEstadios = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
 
         dialogRegistrarModificar.setResizable(false);
 
@@ -225,6 +234,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
 
         txtCodigoEst.setForeground(new java.awt.Color(0, 0, 0));
         txtCodigoEst.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodigoEst.setEnabled(false);
         txtCodigoEst.setPlaceholder("Codigo");
         jPanel3.add(txtCodigoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 210, -1));
 
@@ -392,6 +402,12 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Registrar un nuevo jugador");
 
+        btnReporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnReporte.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnReporte.setText("Reporte");
+        btnReporte.setToolTipText("Ver reporte de las temporadas");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -408,9 +424,10 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(23, 23, 23))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -428,6 +445,8 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -471,6 +490,7 @@ public class VistaEstadios extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
+    public static javax.swing.JButton btnReporte;
     private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JDialog dialogRegistrarModificar;
     private javax.swing.JLabel jLabel1;
