@@ -60,40 +60,6 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         estocu = new javax.swing.JLabel();
         fechaantes = new javax.swing.JLabel();
         fechadespues = new javax.swing.JLabel();
-        btnEstadio1 = new LIB.FSButtonMD();
-        txtEquipo3 = new LIB.FSTexFieldMD();
-        estocu1 = new javax.swing.JLabel();
-        txtgrupo1 = new LIB.FSTexFieldMD();
-        btnCancelar2 = new LIB.FSButtonMD();
-        equocu3 = new javax.swing.JLabel();
-        btnEquipo3 = new LIB.FSButtonMD();
-        txtCodPartido1 = new LIB.FSTexFieldMD();
-        cmestado1 = new javax.swing.JComboBox<>();
-        equocu1 = new javax.swing.JLabel();
-        txtEquipo4 = new LIB.FSTexFieldMD();
-        dtfecha1 = new com.toedter.calendar.JDateChooser();
-        btnTemporada1 = new LIB.FSButtonMD();
-        txtCampeonato1 = new LIB.FSTexFieldMD();
-        txtEstadio1 = new LIB.FSTexFieldMD();
-        btnRegistrarModificar1 = new LIB.FSButtonMD();
-        fechaantes1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        btnEquipo4 = new LIB.FSButtonMD();
-        fechadespues1 = new javax.swing.JLabel();
-        txtbuscarcod1 = new LIB.FSTexFieldMD();
-        btnCancelar3 = new LIB.FSButtonMD();
-        btnmandardatos1 = new LIB.FSButtonMD();
-        btnBuscar1 = new LIB.FSButtonMD();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblbuscar1 = new javax.swing.JTable();
-        btnAgregar1 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblPartidos1 = new javax.swing.JTable();
-        btnModificar1 = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnInicio1 = new LIB.FSButtonMD();
-        txtBuscar1 = new LIB.FSTexFieldMD();
         dialogtablas = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -276,573 +242,15 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         fechadespues.setText("jLabel3");
         jPanel3.add(fechadespues, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 660, -1, -1));
 
-        btnEstadio1.setBackground(new java.awt.Color(204, 204, 204));
-        btnEstadio1.setText("Buscar Estadio");
-        btnEstadio1.setColorHover(new java.awt.Color(0, 0, 0));
-        btnEstadio1.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnEstadio1.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnEstadio1.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        txtEquipo3.setForeground(new java.awt.Color(0, 0, 0));
-        txtEquipo3.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtEquipo3.setPlaceholder("Equipo2");
-
-        estocu1.setText("jLabel4");
-
-        txtgrupo1.setForeground(new java.awt.Color(0, 0, 0));
-        txtgrupo1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtgrupo1.setPlaceholder("Grupo");
-
-        btnCancelar2.setText("Cancelar");
-        btnCancelar2.setColorHover(new java.awt.Color(0, 0, 0));
-        btnCancelar2.setColorNormal(new java.awt.Color(255, 0, 0));
-        btnCancelar2.setColorTextHover(new java.awt.Color(255, 255, 255));
-        btnCancelar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar2ActionPerformed(evt);
-            }
-        });
-
-        equocu3.setText("jLabel3");
-
-        btnEquipo3.setBackground(new java.awt.Color(204, 204, 204));
-        btnEquipo3.setText("Buscar Equipo");
-        btnEquipo3.setColorHover(new java.awt.Color(0, 0, 0));
-        btnEquipo3.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnEquipo3.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnEquipo3.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        txtCodPartido1.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodPartido1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodPartido1.setPlaceholder("CodigoPartido");
-        txtCodPartido1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodPartido1ActionPerformed(evt);
-            }
-        });
-
-        cmestado1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
-        cmestado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Activo", "Finalizado", "Suspendido", "En Espera" }));
-        cmestado1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmestado1ActionPerformed(evt);
-            }
-        });
-
-        equocu1.setText("jLabel2");
-
-        txtEquipo4.setForeground(new java.awt.Color(0, 0, 0));
-        txtEquipo4.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtEquipo4.setPlaceholder("Equipo1");
-
-        dtfecha1.setDateFormatString("yyyy-MM-dd");
-
-        btnTemporada1.setText("Buscar Temporada");
-        btnTemporada1.setColorHover(new java.awt.Color(0, 0, 0));
-        btnTemporada1.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnTemporada1.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnTemporada1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        btnTemporada1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTemporada1ActionPerformed(evt);
-            }
-        });
-
-        txtCampeonato1.setForeground(new java.awt.Color(0, 0, 0));
-        txtCampeonato1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCampeonato1.setPlaceholder("Temporada");
-        txtCampeonato1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampeonato1ActionPerformed(evt);
-            }
-        });
-
-        txtEstadio1.setForeground(new java.awt.Color(0, 0, 0));
-        txtEstadio1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtEstadio1.setPlaceholder("Estadio");
-
-        btnRegistrarModificar1.setText("Registrar");
-        btnRegistrarModificar1.setColorHover(new java.awt.Color(0, 102, 204));
-        btnRegistrarModificar1.setColorPressed(new java.awt.Color(0, 204, 51));
-        btnRegistrarModificar1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        btnRegistrarModificar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarModificar1ActionPerformed(evt);
-            }
-        });
-
-        fechaantes1.setText("jLabel2");
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setText("Fecha Partido");
-
-        btnEquipo4.setBackground(new java.awt.Color(204, 204, 204));
-        btnEquipo4.setText("Buscar Equipo");
-        btnEquipo4.setColorHover(new java.awt.Color(0, 0, 0));
-        btnEquipo4.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnEquipo4.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnEquipo4.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        fechadespues1.setText("jLabel3");
-
-        txtbuscarcod1.setForeground(new java.awt.Color(0, 0, 0));
-        txtbuscarcod1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtbuscarcod1.setPlaceholder("Codigo");
-        txtbuscarcod1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarcod1ActionPerformed(evt);
-            }
-        });
-
-        btnCancelar3.setText("Cancelar");
-        btnCancelar3.setColorHover(new java.awt.Color(0, 0, 0));
-        btnCancelar3.setColorNormal(new java.awt.Color(255, 0, 0));
-        btnCancelar3.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        btnmandardatos1.setText("Guardar");
-        btnmandardatos1.setColorHover(new java.awt.Color(0, 102, 204));
-        btnmandardatos1.setColorPressed(new java.awt.Color(0, 204, 51));
-        btnmandardatos1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        btnmandardatos1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmandardatos1ActionPerformed(evt);
-            }
-        });
-
-        btnBuscar1.setBackground(new java.awt.Color(204, 204, 204));
-        btnBuscar1.setText("Buscar");
-        btnBuscar1.setColorHover(new java.awt.Color(0, 0, 0));
-        btnBuscar1.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnBuscar1.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnBuscar1.setColorTextHover(new java.awt.Color(255, 255, 255));
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
-            }
-        });
-
-        tblbuscar1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        tblbuscar1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Codigo", "Nombre", "Varios"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tblbuscar1);
-
-        btnAgregar1.setBackground(new java.awt.Color(0, 153, 0));
-        btnAgregar1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnAgregar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/boton.png"))); // NOI18N
-        btnAgregar1.setText("Crear nuevo");
-        btnAgregar1.setToolTipText("Registrar un nuevo Partido");
-        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar1ActionPerformed(evt);
-            }
-        });
-
-        tblPartidos1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        tblPartidos1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "CodigoPartido", "CodigoEstadio", "CodigoTemporada", "Fecha", "Grupo", "Estado", "Equipo1", "Equipo2"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(tblPartidos1);
-
-        btnModificar1.setBackground(new java.awt.Color(0, 102, 204));
-        btnModificar1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnModificar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/modificar.png"))); // NOI18N
-        btnModificar1.setText("Modificar");
-        btnModificar1.setToolTipText("Modificar partido existente");
-
-        btnEliminar1.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminar1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/contenedor-de-basura.png"))); // NOI18N
-        btnEliminar1.setText("Eliminar");
-        btnEliminar1.setToolTipText("Eliminar partido existente");
-
-        jLabel2.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("PARTIDO");
-
-        btnInicio1.setBackground(new java.awt.Color(0, 102, 204));
-        btnInicio1.setText("Pagina Principal");
-        btnInicio1.setColorHover(new java.awt.Color(0, 102, 204));
-        btnInicio1.setColorNormal(new java.awt.Color(0, 102, 204));
-        btnInicio1.setColorPressed(new java.awt.Color(0, 102, 204));
-        btnInicio1.setColorTextHover(new java.awt.Color(204, 204, 204));
-        btnInicio1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
-
-        txtBuscar1.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscar1.setToolTipText("Ingrese el Codigo del Partido");
-        txtBuscar1.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtBuscar1.setPlaceholder("BuscarPartido");
-        txtBuscar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscar1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout dialogRegistrarModificarLayout = new javax.swing.GroupLayout(dialogRegistrarModificar.getContentPane());
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEstadio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEquipo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(estocu1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtgrupo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(equocu3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEquipo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtCodPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cmestado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(equocu1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEquipo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(dtfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnTemporada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtCampeonato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEstadio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnRegistrarModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fechaantes1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEquipo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fechadespues1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtbuscarcod1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnmandardatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnAgregar1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane4)
-                    .addContainerGap()))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEstadio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEquipo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(estocu1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtgrupo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(equocu3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEquipo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtCodPartido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cmestado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(equocu1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEquipo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(dtfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnTemporada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtCampeonato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtEstadio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnRegistrarModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fechaantes1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEquipo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fechadespues1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtbuscarcod1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnmandardatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnAgregar1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnModificar1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnEliminar1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnInicio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dialogRegistrarModificarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(txtBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         dialogtablas.setResizable(false);
@@ -1151,50 +559,6 @@ public class VistaPartido extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTemporadaActionPerformed
 
-    private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar2ActionPerformed
-
-    private void txtCodPartido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPartido1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodPartido1ActionPerformed
-
-    private void cmestado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmestado1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmestado1ActionPerformed
-
-    private void btnTemporada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemporada1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTemporada1ActionPerformed
-
-    private void txtCampeonato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampeonato1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampeonato1ActionPerformed
-
-    private void btnRegistrarModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarModificar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarModificar1ActionPerformed
-
-    private void txtbuscarcod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarcod1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarcod1ActionPerformed
-
-    private void btnmandardatos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmandardatos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnmandardatos1ActionPerformed
-
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
-
-    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregar1ActionPerformed
-
-    private void txtBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscar1ActionPerformed
-
   public static JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -1471,51 +835,29 @@ public class VistaPartido extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton btnAgregar;
-    private static javax.swing.JButton btnAgregar1;
     private static LIB.FSButtonMD btnBuscar;
-    private static LIB.FSButtonMD btnBuscar1;
     private static LIB.FSButtonMD btnCancelar;
     private static LIB.FSButtonMD btnCancelar1;
-    private static LIB.FSButtonMD btnCancelar2;
-    private static LIB.FSButtonMD btnCancelar3;
     private static javax.swing.JButton btnEliminar;
-    private static javax.swing.JButton btnEliminar1;
     private static LIB.FSButtonMD btnEquipo1;
     private static LIB.FSButtonMD btnEquipo2;
-    private static LIB.FSButtonMD btnEquipo3;
-    private static LIB.FSButtonMD btnEquipo4;
     private static LIB.FSButtonMD btnEstadio;
-    private static LIB.FSButtonMD btnEstadio1;
     private static LIB.FSButtonMD btnInicio;
-    private static LIB.FSButtonMD btnInicio1;
     private static javax.swing.JButton btnModificar;
-    private static javax.swing.JButton btnModificar1;
     private static LIB.FSButtonMD btnRegistrarModificar;
-    private static LIB.FSButtonMD btnRegistrarModificar1;
     private static LIB.FSButtonMD btnTemporada;
-    private static LIB.FSButtonMD btnTemporada1;
     private static LIB.FSButtonMD btnmandardatos;
-    private static LIB.FSButtonMD btnmandardatos1;
     private static javax.swing.JComboBox<String> cmestado;
-    private static javax.swing.JComboBox<String> cmestado1;
     private static javax.swing.JDialog dialogRegistrarModificar;
     private static javax.swing.JDialog dialogtablas;
     private static com.toedter.calendar.JDateChooser dtfecha;
-    private static com.toedter.calendar.JDateChooser dtfecha1;
     private static javax.swing.JLabel equocu;
-    private static javax.swing.JLabel equocu1;
     private static javax.swing.JLabel equocu2;
-    private static javax.swing.JLabel equocu3;
     private static javax.swing.JLabel estocu;
-    private static javax.swing.JLabel estocu1;
     private static javax.swing.JLabel fechaantes;
-    private static javax.swing.JLabel fechaantes1;
     private static javax.swing.JLabel fechadespues;
-    private static javax.swing.JLabel fechadespues1;
     private static javax.swing.JLabel jLabel1;
-    private static javax.swing.JLabel jLabel2;
     private static javax.swing.JLabel jLabel5;
-    private static javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1527,29 +869,17 @@ public class VistaPartido extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private static javax.swing.JScrollPane jScrollPane3;
-    private static javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblReMoJugadores;
     private javax.swing.JLabel lblbusqueda;
     private static javax.swing.JTable tblPartidos;
-    public static javax.swing.JTable tblPartidos1;
     private static javax.swing.JTable tblbuscar;
-    public static javax.swing.JTable tblbuscar1;
     private static LIB.FSTexFieldMD txtBuscar;
-    private static LIB.FSTexFieldMD txtBuscar1;
     private static LIB.FSTexFieldMD txtCampeonato;
-    private static LIB.FSTexFieldMD txtCampeonato1;
     private static LIB.FSTexFieldMD txtCodPartido;
-    private static LIB.FSTexFieldMD txtCodPartido1;
     private static LIB.FSTexFieldMD txtEquipo1;
     private static LIB.FSTexFieldMD txtEquipo2;
-    private static LIB.FSTexFieldMD txtEquipo3;
-    private static LIB.FSTexFieldMD txtEquipo4;
     private static LIB.FSTexFieldMD txtEstadio;
-    private static LIB.FSTexFieldMD txtEstadio1;
     private static LIB.FSTexFieldMD txtbuscarcod;
-    private static LIB.FSTexFieldMD txtbuscarcod1;
     private static LIB.FSTexFieldMD txtgrupo;
-    private static LIB.FSTexFieldMD txtgrupo1;
     // End of variables declaration//GEN-END:variables
 }
