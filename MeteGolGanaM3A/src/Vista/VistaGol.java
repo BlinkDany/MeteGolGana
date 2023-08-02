@@ -14,7 +14,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author Derek
+ * @author Carlos
  */
 public class VistaGol extends javax.swing.JInternalFrame {
 
@@ -153,21 +153,22 @@ public class VistaGol extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jdgGoles = new javax.swing.JDialog();
-        btnCancelar = new LIB.FSButtonMD();
-        btnRegistrarModificar = new LIB.FSButtonMD();
-        txtdescripcion = new LIB.FSTexFieldMD();
-        txtCodJugador = new LIB.FSTexFieldMD();
-        txtMinuto = new LIB.FSTexFieldMD();
+        jPanel3 = new javax.swing.JPanel();
+        lblReMoGoles = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         txtcodGol = new LIB.FSTexFieldMD();
-        txtCodPartido = new LIB.FSTexFieldMD();
+        txtdescripcion = new LIB.FSTexFieldMD();
+        txtMinuto = new LIB.FSTexFieldMD();
         txtCodEquipo = new LIB.FSTexFieldMD();
+        txtCodPartido = new LIB.FSTexFieldMD();
+        txtCodJugador = new LIB.FSTexFieldMD();
         btnJugador = new LIB.FSButtonMD();
         btnPartido = new LIB.FSButtonMD();
         btnEquipo = new LIB.FSButtonMD();
-        codigo = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        lblReMoGoles = new javax.swing.JLabel();
+        btnCancelar = new LIB.FSButtonMD();
+        btnRegistrarModificar = new LIB.FSButtonMD();
         codigo2 = new javax.swing.JLabel();
+        codigo = new javax.swing.JLabel();
         jdggolestabla = new javax.swing.JDialog();
         btnCancelar1 = new LIB.FSButtonMD();
         txtbuscarcod = new LIB.FSTexFieldMD();
@@ -188,54 +189,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
         btnInicio = new LIB.FSButtonMD();
         btnactualizar = new javax.swing.JButton();
 
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
-        btnCancelar.setColorNormal(new java.awt.Color(255, 0, 0));
-        btnCancelar.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        btnRegistrarModificar.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistrarModificar.setText("Registrar");
-        btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
-        btnRegistrarModificar.setColorPressed(new java.awt.Color(0, 204, 51));
-        btnRegistrarModificar.setColorTextHover(new java.awt.Color(255, 255, 255));
-
-        txtdescripcion.setForeground(new java.awt.Color(0, 0, 0));
-        txtdescripcion.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtdescripcion.setPlaceholder("Descripcion");
-
-        txtCodJugador.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodJugador.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodJugador.setPlaceholder("Codigo Del Jugador");
-
-        txtMinuto.setForeground(new java.awt.Color(0, 0, 0));
-        txtMinuto.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtMinuto.setPlaceholder("Minuto");
-
-        txtcodGol.setForeground(new java.awt.Color(0, 0, 0));
-        txtcodGol.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtcodGol.setPlaceholder("Codigo");
-
-        txtCodPartido.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodPartido.setPlaceholder("Codigo del Partido");
-
-        txtCodEquipo.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
-        txtCodEquipo.setPlaceholder("Codigo del Equipo");
-
-        btnJugador.setBackground(new java.awt.Color(204, 204, 204));
-        btnJugador.setForeground(new java.awt.Color(0, 0, 0));
-        btnJugador.setText("Buscar Jugador");
-
-        btnPartido.setBackground(new java.awt.Color(204, 204, 204));
-        btnPartido.setForeground(new java.awt.Color(0, 0, 0));
-        btnPartido.setText("Buscar Partido");
-
-        btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
-        btnEquipo.setForeground(new java.awt.Color(0, 0, 0));
-        btnEquipo.setText("Buscar Equipo");
-
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
 
         lblReMoGoles.setBackground(new java.awt.Color(0, 102, 204));
@@ -248,80 +201,99 @@ public class VistaGol extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblReMoGoles)
-                .addGap(200, 200, 200))
+            .addComponent(lblReMoGoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblReMoGoles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblReMoGoles, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtcodGol.setBackground(new java.awt.Color(255, 255, 255));
+        txtcodGol.setForeground(new java.awt.Color(0, 0, 0));
+        txtcodGol.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtcodGol.setPlaceholder("Codigo");
+        jPanel4.add(txtcodGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 189, -1));
+
+        txtdescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        txtdescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        txtdescripcion.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtdescripcion.setPlaceholder("Descripcion");
+        jPanel4.add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 189, -1));
+
+        txtMinuto.setBackground(new java.awt.Color(255, 255, 255));
+        txtMinuto.setForeground(new java.awt.Color(0, 0, 0));
+        txtMinuto.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtMinuto.setPlaceholder("Minuto");
+        jPanel4.add(txtMinuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 189, -1));
+
+        txtCodEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodEquipo.setPlaceholder("Codigo del Equipo");
+        jPanel4.add(txtCodEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 203, -1));
+
+        txtCodPartido.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodPartido.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodPartido.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodPartido.setPlaceholder("Codigo del Partido");
+        jPanel4.add(txtCodPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 199, -1));
+
+        txtCodJugador.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodJugador.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodJugador.setBordeColorFocus(new java.awt.Color(51, 51, 255));
+        txtCodJugador.setPlaceholder("Codigo Del Jugador");
+        jPanel4.add(txtCodJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 199, -1));
+
+        btnJugador.setBackground(new java.awt.Color(204, 204, 204));
+        btnJugador.setForeground(new java.awt.Color(0, 0, 0));
+        btnJugador.setText("Buscar Jugador");
+        jPanel4.add(btnJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 143, -1));
+
+        btnPartido.setBackground(new java.awt.Color(204, 204, 204));
+        btnPartido.setForeground(new java.awt.Color(0, 0, 0));
+        btnPartido.setText("Buscar Partido");
+        jPanel4.add(btnPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 143, -1));
+
+        btnEquipo.setBackground(new java.awt.Color(204, 204, 204));
+        btnEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        btnEquipo.setText("Buscar Equipo");
+        jPanel4.add(btnEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 143, -1));
+
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setColorHover(new java.awt.Color(0, 0, 0));
+        btnCancelar.setColorNormal(new java.awt.Color(255, 0, 0));
+        btnCancelar.setColorTextHover(new java.awt.Color(255, 255, 255));
+        jPanel4.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
+
+        btnRegistrarModificar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarModificar.setText("Registrar");
+        btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
+        btnRegistrarModificar.setColorPressed(new java.awt.Color(0, 204, 51));
+        btnRegistrarModificar.setColorTextHover(new java.awt.Color(255, 255, 255));
+        jPanel4.add(btnRegistrarModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
+        jPanel4.add(codigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 287, 37, 44));
+        jPanel4.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 223, 30, 27));
 
         javax.swing.GroupLayout jdgGolesLayout = new javax.swing.GroupLayout(jdgGoles.getContentPane());
         jdgGoles.getContentPane().setLayout(jdgGolesLayout);
         jdgGolesLayout.setHorizontalGroup(
             jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdgGolesLayout.createSequentialGroup()
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdgGolesLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdgGolesLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(txtcodGol, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(txtMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jdgGolesLayout.createSequentialGroup()
-                                .addComponent(txtCodEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(codigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jdgGolesLayout.createSequentialGroup()
-                                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCodPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCodJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnJugador, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(btnPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
-                .addContainerGap(109, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jdgGolesLayout.setVerticalGroup(
             jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgGolesLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(codigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtcodGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCodJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 313, Short.MAX_VALUE))
         );
 
         btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
@@ -613,7 +585,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnBuscar;
-    public static LIB.FSButtonMD btnCancelar;
+    private LIB.FSButtonMD btnCancelar;
     public static LIB.FSButtonMD btnCancelar1;
     public static javax.swing.JButton btnEliminar;
     private LIB.FSButtonMD btnEquipo;
@@ -621,7 +593,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
     private LIB.FSButtonMD btnJugador;
     public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnPartido;
-    public static LIB.FSButtonMD btnRegistrarModificar;
+    private LIB.FSButtonMD btnRegistrarModificar;
     private javax.swing.JButton btnactualizar;
     public static LIB.FSButtonMD btnmandardatos;
     private javax.swing.JLabel codigo;
@@ -630,6 +602,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jdgGoles;
@@ -639,12 +612,12 @@ public class VistaGol extends javax.swing.JInternalFrame {
     public static javax.swing.JTable tblGoles;
     public static javax.swing.JTable tblbuscar;
     public static LIB.FSTexFieldMD txtBuscar;
-    public static LIB.FSTexFieldMD txtCodEquipo;
-    public static LIB.FSTexFieldMD txtCodJugador;
-    public static LIB.FSTexFieldMD txtCodPartido;
-    public static LIB.FSTexFieldMD txtMinuto;
+    private LIB.FSTexFieldMD txtCodEquipo;
+    private LIB.FSTexFieldMD txtCodJugador;
+    private LIB.FSTexFieldMD txtCodPartido;
+    private LIB.FSTexFieldMD txtMinuto;
     public static LIB.FSTexFieldMD txtbuscarcod;
-    public static LIB.FSTexFieldMD txtcodGol;
-    public static LIB.FSTexFieldMD txtdescripcion;
+    private LIB.FSTexFieldMD txtcodGol;
+    private LIB.FSTexFieldMD txtdescripcion;
     // End of variables declaration//GEN-END:variables
 }
