@@ -733,10 +733,10 @@ public class Controlador_Entrenador {
     private void validarSueldo(java.awt.event.KeyEvent evt) {
         char dato = evt.getKeyChar();
         boolean numeros = dato >= 48 && dato <= 57;
-        boolean coma = dato == 44;
+        boolean punto = dato == 46;
         boolean backspace = dato == 8;
 
-        if (!(backspace || numeros || coma)) {
+        if (!(backspace || numeros || punto)) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "FPRMATO INCORRECTO");
         }
