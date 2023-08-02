@@ -337,7 +337,7 @@ public class Controlador_Estadio {
             Connection conn = con.getConnection();
 
             JasperReport reporte = null;
-            String path = "src\\Reportes\\reporte_estadio.jasper";
+            String path = "src\\Reportes\\reporte_estadios.jasper";
 
             Map parametro = new HashMap();
  

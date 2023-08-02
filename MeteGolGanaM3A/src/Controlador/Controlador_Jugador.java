@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Conexion.ConexionMySql;
 import Modelo.Clase_Equipo;
 import Modelo.Clase_Jugador;
 import Modelo.Clase_Persona;
@@ -23,9 +24,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -34,9 +38,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -83,6 +94,7 @@ public class Controlador_Jugador {
             visPer.dlgPersona.setVisible(true);
             visJugador.getDialogRegistrarModificar().setVisible(false);
         });
+        visJugador.getBtnRerpote().addActionListener(l -> Rerpote());
         visJugador.btnAgregar.addActionListener(l -> IniciarDialogPersona("Registrar"));
         visJugador.btnAgregar.addActionListener(l -> LimpiarDatos());
         visJugador.btnRegistrarModificar.addActionListener(l -> RegistrarEditarPersona());
@@ -301,7 +313,7 @@ public class Controlador_Jugador {
         if (visJugador.getDialogRegistrarModificar().getTitle().equals("Registrar Jugador")) {
             visJugador.lblReMoJugadores.setText("Registrar Jugador");
             visJugador.getTxtCedula().setText(visPer.getTxtCedulaDLG().getText());
-            
+
         } else {
             visJugador.getLblReMoJugadores().setText("Modificar Jugador");
             LlenarDatosJugador();
@@ -641,7 +653,7 @@ public class Controlador_Jugador {
         visJugador.getLblFoto().setIcon(null);
         visJugador.getTblJugadores().clearSelection();
         visJugador.getTblEquipo().clearSelection();
-        
+
         visPer.getTxt1erApeDLG().setText("");
         visPer.getTxt1erNomDlg().setText("");
         visPer.getTxt2doApeDLG().setText("");
@@ -712,6 +724,35 @@ public class Controlador_Jugador {
                 }
             });
         });
+    }
+
+    public void Rerpote() {
+
+        int rta =Integer.valueOf(JOptionPane.showInputDialog("Ingrese el codigo del equi"));
+        
+        try {
+            ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\ReporteJugadores.jasper";
+
+            Map parametro = new HashMap();
+
+            parametro.put("equipo", rta);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
+
+            JasperViewer vista = new JasperViewer(jprint, false);
+
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public void MensajeSucces(String mensaje) {

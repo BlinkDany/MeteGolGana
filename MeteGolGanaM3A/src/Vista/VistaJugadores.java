@@ -21,6 +21,14 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnRerpote() {
+        return btnRerpote;
+    }
+
+    public void setBtnRerpote(JButton btnRerpote) {
+        this.btnRerpote = btnRerpote;
+    }
+
     public JTextField getTxtRuta() {
         return txtRuta;
     }
@@ -346,6 +354,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         tblJugadores = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnRerpote = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -573,6 +582,12 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Eliminar jugador");
 
+        btnRerpote.setBackground(new java.awt.Color(0, 102, 153));
+        btnRerpote.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnRerpote.setForeground(new java.awt.Color(255, 255, 255));
+        btnRerpote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnRerpote.setText("Ver jugadores");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -587,11 +602,12 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
                         .addComponent(btnAgregar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRerpote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(23, 23, 23))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -604,11 +620,13 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
                     .addComponent(btnAgregar))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRerpote)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -629,7 +647,10 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -644,6 +665,7 @@ public class VistaJugadores extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnRerpote;
     public static javax.swing.JComboBox<String> cbxPosicion;
     public static com.toedter.calendar.JDateChooser dateFechaFin;
     public static com.toedter.calendar.JDateChooser dateFechaInicio;

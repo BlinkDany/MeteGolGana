@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d786049-dd28-4625-b3d8-9b2ca75781b9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="equipo" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select l.nombre1 || ' ' || l.nombre2 as "Nombre Jugador", l.sexo, j.posicion, e.nombre
+from jugador j
+join persona l on j.cedula_personafk = l.cedula
+join equipo e on e.codigo = j.cod_equipofk
+where e.codigo = $P{equipo};]]>
+	</queryString>
+	<field name="Nombre Jugador" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="posicion" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#003366" uuid="5b66ea51-ecb5-4564-a976-adf6346b3edd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte jugadores]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" forecolor="#006699" uuid="756a76af-85d0-4ba9-b90e-649542b2f25d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Mete gol gana]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="11" width="100" height="20" forecolor="#0099CC" uuid="fa55c8b1-a385-4b5d-a056-daeb479d5293"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Jugador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="11" width="100" height="20" forecolor="#0099CC" uuid="ac2d72f4-0378-4491-8442-b3ed98f3bfc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="11" width="100" height="20" forecolor="#0099CC" uuid="71a660fb-025f-4ae4-b4fd-4338a4ec1dbe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[posicion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="11" width="100" height="20" forecolor="#0099CC" uuid="d6ccb9c1-8605-47c6-8ad8-da6c15594c44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="19" y="11" width="100" height="20" uuid="7c3ff22a-3a27-4b2c-8b58-f66d0a33f708"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Nombre Jugador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="11" width="100" height="20" uuid="39098dd4-dbe0-4457-9e5a-3267d244ccdb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="11" width="100" height="20" uuid="7692f69c-cdd3-40a8-be01-8498b154df49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{posicion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="11" width="100" height="20" uuid="f044412c-ad22-437d-9446-af4b121c4998"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
