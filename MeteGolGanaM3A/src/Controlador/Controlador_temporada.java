@@ -96,7 +96,8 @@ public class Controlador_temporada {
 
     private void abrirDialogo(String ce) {
 
-        vista.getDlgaTemporada().setSize(800, 650);
+        vista.getDlgaTemporada().setSize(700, 550);
+        vista.getDlgCampeonato().setLocationRelativeTo(null);
         vista.getDlgaTemporada().setTitle(ce);
         vista.getDlgaTemporada().setVisible(true);
 
@@ -117,7 +118,7 @@ public class Controlador_temporada {
 
     private void abrirDialogobusqueda(String ce) {
 
-        vista.getDlgCampeonato().setSize(750, 600);
+        vista.getDlgCampeonato().setSize(780, 600);
         vista.getDlgCampeonato().setTitle(ce);
         vista.getDlgCampeonato().setVisible(true);
 
@@ -291,32 +292,7 @@ public class Controlador_temporada {
     }
 
     //-------------------------------------------------------CARGAR PARTIDOS EN LA TABLA--------------------------------------------------------------------------------------------
-   /* public void cargarTemporadas() {
 
-        DefaultTableModel tabla = (DefaultTableModel) vista.getTblTemporada().getModel();
-        tabla.setRowCount(0);
-
-        // Obtener la lista 
-        List<Clase_Temporada> listCamp = modeloTemporada.ListaTemporada();
-
-        // Recorrer la lista 
-        listCamp.forEach(p -> {
-
-            if (!p.isEstadoEli()) {
-                // Crear un objeto datos con los valores de los campos correspondientes 
-                Object[] datos = {p.getCodigoPk(), p.getFechaIni(), p.getFechaFin(), p.getCodCampeonatoFk()};
-
-                // Agregar el objeto como una nueva fila a la tabla
-                tabla.addRow(datos);
-
-            }
-
-        });
-
-        // Agregar ordenamiento y filtrado a la tabla
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tabla);
-        vista.getTblTemporada().setRowSorter(sorter);
-    }*/
     
     public void cargarTemporadas() {
 

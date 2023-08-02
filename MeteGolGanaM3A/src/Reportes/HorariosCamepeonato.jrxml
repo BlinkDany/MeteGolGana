@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3667030-b043-400b-9ddb-f31e835e1b14">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
-	<property name="ireport.x" value="79"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="CodigoCampeonato" class="java.lang.Integer"/>
 	<queryString>
@@ -46,10 +46,6 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 				</textElement>
 				<text><![CDATA[Fechas del Campeonato]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="249" height="79" uuid="eeed6784-e584-4921-a8b9-733d31e71e3b"/>
-				<imageExpression><![CDATA["C:\\Users\\tatip\\Documents\\GitHub\\MeteGolGana\\MeteGolGanaM3A\\src\\imgs\\iconoMeteGolGanaJPG.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -57,7 +53,7 @@ where campeonato.codigo = $P{CodigoCampeonato};]]>
 			<staticText>
 				<reportElement x="0" y="0" width="802" height="51" forecolor="#006699" uuid="fd86f594-45a8-41a6-adb7-031bba9d2ca9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Monospaced" size="20" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="20" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Mete Gol Gana]]></text>
 			</staticText>
