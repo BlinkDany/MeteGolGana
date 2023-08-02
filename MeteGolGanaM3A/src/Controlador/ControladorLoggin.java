@@ -73,6 +73,7 @@ public class ControladorLoggin {
     public void InicarLoggin() {
 
         MostrarEquipos();
+        visPer.setTitle("Iniciar Sesion");
         visPer.setIconImage(new ImageIcon(getClass().getResource("/imgs/pelota1.png")).getImage());
         visJugador.getTxtRuta().setVisible(false);
         visJugador.getTxtCod().setVisible(false);
