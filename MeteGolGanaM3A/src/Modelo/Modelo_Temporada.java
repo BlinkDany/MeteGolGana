@@ -117,4 +117,32 @@ public class Modelo_Temporada extends Clase_Temporada {
         return codigo;
     }   
     
+    public List<Clase_Temporada> buscarTemporadasPorCodigo(String aux) {
+    try {
+        String sql = "SELECT codigo, fecha_inicio, fecha_fin, codigo_campeonato FROM temporada WHERE codigo = '" + aux + "' AND estado_elim = false";
+        ResultSet rs = con.Consultas(sql);
+        List<Clase_Temporada> temporadasEncontradas = new ArrayList<>();
+
+        while (rs.next()) {
+            Clase_Temporada temporada = new Clase_Temporada();
+
+            temporada.setCodigoPk(rs.getInt(1));
+            temporada.setFechaIni(rs.getDate(2));
+            temporada.setFechaFin(rs.getDate(3));
+            temporada.setCodCampeonatoFk(rs.getInt(4));
+           
+
+            temporadasEncontradas.add(temporada);
+        }
+
+        rs.close();
+        return temporadasEncontradas;
+
+    } catch (SQLException ex) {
+        Logger.getLogger(Modelo_Temporada.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+        return null;
+    }
+}
+    
 }

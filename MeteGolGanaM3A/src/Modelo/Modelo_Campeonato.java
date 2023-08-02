@@ -116,6 +116,34 @@ public class Modelo_Campeonato extends Clase_Campeonato {
         res.close();
         return codigo;
     }
+     
+     public List<Clase_Campeonato> buscarCampeonatosPorCodigo(String aux) {
+    try {
+        String sql = "SELECT codigo, nombre, tipo_campeonato, max_equipos FROM campeonato WHERE codigo = '" + aux + "'";
+        ResultSet rs = con.Consultas(sql);
+        List<Clase_Campeonato> campeonatosEncontrados = new ArrayList<>();
+
+        while (rs.next()) {
+            Clase_Campeonato campeonato = new Clase_Campeonato();
+
+            campeonato.setCod_campeonato(rs.getInt(1));
+            campeonato.setNombre(rs.getString(2));
+            campeonato.setTipo_campeonato(rs.getString(3));
+            campeonato.setMax_equipos(rs.getInt(4));
+
+            campeonatosEncontrados.add(campeonato);
+        }
+
+        rs.close();
+        return campeonatosEncontrados;
+
+    } catch (SQLException ex) {
+        Logger.getLogger(Modelo_Campeonato.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+        return null;
+    }
+}
+
 
    
 }
