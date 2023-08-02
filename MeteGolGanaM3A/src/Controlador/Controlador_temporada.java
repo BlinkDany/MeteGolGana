@@ -12,6 +12,9 @@ import Modelo.Modelo_Temporada;
 import Modelo.Modelo_Campeonato;
 import Modelo.Clase_Temporada;
 import Vista.VistaTemporada;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -82,7 +85,12 @@ public class Controlador_temporada {
         vista.getBtnLimpiar().addActionListener(l -> limpiarBuscar());
         vista.getBtnLimpiarDlg().addActionListener(l -> limpiarBuscar());
         vista.getBtnReporte().addActionListener(l -> reporteTemporada());
-
+        vista.getTxtBuscar().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                limpiarBuscar();
+            }
+        });
         vista.getBtnAgregar().addActionListener(l -> {
             try {
                 CargarID();
