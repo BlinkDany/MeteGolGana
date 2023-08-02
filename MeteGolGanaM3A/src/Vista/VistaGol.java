@@ -29,10 +29,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
         return lblReMoGoles;
     }
 
-    public JButton getBtnactualizar() {
-        return btnactualizar;
-    }
-
     public FSButtonMD getBtnBuscar() {
         return btnBuscar;
     }
@@ -148,6 +144,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
     public FSTexFieldMD getTxtdescripcion() {
         return txtdescripcion;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -187,7 +184,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new LIB.FSButtonMD();
-        btnactualizar = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -509,12 +505,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
             .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
         );
 
-        btnactualizar.setBackground(new java.awt.Color(0, 153, 0));
-        btnactualizar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/loop.png"))); // NOI18N
-        btnactualizar.setText("Actualizar");
-        btnactualizar.setToolTipText("Actualizar los Goles de la Tabla");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -533,8 +523,7 @@ public class VistaGol extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnactualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -552,8 +541,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -594,7 +581,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btnModificar;
     private LIB.FSButtonMD btnPartido;
     private LIB.FSButtonMD btnRegistrarModificar;
-    private javax.swing.JButton btnactualizar;
     public static LIB.FSButtonMD btnmandardatos;
     private javax.swing.JLabel codigo;
     private javax.swing.JLabel codigo2;

@@ -20,31 +20,7 @@ public class Modelo_Gol extends Clase_Gol{
 
     public Modelo_Gol() {
         
-    }
-    public List<Clase_Gol> listarGoles() {
-        List<Clase_Gol> listargoles = new ArrayList<Clase_Gol>();
-
-        try {
-            String sql = "select * from gol where estado_elim = false";
-            ResultSet rs = CPG.Consultas(sql);
-            while (rs.next()) {
-                Clase_Gol goles = new Clase_Gol();
-                goles.setCod_gol(rs.getInt("codigo"));
-                goles.setDescripcion(rs.getString("descripcion"));
-                goles.setMinuto(rs.getString("minuto"));
-                goles.setCod_partido(rs.getInt("codigo_partidofk"));
-                goles.setCod_equipo(rs.getInt("cod_equipofk"));
-                goles.setCod_jugador(rs.getInt("codigo_jugadorfk"));
-                listargoles.add(goles);
-
-            }
-            rs.close();//CIERRO CONEXION
-            return listargoles;
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Gol.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+    }   
     public List<Clase_Gol> BuscarGoles(int aux) {
 
         try {
@@ -102,10 +78,8 @@ public class Modelo_Gol extends Clase_Gol{
         return CPG.CRUD(sql);
 
     }
-    public void listarGC(){
+    public void listarGoles(){
         try {
-            DefaultTableModel mJtable;
-            mJtable = new DefaultTableModel(null, new Object[]{"Codigo", "Descripcion", "Minuto", "Jugador", "Codigo Partido", "Equipo"});
             ConexionMySql c = new Conexion.ConexionMySql();
             c.getConnection();
             ResultSet rs = c.Consultas("SELECT g.descripcion, g.minuto, g.codigo_partidofk, e.nombre, p.nombre1, g.codigo\n"
