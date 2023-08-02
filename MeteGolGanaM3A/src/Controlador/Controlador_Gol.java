@@ -80,7 +80,7 @@ public class Controlador_Gol {
         vistagol.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                //      buscar();
+                buscarArbitros();
             }
         });
 
@@ -168,19 +168,23 @@ public class Controlador_Gol {
     }
 
     //------------------------------------------------------- BUSCADOR PRINCIPAL--------------------------------------------------------------------------------------------
-    //   public void buscarGol() {
-    //    if (VistaGol.getTxtBuscar().getText().equals("")) {
-    //      MostrarDatos();
-    // } else {
-    //    DefaultTableModel tabla = (DefaultTableModel) visArbi.getTblArbitros().getModel();
-    //  tabla.setNumRows(0);
-    //List<Clase_Arbitro> par = modArbi.BuscarArbitro(visArbi.getTxtBuscar().getText());
-    //par.stream().forEach(p -> {
-    //  Object datos[] = {p.getCodigo_arbitro(), p.getCedula_persona_arbitro(), p.getNombnre1(), p.getApellido1(), p.getPosicion_arbitro(), p.getSalario_arbitro()};
-    //tabla.addRow(datos);
-    //});
-    //}
-    //}
+    public void buscarArbitros() {
+        if (vistagol.getTxtBuscar().getText().equals("")) {
+            cargaGoles();
+        } else {
+
+            DefaultTableModel tabla = (DefaultTableModel) vistagol.getTblGoles().getModel();
+            tabla.setNumRows(0);
+
+            List<Clase_Gol> par = modeloGol.BuscarGoles(vistagol.getTxtBuscar().getText());
+            par.stream().forEach(p -> {
+
+                Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getNombre_equipo(), p.getNombre_jugador()};
+                tabla.addRow(datos);
+            });
+        }
+    }
+
     //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
     public void salirdialogo() {
         limpiar();

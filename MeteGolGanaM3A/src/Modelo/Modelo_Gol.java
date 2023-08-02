@@ -23,7 +23,7 @@ public class Modelo_Gol extends Clase_Gol {
 
     }
 
-    public List<Clase_Gol> BuscarGoles(int aux) {
+    public List<Clase_Gol> BuscarGoles(String aux) {
 
         try {
             String sql = "SELECT g.codigo, g.descripcion, g.minuto, g.codigo_partidofk, g.cod_equipofk, g.codigo_jugadorfk, e.nombre, p.nombre1, g.estado_elim "
