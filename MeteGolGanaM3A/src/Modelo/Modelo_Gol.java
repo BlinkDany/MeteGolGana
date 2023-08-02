@@ -19,6 +19,7 @@ public class Modelo_Gol extends Clase_Gol{
     ConexionMySql CPG = new ConexionMySql();
 
     public Modelo_Gol() {
+        
     }
     public List<Clase_Gol> listarGoles() {
         List<Clase_Gol> listargoles = new ArrayList<Clase_Gol>();
