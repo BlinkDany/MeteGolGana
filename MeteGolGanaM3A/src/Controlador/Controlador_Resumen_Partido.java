@@ -12,6 +12,9 @@ import Modelo.ModeloEquipos;
 import Modelo.Modelo_Partido;
 import Modelo.Modelo_Resumen_Partido;
 import Vista.Resumen_Partido;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -129,7 +132,90 @@ public class Controlador_Resumen_Partido {
                 }
             }
         });
-
+        visRes.getTxtFaltas().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtFaltas1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtPenales().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtPenales1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtSaquesBanda().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtSaquesBanda1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTarjetasAmarillas().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTarjetasAmarillas1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTarjetasRojas().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTarjetasRojas1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTirosEsquina().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTirosEsquina1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTirosLibres().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
+        visRes.getTxtTirosLibres1().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarNmmeros(e);
+            }
+        });
     }
 
     public void InicarDialogEquipo1() {
@@ -545,6 +631,17 @@ public class Controlador_Resumen_Partido {
 
     }
 
+    private void validarNmmeros(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+    }
+    
     public void MensajeSucces(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Advertencia", JOptionPane.INFORMATION_MESSAGE);
