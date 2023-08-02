@@ -458,6 +458,20 @@ public class Controlador_Partido {
             mJtable.addRow(rowData);
         }
         );
+               
+        cambiaNomColuma();
+        
+    }
+    
+    private void cambiaNomColuma(){
+        // Obtener el modelo de la tabla
+DefaultTableModel tablaModelo = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+String[] nuevosTitulos = {"Código", "Fecha de Inicio", "Fecha Fin"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+tablaModelo.setColumnIdentifiers(nuevosTitulos);
     }
 //-------------------------------------------------------CARGAR ESTADIOS EN LA TABLA--------------------------------------------------------------------------------------------
 
