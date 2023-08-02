@@ -201,16 +201,19 @@ public class Controlador_Partido {
         if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 1")) {
             vistapar.getLblbusqueda().setText("EQUIPOS");
             cargaequipos();
+            cambiaNomColumaEquipo();
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("EQUIPOS 2")) {
             vistapar.getLblbusqueda().setText("EQUIPOS");
             cargaequipos();
+            cambiaNomColumaEquipo();
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("ESTADIO")) {
             vistapar.getLblbusqueda().setText("ESTADIOS");
             cargaestadios();
-
+            cambiaNomColumaEstadio();
         } else if (vistapar.getDialogtablas().getTitle().contentEquals("TEMPORADA")) {
             vistapar.getLblbusqueda().setText("TEMPORADA");
             cargacampeonatos();
+            cambiaNomColumaTempo();
         }
 
     }
@@ -459,16 +462,39 @@ public class Controlador_Partido {
         }
         );
                
-        cambiaNomColuma();
         
     }
     
-    private void cambiaNomColuma(){
+    private void cambiaNomColumaTempo(){
         // Obtener el modelo de la tabla
 DefaultTableModel tablaModelo = (DefaultTableModel) vistapar.getTblbuscar().getModel();
 
 // Crear un array con los nuevos títulos de las columnas
 String[] nuevosTitulos = {"Código", "Fecha de Inicio", "Fecha Fin"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+tablaModelo.setColumnIdentifiers(nuevosTitulos);
+    }
+    
+    
+    private void cambiaNomColumaEquipo(){
+        // Obtener el modelo de la tabla
+DefaultTableModel tablaModelo = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+String[] nuevosTitulos = {"Código", "Nombre", "Ciudad"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+tablaModelo.setColumnIdentifiers(nuevosTitulos);
+    }
+    
+    
+     private void cambiaNomColumaEstadio(){
+        // Obtener el modelo de la tabla
+DefaultTableModel tablaModelo = (DefaultTableModel) vistapar.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+String[] nuevosTitulos = {"Código", "Nombre", "Ubicación"};
 
 // Establecer los nuevos títulos en el modelo de la tabla
 tablaModelo.setColumnIdentifiers(nuevosTitulos);
