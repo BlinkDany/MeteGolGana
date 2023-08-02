@@ -161,18 +161,20 @@ public class VistaGol extends javax.swing.JInternalFrame {
         txtcodGol = new LIB.FSTexFieldMD();
         txtCodPartido = new LIB.FSTexFieldMD();
         txtCodEquipo = new LIB.FSTexFieldMD();
-        lblReMoGoles = new javax.swing.JLabel();
         btnJugador = new LIB.FSButtonMD();
         btnPartido = new LIB.FSButtonMD();
         btnEquipo = new LIB.FSButtonMD();
         codigo = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblReMoGoles = new javax.swing.JLabel();
         codigo2 = new javax.swing.JLabel();
         jdggolestabla = new javax.swing.JDialog();
         btnCancelar1 = new LIB.FSButtonMD();
         txtbuscarcod = new LIB.FSTexFieldMD();
-        lblbusqueda = new javax.swing.JLabel();
         btnmandardatos = new LIB.FSButtonMD();
         btnBuscar = new LIB.FSButtonMD();
+        jPanel2 = new javax.swing.JPanel();
+        lblbusqueda = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblbuscar = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
@@ -222,11 +224,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
         txtCodEquipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
         txtCodEquipo.setPlaceholder("Codigo del Equipo");
 
-        lblReMoGoles.setBackground(new java.awt.Color(0, 102, 204));
-        lblReMoGoles.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        lblReMoGoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReMoGoles.setText("Registro o Modificar");
-
         btnJugador.setBackground(new java.awt.Color(204, 204, 204));
         btnJugador.setForeground(new java.awt.Color(0, 0, 0));
         btnJugador.setText("Buscar Jugador");
@@ -239,12 +236,39 @@ public class VistaGol extends javax.swing.JInternalFrame {
         btnEquipo.setForeground(new java.awt.Color(0, 0, 0));
         btnEquipo.setText("Buscar Equipo");
 
+        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
+
+        lblReMoGoles.setBackground(new java.awt.Color(0, 102, 204));
+        lblReMoGoles.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        lblReMoGoles.setForeground(new java.awt.Color(255, 255, 255));
+        lblReMoGoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReMoGoles.setText("Registro o Modificar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblReMoGoles)
+                .addGap(200, 200, 200))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblReMoGoles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jdgGolesLayout = new javax.swing.GroupLayout(jdgGoles.getContentPane());
         jdgGoles.getContentPane().setLayout(jdgGolesLayout);
         jdgGolesLayout.setHorizontalGroup(
             jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgGolesLayout.createSequentialGroup()
                 .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdgGolesLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(137, 137, 137)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jdgGolesLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -267,25 +291,21 @@ public class VistaGol extends javax.swing.JInternalFrame {
                         .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnJugador, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                             .addComponent(btnPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                    .addGroup(jdgGolesLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
                 .addContainerGap(109, Short.MAX_VALUE))
-            .addComponent(lblReMoGoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jdgGolesLayout.setVerticalGroup(
             jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgGolesLayout.createSequentialGroup()
-                .addComponent(lblReMoGoles, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcodGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(codigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtcodGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jdgGolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,12 +339,6 @@ public class VistaGol extends javax.swing.JInternalFrame {
             }
         });
 
-        lblbusqueda.setBackground(new java.awt.Color(0, 102, 204));
-        lblbusqueda.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        lblbusqueda.setForeground(new java.awt.Color(255, 255, 255));
-        lblbusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblbusqueda.setText("tabla");
-
         btnmandardatos.setForeground(new java.awt.Color(0, 0, 0));
         btnmandardatos.setText("Guardar");
         btnmandardatos.setColorHover(new java.awt.Color(0, 102, 204));
@@ -344,6 +358,28 @@ public class VistaGol extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 204));
+
+        lblbusqueda.setBackground(new java.awt.Color(0, 102, 204));
+        lblbusqueda.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        lblbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        lblbusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblbusqueda.setText("tabla");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblbusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+        );
 
         tblbuscar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         tblbuscar.setModel(new javax.swing.table.DefaultTableModel(
@@ -372,31 +408,27 @@ public class VistaGol extends javax.swing.JInternalFrame {
         jdggolestablaLayout.setHorizontalGroup(
             jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdggolestablaLayout.createSequentialGroup()
-                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jdggolestablaLayout.createSequentialGroup()
                 .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdggolestablaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jdggolestablaLayout.createSequentialGroup()
-                                .addComponent(txtbuscarcod, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jdggolestablaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(35, 35, 35)
+                        .addComponent(txtbuscarcod, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdggolestablaLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jdggolestablaLayout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(btnmandardatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jdggolestablaLayout.setVerticalGroup(
             jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdggolestablaLayout.createSequentialGroup()
-                .addComponent(lblbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jdggolestablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtbuscarcod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -596,6 +628,8 @@ public class VistaGol extends javax.swing.JInternalFrame {
     private javax.swing.JLabel codigo2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jdgGoles;
