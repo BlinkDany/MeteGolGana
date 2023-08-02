@@ -42,10 +42,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         return btnAgregar;
     }
 
-    public JButton getBtnactualizar() {
-        return btnactualizar;
-    }
-
     public static JButton getBtnEliminar() {
         return btnEliminar;
     }
@@ -114,7 +110,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         tblEquipos = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnactualizar = new javax.swing.JButton();
 
         txtCiudadequipo.setForeground(new java.awt.Color(0, 0, 0));
         txtCiudadequipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -311,12 +306,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Eliminar un Equipo");
 
-        btnactualizar.setBackground(new java.awt.Color(0, 153, 0));
-        btnactualizar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/loop.png"))); // NOI18N
-        btnactualizar.setText("Actualizar");
-        btnactualizar.setToolTipText("Actualizar la Tabla de Equipos");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -333,11 +322,9 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnactualizar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -355,9 +342,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 173, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -389,7 +374,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
     public static LIB.FSButtonMD btnRegistrarModificar;
-    private javax.swing.JButton btnactualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

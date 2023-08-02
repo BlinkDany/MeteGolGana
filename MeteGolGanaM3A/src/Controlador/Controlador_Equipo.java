@@ -34,13 +34,6 @@ public class Controlador_Equipo {
         vistaequi.getBtnModificar().addActionListener(l -> abrirDialogo("Editar"));
         vistaequi.getBtnEliminar().addActionListener(l -> abrirDialogo("Eliminar"));
         vistaequi.getBtnCancelar().addActionListener(l -> salirdialogo());
-        vistaequi.getBtnactualizar().addActionListener(l -> {
-            try {
-                limpiarBuscar();
-            } catch (SQLException ex) {
-                Logger.getLogger(Controlador_Equipo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
         vistaequi.getBtnRegistrarModificar().addActionListener(l -> crearEditarEquipo());
         vistaequi.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
