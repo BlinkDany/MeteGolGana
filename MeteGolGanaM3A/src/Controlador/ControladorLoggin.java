@@ -414,9 +414,9 @@ public class ControladorLoggin {
     public void IniciarDialogEntrenador(String titulo) {
 
         visPer.dlgPersona.dispose();
-        VistaEntrenador.getDialogRegistrarModificar().setVisible(true);
-        VistaEntrenador.getDialogRegistrarModificar().setTitle(titulo);
-        VistaEntrenador.getDialogRegistrarModificar().setSize(1025, 500);
+        visEntrenador.getDialogRegistrarModificar().setVisible(true);
+        visEntrenador.getDialogRegistrarModificar().setTitle(titulo);
+        visEntrenador.getDialogRegistrarModificar().setSize(674, 550);
         visEntrenador.getDialogRegistrarModificar().setLocationRelativeTo(null);
         if (VistaEntrenador.getDialogRegistrarModificar().getTitle().equals("Registrar Entrenador")) {
             visEntrenador.getTxtCedula().setText(visPer.getTxtCedulaDLG().getText());

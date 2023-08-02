@@ -339,11 +339,11 @@ public class VistaEntrenador extends javax.swing.JInternalFrame {
         dialogRegistrarModificar.getContentPane().setLayout(dialogRegistrarModificarLayout);
         dialogRegistrarModificarLayout.setHorizontalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 674, Short.MAX_VALUE)
         );
         dialogRegistrarModificarLayout.setVerticalGroup(
             dialogRegistrarModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
 
         setClosable(true);
