@@ -237,7 +237,7 @@ public class Vista_Arbitro extends javax.swing.JInternalFrame {
         jPanel3.add(txtAñosExperiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, -1));
 
         cbxPosicion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        cbxPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Posicion", "Principal", "Lateral", "Central" }));
+        cbxPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Posicion", "Linea 1", "Linea 2", "Central", "Bar" }));
         jPanel3.add(cbxPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 210, 40));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
