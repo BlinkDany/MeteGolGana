@@ -99,13 +99,13 @@ public class Controlador_Gol {
     }
 
     private void abrirDialogo(String ce) {
-
-        vistagol.getJdgGoles().setLocationRelativeTo(null);
+        
         vistagol.getJdgGoles().setSize(662, 522);
         vistagol.getJdgGoles().setTitle(ce);
         vistagol.getJdgGoles().setVisible(true);
         vistagol.getCodigo().setVisible(false);
         vistagol.getCodigo2().setVisible(false);
+        vistagol.getJdgGoles().setLocationRelativeTo(null);
 
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
             vistagol.getLblReMoGoles().setText("REGISTRO DE GOLES");
@@ -129,6 +129,7 @@ public class Controlador_Gol {
     private void abrirDialogobusqueda(String ce) {
 
         vistagol.getJdggolestabla().setSize(810, 680);
+        vistagol.getJdggolestabla().setLocationRelativeTo(null);
         vistagol.getJdggolestabla().setTitle(ce);
         vistagol.getJdggolestabla().setVisible(true);
 
@@ -137,9 +138,11 @@ public class Controlador_Gol {
             cargajugadores();
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
             vistagol.getLblbusqueda().setText("PARTIDO");
+            cambiaNomColumaPartido();
             cargaPartidos();
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
             vistagol.getLblbusqueda().setText("EQUIPO");
+            cambiaNomColuma();
             cargaequipos();
         }
     }
@@ -190,6 +193,39 @@ public class Controlador_Gol {
                 tabla.addRow(datos);
             });
         }
+    }
+
+    private void cambiaNomColumaPartido() {
+        // Obtener el modelo de la tabla
+        DefaultTableModel tablaModelo = (DefaultTableModel) vistagol.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+        String[] nuevosTitulos = {"Código", "Fecha", "Estado"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+        tablaModelo.setColumnIdentifiers(nuevosTitulos);
+    }
+    
+    private void cambiaNomColumaJugador() {
+        // Obtener el modelo de la tabla
+        DefaultTableModel tablaModelo = (DefaultTableModel) vistagol.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+        String[] nuevosTitulos = {"Código", "Nombre", "Equipo"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+        tablaModelo.setColumnIdentifiers(nuevosTitulos);
+    }
+    
+    private void cambiaNomColuma() {
+        // Obtener el modelo de la tabla
+        DefaultTableModel tablaModelo = (DefaultTableModel) vistagol.getTblbuscar().getModel();
+
+// Crear un array con los nuevos títulos de las columnas
+        String[] nuevosTitulos = {"Código", "Nombre", "Ciudad"};
+
+// Establecer los nuevos títulos en el modelo de la tabla
+        tablaModelo.setColumnIdentifiers(nuevosTitulos);
     }
 
     //------------------------------------------------------- SALIR DEL DIALOGO--------------------------------------------------------------------------------------------
