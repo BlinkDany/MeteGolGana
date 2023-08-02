@@ -46,6 +46,11 @@ public class Controlador_Gol {
         this.modeloGol = modeloGol;
         this.vistagol = vistagol;
         vistagol.setVisible(true);
+        vistagol.getTxtCodJugador().setEnabled(false);
+        vistagol.getTxtCodPartido().setEnabled(false);
+        vistagol.getTxtCodEquipo().setEnabled(false);
+        vistagol.getTxtcodGol().setVisible(false);
+
         cargaGoles();
     }
 
@@ -61,10 +66,10 @@ public class Controlador_Gol {
         vistagol.getBtnPartido().addActionListener(l -> abrirDialogobusqueda("PARTIDO"));
         vistagol.getBtnmandardatos().addActionListener(l -> mandardatos());
         vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
-        vistagol.getTxtBuscar().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-
+        vistagol.getBtnBuscar().addActionListener(l -> buscarFK());
+        vistagol.getTxtBuscar().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                validarEntrada(evt);
             }
         });
         vistagol.getBtnCancelar().addActionListener(e -> {
@@ -80,7 +85,7 @@ public class Controlador_Gol {
         vistagol.getTxtBuscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                buscarArbitros();
+                buscargol();
             }
         });
 
@@ -96,7 +101,7 @@ public class Controlador_Gol {
     private void abrirDialogo(String ce) {
 
         vistagol.getJdgGoles().setLocationRelativeTo(null);
-        vistagol.getJdgGoles().setSize(900, 500);
+        vistagol.getJdgGoles().setSize(662, 522);
         vistagol.getJdgGoles().setTitle(ce);
         vistagol.getJdgGoles().setVisible(true);
         vistagol.getCodigo().setVisible(false);
@@ -104,17 +109,17 @@ public class Controlador_Gol {
 
         if (vistagol.getJdgGoles().getTitle().contentEquals("Crear")) {
             vistagol.getLblReMoGoles().setText("REGISTRO DE GOLES");
-            vistagol.getTxtcodGol().setEnabled(false);
+
             vistagol.getBtnRegistrarModificar().setText("REGISTRO DE GOLES");
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Editar")) {
-            vistagol.getTxtcodGol().setEnabled(false);
+
             vistagol.getLblReMoGoles().setText("MODIFICAR GOLES");
             LlenarDatos();
             vistagol.getBtnRegistrarModificar().setText("MODIFICAR GOLES");
 
         } else if (vistagol.getJdgGoles().getTitle().contentEquals("Eliminar")) {
-            vistagol.getTxtcodGol().setEnabled(true);
+
             LlenarDatos();
             vistagol.getBtnRegistrarModificar().setText("ELIMINAR GOLES");
 
@@ -148,18 +153,20 @@ public class Controlador_Gol {
         } else {
             String selectedId = vistagol.getTblGoles().getValueAt(selectedRow, 0).toString();
             Optional<Clase_Gol> matchingGoles = Listgol.stream()
-                    .filter(p -> selectedId.equals(String.valueOf(p.getCod_partido())))
+                    .filter(p -> selectedId.equals(String.valueOf(p.getCod_gol())))
                     .findFirst();
 
             if (matchingGoles.isPresent()) {
                 Clase_Gol p = matchingGoles.get();
-                vistagol.getTxtcodGol().setText(String.valueOf(p.getCod_partido()));
+                vistagol.getTxtcodGol().setText(String.valueOf(p.getCod_gol()));
                 vistagol.getTxtdescripcion().setText(p.getDescripcion());
                 vistagol.getTxtMinuto().setText(p.getMinuto());
                 vistagol.getTxtcodGol().setEnabled(false);
-                vistagol.getTxtCodJugador().setText(String.valueOf(p.getCod_jugador()));
+                vistagol.getTxtCodJugador().setText(String.valueOf(p.getNombre_jugador()));
                 vistagol.getTxtCodPartido().setText(String.valueOf(p.getCod_partido()));
-                vistagol.getTxtCodEquipo().setText(String.valueOf(p.getCod_equipo()));
+                vistagol.getTxtCodEquipo().setText(String.valueOf(p.getNombre_equipo()));
+                vistagol.getCodigo().setText(String.valueOf(p.getCod_jugador()));
+                vistagol.getCodigo2().setText(String.valueOf(p.getCod_equipo()));
 
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento válido de la tabla.");
@@ -168,7 +175,7 @@ public class Controlador_Gol {
     }
 
     //------------------------------------------------------- BUSCADOR PRINCIPAL--------------------------------------------------------------------------------------------
-    public void buscarArbitros() {
+    public void buscargol() {
         if (vistagol.getTxtBuscar().getText().equals("")) {
             cargaGoles();
         } else {
@@ -220,6 +227,10 @@ public class Controlador_Gol {
         CargarID();
     }
 
+    public void limpiara() {
+        vistagol.getTxtbuscarcod().setText("");
+    }
+
     private void mandardatos() {
 
         String set = vistagol.getTxtbuscarcod().getText();
@@ -235,6 +246,7 @@ public class Controlador_Gol {
                 String nombre = vistagol.getTblbuscar().getValueAt(selectedRow, 1).toString();
                 vistagol.getTxtCodJugador().setText(nombre);
                 salirdialogo1();
+                limpiara();
             }
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
             int selectedRow = vistagol.getTblbuscar().getSelectedRow();
@@ -244,6 +256,7 @@ public class Controlador_Gol {
                 String selectedId = vistagol.getTblbuscar().getValueAt(selectedRow, 0).toString();
                 vistagol.getTxtCodPartido().setText(selectedId);
                 salirdialogo1();
+                limpiara();
             }
 
         } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
@@ -256,6 +269,7 @@ public class Controlador_Gol {
                 vistagol.getTxtCodEquipo().setText(nombre);
                 vistagol.getCodigo2().setText(selectedId);
                 salirdialogo1();
+                limpiara();
             }
         }
     }
@@ -308,9 +322,9 @@ public class Controlador_Gol {
                 int codigogol = Integer.valueOf(vistagol.getTxtcodGol().getText());
                 String descrip = vistagol.getTxtdescripcion().getText();
                 String minut = vistagol.getTxtMinuto().getText();
-                int codjugador = Integer.valueOf(vistagol.getTxtCodJugador().getText());
+                int codjugador = Integer.valueOf(vistagol.getCodigo().getText());
                 int codpartido = Integer.valueOf(vistagol.getTxtCodPartido().getText());
-                int codequipo = Integer.valueOf(vistagol.getTxtCodEquipo().getText());
+                int codequipo = Integer.valueOf(vistagol.getCodigo2().getText());
 
                 model.setCod_gol(codigogol);
                 model.setDescripcion(descrip);
@@ -354,15 +368,9 @@ public class Controlador_Gol {
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Partido> listaP = modeloPar.listarPartidos();
-        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
-        List<Clase_Estadio> listaEs = modeloEsta.ListaEstadios();
         listaP.stream().forEach(p -> {
-            listaE.stream().forEach(e -> {
-                listaEs.stream().forEach(es -> {
-                    String[] rowData = {String.valueOf(p.getCod_partido()), String.valueOf(p.getCod_temporadafk()), String.valueOf(e.getNombre_equi()), String.valueOf(e.getNombre_equi()), es.getNombre()};
-                    mJtable.addRow(rowData);
-                });
-            });
+            Object[] rowData = {p.getCod_partido(), p.getFecha(), p.getEstado()};
+            mJtable.addRow(rowData);
         }
         );
     }
@@ -374,7 +382,7 @@ public class Controlador_Gol {
         mJtable.setNumRows(0);
         List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
         listaE.stream().forEach(p -> {
-            String[] rowData = {String.valueOf(p.getCod_equipo()), String.valueOf(p.getNombre_equi())};
+            Object[] rowData = {p.getCod_equipo(), p.getNombre_equi(), p.getCiudad()};
             mJtable.addRow(rowData);
         }
         );
@@ -385,14 +393,12 @@ public class Controlador_Gol {
         mJtable = (DefaultTableModel) vistagol.getTblbuscar().getModel();
         mJtable.setNumRows(0);
         List<Clase_Jugador> listaC = modeloJug.ListaJugador();
-        List<Clase_Equipo> listaE = modeloEqu.listarEquipos();
-        listaC.stream().forEach(p -> {
-            listaE.stream().forEach(e -> {
-                String[] rowData = {String.valueOf(p.getCod_jugador()), String.valueOf(p.getNombnre1()), e.getNombre_equi()};
-                mJtable.addRow(rowData);
-            });
-        }
-        );
+
+        listaC.stream().forEach(e -> {
+            Object[] rowData = {e.getCod_jugador(), e.getNombnre1(), e.getPosicion()};
+            mJtable.addRow(rowData);
+        });
+
     }
 
     private void cargaGoles() {
@@ -403,7 +409,7 @@ public class Controlador_Gol {
         List<Clase_Gol> jug = modeloGol.listarGoles();
         jug.stream().forEach(p -> {
 
-            Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_jugador(), p.getNombre_equipo(), p.getNombre_jugador()};
+            Object datos[] = {p.getCod_gol(), p.getDescripcion(), p.getMinuto(), p.getCod_partido(), p.getNombre_equipo(), p.getNombre_jugador()};
             tabla.addRow(datos);
         });
     }
@@ -413,61 +419,14 @@ public class Controlador_Gol {
     }
 
     private void buscarFK() {
-        if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
-            List<Clase_Jugador> listajugador = modeloJug.ListaJugador();
-            String idBuscado = vistagol.getTxtbuscarcod().getText();
-
-            DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo Jugador");
-            modeloTabla.addColumn("Nombre Jugador");
-            modeloTabla.addColumn("Codigo Equipo");
-
-            for (Clase_Jugador e : listajugador) {
-
-                if (String.valueOf(e.getCod_jugador()).equals(idBuscado)) {
-
-                    Object[] fila = {
-                        e.getCedula_persona(),
-                        e.getNombnre1(),
-                        e.getCod_equipo()};
-                    modeloTabla.addRow(fila);
-                }
-
-            }
-
-            vistagol.getTblbuscar().setModel(modeloTabla);
-        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDOS")) {
-            List<Clase_Partido> listapartidos = modeloPar.listarPartidos();
-            String idBuscado = vistagol.getTxtbuscarcod().getText();
-
-            DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo Partido");
-            modeloTabla.addColumn("Fecha del Partido");
-            modeloTabla.addColumn("Grupo");
-
-            for (Clase_Partido e : listapartidos) {
-
-                if (String.valueOf(e.getCod_partido()).equals(idBuscado)) {
-
-                    Object[] fila = {
-                        e.getCod_partido(),
-                        e.getFecha(),
-                        e.getGrupo()};
-                    modeloTabla.addRow(fila);
-                }
-
-            }
-
-            vistagol.getTblbuscar().setModel(modeloTabla);
-//-------------------------------------------------------BUSCAR EQUIPOS--------------------------------------------------------------------------------------------
-        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
+        if (vistagol.getJdggolestabla().getTitle().contentEquals("EQUIPO")) {
             List<Clase_Equipo> listaequipos = modeloEqu.listarEquipos();
             String idBuscado = vistagol.getTxtbuscarcod().getText();
 
             DefaultTableModel modeloTabla = new DefaultTableModel();
-            modeloTabla.addColumn("Codigo Estadio");
-            modeloTabla.addColumn("Nombre Estadio");
-            modeloTabla.addColumn("Nombre Ciudad");
+            modeloTabla.addColumn("Codigo Equipo");
+            modeloTabla.addColumn("Nombre Equipo");
+            modeloTabla.addColumn("Ciudad Equipo");
 
             for (Clase_Equipo e : listaequipos) {
 
@@ -481,7 +440,73 @@ public class Controlador_Gol {
                 }
 
             }
+
+            vistagol.getTblbuscar().setModel(modeloTabla);
+
+//-------------------------------------------------------BUSCAR ESTADIOS--------------------------------------------------------------------------------------------
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("JUGADOR")) {
+            List<Clase_Jugador> listajugador = modeloJug.ListaJugador();
+            String idBuscado = vistagol.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo Jugador");
+            modeloTabla.addColumn("Nombre Jugador");
+            modeloTabla.addColumn("Posicion Jugador");
+
+            for (Clase_Jugador e : listajugador) {
+
+                if (String.valueOf(e.getCod_jugador()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCod_jugador(),
+                        e.getNombnre1(),
+                        e.getPosicion()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
+            vistagol.getTblbuscar().setModel(modeloTabla);
+//-------------------------------------------------------BUSCAR CAMPEONATOS--------------------------------------------------------------------------------------------      
+        } else if (vistagol.getJdggolestabla().getTitle().contentEquals("PARTIDO")) {
+            List<Clase_Partido> listapartido = modeloPar.listarPartidos();
+            String idBuscado = vistagol.getTxtbuscarcod().getText();
+
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            modeloTabla.addColumn("Codigo Temporada");
+            modeloTabla.addColumn("Fecha Inicio");
+            modeloTabla.addColumn("Fecha Fin");
+
+            for (Clase_Partido e : listapartido) {
+
+                if (String.valueOf(e.getCod_partido()).equals(idBuscado)) {
+
+                    Object[] fila = {
+                        e.getCod_partido(),
+                        e.getNombreequipo1(),
+                        e.getNombreequipo2()};
+                    modeloTabla.addRow(fila);
+                }
+
+            }
+
             vistagol.getTblbuscar().setModel(modeloTabla);
         }
     }
+
+    private void validarEntrada(java.awt.event.KeyEvent evt) {
+        char dato = evt.getKeyChar();
+        boolean numeros = dato >= 48 && dato <= 57;
+        boolean backspace = dato == 8;
+
+        if (!(backspace || numeros)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar NUMEROS");
+        }
+        if (vistagol.getTxtBuscar().getText().trim().length() > 3) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Superior al limite (4)");
+        }
+    }
+    //--
 }

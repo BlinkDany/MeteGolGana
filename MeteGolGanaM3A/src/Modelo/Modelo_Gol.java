@@ -71,16 +71,17 @@ public class Modelo_Gol extends Clase_Gol {
 
     }
 
+   
     public boolean ModificarGol() {
         String sql;
-        sql = "update gol set codigo='" + getCod_gol() + "' ,descripcion='" + getDescripcion() + "' ,minuto='" + getMinuto() + "' ,codigo_jugadorfk='" + getCod_jugador() + "' ,codigo_partidofk='" + getCod_partido() + "' ,cod_equipofk='" + getCod_equipo() + "'where codigo='" + getCod_gol() + "';";
+        sql = "update gol set codigo='" + getCod_gol() + "' ,descripcion='" + getDescripcion() + "' ,minuto='" + getMinuto() + "' ,codigo_partidofk='" + getCod_partido() + "' ,cod_equipofk='" + getCod_equipo() + "' ,codigo_jugadorfk='" + getCod_jugador()  + "'where codigo='" + getCod_gol()+ "';";
         return CPG.CRUD(sql);
 
     }
 
     public boolean EliminarGol() {
         String sql;
-        sql = "update gol set estado_elim = true where codigo='" + getCod_gol() + "';";
+        sql = "update gol set estado_elim = true where codigo=" + getCod_gol() + ";";
         return CPG.CRUD(sql);
 
     }
