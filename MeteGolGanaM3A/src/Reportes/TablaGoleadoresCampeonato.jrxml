@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="577f71d1-e4fd-4c81-95f2-3d05383b0568">
+	<queryString language="SQL">
+		<![CDATA[SELECT q.nombre1, q.apellido1, x.nombre as "Campeonato" ,count(*) AS "total goles"
+FROM gol l
+JOIN jugador j ON l.codigo_jugadorfk = j.codigo
+JOIN persona q on j.cedula_personafk = q.cedula
+JOIN partido n ON l.codigo_partidofk = n.codigo
+JOIN temporada f ON n.cod_temporadafk = f.codigo
+JOIN campeonato x ON f.codigo_campeonato = x.codigo
+WHERE x.codigo = 1
+group by q.nombre1, q.apellido1, x.nombre
+ORDER BY "total goles" DESC;]]>
+	</queryString>
+	<field name="nombre1" class="java.lang.String"/>
+	<field name="apellido1" class="java.lang.String"/>
+	<field name="Campeonato" class="java.lang.String"/>
+	<field name="total goles" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
