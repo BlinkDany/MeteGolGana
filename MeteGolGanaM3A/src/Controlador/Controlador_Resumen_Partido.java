@@ -479,7 +479,7 @@ public class Controlador_Resumen_Partido {
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
 
             Map parametro = new HashMap();
-            parametro.put("hola", Integer.valueOf(x));
+            parametro.put("camp", Integer.valueOf(x));
 
             JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, conn);
 
