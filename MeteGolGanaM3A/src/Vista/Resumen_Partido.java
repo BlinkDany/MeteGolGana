@@ -27,6 +27,62 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnGoleadores() {
+        return btnGoleadores;
+    }
+
+    public void setBtnGoleadores(JButton btnGoleadores) {
+        this.btnGoleadores = btnGoleadores;
+    }
+
+    public JButton getBtnPosiciones() {
+        return btnPosiciones;
+    }
+
+    public void setBtnPosiciones(JButton btnPosiciones) {
+        this.btnPosiciones = btnPosiciones;
+    }
+
+    public FSButtonMD getfSButtonMD1() {
+        return fSButtonMD1;
+    }
+
+    public void setfSButtonMD1(FSButtonMD fSButtonMD1) {
+        this.fSButtonMD1 = fSButtonMD1;
+    }
+
+    public JLabel getjLabel18() {
+        return jLabel18;
+    }
+
+    public void setjLabel18(JLabel jLabel18) {
+        this.jLabel18 = jLabel18;
+    }
+
+    public JPanel getjPanel13() {
+        return jPanel13;
+    }
+
+    public void setjPanel13(JPanel jPanel13) {
+        this.jPanel13 = jPanel13;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4) {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JLabel getLblPartido1() {
+        return lblPartido1;
+    }
+
+    public void setLblPartido1(JLabel lblPartido1) {
+        this.lblPartido1 = lblPartido1;
+    }
+
     public FSButtonMD getBtnGoles() {
         return fSButtonMD1;
     }
@@ -594,6 +650,8 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblResuemn = new javax.swing.JTable();
+        btnPosiciones = new javax.swing.JButton();
+        btnGoleadores = new javax.swing.JButton();
 
         jPanel9.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -1150,6 +1208,18 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(tblResuemn);
 
+        btnPosiciones.setBackground(new java.awt.Color(0, 102, 204));
+        btnPosiciones.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnPosiciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnPosiciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnPosiciones.setText("Ver tabla de posiciones");
+
+        btnGoleadores.setBackground(new java.awt.Color(0, 102, 204));
+        btnGoleadores.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
+        btnGoleadores.setForeground(new java.awt.Color(255, 255, 255));
+        btnGoleadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/reporte32.png"))); // NOI18N
+        btnGoleadores.setText("Ver lista de goleadores");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1160,7 +1230,11 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModificar)
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnGoleadores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPosiciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 72, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1179,9 +1253,14 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnModificar)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPosiciones)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGoleadores))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1202,8 +1281,10 @@ public class Resumen_Partido extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregar;
     private LIB.FSButtonMD btnCancelar;
+    private javax.swing.JButton btnGoleadores;
     public static LIB.FSButtonMD btnInicio;
     public static javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnPosiciones;
     private LIB.FSButtonMD btnRegistrar;
     private javax.swing.JDialog dlgEquipo1;
     private javax.swing.JDialog dlgEquipo2;
