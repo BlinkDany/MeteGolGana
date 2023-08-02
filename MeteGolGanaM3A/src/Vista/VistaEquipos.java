@@ -96,13 +96,14 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jdlgEquipos = new javax.swing.JDialog();
-        lblReMoEquipos = new javax.swing.JLabel();
         txtCiudadequipo = new LIB.FSTexFieldMD();
         txtNombreequipo = new LIB.FSTexFieldMD();
         txtcodequipo = new LIB.FSTexFieldMD();
         jdcaniofundacion = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         btnCancelar = new LIB.FSButtonMD();
+        jPanel2 = new javax.swing.JPanel();
+        lblReMoEquipos = new javax.swing.JLabel();
         btnRegistrarModificar = new LIB.FSButtonMD();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -114,12 +115,6 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
-
-        lblReMoEquipos.setBackground(new java.awt.Color(0, 102, 204));
-        lblReMoEquipos.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
-        lblReMoEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        lblReMoEquipos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReMoEquipos.setText("Registrar o Modificar");
 
         txtCiudadequipo.setForeground(new java.awt.Color(0, 0, 0));
         txtCiudadequipo.setBordeColorFocus(new java.awt.Color(51, 51, 255));
@@ -147,6 +142,28 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(0, 102, 204));
+
+        lblReMoEquipos.setBackground(new java.awt.Color(0, 102, 204));
+        lblReMoEquipos.setFont(new java.awt.Font("STHupo", 1, 36)); // NOI18N
+        lblReMoEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        lblReMoEquipos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReMoEquipos.setText("Registrar o Modificar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(lblReMoEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblReMoEquipos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+        );
+
         btnRegistrarModificar.setText("Registrar");
         btnRegistrarModificar.setColorHover(new java.awt.Color(0, 102, 204));
         btnRegistrarModificar.setColorPressed(new java.awt.Color(0, 204, 51));
@@ -162,33 +179,32 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
         jdlgEquiposLayout.setHorizontalGroup(
             jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNombreequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                            .addGap(45, 45, 45)
-                            .addComponent(txtcodequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                            .addGap(44, 44, 44)
-                            .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCiudadequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jdcaniofundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(27, 161, Short.MAX_VALUE))
-            .addComponent(lblReMoEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCiudadequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jdlgEquiposLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jdcaniofundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(112, 162, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdlgEquiposLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtNombreequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtcodequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdlgEquiposLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(btnRegistrarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(161, 161, 161))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jdlgEquiposLayout.setVerticalGroup(
             jdlgEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdlgEquiposLayout.createSequentialGroup()
-                .addComponent(lblReMoEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtcodequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -383,6 +399,7 @@ public class VistaEquipos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcaniofundacion;
     private javax.swing.JDialog jdlgEquipos;
