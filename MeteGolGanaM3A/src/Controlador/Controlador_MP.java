@@ -35,8 +35,10 @@ import Vista.VistaGol;
 import Vista.VistaPartido;
 import Vista.Vista_Arbitro;
 import Vista.Vista_Asignacion;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 
 /**
@@ -55,6 +57,7 @@ public class Controlador_MP {
 
     public void iniciaControl() {
 
+        vistaPrincipal.setIconImage(new ImageIcon(getClass().getResource("/imgs/pelota1.png")).getImage());
         vistaPrincipal.setLocationRelativeTo(null);
         vistaPrincipal.getBtnCampeonato().addActionListener(l -> menuCampeonato());
         vistaPrincipal.getBtnTemporada().addActionListener(l -> menuTemporada());

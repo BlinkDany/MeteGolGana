@@ -29,10 +29,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
-        
-                setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imgs/pelota1.png")));
 
-        
     }
 
     public JButton getBtnEstadios() {
@@ -50,7 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnEntrenador(JButton btnEntrenador) {
         this.btnEntrenador = btnEntrenador;
     }
-    
+
     public JButton getBtnCampeonato() {
         return btnCampeonato;
     }
@@ -103,7 +100,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.btnJugadores = btnJugadores;
     }
 
-
     public JMenuItem getjMenuItem1() {
         return jMenuItem1;
     }
@@ -151,9 +147,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setBtnAsignacion(JButton BtnAsignacion) {
         this.BtnAsignacion = BtnAsignacion;
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -395,9 +389,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrenadorActionPerformed
 
-
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnArbitros;

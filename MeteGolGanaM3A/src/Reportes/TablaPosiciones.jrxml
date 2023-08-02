@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a38b8894-674f-4b28-85cb-7bf959fd99c2">
-	<property name="ireport.zoom" value="1.331000000000008"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.610510000000015"/>
+	<property name="ireport.x" value="35"/>
+	<property name="ireport.y" value="54"/>
 	<style name="Subtitulos" forecolor="#0099CC"/>
 	<queryString language="SQL">
 		<![CDATA[select * from  vista_tabla_posiciones]]>
@@ -23,96 +23,33 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="79" forecolor="#000000" uuid="8d97ddf4-7efc-4ab5-a196-425d10b5850a"/>
+				<reportElement x="0" y="0" width="554" height="79" forecolor="#006699" uuid="65e5331c-4f40-41eb-a22e-2cd2944365ce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans Mono" size="24" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					<font size="24" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Tabla de posiciones]]></text>
+				<text><![CDATA[Tabla de posiciones de los equipos]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="51" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="51" forecolor="#006699" uuid="8af31a89-78cf-490d-8e38-72973f278ceb"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Monospaced" size="20" isBold="true" isUnderline="true"/>
+				<reportElement x="0" y="0" width="554" height="51" forecolor="#003366" uuid="55293755-3cb5-434d-bc69-a8bdaf7a6ea9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Mete Gol Gana]]></text>
+				<text><![CDATA[Meto gol gana]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="456" y="31" width="100" height="20" uuid="5202d041-7859-45f6-909c-4da398311307"/>
+				<reportElement x="454" y="16" width="100" height="20" uuid="35a533b4-e894-43c4-8387-723304d322be"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
-			<staticText>
-				<reportElement style="Subtitulos" x="0" y="0" width="100" height="20" uuid="e35e5349-33bf-4769-aac4-f11ae2597309"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[Nombre equipo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="100" y="0" width="44" height="20" uuid="8e5893a0-7822-4525-85ad-d733fd21c75e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[Partidos jugados]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="144" y="0" width="45" height="20" uuid="30e45eea-ee30-4357-8b79-d64d064558e4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[puntos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="189" y="0" width="55" height="20" uuid="af96cb11-2d45-42e0-acc3-c75ae94d09c0"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[Goles favor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="244" y="0" width="64" height="20" uuid="4f543111-4d86-42d2-b41a-d69e5fe2d76b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[Goles contra]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="308" y="0" width="58" height="20" uuid="39bc6f27-3824-4b5e-bc3b-0003173aa10b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[victorias]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="366" y="0" width="54" height="20" uuid="139353ab-447c-4c96-932a-410aef275586"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[empates]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="420" y="0" width="47" height="20" uuid="ae2ec1d9-530b-4e58-88ee-2381a22f7c6b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[derrotas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Subtitulos" x="467" y="0" width="77" height="20" uuid="4513f851-ff05-4cfe-8484-bfa76f0dd331"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11"/>
-				</textElement>
-				<text><![CDATA[Diferencia goles]]></text>
-			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="1" height="20" uuid="9084908b-2e8d-415d-a91f-06766aba71ec"/>
+				<reportElement x="0" y="0" width="1" height="20" forecolor="#0099CC" uuid="9084908b-2e8d-415d-a91f-06766aba71ec"/>
 			</line>
 			<line>
 				<reportElement x="1" y="0" width="554" height="1" uuid="de0fc246-6753-4dc1-8961-6dbb52984e52"/>
@@ -121,8 +58,71 @@
 				<reportElement x="0" y="19" width="555" height="1" uuid="22822c48-22d3-4a93-9f93-e14724e881e7"/>
 			</line>
 			<line>
-				<reportElement x="554" y="1" width="1" height="18" uuid="79973af7-620f-4a98-b521-9f67ff3cf126"/>
+				<reportElement x="554" y="1" width="1" height="18" forecolor="#0099CC" uuid="79973af7-620f-4a98-b521-9f67ff3cf126"/>
 			</line>
+			<staticText>
+				<reportElement x="2" y="1" width="100" height="18" forecolor="#0099CC" uuid="428fcdd0-9f78-4c38-8aee-536a8c8fa57e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="1" width="43" height="18" forecolor="#0099CC" uuid="d4fdfe39-1101-4c46-8ad2-7ced2517ceb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Partidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="1" width="46" height="18" forecolor="#0099CC" uuid="14854e96-6916-45a9-a8c2-6ac62827f762"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Puntos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="1" width="54" height="18" forecolor="#0099CC" uuid="dfa81dc9-428f-4cea-aae1-d118d3619052"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[G. Favor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="1" width="64" height="18" forecolor="#0099CC" uuid="ea2422b1-4be4-45fa-a955-971e8cee1f6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[G. Contra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="1" width="59" height="18" forecolor="#0099CC" uuid="d4d89dee-3e16-46f0-8dab-01384da8c7a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Victorias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="1" width="52" height="18" forecolor="#0099CC" uuid="70c5acb7-6b56-4acd-a38d-49478f20dcb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Empates]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="0" width="48" height="20" forecolor="#0099CC" uuid="0c13eb76-0fa4-4c47-9fbf-71e48d70f825"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Derrotas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="0" width="85" height="20" forecolor="#0099CC" uuid="21aadcde-0ee6-4199-b5b1-9f46d15caa55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[G. Diferencia]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>

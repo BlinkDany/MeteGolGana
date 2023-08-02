@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Conexion.ConexionMySql;
 import LIB.FSTexFieldMD;
 import Modelo.Clase_Arbitro;
 import Modelo.Clase_Equipo;
@@ -27,9 +28,12 @@ import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +43,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -64,6 +75,7 @@ public class Controlador_Estadio {
         MostrarDatos();
         visEstadio.btnAgregar.addActionListener(l -> abrirDialogo("Crear"));
         visEstadio.getBtnCancelar().addActionListener(l -> cerrarDialogo());
+        visEstadio.getBtnReporte().addActionListener(l -> reporteEstadio());
         visEstadio.btnModificar.addActionListener(l -> {
             if (visEstadio.tblEstadios.getSelectedRow() == -1) {
 
@@ -81,8 +93,16 @@ public class Controlador_Estadio {
 
             @Override
             public void mousePressed(MouseEvent e) {
+                
                 int cod = (int) visEstadio.tblEquipos.getValueAt(visEstadio.tblEquipos.getSelectedRow(), 0);
-                visEstadio.txtCodigoEquipo.setText(String.valueOf(cod));
+                
+                if(modEstadio.ValidarEquipoEstadio(String.valueOf(cod))){
+                    visEstadio.txtCodigoEquipo.setText(String.valueOf(cod));
+                }else{
+                    MensajeError("No se pueden registrar dos estadios al mismo equipo");
+                    visEstadio.tblEquipos.clearSelection();
+                }
+                
             }
 
         });
@@ -145,6 +165,7 @@ public class Controlador_Estadio {
     private void abrirDialogo(String ce) {
         
         limpiarDatos();
+        visEstadio.txtCodigoEst.setEnabled(false);
 
         visEstadio.getDialogRegistrarModificar().setLocationRelativeTo(null);
         visEstadio.getDialogRegistrarModificar().setSize(900, 900);
@@ -152,6 +173,7 @@ public class Controlador_Estadio {
         visEstadio.getDialogRegistrarModificar().setVisible(true);
 
         if (visEstadio.getDialogRegistrarModificar().getTitle().contentEquals("Crear")) {
+            CargarCodigoEst();
             visEstadio.getLblReMoJugadores().setText("REGISTRO DE ESTADIOS");
             visEstadio.getBtnRegistrarModificar().setText("REGISTRO DE ESTADIOS");
             LlenarTablaEquipos();
@@ -306,6 +328,34 @@ public class Controlador_Estadio {
             tabla.addRow(datos);
         });
     }
+    
+    public void reporteEstadio() {
+
+        //String rta2 = JOptionPane.showInputDialog("Ingrese el título de su reporte");
+        try {
+            ConexionMySql con = new ConexionMySql();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\reporte_estadio.jasper";
+
+            Map parametro = new HashMap();
+ 
+            // parametro.put("titulo", rta2);
+
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+
+            JasperViewer vista = new JasperViewer(jprint, false);
+
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+            vista.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_temporada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void MensajeSucces(String mensaje) {
 
@@ -315,5 +365,9 @@ public class Controlador_Estadio {
     public void MensajeError(String mensaje) {
 
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private void CargarCodigoEst() {
+        visEstadio.txtCodigoEst.setText(String.valueOf(modEstadio.CargarCodigoEstadio()));
     }
 }

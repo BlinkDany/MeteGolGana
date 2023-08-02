@@ -132,6 +132,53 @@ public class Modelo_Estadio extends Clase_Estadio{
             return null;
         }
     }
+    public boolean ValidarEquipoEstadio(String aux) {
+
+        try {
+
+            String sql = "SELECT e.codigo,e.nombre,e.aforo,e.ubicacion,e.cod_equipofk "
+                    + "FROM estadio e "
+                    + "WHERE e.cod_equipofk = " + aux + " AND e.estado_elim=false; ";
+            ResultSet res = con.Consultas(sql);
+            boolean validacion = res.next();
+            res.close();
+            
+            return !validacion;
+            
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Modelo_Arbitro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            return false;
+        }
+    }
+    
+    public int CargarCodigoEstadio() {
+
+        try {
+            
+            int codigo = 0;
+            String sql = "select max(codigo) from estadio;";
+            ResultSet res = con.Consultas(sql);
+            
+            try {
+                while (res.next()) {
+                    
+                    codigo = res.getInt(1) + 1;
+                }
+            } catch (SQLException ex) {
+                
+                Logger.getLogger(Clase_Partido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            res.close();
+            return codigo;
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(Modelo_Estadio.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+            
+        }
+    }
 
     private Image getImage(byte[] bytes) throws IOException {
 
