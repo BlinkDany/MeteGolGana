@@ -488,8 +488,8 @@ public class Controlador_Asignacion {
             List<Clase_Asignacion> par = modeloAsig.BuscarAsignacion(vistaAsig.getTxtBuscar().getText());
             par.stream().forEach(p -> {
 
-                Object datos[] = {p.getCodigo_asignacion(), p.getFecha_asignacion(), p.getCodigo_arbitro_asignacion(), p.getCodigo_partido_asignacion()};
-                tabla.addRow(datos);
+                Object[] rowData = {p.getCodigo_asignacion(), p.getFecha_asignacion(), p.getCodigo_arbitro_asignacion(), p.getNombre_Arbitro(), p.getApellido_Arbitro(), p.getCodigo_partido_asignacion(), p.getEquipo_1(), p.getEquipo_2()};
+                tabla.addRow(rowData);
             });
         }
     }
